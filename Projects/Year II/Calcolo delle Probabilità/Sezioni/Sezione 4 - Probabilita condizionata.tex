@@ -1,0 +1,36 @@
+\documentclass{subfiles}
+\begin{document}
+Si supponga di lanciare due dadi, si consideri che il primo dado dia 3, se si indica con \(E_{2}\) tale evento e con \(E_{1}\) l'evento \emph{somma dei dadi uguale a otto},
+qual è la probabilità di \(E_{1}\)?
+\\ \\
+Considerando che tutti gli esiti siano equiprobabili, poiché dato \(E_{2}\), i possibili esiti
+\[
+    (3, 1) \quad (3, 2) \quad (3, 3) \quad (3, 4) \quad (3, 5) \quad (3, 6)
+\]
+segue che ciascuno di essi ha probabilità \(\tfrac{1}{6}\).
+\\ \\
+In generale \(\forall E_{1}, E_{2}\) tali che \(E_{1}\) è condizionato da \(E_{2}\)
+\begin{equation}
+    P(E_{1} \given E_{2}) = \frac{P(E_{1}E_{2})}{P(E_{2})} \qquad \text{tale che} P(E_{2}) > 0
+\end{equation}
+Generalizzando ulteriormente: dati \(E_{1} \cdots E_{n}\) eventi, si ha
+\[
+    P(E_{1}\cdots E_{n}) = P(E_{1})P(E_{1} \given E_{2})\cdots P(E_{n} \given E_{1}\cdots E_{n-1})
+\]
+la cui dimostrazione applicando l'Equazione risulta essere
+\[
+    P(E_{1})\frac{P(E_{1}E_{2}) \cdots P(E_{1} \cdots E_{n})}{P(E_{1}) \cdots P(E_{1} \cdots E_{n - 1})} = P(E_{1} \cdots E_{n})
+\]
+
+\subsection{Formula di Bayes}
+\subfile{Sotto Sezioni/Sottosezione 4.1 - Formula di Bayes.tex}
+
+\subsection{Probabilità condizionata e assiomi}
+\subfile{Sotto Sezioni/Sottosezione 4.2 - Probabilita condizionata e assiomi.tex}
+
+\subsection{Esercizi esemplificativi}
+\subfile{Sotto Sezioni/Sottosezione 4.3 - Esercizi esemplificativi.tex}
+
+\subsection{Indipendenza stocastica}
+\subfile{Sotto Sezioni/Sottosezione 4.4 - Indipendenza stocastica.tex}
+\end{document}

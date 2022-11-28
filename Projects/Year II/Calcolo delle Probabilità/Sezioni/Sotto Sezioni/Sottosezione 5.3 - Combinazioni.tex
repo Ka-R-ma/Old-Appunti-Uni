@@ -1,0 +1,19 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{Definition*}
+    Si definiscono combinazioni \(C_{n, r}\) di un insieme di \(n\) elementi, il numero di sottoinsiemi di \emph{r} elementi che si possono ottenere dall'insieme,
+    in modo che questi non siano ordinati.
+\end{Definition*}
+
+Si distinguono due classico
+\begin{enumerate}
+    \item combinazioni semplici: \(\forall i, j \given i \neq j \implies a_{i} \neq a_{j}\)
+          \[
+              C_{n, r} = \frac{D_{n, r}}{r!} = \frac{n!}{r! (n - r)!}
+          \]
+    \item combinazioni con ripetizione: \(\exists i, j \given i \neq j \implies a_{i} = a_{j}\)
+          \[
+              C_{n, r}^{'} = \frac{(n + r - 1)!}{r!(n - r)!}
+          \]
+\end{enumerate}
+\end{document}

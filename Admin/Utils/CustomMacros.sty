@@ -1,0 +1,149 @@
+\ProvidesPackage{../../../Admin/Utils/CustomMacros} %Defines the package name to import in the main file.
+
+% List of packages used to define new macros and in the main file.
+\usepackage[usernames, x11names]{xcolor}
+%% Packages used to change the document structure.
+\usepackage{fancyhdr}
+\usepackage[a4paper]{geometry}
+\usepackage[explicit]{titlesec}
+%% Packages used for math related stuff.
+\usepackage[fixamsmath,allowspaces]{mathtools}
+\usepackage{mathdots, mathrsfs, multicol}
+\usepackage{amssymb, amsthm, amsmath}
+\usepackage{physics}
+%% Packages used to implements some useful environments.
+\usepackage{tikz, pgfplots, circuitikz, caption, siunitx, forest}
+\usepackage{listings, lstautogobble}
+\usepackage{subfloat, subfig}
+%% Packages used for utilities.
+\usepackage[notext]{kpfonts}
+\usepackage[hidelinks]{hyperref}
+\usepackage[italian]{babel}
+\usepackage{ifthen}
+\usepackage{subfiles}
+
+% Custom definition of theorem-like environments.
+%% Theorem styles for numbered theorem-like environments.
+\newtheoremstyle{Theorem}{5pt}{5pt}{\itshape}{}{\bfseries}{.}{\newline}{\thmname{#1} \thmnumber{#2}}
+\newtheoremstyle{Plain}{5pt}{5pt}{}{}{\bfseries}{.}{\newline}{\thmname{#1} \thmnumber{#2}}
+%% Theorem style for unnumbered theorem-like environments.
+\newtheoremstyle{Theorem*}{5pt}{5pt}{\itshape}{}{\bfseries}{.}{\newline}{\thmname{#1} \thmnote{#3}}
+\newtheoremstyle{Plain*}{5pt}{5pt}{}{}{\bfseries}{:}{5pt}{\thmname{#1}}
+\newtheoremstyle{Proof*}{5pt}{5pt}{}{}{\bfseries\itshape}{:}{5pt}{\thmname{#1}}
+
+%% Numberend theorem-like environments
+\theoremstyle{Theorem}
+\newtheorem{Corollary}{Corollario}[subsection]
+\newtheorem{Theorem}{Teorema}[subsection]
+\newtheorem{Lemma}{Lemma}[subsection]
+
+\theoremstyle{Plain}
+\newtheorem{Proposition}{Proposizione}[subsection]
+\newtheorem{Axiom}{Assioma}[subsection]
+
+%% Unnumbered theorem-like environments
+\theoremstyle{Theorem*}
+\newtheorem*{Algorithm*}{Algoritmo}
+\newtheorem*{Principle*}{Principio}
+\newtheorem*{Postulate*}{Postulato}
+\newtheorem*{Theorem*}{Teorema}
+\newtheorem*{Axiom*}{Assioma}
+\newtheorem*{Law*}{Legge}
+
+\theoremstyle{Plain*}
+\newtheorem*{CounterExample*}{Contro Esempio}
+\newtheorem*{Definition*}{Definizione}
+\newtheorem*{Solution*}{Svolgimento}
+\newtheorem*{Remark*}{Osservazione}
+\newtheorem*{Exercise*}{Esercizio}
+\newtheorem*{Example*}{Esempio}
+\newtheorem*{Note*}{Nota}
+
+\theoremstyle{Proof*}
+\newtheorem*{Proof*}{Dimostrazione}
+\newtheorem*{Induction*}{Induzione}
+\newtheorem*{Base*}{Base}
+
+\AtEndEnvironment{equation}{\label{eq:\theequation}}
+
+% Some package options
+%% AMS math options
+\everymath{\color{SteelBlue4}}
+\everydisplay{\color{SteelBlue4}}
+
+%%Tikz & related
+\usetikzlibrary{angles, arrows.meta, quotes, patterns, calc, automata, positioning, decorations.pathmorphing, 3d}
+\ctikzset{american, full diodes}
+
+% Edit on pre-existing macros
+\let\oldInt\int
+\let\oldOInt\oint
+\renewcommand{\int}[4]{\oldInt\limits_{#1}^{#2}{#3 \: {\dd#4}}}
+\renewcommand{\oint}[4]{\oldOInt\limits_{#1}^{#2}{#3 \: {\dd#4}}}
+
+\let\oldDet\det
+\let\oldDim\dim
+\let\oldKer\ker
+\let\oldInf\inf
+\renewcommand{\det}[1]{\oldDet #1}
+\renewcommand{\dim}[1]{\oldDim #1}
+\renewcommand{\ker}[1]{\oldKer #1}
+\renewcommand{\inf}[1]{\oldInf \Set{#1}}
+\let\oldToC\tableofcontents
+\let\oldMaketitle\maketitle
+
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{2}
+
+\renewcommand{\tableofcontents}{\pagestyle{plain} \oldToC \clearpage \pagestyle{fancy}}
+
+\let\oldText\text
+\renewcommand{\text}[1]{\oldText{ {\color{black} #1} }}
+
+% Custom defined macros
+\DeclareMathOperator{\such}{\: {:} \:}
+\DeclareSIUnit{\calorie}{cal}
+
+\newcommand{\set}[2]{\left\{#1 \such #2\right\}}
+\newcommand{\Set}[1]{\left\{#1\right\}}
+\newcommand{\given}{\:{|}\:}
+
+\newcommand{\ointerval}[2]{\left]#1, #2 \right[}
+\newcommand{\cinterval}[2]{\left[#1, #2\right]}
+\newcommand{\series}[2]{\sum\limits_{n = #1}^{+\infty}{#2}}
+
+%% NUmber sets
+\newcommand{\Naturals}{\mathbb{N}}
+\newcommand{\Integers}{\mathbb{Z}}
+\newcommand{\Rationals}{\mathbb{Q}}
+\newcommand{\Reals}{\mathbb{R}}
+\newcommand{\Complecs}{\mathbb{C}}
+
+\let\N\Naturals
+\let\Z\Integers
+\let\Q\Rationals
+\let\R\Reals
+\let\C\Complecs
+
+
+% Document customization
+\pagestyle{fancy}
+
+\renewcommand{\sectionmark}[1]{\markboth{{#1}}{}}
+\renewcommand{\footruleskip}{15pt}
+\renewcommand{\footrulewidth}{0.1pt}
+\rhead{\leftmark}
+\lhead{\bfseries Sezione \thesection}
+
+\fancyfoot[C]{-- {\thepage} --}
+\setlength\headheight{15pt}
+\setlength\textwidth{413pt}
+\setlength\textheight{641pt}
+\setlength\headsep{17pt}
+\setlength\marginparwidth{55pt}
+
+\newcommand\sectionbreak{\ifnum\value{section}>1\clearpage\fi}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{-- {\thesection} --}{1em}{#1.}
+\titleformat{\subsection}{\normalfont\large\bfseries}{-- {\thesubsection} --}{1em}{#1.}
+\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{-- {\thesubsubsection} --}{1em}{#1.}

@@ -1,0 +1,24 @@
+\documentclass{subfiles}
+\begin{document}
+Si consideri il seguente caso: lanciando tre dati, è maggiore la probabilità che la somma dei valori ottenuti sia 9 o che sia 10?\\
+Un metodo semplice per stabilire quanto richiesto, consiste nell'elencare tutti i possibili modi in cui è possibile ottenere 9 e 10.
+
+% Import Figure 1
+\subfile{Figure/Figura 1.tex}
+\noindent
+Sia \(n\) il numero totale di casi possibili, nel caso in esame 216, la probabilità \(P\) di un evento\footnotemark[1] \(E\) risulta essere definita come segue.
+\begin{equation}
+    P(E) = \frac{\sum \#}{n}
+\end{equation}
+ove \(\#\) indica il numero di casi favorevoli all'evento in questione.
+\\ \\
+Applicando l'Equazione \eqref{eq:1} al caso in esame, segue
+\[\begin{aligned}
+        P(SOMMA = 9)  & = \frac{25}{216} \approx 0.12 \\
+        P(SOMMA = 10) & = \frac{27}{216} = 0.125      \\
+    \end{aligned}\]
+da cui risulta ovvio \(P(SOMMA = 10) > P(SOMMA = 9)\).
+
+\footnotetext[1]{La definizione di evento sarà data in seguito.}
+\end{document}
+\clearpage

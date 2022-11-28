@@ -1,0 +1,15 @@
+\documentclass{subfiles}
+\begin{document}
+Siano \(E_{1}, E_{2}\) eventi, con \(0 < P(E_{2}) < 1\). Allora
+\[
+    E_{1} = E_{1}E_{2} \cup E_{1}E_{2}^{C}
+\]
+poiché un esito di \(E_{1}\) è, oppure no, in \(E_{2}\).\\
+Ma per l'Assioma \eqref{Axiom:3} segue che, poiché \(E_{1}E_{2}, E_{1}E_{2}^{C}\) sono incompatibili
+\[\begin{aligned}
+        P(E_{1}) & =  P(E_{1}E_{2}) + P(E_{1}E_{2}^{C})                                      \\
+                 & = P(E_{1} \given E_{2})P(E_{2}) + P(E_{1} \given E_{2}^{C})P(E_{2}^{C})   \\
+                 & = P(E_{1} \given E_{2})P(E_{2}) + P(E_{1} \given E_{2}^{C})[1 - P(E_{2})] \\
+    \end{aligned}\]
+cioè \(P(E_{1})\) è la media ponderata della probabilità di \(E_{1}\) dato \(E_{2}\) e della probabilità di \(E_{1}\) dato \(E_{2}^{C}\).
+\end{document}

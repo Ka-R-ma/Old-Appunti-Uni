@@ -1,0 +1,83 @@
+\documentclass{subfiles}
+\begin{document}
+Siano dati \(E_{1}, E_{2}, \dots, E_{n}\) eventi stocasticamente indipendenti, con probabilità \(p\). Sia \(q = 1 - p\).\\
+Se si indica con \(X\) il numero di successi alle \emph{n} prove, ne segue logicamente
+\[
+    X = \abs{E_{1}} + \abs{E_{2}} + \cdots + \abs{E_{n}}
+\]
+Per calcolare la distribuzione di probabilità di \(X\), occorre calcolare \(P(X = i) \text{per ogni} i \in \Set{1, 2, \dots, n}\).
+A tale scopo risulta utile considerare \(X = i\) come la unione dei costituenti della famiglia \(\Set{E_{1}, E_{2}, \dots, E_{n}}\) ad esso favorevoli, segue
+\[
+    (X = 0) = E_{1}^{C}E_{2}^{C}\cdots E_{n}^{C}
+\]
+da cui
+\[\begin{aligned}
+        P(X = 0) = P(E_{1}^{C}E_{2}^{C}\cdots E_{n}^{C}) & = P(E_{1}^{C})P(E_{2}^{C})\cdots P(E_{n}^{C}) \\
+                                                         & = (1 - p)(1- p)\cdots (1 - p)                 \\
+                                                         & = q^{n}
+    \end{aligned}\]
+Analogamente segue
+\[
+    (X = n) = E_{1}E_{2} \cdots E_{n}
+\]
+per cui
+\[\begin{aligned}
+        P(X = n) = P(E_{1}E_{2} \cdots E_{n}) & = P(E_{1})P(E_{2})\cdots P(E_{n}) \\
+                                              & = p \cdot p \cdots p              \\
+                                              & = p^{n}
+    \end{aligned}\]
+Si consideri adesso \(X = 1\), segue
+\[
+    (X = 1) = E_{1}E_{2}^{C}\cdots E_{n}^{C} \land E_{1}^{C}E_{2} \cdots E_{n}^{C} \land \cdots E_{1}^{C}E_{2}^{C}\cdots E_{n}
+\]
+si ha quindi
+\[\begin{aligned}
+        P(X = 1) & = P(E_{1}E_{2}^{C}\cdots E_{n}^{C} \land E_{1}^{C}E_{2}\cdots E_{n}^{C} \land \cdots \land E_{1}^{C}E_{2}^{C}\cdots E_{n}) \\
+                 & = P(E_{1}E_{2}^{C}\cdots E_{n}^{C}) + \cdots + P(E_{1}^{C}E_{2}^{C}\cdots E_{n})                                           \\
+                 & = pq^{n - 1} + pq^{n - 1} + \cdots + pq^{n - 1}                                                                            \\
+                 & = npq^{n - 1}                                                                                                              \\
+                 & = \binom{n}{1}pq^{n - 1}
+    \end{aligned}\]
+In generale fissato \(i \in \Set{0, 1, \dots, n}\), vale
+\begin{equation}
+    P(X = i) = \binom{n}{i}p^{i}q^{n - i}
+\end{equation}
+
+\begin{Example*}
+    Data un'urna contenente sette palline, di cui tre bianche e le restanti nere. Si effettuano cinque estrazioni con restituzione: si calcolino
+    \begin{enumerate}
+        \item A = "escono almeno due bianche";
+        \item B = "escono esattamente due bianche";
+        \item C = "le prime due palline sono bianche".
+        \item Inoltre, supponendo di aver estratto almeno una bianca, si calcoli la probabilità condizionata \(\alpha\) che sia uscita esattamente una bianca.
+    \end{enumerate}
+    \begin{enumerate}
+        \item [a.] Si nota \(A = (X \ge 2)\), ove \(X\) è il numero aleatorio di volte in cui la pallina estratta è bianca, segue
+              \[
+                  P(A) = P(X \ge 2) = P(X = 2) + P(X = 3) + P(X = 4) + P(X = 5)
+              \]
+              Se si ragiona per complementi si ha \(P(A) = 1 - P(X = 0) - P(X = 1)\), segue
+              \[\begin{aligned}
+                      P(A) = 1 - P(X \le 2) & = 1 - \binom{5}{0}\left(\frac{3}{7}\right)^{0}\left(\frac{4}{7}\right)^{5} - \binom{5}{1}\left(\frac{3}{7}\right)\left(\frac{4}{7}\right)^{5} \\
+                                            & = 1 - \left(\frac{4}{7}\right)^{5} - \frac{5!}{1!4!}\left(\frac{3}{7}\right)\left(\frac{4}{7}\right)^{4} \approx 0,71
+                  \end{aligned}\]
+
+        \item [b.] Si nota che \(B = (X = 2)\), ove \(X\) è il numero aleatorio di volte in cui la pallina estratta è bianca, segue
+              \[\begin{aligned}
+                      P(B) = P(X = 2) & = \binom{5}{2}\left(\frac{3}{7}\right)^{2}\left(\frac{4}{7}\right)^{3}                   \\
+                                      & = \frac{5!}{2!3!}\left(\frac{3}{7}\right)^{2}\left(\frac{4}{7}\right)^{3}  \approx 0,343
+                  \end{aligned}\]
+
+        \item [c.] Si osserva che \(C = E_{1}E_{2}\overline{E_{3}E_{4}E_{5}}\), segue, poiché stocasticamente indipendenti, che
+              \[\begin{aligned}
+                      P(C) = P(E_{1}E_{2}\overline{E_{3}E_{4}E_{5}}) & = P(E_{1})P(E_{2})P(\overline{E_{3}})P(\overline{E_{4}})P(\overline{E_{5}}) \\
+                                                                     & = \left(\frac{3}{7}\right)^{2} \left(\frac{4}{7}\right)^{3} \approx 0,034
+                  \end{aligned}\]
+
+        \item [d.] Si osserva che \(\alpha = p(X = 1 \given X \ge 1)\), pertanto
+              \[
+                  \alpha = P(X = 1 \given X \ge 1) = \frac{P((X = 1) \cap (X \ge 1))}{P(X \ge 1)} = \frac{P(X = 1)}{1 - P(X = 0)} \approx 0,243
+              \]
+    \end{enumerate}
+\end{Example*}
+\end{document}

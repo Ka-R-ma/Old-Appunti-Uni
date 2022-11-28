@@ -1,0 +1,80 @@
+\documentclass{subfiles}
+\begin{document}
+Si effettuano \(n\) estrazioni senza ripetizioni da un urna contenente \(N\) palline, di cui \(pN\) bianche e \(qN\) nere, \(qN = N - pN\).
+Siano
+\[\begin{gathered}
+        E_{i} = \text{"esce bianca all'i-esima estrazione"} \\
+        X = \sum\limits_{i = 1}^{n}{\abs{E_{i}}} = \text{"numero aleatorio di palline bianche estratte nelle \emph{n} estrazioni"}
+    \end{gathered}\]
+Si consideri \(P(E_{i}), i \in \Set{1, \dots, n}\), segue
+\[\begin{gathered}
+        P(E_{1}) = \frac{pN}{N} = p     \\
+        \begin{aligned}
+            P(E_{2}) = P(E_{1} \cap \Omega) & = P(E_{2} \cap (E_{1} \lor E_{1}^{C}))              \\
+                                            & = P(E_{2} \given E_{1}) + P(E_{2} \given E_{1}^{C}) \\
+                                            & = \frac{pN - 1}{N - 1}p + \frac{pN}{N - 1}q = p     \\
+        \end{aligned}
+    \end{gathered}\]
+Analogamente se si applica il calcolo combinatorio, segue
+\[
+    P(E_{2}) = \frac{(N - 1)pN}{N(N - 1)} = p
+\]
+In generale
+\[
+    P(E_{i}) = \frac{(N - 1)(N - 2) \cdots (N - i + 1)pN}{N(N - 1)(N - 2) \cdots (N - i + 1)} = p
+\]
+Ma \(E_{1}, E_{2}\) sono stocasticamente indipendenti?\\
+Si osserva che
+\[
+    P(E_{2} \given E_{1}) = \frac{pN - 1}{N} \neq P(E_{2}) = \frac{pN}{N} = p
+\]
+Sia \(0 \le h \le n\), ci si chiede quanto valga \(P(X = h)\).\\
+Si ha che \(\forall h \in \Set{0, \dots, n}, P(X = h) = P(E_{1}E_{2} \cdots E_{h} E_{h + 1}^{c} \cdots E_{n}^{C})\), vale cioé
+\[
+    P(X = h) = \frac{D_{pN, n} D_{qN, n - h}}{D_{N, n}} = \frac{\binom{N - m}{pN - h}}{\binom{N}{pN}}
+\]
+il cui risultato unicamente dipendente da \(n, h\).
+\clearpage
+Considerando il generico costituente
+\[
+    E_{i_{1}}E_{i_{2}} \cdots E_{i_{h}}E_{i_{h + 1}} \cdots E_{i_{n}}
+\]
+favorevole ad \((X = h)\), segue
+\[
+    (X = h) = \bigvee\limits_{\Set{i_{1}, \dots, i_{n}} \subseteq \Set{1, \dots, n}}{E_{i_{1}}E_{i_{2}} \cdots E_{i_{h}}E_{i_{h + 1}} \cdots E_{i_{n}}}
+\]
+ossia l'unione degli \(\tbinom{n}{h}\) costituenti a favore di \((X = h)\).
+In definitiva
+\begin{equation}
+    P(X = h) = \binom{n}{h} \frac{\binom{N - n}{pN - h}}{\binom{N}{pN}}
+\end{equation}
+
+\begin{Definition*}
+    si definisce la distribuzione relativa ad X \emph{ipergeometrica}. In simboli
+    \[
+        X \sim H(N, n, pN)
+    \]
+\end{Definition*}
+
+\begin{Example*}
+    un urna contiene dodici palline, di cui cinque bianche e le restanti nere. Si effettuano tre estrazioni, se
+    \[\begin{gathered}
+            E_{i} = \text{"l'i-esima pallina estratta è bianca"} \\
+            X = \sum\limits_{i = 1}^{3}{\abs{E_{i}}}
+        \end{gathered}\]
+    quanto vale \(P(X = 2)\)?
+    \\ \\
+    Si osserva che
+    \[
+        P(X = 2) = P(E_{1}E_{2}\overline{E_{3}} \lor E_{1}\overline{E_{2}}E_{3} \lor E_{1}^{C}E_{2}E_{3})
+    \]
+    da cui applicando l'Equazione \eqref{eq:9}, segue
+    \[
+        P(X = 2) = \frac{\binom{3}{2}\binom{9}{3}}{\binom{12}{5}} \approx 0,318
+    \]
+    verificando anche con l'Equazione \eqref{eq:7}, si ha
+    \[
+        P(X = 2) = \binom{3}{2}\left(\frac{5}{12}\right)^{3}\left(\frac{7}{12}\right) = 0,303 \approx 0,318
+    \]
+\end{Example*}
+\end{document}

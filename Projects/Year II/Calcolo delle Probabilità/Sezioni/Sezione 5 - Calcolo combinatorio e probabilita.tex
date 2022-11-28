@@ -1,0 +1,37 @@
+\documentclass{subfiles}
+\begin{document}
+Prima di applicare alla probabilità il calcolo combinatorio, è bene fare un richiamo a concetti come permutazioni, disposizioni, combinazioni.
+\\ \\
+Si consideri il seguente esempio
+\begin{Example*}
+    siano \emph{A, B, C} località, siano \(p_{1}, p_{2}, p_{3}\) percorsi da \emph{A} a \emph{B}  e siano \(s_{1}, s_{2}\) percorsi da \emph{B} a \emph{C}.
+    Ci si chiede: quanti sono i percorsi distinti da \(A \text{a} C\)?
+    \\ \\
+    Si osserva che per ognuno dei percorsi da \emph{A} a \emph{B}, si hanno due possibili scelte da \emph{B} a \emph{C}.
+    Si hanno dunque le seguenti possibilità
+    \[
+        (p_{1}, s_{1}) \quad (p_{2}, s_{1}) \quad (p_{3}, s_{1}) \quad (p_{1}, s_{2}) \quad (p_{2}, s_{2}) \quad (p_{3}, s_{2})
+    \]
+    Quanto appena applicato è noto come \emph{principio di moltiplicazione}, il quale stabilisce che:
+    dati \(n\) modi per effettuare una scelta, per ciascuno di essi si hanno \(m\) modi per farne un'altra, esistono allora \(n \cdot m\) diverse scelte.
+\end{Example*}
+
+\subsection{Disposizioni}
+\subfile{Sotto Sezioni/Sottosezione 5.1 - Disposizioni.tex}
+
+\subsection{Permutazioni}
+\subfile{Sotto Sezioni/Sottosezione 5.2 - Permutazioni.tex}
+
+\subsection{Combinazioni}
+\subfile{Sotto Sezioni/Sottosezione 5.3 - Combinazioni.tex}
+
+\subsection{Distribuzione binomiale}
+\subfile{Sotto Sezioni/Sottosezione 5.4 - Distribuzione binomiale.tex}
+
+\subsection{Distribuzione geometrica}
+\subfile{Sotto Sezioni/Sottosezione 5.5 - Distribuzione geometrica.tex}
+
+\subsection{Distribuzione ipergeometrica}
+\subfile{Sotto Sezioni/Sottosezione 5.6 - Distribuzione Ipergeometrica.tex}
+
+\end{document}

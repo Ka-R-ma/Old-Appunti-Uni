@@ -1,0 +1,114 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{Definition*}
+    un certo numero aleatorio \(X \in \N\) si dice avere \emph{distribuzione geometrica} di parametro \(p \in (0, 1)\), in simboli \(X \sim G(p)\), se
+    \[
+        P(X = n) = (1 - p)^{n - 1} p, n \in \N
+    \]
+\end{Definition*}
+\noindent
+Sia \(E_{1},E_{2},\dots, E_{n}\) una successione di eventi, tali che \(P(E_{i}) = p \in (0, 1), q = 1 - p\).
+\[
+    X = \text{"Numero aleatorio di prove fino al primo successo"}
+\]
+ossia
+\[
+    X = \inf{n \such n \abs{E_{n}} = 1}
+\]
+Si ha dunque
+\[\begin{aligned}
+        (X = 1) & = E_{1} \implies P(X = 1) = P(E_{1}) = p                                                                                     \\
+        (X = 2) & = E_{1}^{C}E_{2} \implies P(X = 2) = P(E_{1}^{C}E_{2}) = qp                                                                  \\
+        (X = n) & = E_{1}^{C}E_{2}^{C}\cdots E_{n-1}^{C} E_{n} \implies P(X = n) = P(E_{1}^{C}E_{2}^{C}\cdots E_{n-1}^{C} E_{n}) = q^{n - 1} p \\
+    \end{aligned}\]
+In generale
+\[
+    P(X = n) = q^{n - 1}p = (1 - p)^{n - 1}p, n \in \N
+\]
+\begin{Example*}
+    sia \(X > m\), ci si chiede \(P(X > n + m \given X > m)\).
+    \\
+    Si osserva che
+    \[
+        (X > n + m) \impliedby (X > m)
+    \]
+    segue quindi
+    \[
+        (X > n + m) \cap (X > m) = (X > n + m)
+    \]
+    pertanto
+    \begin{equation}
+        \begin{aligned}
+            P(X > n + m \given X > m) & = \frac{P(X > n + m)}{P(X > m)}              \\
+                                      & = \frac{q^{n + m}}{q^{n}} = q^{n} = P(X > n)
+        \end{aligned}
+    \end{equation}
+\end{Example*}
+\noindent
+Quanto appena affermato in Equazione \eqref{eq:8}, è noto come \emph{proprietà di assenza di memoria}, per la quale in generale
+\[
+    P(X > n + m \given X > m) = P(X > n), \forall n, m \in \N
+\]
+\clearpage
+
+\begin{Example*}
+    Una moneta viene lanciata \(X\) volte.
+    Sia
+    \[
+        X = \text{"Numero aleatorio di lanci utili ad ottenere testa per la prima volta"}
+    \]
+    e gli eventi
+    \[\begin{gathered}
+            A = (X \ pari) \\
+            B = (X \ dispari) \\
+        \end{gathered}\]
+    Si stabilisca se
+    \[\begin{gathered}
+            P(A) = P(B) \\
+            P(A) < P(B) \\
+            P(A) > P(B) \\
+        \end{gathered}\]
+    Supponendo inoltre di non aver ottenuto testa nei primi 1000 lanci, quanto vale la probabilità \(\alpha\) che non esca testa nei successivi 10?
+    Supposto invece di aver ottenuto testa per \(X \ pari\), quanto vale la probabilità condizionata \(\beta\) di ottenere testa al secondo lancio.
+
+    \begin{enumerate}
+        \item Si parta col considerare \(P(A)\), segue
+              \[\begin{aligned}
+                      P(A) & = P(X \in 2n, n \in \N)                                                                                                                                                                                         \\
+                           & = P\left(\bigvee\limits_{n = 1}^{+ \infty} (X = 2n)\right)                                                                                                                                                      \\
+                           & = \sum\limits_{n = 1}^{+ \infty}{P(X = 2n)}  = \sum\limits_{n = 1}^{+ \infty}{q^{2n - 1}p} = \sum\limits_{n = 1}^{+ \infty}{\left(\frac{1}{4}\right)^{n}} = \frac{1}{4} \frac{1}{1 - \frac{1}{4}} = \frac{1}{3}
+                  \end{aligned}\]
+              Si consideri ora \(P(B)\), segue
+              \[\begin{aligned}
+                      P(B) & = P(X \in 2n - 1, n\in \N)                                                                                                                          \\
+                           & = P\left(\bigvee\limits_{n = 1}^{+ \infty} (X = 2n - 1)\right)                                                                                      \\
+                           & = \sum\limits_{n = 1}^{+ \infty}{P(X = 2n - 1)} = \sum\limits_{n = 1}^{+ \infty}{q^{2n - 2}p} = \frac{1}{2} \frac{1}{1 - \frac{1}{4}} = \frac{2}{3}
+                  \end{aligned}\]
+              Segue ovviamente
+              \[
+                  P(A) < P(B)
+              \]
+
+        \item Si osserva che \(\alpha = P(X > 1010 \given X > 1000)\), ma poiché della forma \(P(X > m + n  \given X > m)\), segue che
+              \[\begin{aligned}
+                      \alpha = P(X > 1010 \given X > 1000) & = \frac{P(X > 1010)}{P(X > 1000)}                                                                         \\
+                                                           & = \frac{\left(\frac{1}{2}\right)^{1010}}{\left(\frac{1}{2}\right)^{1000}} = \left(\frac{1}{2}\right)^{10}
+                  \end{aligned}\]
+
+        \item Si osserva che \(\beta = P(X = 2 \given X \ pari)\), segue
+              \[\begin{aligned}
+                      \beta = P(X = 2 \given X \ pari) & = \frac{P((X = 2) \cap (X \ pari))}{P(X \ pari)} \\
+                                                       & = \frac{P(X = 2)}{P(X \ pari)}
+                  \end{aligned}\]
+              ma se si considera \(E_{i}\) l'evento "esce testa all'i-esimo lancio", si ha \((X = 2) = E_{1}^{C}E_{2}\), si ha
+              \[
+                  P(X = 2) = P(E_{1}^{C}E_{2}) = P(E_{1}^{C})P(E_{2})
+              \]
+              inoltre poiché \(\forall i \in \Set{1, 2, \dots, n}, P(E_{i}) = \tfrac{1}{2}\), segue
+              \[
+                  \beta = \frac{P(X = 2)}{P(X \ pari)} = \frac{P(E_{1}^{C})P(E_{2})}{P(X \ pari)} = \frac{\frac{1}{2} \frac{1}{2}}{\frac{1}{3}} = \frac{3}{4}
+              \]
+    \end{enumerate}
+\end{Example*}
+\end{document}
+\clearpage

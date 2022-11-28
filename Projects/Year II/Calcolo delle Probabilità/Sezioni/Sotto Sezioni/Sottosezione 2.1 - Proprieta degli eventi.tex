@@ -1,0 +1,48 @@
+\documentclass{subfiles}
+\begin{document}
+Gli eventi sono soggetti ad alcune proprietà, quali
+\begin{itemize}
+    \item negazione;
+    \item implicazione;
+    \item uguaglianza;
+    \item unione;
+    \item intersezione.
+\end{itemize}
+
+\subsubsection{Negazione}
+Dato un evento E, l'evento negato
+\[E^{C} \begin{cases}
+        \text{vero, se E è falso} \\
+        \text{falso, se E è vero} \\
+    \end{cases}\]
+
+\subsubsection{Implicazione}
+Dati due eventi \(E_{1} \text{,} E_{2}\), si dirà che \(E_{1}\) implica \(E_{2}\) se
+\[\begin{aligned}
+        \abs{E_{1}} & = 1 \implies \abs{E_{2}} = 1    \\
+        \abs{E_{1}} & = 0 \implies \abs{E_{2}} = 0, 1 \\
+    \end{aligned}\]
+
+\subsubsection{Uguaglianza}
+Dati due eventi \(E_{1} \text{,} E_{2}\), si dice che \(E_{1} = E_{2}\) se ogni esito di \(E_{1}\) è verificato in \(E_{2}\), e viceversa.
+
+\subsubsection{Unione}
+Dati due eventi \(E_{1} \text{,} E_{2}\), si definisce l'evento \(E_{3} = E_{1} \lor E_{2}\) che soddisfa gli esiti di \(E_{1} \text{o} E_{2}\), unione.
+\\ \\
+In particolare
+\begin{itemize}
+    \item \(E \lor E^{C} = \Omega\) \\
+    \item \(E \lor \varnothing = E\) \\
+    \item \(E \lor E = E\) \\
+    \item \(E \lor \Omega = \Omega\)
+\end{itemize}
+
+\subsubsection{Intersezione}
+Dati due eventi \(E_{1} \text{,} E_{2}\), si definisce l'evento \(E_{3} = E_{1} \land E_{2}\) che soddisfa gli esiti presenti sia in \(E_{1} \text{che in } E_{2}\), intersezione.
+
+\begin{Note*}
+    Se \(E_{1} \land E_{2} = \varnothing\), i due eventi si dicono \emph{incompatibili} (o disgiunti).
+\end{Note*}
+
+\clearpage
+\end{document}

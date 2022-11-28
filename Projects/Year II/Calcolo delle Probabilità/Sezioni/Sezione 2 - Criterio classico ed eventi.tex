@@ -1,0 +1,29 @@
+\documentclass{subfiles}
+\begin{document}
+Uno dei criteri alla base del calcolo probabilistico è il \emph{criterio classico della probabilità},
+il quale stabilisce che dato \(E\) un evento, la probabilità \(P\) che questi si verifichi è pari al rapporto di casi favorevoli su casi possibili, cioè
+\[
+    P(E) = \frac{\# \text{casi a favore ad E}}{\# \text{casi possibili}} = \frac{r_{E}}{m}
+\]
+ove \(r_{E}\) sono i casi a favore di \(E \text{,} m\) tutti i casi possibili.
+
+\begin{Definition*}
+    una proposizione o un'affermazione di cui è possibile stabilire la veridicità è detto \emph{evento}.
+\end{Definition*}
+\noindent
+Di un evento è possibile stabilire l'indicatore, che segnala se l'evento è o non è verificato.
+\[
+    \abs{E} = \begin{cases}
+        1, \text{se E è vero}   \\
+        0, \text{se E è falso}, \\
+    \end{cases}
+\]
+inoltre se a priori è noto il valore di \(\abs{E}\), questi si dirà \emph{certo} se \(\abs{E} = 1\) e lo si indicherà con \(\Omega\),
+\emph{impossibile} se \(\abs{E} = 0\) e lo si indicherà con \(\varnothing\).
+
+\subsection{Proprietà degli eventi}
+\subfile{Sotto Sezioni/Sottosezione 2.1 - Proprieta degli eventi.tex}
+
+\subsection{Assiomi e proprietà derivate}
+\subfile{Sotto Sezioni/Sottosezione 2.2 - Assiomi e proprieta derivate.tex}
+\end{document}

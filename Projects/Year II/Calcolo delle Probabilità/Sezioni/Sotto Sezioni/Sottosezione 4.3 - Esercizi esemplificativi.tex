@@ -1,0 +1,97 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{Exercise*}
+    siano date due urne \(U \text{e} V\). Si sceglie casualmente tra le due, e da questa si effettuano estrazioni con ripetizione.
+    \[
+        U = \Set{b, b, n} \qquad V = \Set{n, n, b}
+    \]
+    Considerando pertanto
+    \[\begin{aligned}
+            H     & = \text{"l'urna scelta è U"}       \\
+            E_{i} & = \text{"l'i-esima pallina è `b'"} \\
+        \end{aligned}\]
+    segue
+    \[
+        P(H) = P(H^{C}) = \frac{1}{2}
+    \]
+    inoltre
+    \[\begin{aligned}
+            P(E_{i}) = P(E_{i} \cup \Omega) & = P(E_{i} H) + P(E_{i} H^{C})                           \\
+                                            & = P(E_{i} \given H)P(H) + P(E_{i} \given H^{C})P(H^{C})
+        \end{aligned}\]
+
+    Si calcolino
+    \begin{itemize}
+        \item \(P(H \given E_{1})\): cioè, sapendo che la prima pallina estratta è bianca, qual è la probabilità che l'urna scelta sia U.
+        \item \(P(H \given E_{1}E_{2}^{C}E_{3}^{C})\): cioè, sapendo che le palline estratte sono nell'ordine \(b, n, n\), qual è la probabilità che l'urna scelta sia U.
+    \end{itemize}
+
+    \begin{Solution*}
+        per la risoluzione degli esercizi si applicherà Bayes.
+        \begin{enumerate}
+            \item \[
+                      P(H \given E_{1}) = \frac{P(E_{1}H)}{P(E_{1})} = \frac{P(E_{1} \given H)P(H)}{P(E_{1} \given H) + P(E_{1} \given H^{C})} = \frac{2}{3}
+                  \]
+
+            \item \[
+                      P(H \given E_{1} E_{2}^{C}E_{3}^{C}) = \frac{P(E_{1}E_{2}^{C}E_{3}^{C}H)}{P(E_{1}E_{2}^{C}E_{3}^{C})} = \frac{P(E_{1}E_{2}^{C}E_{3}^{C}H)}{P(E_{1}E_{2}^{C}E_{3}^{C}H) + P(E_{1}\overline{E_{2}E_{3}H})}
+                  \]
+                  ma
+                  \[\begin{gathered}
+                          P(E_{1}E_{2}^{C}E_{3}^{C}H) = P(\overline{E_{3}} \given \overline{E_{2}}E_{1}H)P(\overline{E_{2}} \given E_{1}H)P(E_{1} \given H)P(H) = \frac{1}{27} \\
+                          P(E_{1}E_{2}^{C}E_{3}^{C}H^{C}) = P(\overline{E_{3}} \given \overline{E_{2}}E_{1}H^{C})P(\overline{E_{2}} \given E_{1}H^{C})P(E_{1} \given H^{C})P(H^{C}) = \frac{2}{27} \\
+                      \end{gathered}\]
+                  da cui
+                  \[
+                      P(H \given E_{1} E_{2}^{C}E_{3}^{C}) = \frac{1}{3}
+                  \]
+        \end{enumerate}
+    \end{Solution*}
+\end{Exercise*}
+
+\begin{Exercise*}
+    siano date tre urne \(X, Y, Z\). Si sceglie una delle tre senza conoscerne il contenuto.
+    \[
+        X = \Set{Premio} \quad Y = \Set{Capra} \quad Z = \Set{Capra}
+    \]
+    Supponendo si scelga inconsciamente l'urna X, ci si chiede se convenga cambiare la propria scelta se, una volta rivelato il contenuto dell'urna Y questa è una capra.
+
+    \begin{Solution*}
+        si ha che
+        \[
+            \forall i \in \Set{1, 2, 3} \quad P(A_{i}) = \frac{1}{3}
+        \]
+        inoltre
+        \[
+            P(A_{1} \given A^{C}) = \frac{P(A_{1}A^{C})}{P(A^{C})} = \frac{P(A_{1})}{P(A_{1}) + P(A_{3})} = \frac{1}{2}
+        \]
+        cioè la scelta apparentemente sembra indifferente. Ma è davvero così?
+        \\ \\
+        Se si definisce \(I = \text{"la scatola due contiene una capra"}\) si hanno due scenari
+        \[\begin{gathered}
+                I \implies A_{2} \text{? SI} \\
+                I \impliedby A_{2} \text{? NO}
+            \end{gathered}\]
+        Pertanto è più corretto calcolare la probabilità condizionata ad \(I\), segue
+        \[
+            P(A_{i} \given I) = \frac{P(I \given A_{1})P(A_{1})}{\sum\limits_{j = 1}^{3}{P(I \given A_{j})P(A_{j})}}
+        \]
+        ma
+        \[\begin{gathered}
+                P(I \given A_{1}) = p \\
+                P(I \given A_{2}) = 0 \\
+                P(I \given A_{3}) = 1 \\
+            \end{gathered}\]
+        segue dunque
+        \[
+            P(A_{1} \given I) = \frac{p\frac{1}{3}}{p\frac{1}{3} + \frac{1}{3}} = \frac{p}{p + 1} \leq \frac{1}{p + 1} = P(A_{3} \given I)
+        \]
+        con
+        \[\begin{gathered}
+                P(A_{1} \given I) = P(A_{3} \given I) \text{se} p = 1 \\
+                P(A_{1} \given I) < P(A_{3} \given I) \text{se} p < 1\\
+            \end{gathered}\]
+    \end{Solution*}
+\end{Exercise*}
+\end{document}
+\clearpage
