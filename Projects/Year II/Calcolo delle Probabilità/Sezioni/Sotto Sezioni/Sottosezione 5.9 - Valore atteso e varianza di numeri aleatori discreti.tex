@@ -1,0 +1,20 @@
+\documentclass{subfiles}
+\begin{document}
+Due concetti fondamentali del calcolo probabilistico sono quelli di \emph{valore atteso} e \emph{varianza}.
+\begin{Definition*}
+    Dato \(X\) un numero aleatorio che per ogni valore assunto ha una certa probabilità \(p_{i}\), si definisce valore atteso \(\mathbb{E}(X)\) di X, la media pesata dei valori assunti da X,
+    ciascuno con peso \(p_{i}\). Cioè
+    \[
+        \mathbb{E}(X) = \sum\limits_{i = 0}^{+ \infty}{x_{i}}{p_{i}}
+    \]
+\end{Definition*}
+
+\begin{Definition*}
+    Dato \(X\) un numero aleatorio di media \(\mu\), si definisce varianza
+    \[\Var(X) = \mathbb{E}[(X - \mu)^{2}]\]
+\end{Definition*}
+Più spesso la varianza è definita come
+\[
+    \Var(X) = \mathbb{E}(X^{2}) - \mathbb{E}(X)^{2}
+\]
+\end{document}

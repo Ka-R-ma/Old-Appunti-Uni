@@ -1,0 +1,53 @@
+\documentclass{subfiles}
+\begin{document}
+Siano \(E_{1}, E_{2}, \dots, E_{n}\) successione di eventi stocasticamente indipendenti. Posto \(T_{k}\) il numero di prove fino al k-esimo successo, segue
+\[\begin{aligned}
+        P(T_{k} = i) & = \binom{i - 1}{k - 1}p^{k - 1}q^{i - k}p \\
+                     & = \binom{i - 1}{k - 1}p^{k}q^{i - k}      \\
+    \end{aligned}\]
+poiché si ha che nelle \(i - 1\) prove si hanno \(k - 1\) successi.
+
+\begin{Example*}
+    Viene lanciata una moneta fino ad ottenere testa per la seconda volta: si stabilisca
+    \begin{multicols}{2}
+        \begin{enumerate}
+            \item \(P(T_{2} = 3)\)
+            \item \(P(T_{2} = 4)\)
+        \end{enumerate}
+    \end{multicols}
+
+    \begin{enumerate}
+        \item Si consideri l'evento associato a \((T_{2} = 3)\), si ha
+              \[
+                  (T_{2} = 3) = TCT \lor CTT
+              \]
+              questo perché al terzo lancio necessariamente si ottiene testa, dunque
+              \[
+                  P(T_{2} = 3) = P(TCT) + P(CTT)
+              \]
+
+        \item Analogamente a prima, si consideri l'evento associato a \((T_{2} = 4)\), segue
+              \[
+                  (T_{2} = 4) = CCTT \lor CTCT \lor TCCT
+              \]
+              da cui pertanto
+              \[
+                  P(T_{2} = 4) P(CCTT) + P(CTCT) + P(TCCT)
+              \]
+    \end{enumerate}
+\end{Example*}
+
+\subsubsection{Distribuzione binomiale inversa}
+Siano \(E_{1}, E_{2}, \dots, E_{n}\) successione di eventi stocasticamente indipendenti. Posto \(Y_{n}\) il numero di insuccessi all'i-esima prova, si ha
+\begin{equation}
+    P(Y = n) = P(X = n + 1) = pq^{n}
+\end{equation}
+
+\begin{Note*}
+    \(Y\) non gode di assenza di memoria. Non vale cioè
+    \[
+        P(Y > n + m \given Y > n) = P(Y > m)
+    \]
+    Si dimostra infatti che \(P(Y > n + m \given Y > n) = q^{m} \text{e} P(Y > m) = q^{m + 1}\).
+\end{Note*}
+\end{document}
