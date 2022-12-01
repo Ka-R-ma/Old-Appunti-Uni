@@ -1,0 +1,31 @@
+\documentclass{subfiles}
+\begin{document}
+Sia \(X = 0, 1, 2, \dots\) numero aleatorio, questa si dice avere distribuzione di Poisson, di parametro \(\lambda\) se
+\[
+    P(X = i) = e^{-\lambda} \frac{\lambda}{i!} \qquad i = 0, 1, 2, \dots \ , \lambda > 0
+\]
+La distribuzione di Poisson ha diverse applicazioni, tra queste l'approssimazione di un numero aleatorio con distribuzione binomiale a parametri \(n, p\).
+\begin{Proof*}
+    Sia \(X\) numero aleatorio a parametri \(n, p\), sia \(\lambda = np\), segue
+    \[\begin{aligned}
+            P(X = i) & = \frac{n!}{(n - 1)! i!} p^{i}(1 - p)^{n - 1}                                                                                                                  \\
+                     & = \frac{n!}{(n - 1)! i!} \left(\frac{\lambda}{n}\right)^{i}\left(1 - \frac{\lambda}{n}\right)^{n - 1}                                                          \\
+                     & = \frac{n(n - 1)(n - 2) \cdots (n - i + 1)}{n^{i}} \frac{\lambda^{i}}{i!}\frac{\left(1 - \frac{\lambda}{n}\right)^{n}}{\left(1 - \frac{\lambda}{n}\right)^{i}}
+        \end{aligned}\]
+\end{Proof*}
+Per \(n\) molto piccoli e \(p\) sufficientemente piccoli tali che \(\lambda\) sia costante
+\[\begin{aligned}
+        \left(1 - \frac{\lambda}{n}\right)^{n}           & \approx e^{-\lambda} \\
+        \frac{n(n - 1)(n - 2) \cdots (n - i + 1)}{n^{i}} & \approx 1            \\
+        \left(1 - \frac{\lambda}{n}\right)^{i}           & \approx 1            \\
+    \end{aligned}\]
+segue
+\[
+    P(X = i) \approx e^{-\lambda} \frac{\lambda^{i}}{i!}
+\]
+Inoltre \(\forall i \in \N\), si ha che
+\[
+    P(X = i + 1) = \frac{\lambda}{i + 1} P(X = i)
+\]
+\clearpage
+\end{document}
