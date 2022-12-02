@@ -1,53 +1,47 @@
 \documentclass{subfiles}
 \begin{document}
-    Come per gli altri linguaggi di programmazione, Java definisce dei tipi di dati:
-    \begin{itemize}
-        \item \lstinline[language = Java]{byte}: intero 8 bit con segno;
-        \item \lstinline[language = Java]{short}: intero 16 bit con segno;
-        \item \lstinline[language = Java]{int}: intero 32 bit con segno;
-        \item \lstinline[language = Java]{long}:intero 64 bit con segno;
-        \item \lstinline[language = Java]{float}: floating-point 32 bit con segno;
-        \item \lstinline[language = Java]{double}: floating-point 64 bit con segno;
-        \item \lstinline[language = Java]{boolean}: due elementi (true, false) 8 bit;
-        \item \lstinline[language = Java]{char}: carattere 16  it (Unicode).
-    \end{itemize}
+Come per gli altri linguaggi di programmazione, Java definisce dei tipi di dati:
+\begin{itemize}
+    \item \lstinline[language = Java]{byte}: intero 8 bit con segno;
+    \item \lstinline[language = Java]{short}: intero 16 bit con segno;
+    \item \lstinline[language = Java]{int}: intero 32 bit con segno;
+    \item \lstinline[language = Java]{long}:intero 64 bit con segno;
+    \item \lstinline[language = Java]{float}: floating-point 32 bit con segno;
+    \item \lstinline[language = Java]{double}: floating-point 64 bit con segno;
+    \item \lstinline[language = Java]{boolean}: due elementi (true, false) 8 bit;
+    \item \lstinline[language = Java]{char}: carattere 16  it (Unicode).
+\end{itemize}
 
-    \subsubsection{Dichiarazione}
-    Le dichiarazioni avvengono esattamente come nel linguaggio C, in esse quindi si può fare anche un'assegnazione diretta
-    e/o anche dichiarazioni multiple.
+\subsubsection{Dichiarazione}
+Le dichiarazioni avvengono esattamente come nel linguaggio C, in esse quindi si può fare anche un'assegnazione diretta
+e/o anche dichiarazioni multiple.
 
-    \begin{Note*}
-        Una dichiarazione non può iniziare con una cifra né si può utilizzare la parola riservata \lstinline[language = java]{class}.
-    \end{Note*}
+\begin{Note*}
+    Una dichiarazione non può iniziare con una cifra né si può utilizzare la parola riservata \lstinline[language = java]{class}.
+\end{Note*}
 
-    \subsubsection{Letterali}
-    Le dichiarazioni dirette risultano simili al linguaggio C o in alcuni casi più specifiche. Vediamo i casi:
-    \begin{itemize}
-        \item caratteri: in Unicode o dichiarazione tra apici;
-        \item caratteri di controllo:   
-        \begin{itemize}
-            \item \textbackslash n: avanazamento di riga;
-            \item \textbackslash t: tabulazione caratteri.
-        \end{itemize} 
-        \item stringhe: racchiuse tra virgolette;
-        \item interi:
-        \begin{itemize}
-            \item int: suffisso assente;
-            \item long: suffisso \textbf{l} o \textbf{L}.
-        \end{itemize}
-        Inoltre si può definire la base di un intero:
-        \begin{itemize}
-            \item base decimale: inizia per 0 o un numero che inizia per 1...9 \(\implies\) 0 \ 129L;
-            \item base ottale: inizia con 0 \(\implies\) 0777;
-            \item base esadecimale: inizia con 0x \(\implies\) 0x127;
-        \end{itemize}
-        \item reali:
-        \begin{itemize}
-            \item float: suffisso \textbf{f} o \textbf{F};
-            \item double: suffisso assente o \textbf{d} o \textbf{D};
-        \end{itemize}
-    
-    \end{itemize}
+\subsubsection{Letterali}
+Le dichiarazioni dirette risultano simili al linguaggio C o in alcuni casi più specifiche. Vediamo i casi:
+\begin{itemize}
+    \item caratteri: in Unicode o dichiarazione tra apici;
+    \item caratteri di controllo:
+          \begin{itemize}
+              \item \textbackslash n: avanazamento di riga;
+              \item \textbackslash t: tabulazione caratteri.
+          \end{itemize}
+    \item stringhe: racchiuse tra virgolette;
+    \item interi:
+          \begin{itemize}
+              \item int: suffisso assente;
+              \item long: suffisso \textbf{l} o \textbf{L}.
+          \end{itemize}
+    \item reali:
+          \begin{itemize}
+              \item float: suffisso \textbf{f} o \textbf{F};
+              \item double: suffisso assente o \textbf{d} o \textbf{D};
+          \end{itemize}
+
+\end{itemize}
 
 
 \end{document}
