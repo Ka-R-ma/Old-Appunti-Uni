@@ -1,0 +1,81 @@
+\documentclass{subfiles}
+\begin{document}
+    I file .java devono essere denominati con la classe principale definita al loro interno. Le classi sono modelli per creare 
+    e manipolare oggetti. Ogni oggetto ha:
+    \begin{itemize}
+        \item un'identità (quindi codice identificativo e memoria);
+        \item uno stato (definito da \textbf{attributi});
+        \item un comportamento (definito da operazioni dette \textbf{metodi} che ne cambiano lo stato).
+    \end{itemize}
+    Ogni oggetto è istanza di una classe. Per descrivere gli stati possibili di un oggetto, una classe utilizza variabili 
+    dette  attributi mentre per i comportamenti si definiscono i metodi.\\
+    La sintassi di una classe è:
+    %todo:
+    %<modificatore-visibilità> <NomeClasse>{
+    %   <dichiarazione_attributi>
+    %   <dichiarazione_metodi>
+    %}
+    \\La sintassi di un metodo, invece, è molto simile a quella di una funzione nel linguaggio C:
+
+    \begin{center}
+        \begin{lstlisting}[language = java]
+
+            <modificatoreVisibilita> <tipoRitorno> <nomeMetodo>(<parametri>){
+                <corpo>
+            }
+
+        \end{lstlisting}
+    \end{center}
+    
+    I principali modificatori di visibilità sono \lstinline[language = java]{public} e \lstinline[language = java]{private} ed è
+    assegnabile sia ai metodi che agli attributi. Inoltre si possono definire degli attributi costanti mediante la parole chiave
+    \lstinline[language = java]{final}.
+    \\Le classi definiscono al loro interno un \textbf{costruttore}ovvero un metodo che definisce lo stato iniziale degli oggetti.
+    
+    Il costruttore di default, ovvero senza parametri, è definito dal compilatore se e solo se non ci sono altri costruttori.
+
+    \begin{Example*}
+        \begin{center}
+           \begin{lstlisting}[language = java]
+
+               public class Serbatoio{
+                    private int livello;
+                    private final int   MAX_VALUE = 1000;
+                
+                    public Serbatoio(){
+                        livello = 10;    
+                    }
+                    
+                    public void rifornisci(int j){
+                        livello += j;   
+                    }
+                    
+                    public void getLivello(){
+                        return livello;   
+                    }
+               }
+           \end{lstlisting}
+        \end{center}
+   \end{Example*}
+    
+   \begin{Note*}
+    Utilizzare il modificatore di visibilità private per metodi, attributi o classi non permette di accedere ad essi 
+    dall'esterno della classe.
+   \end{Note*}
+
+   
+
+   \subsection{Variabili e valori di default}
+   \subfile{Sotto Sezioni/Sottosezione 2.1 - Var.tex}
+
+   \subsection{Metodo Main}
+   \subfile{Sotto Sezioni/Sottosezione 2.2 - Main.tex}
+
+   \subsection{Compilazione}
+   \subfile{Sotto Sezioni/Sottosezione 2.3 - Compilazione.tex}
+
+   \subsection{Garbage Collector}
+   \subfile{Sotto Sezioni/Sottosezione 2.4 - GarbageCollector.tex}
+
+
+\end{document}
