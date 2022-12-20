@@ -1,0 +1,20 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure}[!h]
+    \centering
+    \begin{tikzpicture}[node distance = 2cm, on grid, auto, every node/.style={scale=1}, initial text = start]
+
+        \tikzstyle{every state} = [fill={rgb:black,1;white,10}]
+
+        \node (q0) [state, initial] {\(on\)};
+        \node (q1) [state, right of = q0] {\(off\)};
+
+        \draw [-latex]
+        (q0) edge [bend left] node {p} (q1)
+        (q1) edge [bend left] node {p} (q0);
+
+    \end{tikzpicture}
+    \caption{Automa rappresentante uno switch.}
+    \label{fig:1}
+\end{figure}
+\end{document}

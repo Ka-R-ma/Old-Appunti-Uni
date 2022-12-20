@@ -1,0 +1,22 @@
+\documentclass{subfile}
+\begin{document}
+\begin{figure}[!h]
+    \centering
+    \begin{tikzpicture}[node distance = 2cm, on grid, auto, every node/.style={scale=0.85}, initial text = start]
+
+        \tikzstyle{every state} = [fill={rgb:black,1;white,10}]
+
+        \node (q0) [state, initial] {\(q_{0}\)};
+        \node (q1) [state, right of = q0] {\(q_{1}\)};
+        \node (q2) [state, right of = q1, accepting] {\(q_{2}\)};
+
+        \draw [-latex]
+        (q0) edge [loop above] node {0, 1} ()
+        (q0) edge [] node {0} (q1)
+        (q1) edge [] node {1} (q2);
+
+    \end{tikzpicture}
+    \caption{Automa per il linguaggio delle parole che terminano con 01.}
+    \label{fig:3}
+\end{figure}
+\end{document}

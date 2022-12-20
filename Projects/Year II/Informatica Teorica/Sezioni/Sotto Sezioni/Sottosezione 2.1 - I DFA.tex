@@ -1,0 +1,40 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{Definition*}
+    Si definisce \(A = (Q, \Sigma, \delta, q_{0}, F)\) DFA, ove
+    \begin{itemize}
+        \item \emph{\(Q\)} rappresenta l'insieme di stati dell'automa;
+        \item \emph{\(\Sigma\)} è l'alfabeto utilizzato dall'automa;
+        \item \emph{\(\delta\)} definisce le transizioni tra gli stati;
+        \item \emph{\(q_{0}\)} indica lo stato iniziale;
+        \item \emph{\(F\)} definisce l'insieme di stati finali;
+    \end{itemize}
+    se considerata \(\delta\), per ciascun simbolo dell'alfabeto e per ciascuno stato esiste un'unica transizione per quel carattere.
+\end{Definition*}
+
+\subsubsection{Funzione di trasizione e funzione di transizione estesa}
+Dato un automa \(A\), la funzione di transizione \(\delta\) stabilisce il comportamento dell'automa in ogni suo stato, per ogni simbolo dell'alfabeto.
+\begin{Example*}
+    Sia considerato l'automa di \emph{Figura \eqref{fig:1}}.
+
+    \noindent La funzione di transizione dello stesso, definisce le seguenti transizioni
+    \[\begin{aligned}
+            \delta(on, p)  & = (off) \\
+            \delta(off, p) & = (on)  \\
+        \end{aligned}\]
+    ossia: letto \(p \text{dallo stato} on\) passa allo stato \(off \text{, da questi letto} p\) passa a \(on\).
+\end{Example*}
+
+\begin{Definition*}
+    Sia \(\omega = a_{1} \cdots a_{n}\) una stringa e \(\delta\) la funzione di transizione di un dato DFA:
+    si definisce funzione di transizione estesa \(\delta^{*}\) la funzione che, letta \(\omega\) a partire da \(q_{0}\), stabilisce lo stato di arrivo \(q_{f}\). Cioè
+    \[
+        \delta^{*}(q_{0}, \omega) = (q_{f})
+    \]
+
+    \begin{Remark*}
+        Dato un automa, la funzione di transizione estesa \(\delta^{*}\), può essere intesa come la sequenziale applicazione della funzione di transizione \(\delta\),
+        per ogni simbolo in \(\omega \text{a partire dallo stato} q_{0}\).
+    \end{Remark*}
+\end{Definition*}
+\end{document}
