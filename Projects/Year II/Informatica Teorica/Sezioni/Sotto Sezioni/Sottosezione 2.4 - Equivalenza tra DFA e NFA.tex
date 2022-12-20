@@ -1,0 +1,63 @@
+\documentclass{subfiles}
+\begin{document}
+Si potrebbe erroneamente pensare che NFA e DFA riconoscano linguaggi diversi, ma si dimostra che non è così.
+
+\noindent Prima di dimostrare il teorema di equivalenza tra NFA e DFA, è necessario parlare di \emph{subset construction}.
+
+\subsubsection{Subset construction}
+Sia \(N = (Q = \Set{q_{0}, q_{1}, \ldots, q_{k}}, \Sigma, \delta_{N}, q_{0}, F_{N})\) un NFA.
+
+\noindent Per ogni \(q_{i} \in Q, i = 0, 1, \ldots, k\) e per ogni \(x \in \Sigma\), si definisco gli stati di un DFA \(D\),
+dati dall'insieme degli stati definite da \(\delta_{N}\).
+Inoltre, uno stato di \(D\) sara accettante se, almeno uno, degli sti di \(N\) da cui è definito è accettante.
+In fine le transizioni di \(D\), sono analoghe a quelle di \(N\).
+
+\begin{Example*}
+    Sia considerato l'NFA di \emph{Figura \eqref{fig:3}}
+    \subfile{../Figure/Figura 3 - Esempio di subset construction.tex}
+
+    \noindent Considerando \(\delta\) si ha
+    \[\begin{aligned}
+            \delta(q_{0}, 0) & = (q_{0}) \\
+            \delta(q_{0}, 1) & = (q_{0}) \\
+            \delta(q_{0}, 0) & = (q_{1}) \\
+            \delta(q_{1}, 1) & = (q_{2}) \\
+        \end{aligned}\]
+    da ciò segue l'automa di \emph{Figura \eqref{fig:4}}.
+    \subfile{../Figure/Figura 4 - Subset construction figura 3.tex}
+
+    \noindent Poiché gli stati \(\Set{q_{1}}, \Set{q_{2}}\) sono inaccessibili da \(\Set{q_{0}}\), questi sono stati trascurati.
+\end{Example*}
+
+\subsubsection{Teorema di equivalenza tra NFA e DFA}
+\begin{Theorem}
+    Sia \(D\) un DFA ottenuto per subset construction da un NFA \(N\), allora \(L(D) = L(N)\).
+    \begin{Proof*}
+        Per dimostrare che \(L(D) = L(N)\), si procederà per induzione su \(\abs{\omega}\) che
+        \begin{equation}
+            \delta_{D}^{*}(\Set{q_{0}}, \omega) = \delta_{N}^{*}(q_{0}, \omega)
+        \end{equation}
+
+        \begin{Base*}
+            Sia \(\abs{\omega} = 0\text{, ossia} \omega = \varepsilon\).
+
+            \noindent Per definizione di \(\delta^{*} \text{, segue che} \delta_{D}^{*}(\Set{q_{0}}, \omega) = \delta_{N}^{*}(q_{0}, \omega) = \Set{q_{0}}\).
+        \end{Base*}
+        \begin{Induction*}
+            Supposto che quanto detto finora sia vero per \(\abs{\omega} = n\), si consideri \(\abs{\omega} = n + 1\).
+            Sia posta \(\omega = xa\), ove \(a\) è l'ultimo carattere della stringa.
+
+            \noindent Per ipotesi induttiva \(\delta_{D}^{*}(\Set{q_{0}}, x) = \delta_{N}^{*}(q_{0}, x) = \Set{p_{1}, \ldots, p_{k}}\),
+            segue dalla definizione induttiva di \(\delta^{*}\) per gli NFA
+            \begin{equation*}
+                \delta_{N}^{*}(q_{0}, \omega) = \bigcup\limits_{i = 1}^{k}{\delta_{N}(p_{i}, a)}
+            \end{equation*}
+            ma \(\bigcup\limits_{i = 1}^{k}{\delta_{N}(p_{i}, a)} = \delta_{D}(\Set{p_{1}, \ldots, p_{k}}, a)\), segue pertanto
+            \begin{equation*}
+                \delta_{D}^{*}(\Set{q_{0}}, \omega) = \delta_{D}(\Set{p_{1}, \ldots, p_{k}}, a) = \bigcup\limits_{i = 1}^{k}{\delta_{N}(p_{i}, a)}
+            \end{equation*}
+        \end{Induction*}
+    \end{Proof*}
+\end{Theorem}
+
+\end{document}

@@ -1,0 +1,51 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{Definition*}
+    Sia \(A\) un automa. Si definisce linguaggio di \(A, L(A)\), l'insieme delle stringhe \(\omega\) che accettate da \(A\). Cioè
+    \[\begin{cases}
+            L(A) = \set{\omega}{\delta^{*}(q_{0}, \omega) \in F} \quad \text{se} A \text{è un DFA} \\
+            L(A) = \set{\omega}{\delta^{*}(q_{0}, \omega) \cap F \neq \emptyset} \quad \text{se} A \text{è un NFA}
+        \end{cases}\]
+\end{Definition*}
+
+\subsubsection{Proprietà dei linguaggi}
+Sia \(L\) il linguaggio riconosciuto da un automa; su di questi è possibile applicare le seguenti operazioni.
+\begin{itemize}
+    \item \emph{Potenza n-sima:} si intende la concatenazione di \(L\) un certo numero \emph{n} di volte.
+          \begin{Example*}
+              Sia \(L = \set{\omega}{\omega \in \Sigma = \Set{a, b}}\), sia \(n = 2\). Segue
+              \[
+                  L^{2} = L \circ L = \Set{aaaa, aaab, aabb, aaba, abaa, abab, abbb, abba, \dots}
+              \]
+          \end{Example*}
+          \begin{Remark*}
+              Se \(n = 0\) si ha che \(L^{0} = \Set{\varepsilon}\).
+          \end{Remark*}
+
+    \item \emph{Stella di Kleene:} rappresenta l'unione di tutte le potenze di \(L\). Cioè
+          \[
+              L^{*} = L^{0} \cup L^{1} \cup L^{2} \cup \cdots
+          \]
+          \begin{Remark*}
+              Se \(L = \emptyset\) allora \(L^{*} = \Set{\varepsilon}\).
+          \end{Remark*}
+
+    \item \emph{Croce:} indica l'unione di tutte le potenze di \(L \text{, meno} L^{0}\). Cioè
+          \[
+              L^{+} = L^{1} \cup L^{2} \cup \cdots
+          \]
+
+          \noindent Vale dunque
+          \[
+              L^{+} = L \circ L^{*}
+          \]
+\end{itemize}
+
+\subsubsection{Linguaggio universale e complemento}
+\begin{Definition*}
+    Sia \(\Sigma\) un alfabeto. Si definisce linguaggio universale \(\Sigma^{*}\), l'insieme di tutte le parole applicando all'alfabeto Kleene.
+\end{Definition*}
+\begin{Definition*}
+    Sia \(L\) un linguaggio su un alfabeto \(\Sigma\). Si definisce complemento di \(L, L^{C}\), l'insieme di stringhe che appartengono a \(\Sigma^{*}\) ma non a \(L\).
+\end{Definition*}
+\end{document}

@@ -1,0 +1,18 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure}[!h]
+    \centering
+    \begin{tikzpicture}[node distance = 2cm, on grid, auto, every node/.style={scale=0.85}]
+
+        \tikzstyle{every state} = [fill={rgb:black,1;white,10}]
+
+        \node (q0) [state with output, initial] {\(on\) \nodepart{lower} \(off\)};
+
+        \draw [-latex]
+        (q0) edge [loop right] node {p} ();
+
+    \end{tikzpicture}
+    \caption{Automa rappresentante uno switch come NFA.}
+    \label{fig:2}
+\end{figure}
+\end{document}

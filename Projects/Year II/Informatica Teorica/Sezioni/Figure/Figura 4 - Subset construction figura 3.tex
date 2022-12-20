@@ -1,0 +1,25 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure}[!h]
+    \centering
+    \begin{tikzpicture}[node distance = 2cm, on grid, auto, every node/.style={scale=0.85}, initial text = start]
+
+        \tikzstyle{every state} = [fill={rgb:black,1;white,10}]
+
+        \node (q0) [state, initial] {\(\Set{q_{0}}\)};
+        \node (q1) [state, right of = q0] {\(\Set{q_{0}, q_{1}}\)};
+        \node (q2) [state, below right of = q1, accepting] {\(\Set{q_{0}, q_{2}}\)};
+
+        \draw[-latex]
+        (q0) edge [loop above] node {1} ()
+        (q0) edge [] node {0} (q1)
+        (q1) edge [loop above] node {0} ()
+        (q1) edge [bend left] node {1} (q2)
+        (q2) edge [bend left] node {0} (q1)
+        (q2) edge [bend left] node {1} (q0);
+
+    \end{tikzpicture}
+    \caption{Subset construction dell'automa di \emph{Figura \eqref{fig:3}}.}
+    \label{fig:4}
+\end{figure}
+\end{document}

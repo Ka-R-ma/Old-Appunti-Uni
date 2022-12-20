@@ -1,0 +1,30 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{Definition*}
+    Si definisce \(A = (Q, \Sigma, \delta, q_{0}, F)\) NFA, ove
+    \begin{itemize}
+        \item \emph{\(Q\)} rappresenta l'insieme di stati dell'automa;
+        \item \emph{\(\Sigma\)} è l'alfabeto utilizzato dall'automa;
+        \item \emph{\(\delta\)} definisce le transizioni tra gli stati;
+        \item \emph{\(q_{0}\)} indica lo stato iniziale;
+        \item \emph{\(F\)} definisce l'insieme di stati finali;
+    \end{itemize}
+    se considerata \(\delta\), per ciascun simbolo dell'alfabeto e per almeno uno stato esistono più transizioni per quel carattere.
+\end{Definition*}
+
+\begin{Example*}
+    Sia considerato l'automa in \emph{Figura \eqref{fig:1}}, questi può essere rappresentato come NFA dall'automa in \emph{Figura \eqref{fig:2}}.
+    \subfile{../Figure/Figura 2 - Switch come NFA.tex}
+\end{Example*}
+
+\subsubsection{Funzione di transizione estesa}
+\begin{Definition*}
+    Sia \(\omega = a_{1} \cdots a_{n}\) una stringa e \(\delta\) la funzione di transizione di un dato NFA:
+    si definisce funzione di transizione estesa \(\delta^{*}\) la funzione che, letta \(\omega\) a partire da \(q_{0}\), stabilisce lo stato di arrivo \(q_{f}\).
+    \[\text{Per induzione si ha} \begin{cases}
+            \delta^{*}(q_{0}, \varepsilon) = \Set{q_{0}} \quad \text{base} \\
+            \delta^{*}(q_{0}, \omega) = \bigcup\limits_{q_{x} \in \delta^{*}(q_{0}, \omega)}{\delta(q_{x}, a)}
+        \end{cases}\]
+\end{Definition*}
+\clearpage
+\end{document}
