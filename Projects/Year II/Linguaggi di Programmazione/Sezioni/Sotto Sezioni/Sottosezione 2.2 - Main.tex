@@ -1,17 +1,23 @@
 \documentclass{subfile}
 \begin{document}
-    Per costruire gli oggetti e cambiarne lo stato si usa il metodo main dichiarato con:
+Per costruire gli oggetti e cambiarne lo stato si usa il metodo main dichiarato con:
 
-    \lstinline[language = java]{public static void main(String[] args)}.\\\\
-    Nel metodo main funge da client per tutte le classi quindi in esso si scrive il programma eseguibile che genererà gli 
-    eventuali oggetti. Solitamente, il metodo main si mette in un file a parte denominato \textbf{Main.java}.\\\\
-    Nel metodo main per richiamare metodi o attributi di una classe si utilizza la notazione punto: 
-    \lstinline[language = java]{<nomeOggetto>.<nomeAttributo> o <nomeOggetto>.<nomeMetodo>(<parametri>)}.\\
-    %todo: esempio:
-    %public static void main (String[] args){
-    %   Serbatoio = new Serbatoio();
-    %   s.rifornisci(12);
-    %   System.out.println("Il livello è:" + s.getLivello());
-    %}
-
+\lstinline[language = java]{public static void main(String[] args)}.\\\\
+Nel metodo main funge da client per tutte le classi quindi in esso si scrive il programma eseguibile che genererà gli
+eventuali oggetti. Solitamente, il metodo main si mette in un file a parte denominato \textbf{Main.java}.\\\\
+Nel metodo main per richiamare metodi o attributi di una classe si utilizza la notazione punto:
+\lstinline[language = java]{<nomeOggetto>.<nomeMetodo>(<parametri>)}.\\
+\begin{Example*}
+    \item []
+    \begin{center}
+        \begin{lstlisting}[style = general, language = java]
+            public static void main (String[] args){
+                Serbatoio = new Serbatoio();
+                s.rifornisci(12);
+                System.out.println("Il livello e`:" + s.getLivello());
+            }
+        \end{lstlisting}
+    \end{center}
+\end{Example*}
+\clearpage
 \end{document}

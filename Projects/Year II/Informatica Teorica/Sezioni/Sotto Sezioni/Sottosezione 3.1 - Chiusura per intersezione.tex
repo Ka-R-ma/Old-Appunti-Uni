@@ -1,0 +1,29 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{Theorem}
+    Siano \(L_{1} \text{e} L_{2}\) linguaggi REC. Allora \(L = L_{1} \cap L_{2}\) è REC.
+
+    \begin{Proof*}
+        Sia \(A_{1}\) un automa che riconosce \(L_{1} \text{, sia} A_{2}\) un automa che riconosce \(L_{2}\).
+        \[
+            A_{1} = (Q_{1}, \Sigma, \delta_{1}, q_{0_{1}}, F_{1}) \qquad A_{2} = (Q_{2}, \Sigma, \delta_{2}, q_{0_{2}}, F_{2})
+        \]
+
+        \noindent Sia \(A = (Q, \Sigma, \delta, q_{0}, F)\) un automa che riconosce \(L\). Ponendo
+        \begin{itemize}
+            \item \(Q = \set{(q_{1}, q_{2})}{q_{1} \in Q_{1} \land q_{2} \in Q_{2}}\) o analogamente \(Q = Q_{1} \cp Q_{2}\);
+            \item \(q_{0} = (q_{0_{1}}, q_{0_{2}})\);
+            \item \(\delta((q_{1}, q_{2}), a) = (\delta_{1}(q_{1}, a), \delta_{2}(q_{2}, a))\) per ogni \(a\) tale che la transizione sia definita sia in \(A_{1} \text{che} A_{2}\);
+            \item \(F = \set{(q_{1}, q_{2})}{q_{1} \in F_{1} \land q_{2} \in F_{2}}\) o analogamente \(F = F_{1} \cp F_{2}\).
+        \end{itemize}
+
+        \noindent Sia \(\omega \in L\), segue
+        \[\begin{aligned}
+                \omega \in L & \iff \omega \in L_{1} \land \omega \in L_{2}                                                       \\
+                             & \iff \delta_{1}^{*}(q_{0_{1}}, \omega) \in F_{1} \land \delta_{2}^{*}(q_{0_{2}}, \omega) \in F_{2} \\
+                             & \iff \delta^{*}((q_{0_{1}}, q_{0_{2}}), \omega) \in F
+            \end{aligned}\]
+    \end{Proof*}
+\end{Theorem}
+\clearpage
+\end{document}

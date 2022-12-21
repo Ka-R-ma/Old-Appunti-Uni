@@ -1,0 +1,17 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{center}
+    \begin{tikzpicture}[node distance = 2cm, on grid, auto, every node/.style={scale=0.85}, initial text = start]
+
+        \tikzstyle{every state} = [fill={rgb:black,1;white,10}]
+
+        \node (q0) [state, initial] {\(q_{0}\)};
+        \node (q1) [state, accepting, right of = q0] {\(q_{1}\)};
+
+        \draw[-latex]
+        (q0) edge [loop above] node {a, b} ()
+        (q1) edge [] node {a, b} (q0);
+
+    \end{tikzpicture}
+\end{center}
+\end{document}
