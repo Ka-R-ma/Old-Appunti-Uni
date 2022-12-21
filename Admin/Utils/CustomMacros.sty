@@ -19,7 +19,6 @@
 \usepackage[notext]{kpfonts}
 \usepackage[hidelinks]{hyperref}
 \usepackage[italian]{babel}
-\usepackage{ifthen}
 \usepackage{subfiles}
 
 % Custom definition of theorem-like environments.
@@ -34,7 +33,7 @@
 %% Numberend theorem-like environments
 \theoremstyle{Theorem}
 \newtheorem{Corollary}{Corollario}[subsection]
-\newtheorem{Theorem}{Teorema}[subsection]
+\newtheorem{Theorem}{Teorema}[section]
 \newtheorem{Lemma}{Lemma}[subsection]
 
 \theoremstyle{Plain}
@@ -76,7 +75,10 @@
 \ctikzset{american, full diodes}
 
 %%Lstlisting options
-%TODO: define style
+\lstdefinestyle{general}{
+    autogobble = true,
+    frame = single
+}
 
 % Edit on pre-existing macros
 \let\oldInt\int

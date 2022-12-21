@@ -1,17 +1,18 @@
 \documentclass{subfile}
 \begin{document}
-    Per la compilazione e l'esecuzione dei file java si utilizzano rispettivamente:
-    \begin{itemize}
-        \item \lstinline[language = java]{javac <nomeFile>.java};
-        \item \lstinline[language = java]{java <nomeFile>}.
-    \end{itemize}
-    Il primo compila il file .java ed in caso di successo di genera l'eseguibile \lstinline[language = java]{<nomeFile>.class} 
-    mentre il secondo esegue appunto il file .class.
+Per la compilazione e l'esecuzione dei file java si utilizzano rispettivamente:
+\begin{itemize}
+    \item \lstinline[language = java]{javac <nomeFile>.java};
+    \item \lstinline[language = java]{java <nomeFile>}.
+\end{itemize}
+Il primo compila il file .java ed in caso di successo di genera l'eseguibile \lstinline[language = java]{<nomeFile>.class}
+mentre il secondo esegue appunto il file .class.
 
-    \begin{Note*}
-         Se più classi in un file .java contengono un metodo main verrà eseguito quello con lo stesso nome del file.
-    \end{Note*}
-    Diversi file java nella stessa cartella possono accedere a tutti i loro attributi e metodi a meno che non siano marcati
-    private.
+\begin{Note*}
+    Se più classi in un file .java contengono un metodo main verrà eseguito quello con lo stesso nome del file.
+\end{Note*}
+
+\noindent Diversi file java nella stessa cartella possono accedere a tutti i loro attributi e metodi a meno che non siano marcati
+private.
 
 \end{document}
