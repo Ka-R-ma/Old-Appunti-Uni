@@ -1,0 +1,35 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{center}
+    \begin{tikzpicture}[node distance = 2cm, on grid, auto, every node/.style={scale=0.85}, initial text = start]
+
+        \tikzstyle{every state} = [fill={rgb:black,1;white,10}]
+
+        \node (q0) [state, initial] {\(q_{0}\)};
+        \node (qc) [state, right of = q0] {\(q_{c}\)};
+        \node (qa) [state, above of = qc] {\(q_{a}\)};
+        \node (qd) [state, below of = qc, accepting] {\(q_{d}\)};
+        \node (qb) [state, right of = qa] {\(q_{b}\)};
+        \node (qf) [state, right of = qd, accepting] {\(q_{f}\)};
+
+        \draw[-latex]
+        (q0) edge [bend left] node {a} (qa)
+        (q0) edge [] node {c} (qc)
+        (q0) edge [bend right] node {b} (qd)
+
+        (qc) edge [bend left] node {a} (qa)
+        (qc) edge [loop above, right] node {c} ()
+        (qc) edge [bend left] node {b} (qd)
+
+        (qa) edge [bend left] node {b} (qb)
+
+        (qd) edge [] node {a} (qf)
+
+        (qb) edge [bend left] node {a} (qa)
+        (qb) edge [bend left] node {c} (qc)
+
+        (qf) edge [loop right] node {a} (qf);
+
+    \end{tikzpicture}
+\end{center}
+\end{document}

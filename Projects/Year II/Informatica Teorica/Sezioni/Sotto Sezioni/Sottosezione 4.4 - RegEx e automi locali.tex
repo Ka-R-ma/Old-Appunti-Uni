@@ -1,0 +1,81 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{Definition*}
+    Sia \(e\) una RegEx. Questa si dice lineare se nessun carattere in \(e\) è ripetuto.
+\end{Definition*}
+
+\noindent Sia \(e\) una RegEx non lineare. Questa può essere linearizzata semplicemente ridefinendo le occorrenze multiple,
+così che l'espressione \(e'\) ottenuta dalla linearizzazione sia definito su un nuovo alfabeto \(\Sigma^{'}\).
+
+\begin{Algorithm*}
+    Sia \(e\) espressione regolare. La costruzione di un'automa locale che riconosce \(e\) è realizzata come segue.
+    \begin{enumerate}
+        \item Se \(e\) è regolare si al punto 2, altrimenti si procede alla linearizzazione.
+        \item Si definisce da quadrupla \((Ini(L), Fin(L), Dig(L), Null(L))\), procedendo ricorsivamente al calcolo degli insiemi.
+        \item Si costruisce l'automa locale seguendo le transizioni della quadrupla.
+        \item Se la quadrupla è definita dopo aver linearizzato \(e\), allora si procede rimuovendo la ridefinizione dei caratteri.
+        \item Si procede alla subset construction.
+    \end{enumerate}
+\end{Algorithm*}
+
+\begin{Example*}
+    Sia \(e = (ab)^{*} + c^{*}\). Si costruisce un automa che riconosca \(e\).
+
+    \begin{Solution*}
+        Procedendo applicando l'algoritmo si ha quanto segue.
+        \begin{enumerate}
+            \item Si osserva che \(e\) è lineare, si passa dunque alla costruzione della quadrupla, da cui
+                  \begin{multicols}{2}
+                      \begin{itemize}
+                          \item \(Ini(e) = \Set{a, c}\)
+                          \item \(Fin(e) = \Set{b, c}\)
+                          \item \(Dig(e) = \Set{ab, ba, cc}\)
+                          \item \(Null(e) = \varepsilon\)
+                      \end{itemize}
+                  \end{multicols}
+
+            \item Procedendo alla costruzione dell'automa, segue
+                  \subfile{../Figure/Figura Es 4.4.1.tex}
+
+                  \begin{Remark*}
+                      Poiché \(e\) è lineare si ha che non è necessario procedere alla subset construction.
+                      Infatti l'automa di cui sopra è gia un DFA.
+                  \end{Remark*}
+        \end{enumerate}
+    \end{Solution*}
+\end{Example*}
+\clearpage
+
+\begin{Example*}
+    Sia \(e = (ab + a)^{*} ba^{*}\). Si costruisca un automa che riconosca \(e\).
+    \begin{Solution*}
+        Procedendo applicando l'algoritmo si ha quanto segue.
+        \begin{enumerate}
+            \item Si osserva che \(e\) non è lineare, si procede alla sua linearizzazione. Segue che
+                  \[
+                      e = (ab + a)^{*}ba^{*}  \quad \text{diventa} \quad e' = (ab + c)^{*}df^{*}
+                  \]
+                  \vspace{-12.5pt}
+            \item Considerando la quadrupla, segue
+                  \begin{multicols}{2}
+                      \begin{itemize}
+                          \item \(Ini(e') = \Set{a, c, d}\)
+                          \item \(Fin(e') = \Set{d, f}\)
+                          \item \(Dig(e') = \Set{ab, bc, ca, ba, \ldots}\)
+                          \item \(Null(e') = \emptyset\)
+                      \end{itemize}
+                  \end{multicols}
+
+            \item Passando all'automa, segue
+                  \subfile{../Figure/Figura Es 4.4.2.tex}
+
+            \item Procedendo rimuovendo la ridefinizione dei caratteri, si ha
+                  \subfile{../Figure/Figura Es 4.4.3.tex}
+
+            \item Concludendo con la subset construction, segue
+                  \subfile{../Figure/Figura Es 4.4.4.tex}
+
+        \end{enumerate}
+    \end{Solution*}
+\end{Example*}
+\end{document}

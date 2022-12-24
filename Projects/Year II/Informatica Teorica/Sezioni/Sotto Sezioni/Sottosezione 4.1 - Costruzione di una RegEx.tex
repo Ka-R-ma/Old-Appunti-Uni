@@ -1,0 +1,20 @@
+\documentclass{subfiles}
+\begin{document}
+Sia \(e\) una RegEx. La costruzione di \(e\) è di tipo ricorsivo.
+\begin{Base*}
+    \begin{itemize}
+        \item []
+        \item \(\varepsilon \text{e} \emptyset\) sono espressioni regolari, ove \(L(\varepsilon) = \Set{\varepsilon}, L(\emptyset) = \Set{}\).
+        \item Se \(\alpha\) è un simbolo, allora questi è una RegEx, ove \(L(\alpha) = \Set{\alpha}\).
+    \end{itemize}
+\end{Base*}
+\begin{Induction*}
+    \begin{itemize}
+        \item []
+        \item Siano \(e \text{ed} f\) due RegEx. Allora \(e + f\) è un'espressione regolare.
+        \item Siano \(e \text{ed} f\) due RegEx. Allora \(ef\) è un'espressione regolare.
+        \item Sia \(e\) RegEx. Allora \(e^{*}\) è un'espressione regolare.
+        \item Sia \(e\) RegEx. Allora \((e)\) è un'espressione regolare.
+    \end{itemize}
+\end{Induction*}
+\end{document}

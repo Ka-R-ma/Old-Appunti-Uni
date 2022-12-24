@@ -1,0 +1,25 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{center}
+    \begin{tikzpicture}[node distance = 2cm, on grid, auto, every node/.style={scale=0.85}, initial text = start]
+
+        \tikzstyle{every state} = [fill={rgb:black,1;white,10}]
+
+        \node (q0) [state, initial, accepting] {\(q_{0}\)};
+        \node (qa) [state, above right of = q0] {\(q_{a}\)};
+        \node (qb) [state, right of = qa, accepting] {\(q_{b}\)};
+        \node (qc) [state, below right of = q0, accepting] {\(q_{c}\)};
+
+        \draw[-latex]
+        (q0) edge [bend left] node {a} (qa)
+        (q0) edge [bend right] node {c} (qc)
+
+        (qa) edge [bend left] node {b} (qb)
+
+        (qb) edge [bend left] node {a} (qa)
+
+        (qc) edge [loop right] node {c} ();
+
+    \end{tikzpicture}
+\end{center}
+\end{document}

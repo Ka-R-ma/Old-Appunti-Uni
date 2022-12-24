@@ -1,0 +1,19 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{center}
+    \begin{tikzpicture}[node distance = 4cm, on grid, auto, every node/.style={scale=0.85}, initial text = start]
+
+        \tikzstyle{every state} = [fill={rgb:black,1;white,10}]
+
+        \node (q0) [state, initial] {\(q_{0}\)};
+        \node (q1) [state, right of = q0, accepting] {\(q_{1}\)};
+
+        \draw[-latex]
+        (q0) edge [loop above] node {a} ()
+        (q0) edge [bend left] node {c + bb((a + b)b)*} (q1)
+
+        (q1) edge [bend left, above] node {c} (q0)
+        (q1) edge [loop right] node {((a + b)b)*} ();
+    \end{tikzpicture}
+\end{center}
+\end{document}
