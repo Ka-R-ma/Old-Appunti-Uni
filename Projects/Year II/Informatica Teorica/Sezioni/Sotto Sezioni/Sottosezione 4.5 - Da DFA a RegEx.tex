@@ -1,0 +1,46 @@
+\documentclass{subfiles}
+\begin{document}
+Si è finora dimostrato che per ogni RegEx esiste un automa che lo riconosce. Si può dimostrare il viceversa, se il seguente teorema è soddisfatto.
+\begin{Theorem*}[di Kleene]
+    Sia \(L\) un linguaggio regolare, sia \(A\) un DFA che lo riconosce. Allora esiste un'espressione regolare \(e\) equivalente.
+
+    Più in generale
+    \[
+        REC = REG
+    \]
+    ove REG indica l'insieme dei linguaggi regolari.
+\end{Theorem*}
+
+
+\begin{Algorithm*}
+    Sia \(A\) un DFA che riconosce un certo linguaggio \(L\). La costruzione della RegEx equivalente è realizzata come segue.
+    \begin{itemize}
+        \item Se \(A\) ha più stati accettanti, si creano tante copie quante gli stati finali, ciascuno con un solo stato accettante.
+        \item Per ciascuna delle copie:
+              \begin{itemize}
+                  \item si eliminano le transizioni intermedie, fino ad ottenere automi con un solo stato accettante e uno finale;
+                  \item si determina la RegEx \(e_{i}\) per la copia.
+              \end{itemize}
+        \item L'espressione regolare sarà data come
+              \[
+                  e = e_{1} + \cdots + e_{k}
+              \]
+    \end{itemize}
+\end{Algorithm*}
+
+\begin{Example*}
+    Sia \(A\) il seguente DFA. Si trovi la RegEx equivalente.
+    \subfile{../Figure/Figura Es 4.5.1 .tex}
+
+    \begin{Solution*}
+        Poiché \(q_{2}\) è l'unico stato che non è ne finale ne iniziale, si procede alla sua eliminazione.
+        Da cio segue quanto nella figura a seguito.
+        \subfile{../Figure/Figura Es 4.5.2.tex}
+
+        \noindent Da cui l'espressione equivalente è
+        \[
+            e = a^{*}(c + bb((a + b)b)^{*})(c(c + bb((a + b)b)^{*}) + ((a + b)b)^{*})
+        \]
+    \end{Solution*}
+\end{Example*}
+\end{document}

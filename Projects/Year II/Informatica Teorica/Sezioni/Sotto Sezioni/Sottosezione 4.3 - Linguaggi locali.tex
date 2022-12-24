@@ -1,0 +1,76 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{Definition*}
+    Sia \(L\) un linguaggio. Questi dicasi locale se esprimibile tramite la seguente quadrupla.
+    \[
+        (Ini(L), Fin(L), Dig(L), Null(L))
+    \]
+    ove
+    \begin{itemize}
+        \item \(Ini(L)\) stabilisce l'insieme di caratteri con cui \(\omega \in L\) può iniziare.
+        \item \(Fin(L)\) stabilisce l'insieme di caratteri con cui \(\omega \in L\) può terminare.
+        \item \(Dig(L)\) stabilisce l'insieme di tutte le possibili coppie di caratteri che \(\omega \in L\) può contenere.
+        \item \(Null(L)\) stabilisce se l'insieme contiene o meno la parola vuota.
+    \end{itemize}
+\end{Definition*}
+
+\subsubsection{Calcolo ricorsivo di Ini, Fin, Dig, Null}
+Sia \(L\) un linguaggio locale. La costruzione della quadrupla, che è ricorsiva, è descritta a seguire.
+
+\begin{itemize}
+    \item \textbf{Ini:}
+          considerando la parte ricorsiva
+          \begin{itemize}
+              \item \(Ini(e + f) = Ini(e) \cup Ini(f)\);
+              \item \(Ini(ef) = Ini(e) \cup Null(e) Ini(f)\);
+              \item \(Ini(e^{*}) = Ini(e)\).
+          \end{itemize}
+
+    \item \textbf{Fin:}
+          considerando la parte ricorsiva
+          \begin{itemize}
+              \item \(Fin(e + f) = Fin(e) \cup Fin(f)\);
+              \item \(Fin(ef) = Fin(f) \cup Fin(e) Null(f)\);
+              \item \(Fin(e^{*}) = Fin(e)\).
+          \end{itemize}
+
+    \item \textbf{Null:}
+          considerando la parte ricorsiva
+          \begin{itemize}
+              \item \(Null(e + f) = Null(e) \cup Null(f)\);
+              \item \(Null(ef) = Null(e) \cap Null(f)\);
+              \item \(Null(e^{*}) = \varepsilon\).
+          \end{itemize}
+
+    \item \textbf{Dig:}
+          considerando la parte ricorsiva
+          \begin{itemize}
+              \item \(Dig(e + f) = Dig(e) \cup Dig(f)\);
+              \item \(Dig(ef) = Dig(e) \cup Dig(f) \cup Fin(e)Ini(f)\);
+              \item \(Dig(e^{*}) = Dig(e) \cup Fin(e)Ini(e)\).
+          \end{itemize}
+\end{itemize}
+
+\begin{Note*}
+    Nel descrivere il calcolo di \(Ini, Fin, Dig, Null\), è stata trascurata la base.
+
+    \noindent Infatti \(*(\varepsilon) = \varepsilon, *(\emptyset) = \emptyset\), ove \(* \text{sostituisce} Ini, Fin, Dig, Null\), escluso \(Dig(\varepsilon) = \emptyset\).
+
+    \noindent Inoltre \(Ini(a) = Fin(a) = a \text{se} a\) è un carattere, mentre \(Dig(a) = Null(a) = \emptyset\).
+\end{Note*}
+
+\subsubsection{Automi locali}
+\begin{Definition*}
+    Sia \(L\) un linguaggio locale. Si definisce \emph{automa locale} un DFA che riconosce \(L\).
+
+    \noindent La costruzione dell'automa locale è realizzata secondo quanto segue.
+    \begin{itemize}
+        \item \(Q = \Set{q_{0}} \cup \Sigma\);
+        \item Se \(Null(L) = \varepsilon\) allora \(q_{0}\) è accettante;
+        \item \(\forall a_{i} \in \Sigma\), ogni arco etichettato \(a_{i}\), entra nello stato \(q_{a_{i}}\);
+        \item Da \(q_{0}\) escono le transizioni definite da \(Ini\);
+        \item Le altre transizioni sono definite da \(Dig\);
+        \item Gli stati finali sono indicati da \(Fin\).
+    \end{itemize}
+\end{Definition*}
+\end{document}
