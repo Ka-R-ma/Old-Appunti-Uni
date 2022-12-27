@@ -1,0 +1,41 @@
+\documentclass{subfiles}
+\begin{document}
+Capita spesso di perdere molto tempo nello stabilire se un linguaggio \(L\) è regolare o meno.
+Per semplificare tale processo è possibile utilizzare uno strumento molto potente: il \emph{pumping lemma}.
+
+\begin{Lemma}
+    Sia \(L\) un linguaggio. Questi non è regolare se
+    \[
+        \forall n \such \exists \omega \in L, \abs{\omega} \le n, \exists x,y,z \such \omega = xyz
+    \]
+    per cui almeno una delle seguenti proprietà non è soddisfatta.
+    \begin{multicols}{3}
+        \begin{itemize}
+            \item \(y \neq \varepsilon\)
+            \item \(\abs{xy} \le n\)
+            \item \(\forall k \ge 0, xy^{k}z \in L\)
+        \end{itemize}
+    \end{multicols}
+\end{Lemma}
+
+\begin{Exercise*}
+    Sia \(L = \set{\omega \in \Sigma = \Set{a, b}}{\omega = a^{n}b^{n}}\). Stabilire se \(L\) è regolare.
+    \begin{Solution*}
+        Procedendo applicando il pumping lemma
+        \[
+            \forall n, \qquad a^{n}b^{n} \in L
+        \]
+        cioè
+        \[
+            \underbrace{a \cdots a}_{n \ volte} \underbrace{b \cdots b}_{n \ volte} \in L
+        \]
+
+        \noindent Considerando ora le partizioni valide
+        \begin{enumerate}
+            \item \(x = \underbrace{a \cdots a}_{i \ volte},  y = \underbrace{a \cdots a}_{j \ volte}, z = \underbrace{b\cdots b}_{n \ volte} \text{con} i + j = n\).
+            \item \(x = \underbrace{a \cdots a}_{i \ volte}, y = \underbrace{a \cdots a}_{j \ volte}\underbrace{b \cdots b}_{l \ volte}, z = \underbrace{b \cdots b}_{h \ volte} \text{con} i + j = n, l + h = n\).
+        \end{enumerate}
+        si ha che la prima viola la terza proprietà per \(k = 0\), la seconda partizione, e in generale quelle che richiedono almeno una \(b\), violano la seconda proprietà.
+    \end{Solution*}
+\end{Exercise*}
+\end{document}

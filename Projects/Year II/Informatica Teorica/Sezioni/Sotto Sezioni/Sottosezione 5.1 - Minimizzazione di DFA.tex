@@ -1,0 +1,35 @@
+\documentclass{subfiles}
+\begin{document}
+Sia \(A\) un DFA. A seguito di quanto detto sopra, ne consegue che è possibile realizzare un DFA \(B \text{equivalente ad} A\), ma con un numero minimo di stati.
+Analogo ragionamento è estensibile agli NFA, sebbene per questi non è sempre vero.
+
+\subsubsection{Relazione di indistinguibilità}
+Sia \(A\) un DFA, siano \(p \text{e} q\) suoi stati. Si ha che
+\[
+    p \given q \iff (\delta^{*}(q, \omega) \land \delta^{*}(q, \omega)) \in F, \quad \forall \omega \in \Sigma^{*}
+\]
+oppure
+\[
+    p \given q \iff (\delta^{*}(q, \omega) \land \delta^{*}(q, \omega)) \notin F, \quad \forall \omega \in \Sigma^{*}
+\]
+
+\noindent Cioè \(p \text{e} q\) sono indistinguibili se per ogni parola del linguaggio universale si ha che, calcolando la funzione di transizione estesa per i due stati,
+entrambi conducono ad uno stato accettante/rifiutante per \(\omega\).
+
+\subsubsection{Algoritmo riempi-tabella}
+Uno strumento utile alla minimizzazione è l'algoritmo riempi-tabella, con il quale è possibile stabilire ricorsivamente gli stati equivalenti.
+\begin{Base*}
+    Se \(p\) è accettante e \(q\) non lo è, allora la coppia \((p, q)\) è distinguibile.
+\end{Base*}
+\begin{Induction*}
+    Se \(p, q\) sono stati tali che, per un simbolo di input \(\alpha\), si ha che
+    \[
+        \delta(p, \alpha) \land \delta(q, \alpha)
+    \]
+    conducono a stati noti come distinguibili, allora \((p, q)\) sono distinguibili.
+\end{Induction*}
+
+\begin{Theorem}
+    Se due stati non sono distinti dall'algoritmo riempi-tabella, alloro sono equivalenti.
+\end{Theorem}
+\end{document}
