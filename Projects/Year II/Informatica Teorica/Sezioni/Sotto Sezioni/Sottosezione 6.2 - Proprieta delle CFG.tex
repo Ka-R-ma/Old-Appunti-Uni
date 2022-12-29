@@ -1,0 +1,52 @@
+\documentclass{subfiles}
+\begin{document}
+Sia \(G\) una grammatica CF. Allora questa è chiusa rispetto l'unione e la concatenazione, ma non per l'intersezione o il complemento.
+
+\subsubsection{Unione}
+Siano \(G_{1} \text{e} G_{2}\) due CFG.
+\noindent Siano \(L_{1}, L_{2}\) rispettivamente i linguaggi generati da \(G_{1}, G_{2}\).
+\noindent Sia \(G = G_{1} \cup G_{2}\), segue che questa generi \(L = L_{1} \cup L_{2}\). Infatti
+\[
+    S \to S_{1} \given S_{2}
+\]
+ove \(S\) è assioma per \(G, S_{1} \text{e} S_{2}\) lo sono rispettivamente per \(G_{1} \text{e} G_{2}\).
+
+\subsubsection{Concatenazione}
+Siano \(L_{1}, L_{2}\) linguaggi generati rispettivamente da \(G_{1} = (\Sigma_{1}, V_{1}, S_{1}, P_{1}), G_{2} = (\Sigma_{2}, V_{2}, S_{2}, P_{2})\).
+Sia \(L = L_{1}L_{2}\). Poiché \(\omega \in L = uv \such u \in L_{1} \land v \in L_{2}\),
+segue che la grammatica che genera \(L\) sarà \(G = (\Sigma_{1}\Sigma_{2}, V_{1}V_{2}, S_{1}S_{2}, P_{1}P_{2})\)
+
+\subsubsection{Intersezione}
+Si è detto che le CFG non sono chiuse per l'intersezione. Per dimostrare che sia effettivamente così basta considerare il seguente esempio.
+\begin{Example*}
+    Sia \(L = \set{a^{n}b^{n}c^{n}}{n \ge 0}\), siano
+    \[\begin{aligned}
+            L_{1} & = \set{a^{m}b^{m}c^{k}}{m,k \ge 0} \\
+            L_{2} & = \set{a^{i}b^{l}c^{l}}{i,l \ge 0} \\
+        \end{aligned}\]
+
+    \noindent stabilire se \(L_{1} \cap L_{2} = L\) è generabile tramite una CFG.
+
+    \begin{Solution*}
+        Siano posti \(S, T\) rispettivamente gli assiomi di produzione per \(L_{1}, L_{2}\), con le regole di produzione di seguito riportate.
+        \[\begin{aligned}
+                 & S \to S_{1}S_{2}                     &  & \qquad T \to T_{1} T_{2}                    \\
+                 & S_{1} \to aS_{1}b \given \varepsilon &  & \qquad T_{1} \to aT_{1} \given \varepsilon  \\
+                 & S_{2} \to cS_{2} \given \varepsilon  &  & \qquad T_{2} \to bT_{2}c \given \varepsilon \\
+            \end{aligned}\]
+
+        \noindent Si osserva che \(L_{1}, L_{2}\) sono generati da CFG, metre
+        \[
+            L_{1} \cap L_{2} = L = \set{a^{n}}{n \ge 0} \circ \set{b^{n}}{n \ge 0} \circ \set{c^{n}}{n \ge 0}
+        \]
+        non lo è.
+    \end{Solution*}
+\end{Example*}
+
+\begin{Note*}
+    L'assenza di chiusura per il complemento è da ricondurre alla mancata chiusura per l'intersezione, segue da De Morgan, supponendo \(G_{1}, G_{2}\) due CFG, che
+    \[
+        (G_{1} \cup G_{2})^{C} = G_{1}^{C} \cap G_{2}^{C}
+    \]
+\end{Note*}
+\end{document}

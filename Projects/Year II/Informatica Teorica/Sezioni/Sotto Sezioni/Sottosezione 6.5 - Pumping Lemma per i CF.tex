@@ -1,0 +1,42 @@
+\documentclass{subfiles}
+\begin{document}\label{sec:6.5}
+Così come per i linguaggi REC, anche i linguaggi CF soddisfano il Pumping Lemma, seppure con alcune differenze.
+\begin{Lemma}
+    \noindent Sia \(L\) un linguaggio. soddisfa il pumping lemma se
+    \[
+        \exists n \in \N \such \forall \omega \in L, \abs{\omega} \ge n, \exists u,v,w,x,y \such \omega = uvwxy
+    \]
+    per cui tutte le seguenti proprietà sono soddisfatte.
+    \begin{multicols}{3}
+        \begin{itemize}
+            \item \(\abs{vwx} \le n\)
+            \item \(v,x \neq \varepsilon\)
+            \item \(\forall i \ge 0 , uv^{i}wx^{i}y \in L\)
+        \end{itemize}
+    \end{multicols}
+\end{Lemma}
+
+\begin{Exercise*}
+    Sia \(L = \set{\omega}{\omega = a^{n}b^{n}c^{n}, n \ge 0}\). Stabilire se n è Context-Free.
+    \begin{Solution*}
+        Sia supposto \(L\) non CF, segue
+        \[
+            \forall n \quad a^{n}b^{n}c^{n} = \underbrace{a \cdots a}_{n \ volte} \underbrace{b \cdots b}_{\ n \ volte} \underbrace{c \cdots c}_{\ n \ volte} \in L
+        \]
+
+        \noindent Procedendo col considerare alcune partizioni
+        \begin{enumerate}
+            \item Siano \(u = a^{j}, v = a^{k}, w = a^{l}, x = a^{m}, y = b^{n}c^{n}\) tali che \(j + k + l + m = n\):
+                  si osserva che, posto \(i = 0\), segue \(uv^{0}wx^{0}y \notin L\), poiché \(j + l < n\).
+
+            \item Siano \(u = a^{j}, v = a^{k}, w = a^{l}, x = b^{m}, y = b^{o}c^{n}\) tali che \(k + l + m \le n, j + k + l = n\), \( o + m = n\):
+                  si osserva, posto \(i = 0\), che \(uv^{0}wx^{0}y \notin L\), poiché \(j +l < n, o < n\).
+        \end{enumerate}
+
+        \begin{Note*}
+            Le partizioni non riportate sono state trascurate, in quanto ovvio non soddisfacenti almeno una delle proprietà.
+        \end{Note*}
+    \end{Solution*}
+\end{Exercise*}
+\clearpage
+\end{document}

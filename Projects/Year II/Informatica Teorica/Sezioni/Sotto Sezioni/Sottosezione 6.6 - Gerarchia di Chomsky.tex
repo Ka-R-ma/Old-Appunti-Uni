@@ -1,0 +1,36 @@
+\documentclass{subfiles}
+\begin{document}
+La gerarchia di Chomsky stabilisce un ordine delle grammatiche, stabilito sulla base della loro capacità di produrre linguaggi.
+Tale classificazione divide le grammatiche in
+\begin{itemize}
+    \item \emph{Tipo 0}: le grammatiche riconosciute da una macchina di Turing\footnotemark[1].
+    \item \emph{Tipo 1}: grammatiche Context-Sensitive.
+    \item \emph{Tipo 2}: grammatiche Context-Free.
+    \item \emph{Tipo 3}: grammatiche ``riconosciute'' da DFA.
+\end{itemize}
+
+\noindent Se vista in altro modo, la gerarchia di Chomsky stabilisce inoltre il grado di decidibilità delle grammatiche.
+Si osservi la tabella sotto riportata.
+\subfile{../Figure/Figura 5 - Gerarchia di Chomsky.tex}
+
+\noindent Considerando ciascuna colonna della tabella di cui sopra
+\begin{itemize}
+    \item \emph{Membership Problem}: riguarda la possibilità di stabilire se, considerata un certa grammatica \(G\),
+          una parola \(\omega\) appartenga al linguaggio generato da \(G\).
+
+    \item \emph{Emptiness Problem}: riguarda la possibilità di verificare se, considerata un certa grammatica \(G\), il linguaggio generato da \(G\) è vuoto.
+    \item \emph{Finiteness Problem}: riguarda la possibilità di controllare se, considerata un certa grammatica \(G\), il linguaggio generato da \(G\) è finito.
+    \item \emph{Equivalence Problem}: riguarda la possibilità di determinare se, considerate due grammatiche \(G_{1}, G_{2}\), i linguaggi generati da \(G_{1} \text{e} G_{2}\) sono uguali.
+\end{itemize}
+
+\subsubsection{Ambiguità di una CFG}
+\begin{Definition*}
+    Sia \(G\) una CFG, sia \(L(G)\) il linguaggio generato dalla CFG. Si dirà \(G\) ambigua se
+    \[\exists \omega \in L(G) \such \exists 2 \text{o più alberi sintattici di} \omega\]
+\end{Definition*}
+
+\noindent Cioè \(G\) è ambigua se, il linguaggio da essa generato contiene almeno una parola che, attraverso le regole di produzione, può essere generata in più modi.
+
+\footnotetext[1]{Vedi \emph{Sezione \eqref{sec:8}}}.
+\clearpage
+\end{document}

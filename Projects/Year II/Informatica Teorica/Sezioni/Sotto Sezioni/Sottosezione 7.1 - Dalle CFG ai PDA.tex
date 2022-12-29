@@ -1,0 +1,70 @@
+\documentclass{subfiles}
+\begin{document}
+Sia \(G\) una CFG, questa può essere trasformata in PDA applicando il seguente algoritmo.
+\begin{Algorithm*}
+    \begin{enumerate}
+        \item []
+        \item L'alfabeto del PDA sarà l'alfabeto della CFG, cioè \(\Sigma_{P} = \Sigma_{G}\).
+        \item L'alfabeto di pila è dato dall'unione dell'alfabeto della CFG, dei simboli non terminali e del simbolo di pila vuota, cioè \(\Gamma = \Sigma_{G} \cup V_{G} \cup \Set{Z_{0}}\).
+        \item Il PDA ha due soli stai: \(q_{0}\) iniziale e \(q_{1}\) finale. Se realizzato con pila vuota, in un certo senso, \(q_{0} = q_{1}\).
+        \item Allo stato \(q_{1}\) si arriva solo per transizioni da \(q_{0}\), con mosse del tipo
+              \[
+                  \delta(q_{0}, \varepsilon, Z_{0}) \to (q_{1}, Z_{0})
+              \]
+        \item Per ogni carattere \(x \in \Sigma_{P}\) si definisce una transizione del tipo
+              \[
+                  \delta(q_{0}, x, x) \to (q_{0}, \varepsilon)
+              \]
+        \item Le altre transizioni sono definite a partire dalle regole di produzione.
+              \begin{itemize}
+                  \item Se la regola è del tipo \(A \to BA_{1} \cdots A_{n}, n \ge 0\), si aggiunge una transizione del tipo \(\delta(q_{0}, \varepsilon, A) \to (q_{0}, A_{n} \cdots A_{1}B)\).
+                  \item Se la regola è del tipo \(A \to bA_{1} \cdots A_{n}, n \ge 0\), si aggiunge una transizione del tipo \(\delta(q_{0}, \varepsilon, A) \to (q_{0}, A_{n} \cdots A_{1})\).
+                  \item Se la regola è del tipo \(A \to \varepsilon \), si aggiunge una transizione del tipo \(\delta(q_{0}, \varepsilon, A) \to (q_{0}, \varepsilon)\).
+              \end{itemize}
+    \end{enumerate}
+\end{Algorithm*}
+\clearpage
+
+\begin{Exercise*}
+    Sia \(L = \set{\omega}{\omega = a^{n}b^{n + 2}, n \ge 0}\). Costruire il PDA che riconosce \(L\).
+    \begin{Solution*}
+        Si procede stabilendo per prima cosa la CFG che genera \(L\). Posto \(S\) l'assioma, si ha
+        \[\begin{aligned}
+                 & S \to Abb           \\
+                 & A \to ab \given aAb \\
+            \end{aligned}\]
+
+        \noindent Normalizzando secondo Chomsky, segue
+        \[\begin{aligned}
+                 & S \to DB           \\
+                 & D \to CB           \\
+                 & C \to AD \given AB \\
+                 & B \to b            \\
+                 & A \to a            \\
+            \end{aligned}\]
+
+        \noindent Considerando adesso le transizioni del PDA, dall'algoritmo precedentemente introdotto segue
+        \[\begin{aligned}
+                 & \delta(q_{0}, \varepsilon, Z_{0}) \to (q_{0}, S) \\
+                 & \delta(q_{0}, a, a) \to (q_{0}, \varepsilon)     \\
+                 & \delta(q_{0}, b, b) \to (q_{0}, \varepsilon)     \\
+                 & \delta(q_{0}, \varepsilon, S) \to (q_{0}, DB)    \\
+                 & \delta(q_{0}, \varepsilon, D) \to (q_{0}, CB)    \\
+                 & \delta(q_{0}, \varepsilon, C) \to (q_{0}, AD)    \\
+                 & \delta(q_{0}, \varepsilon, C) \to (q_{0}, AB)    \\
+                 & \delta(q_{0}, \varepsilon, B) \to (q_{0}, b)     \\
+                 & \delta(q_{0}, \varepsilon, A ) \to (q_{0}, a)    \\
+            \end{aligned}\]
+
+        \noindent da cui in conclusione si ha il seguente automa, accettante per pila vuota.
+        \subfile{../Figure/Figura Es 7.1.1.tex}
+    \end{Solution*}
+\end{Exercise*}
+
+\clearpage
+\end{document}
+
+
+
+
+

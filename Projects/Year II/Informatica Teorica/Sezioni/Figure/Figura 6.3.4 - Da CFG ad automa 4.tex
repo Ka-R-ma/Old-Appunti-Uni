@@ -1,0 +1,16 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{center}
+    \begin{tikzpicture}[node distance = 2cm, on grid, auto, every node/.style={scale=0.85}, initial text = start]
+
+        \tikzstyle{every state} = [fill={rgb:black,1;white,10}]
+
+        \node (S) [state, initial] {\(S\)};
+        \node (a) [state, right of = S, accepting] {\(a\)};
+
+        \draw[-latex]
+        (S) edge [] node {a} (a);
+
+    \end{tikzpicture}
+\end{center}
+\end{document}

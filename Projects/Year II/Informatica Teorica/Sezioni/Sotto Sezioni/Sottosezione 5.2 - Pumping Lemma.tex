@@ -6,7 +6,7 @@ Per semplificare tale processo è possibile utilizzare uno strumento molto poten
 \begin{Lemma}
     Sia \(L\) un linguaggio. Questi non è regolare se
     \[
-        \forall n \such \exists \omega \in L, \abs{\omega} \le n, \exists x,y,z \such \omega = xyz
+        \exists n \such \forall \omega \in L, \abs{\omega} \le n, \exists x,y,z \such \omega = xyz
     \]
     per cui almeno una delle seguenti proprietà non è soddisfatta.
     \begin{multicols}{3}
@@ -19,23 +19,30 @@ Per semplificare tale processo è possibile utilizzare uno strumento molto poten
 \end{Lemma}
 
 \begin{Exercise*}
-    Sia \(L = \set{\omega \in \Sigma = \Set{a, b}}{\omega = a^{n}b^{n}}\). Stabilire se \(L\) è regolare.
+    Sia \(L = \set{\omega}{\omega = a^{n}b^{n}, n \ge 0}\). Stabilire se \(L\) è regolare.
     \begin{Solution*}
-        Procedendo applicando il pumping lemma
+        Sia supposto \(L\) non regolare, segue
         \[
-            \forall n, \qquad a^{n}b^{n} \in L
-        \]
-        cioè
-        \[
-            \underbrace{a \cdots a}_{n \ volte} \underbrace{b \cdots b}_{n \ volte} \in L
+            \forall n \quad a^{n}b^{n} = \underbrace{a \cdots a}_{n \ volte} \underbrace{b \cdots b}_{\ n \ volte} \in L
         \]
 
-        \noindent Considerando ora le partizioni valide
+        \noindent Procedendo col considerare alcune partizioni
         \begin{enumerate}
-            \item \(x = \underbrace{a \cdots a}_{i \ volte},  y = \underbrace{a \cdots a}_{j \ volte}, z = \underbrace{b\cdots b}_{n \ volte} \text{con} i + j = n\).
-            \item \(x = \underbrace{a \cdots a}_{i \ volte}, y = \underbrace{a \cdots a}_{j \ volte}\underbrace{b \cdots b}_{l \ volte}, z = \underbrace{b \cdots b}_{h \ volte} \text{con} i + j = n, l + h = n\).
+            \item Sia \(x = a^{i}, y = a^{j}, z = b^{n}\) tale che \(i + j = n\):
+                  si osserva che, posto \(k = 0\), segue \(a^{i}b^{n} \notin L\), poiché \(i < n\).
+
+            \item Sia \(x = a^{i}, y = a^{j}b^{h}, z = b^{l}\) tale che \(i + j = n \text{,} h + l = n\):
+                  si osserva però che \(\abs{xy} = \abs{a^{i + j}b^{h}} > n\).
         \end{enumerate}
-        si ha che la prima viola la terza proprietà per \(k = 0\), la seconda partizione, e in generale quelle che richiedono almeno una \(b\), violano la seconda proprietà.
+
+        \begin{Note*}
+            Le partizioni non riportate sono state trascurate, in quanto ovvio non soddisfacenti almeno una delle proprietà.
+        \end{Note*}
     \end{Solution*}
 \end{Exercise*}
+\begin{Remark*}
+    Sia il pumping lemma per i linguaggi REC, sia quello per i linguaggi CF in \emph{Sezione \eqref{sec:6.5}}, garantiscono esclusivamente la non appartenenza ad una data famiglia di linguaggi.
+    Cioè, se un linguaggio soddisfa il pumping lemma, non è certo che questi sia regolare (o CF).
+\end{Remark*}
+\clearpage
 \end{document}
