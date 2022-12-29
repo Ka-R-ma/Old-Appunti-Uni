@@ -1,0 +1,16 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{center}
+    \begin{tikzpicture}[node distance = 2cm, on grid, auto, every node/.style={scale=0.85}, initial text = start]
+
+        \tikzstyle{every state} = [fill={rgb:black,1;white,10}]
+
+        \node (q0) [state, initial] {\(q_{0}\)};
+
+        \draw[-latex]
+        (q0) edge [loop right] node [text width = 20 pt] {\(\varepsilon \given Z_{0} \given S\) \(\varepsilon \given S \given DB\) \(\varepsilon \given D \given CB\) %
+                \(\varepsilon \given C \given AD\) \(\varepsilon \given C \given AB\) \(\varepsilon \given A \given a\) \(\varepsilon \given B \given b\) \(a \given a \given \varepsilon\) \(b \given b \given \varepsilon\)} ();
+
+    \end{tikzpicture}
+\end{center}
+\end{document}

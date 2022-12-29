@@ -1,0 +1,46 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{Definition*}
+    Dato \(\Sigma\) un certo alfabeto, si definisce grammatica \(G\) la seguente quadrupla.
+    \[
+        G = (\Sigma, V, S, P)
+    \]
+    ove
+    \begin{itemize}
+        \item \(\Sigma\) è l'alfabeto di simboli terminali;
+        \item \(V\) è l'alfabeto dei simbolo non terminali;
+        \item \(S\) è un simbolo non terminale detto assioma;
+        \item \(P\) è l'insieme delle regole di produzione.
+    \end{itemize}
+\end{Definition*}
+\begin{Example*}
+    Sia \(\Sigma = \Set{a, b}\), sia \(V = \Set{S}\). Stabilire una grammatica che generi il linguaggio \(a^{n}b^{n}\).
+    \begin{Solution*}
+        Poiché \(V = \Set{S}\), sia \(S\) l'assioma, segue che le regole di produzione sono le seguenti.
+        \[\begin{aligned}
+                \textcircled{1} & \quad S \to ab  \\
+                \textcircled{2} & \quad S \to aSb \\
+            \end{aligned}\]
+
+        \noindent Considerando ad esempio la parola \(a^{3}b^{3}\), questa è ottenuta applicando due volte \textcircled{2} di produzione, seguite da \textcircled{1}.
+    \end{Solution*}
+\end{Example*}
+
+\subsection{Alberi sintattici}
+\subfile{Sotto Sezioni/Sottosezione 6.1 - Alberi sintattici.tex}
+
+\subsection{Proprietà delle CFG}
+\subfile{Sotto Sezioni/Sottosezione 6.2 - Proprieta delle CFG.tex}
+
+\subsection{Grammatiche unilaterali}
+\subfile{Sotto Sezioni/Sottosezione 6.3 - Grammatiche unilaterali.tex}
+
+\subsection{Forma normale di Chomsky}
+\subfile{Sotto Sezioni/Sottosezione 6.4 - Forma normale di Chomsky.tex}
+
+\subsection{Pumping Lemma per le CFG}
+\subfile{Sotto Sezioni/Sottosezione 6.5 - Pumping Lemma per i CF.tex}
+
+\subsection{Gerarchia di Chomsky}
+\subfile{Sotto Sezioni/Sottosezione 6.6 - Gerarchia di Chomsky.tex}
+\end{document}

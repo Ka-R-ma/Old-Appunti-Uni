@@ -1,0 +1,16 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{center}
+    \begin{tikzpicture}[node distance = 4cm, on grid, auto, every node/.style={scale=0.85}, initial text = start]
+
+        \tikzstyle{every state} = [fill={rgb:black,1;white,10}]
+
+        \node (q0) [state, initial] {\(q_{0}\)};
+        \node (q1) [state, right of = q0, accepting] {\(q_{1}\)};
+
+        \draw[-latex]
+        (q0) edge [loop below] node [text width = 20pt] {\(a \given Z_{0} \given AZ_{0}\) \(a \given A \given AA\) \(b \given A \given \varepsilon\)} ()
+        (q0) edge [] node {\(\varepsilon \given Z_{0} \given \varepsilon\)} (q1);
+    \end{tikzpicture}
+\end{center}
+\end{document}

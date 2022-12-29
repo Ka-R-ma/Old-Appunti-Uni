@@ -1,0 +1,42 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{Definition*}
+    Sia \(G\) una CFG, sia \(L\) il linguaggio da essa generato. Si definisce \emph{automa a pila}, (o PDA),  l'automa capace di riconoscere \(L\).
+
+    \noindent Come gli altri automi questi è descrivibile tramite una tupla, che è la seguente
+    \[
+        P = (Q, \Sigma, \Gamma, \delta, q_{0}, Z_{0}, F)
+    \]
+    ove \(Q, \Sigma, q_{0}, F\) hanno la stessa funzionalità di un DFA, metre
+    \begin{itemize}
+        \item \(\Gamma\) è l'insieme dei simboli di pila;
+        \item \(Z_{0} \in \Gamma\) è il simbolo di pila vuota;
+        \item \(\delta \such Q \cp \Sigma \cp \Gamma \to Q \cp \Gamma^{*}\): cioè preso \(q \in Q, a \in \Sigma, w \in \Gamma\) si ha \(\delta(q, a, w) \to (p, y)\) con \(p \in Q, y \in \Gamma\).
+    \end{itemize}
+\end{Definition*}
+
+\noindent Per analogia, un PDA è un NFA con una pila che ad ogni transizione
+\begin{enumerate}
+    \item legge un simbolo in input;
+    \item cambia (o meno) stato;
+    \item rimpiazza (o meno) il top della pila.
+\end{enumerate}
+
+\noindent Passando alla progettazione di un PDA, questa può essere realizzata in modo che la computazione accettata sia dovuta
+\begin{itemize}
+    \item al passaggio in uno stato accettante;
+    \item alla pila vuota.
+\end{itemize}
+
+\begin{Example*}
+    Sia \(L = \set{\omega}{\omega = a^{n}b^{n}, n \ge 0}\). Costruire il PDA che lo riconosce.
+    \begin{Solution*}
+        Ponendo \(Z_{0}\) simbolo di pila vuota, il PDA riconoscente \(L\) è il seguente.
+        \subfile{Figure/Figura Es 7.0.1.tex}
+    \end{Solution*}
+\end{Example*}
+\clearpage
+
+\subsection{Dalle CFG ai PDA}
+\subfile{Sotto Sezioni/Sottosezione 7.1 - Dalle CFG ai PDA.tex}
+\end{document}

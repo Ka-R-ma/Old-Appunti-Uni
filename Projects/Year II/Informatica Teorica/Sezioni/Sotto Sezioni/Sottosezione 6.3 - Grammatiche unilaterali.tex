@@ -1,0 +1,20 @@
+\documentclass{subfiles}
+\begin{document}
+Sia \(G\) una CFG. Questa si dice unilaterale se le sue regole di produzione sono definite come segue
+\[\begin{aligned}
+         & \quad S \to \alpha B \\
+         & \quad S \to \alpha   \\
+    \end{aligned}\]
+con \(\alpha\) simbolo terminale e \(B\) non terminale.
+
+\subsubsection{Dalle CFG unilaterali destre agli automi}
+Sia \(G\) una CFG unilaterale destra, sia \(S\) il suo assioma. Allora il passaggio ad automa è definito come segue
+\begin{multicols}{2}
+    \begin{itemize}
+        \item Se \(S \to aS\) allora \subfile{../Figure/Figura 6.3.1 - Da CFG ad automa 1.tex}
+        \item Se \(S \to aA\) allora \subfile{../Figure/Figura 6.3.2 - Da CFG ad automa 2.tex}
+        \item Se \(S \to \varepsilon\) allora \subfile{../Figure/Figura 6.3.3 - Da CFG ad automa 3.tex}
+        \item Se \(S \to a\) allora \subfile{../Figure/Figura 6.3.4 - Da CFG ad automa 4.tex}
+    \end{itemize}
+\end{multicols}
+\end{document}
