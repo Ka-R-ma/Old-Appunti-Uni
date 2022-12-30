@@ -1,0 +1,20 @@
+\documentclass{subfiles}
+\begin{document}
+Una MT può essere descritta in maniera formale dalla seguente set-tupla.
+\[
+    M = (Q, \Sigma, \Gamma, \delta, q_{o}, B, F)
+\]
+ove \(Q, \Sigma, q_{0}, F\) hanno la stessa funzione di quelle di un DFA, mentre
+\begin{itemize}
+    \item \(\Gamma\) è l'insieme di simboli di nastro;
+    \item \(B \in \Gamma \setminus \Sigma\) è il blank;
+    \item \(\delta \such Q \cp \Gamma \to Q \cp \Gamma \cp \Set{L, R}\) è la funzione di transizione.
+\end{itemize}
+
+\noindent Da un punto di vista grafico, un MT si compone di tre parti quali
+\begin{itemize}
+    \item \emph{controllo:} gestisce il comportamento della MT ad ogni stato;
+    \item \emph{testina:} meccanismo che permette di scorrere tra i vari stati;
+    \item \emph{nastro:} una sequenza infinita di celle.
+\end{itemize}
+\end{document}

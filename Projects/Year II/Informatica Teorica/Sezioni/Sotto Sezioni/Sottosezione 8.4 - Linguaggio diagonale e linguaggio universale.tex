@@ -1,0 +1,48 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{Definition*}
+    Sia \(M_{i}\) una MT, sia \(\omega_{i}\) la sua codifica.
+    Si definisce linguaggio diagonale \(L_{D}\), l'insieme delle coppie \((M_{i}, \omega_{i})\) tali per cui \(M_{i} \text{non accetta} \omega_{i}\). Cioè
+    \[
+        L_{D} = \set{(M_{i}, \omega_{i})}{M_{i} \text{non accetta} \omega_{i}}
+    \]
+\end{Definition*}
+\begin{Theorem}
+    Il linguaggio diagonale \(L_{D}\) non è decidibile.
+    \begin{Proof*}
+        Sia \(M_{i}\) una MT che riconosce \(L_{D}\), sia \(\omega_{i} \in L_{D}\).
+
+        \noindent Segue che \(\omega_{i}\) è accettata, ma pertanto \(\omega_{i} \notin L_{D} \implies M_{i} \text{non accetta} \omega_{i}\).
+
+        \noindent In breve, si ha che \(\omega_{i}\) è accetta da \(M_{i}\) solo se non lo è.
+    \end{Proof*}
+\end{Theorem}
+
+\subsubsection{Linguaggio universale e MT universale}
+\begin{Definition*}
+    Sia \(M\) una MT, sia \(\omega\) una stringa accetta. Di definisce linguaggio universale \(L_{U}\), l'insieme delle coppie \((M, \omega)\), tali che \(M \text{accetta} \omega\). Cioè
+    \[
+        L_{U} = \set{(M, \omega)}{M \text{accetta} \omega}
+    \]
+\end{Definition*}
+\begin{Theorem}
+    Sia \(L\) un linguaggio ricorsivo, allora \(L^{C}\) è ricorsivo.
+\end{Theorem}
+\begin{Theorem}
+    Siano \(L, L^{C}\) ricorsivamente enumerabili, allora \(L\) è ricorsivo.
+\end{Theorem}
+\begin{Definition*}
+    Si definisce MT universale, la MT \(U\) che riconosce \(L_{U}\), capace di simulare ogni altra MT.
+\end{Definition*}
+\begin{Note*}\label{Note: }
+    Se \(M \text{accetta} \omega\), questa si arresta e simultaneamente si arresta \(U\).
+\end{Note*}
+
+\noindent Da quanto finora detto si può dimostrare che \(L_{U}\) non è ricorsivo.
+\noindent Sia, per assurdo, \(L_{U}\) ricorsivo, ne segue \(L_{U}^{C}\) ricorsivo.
+
+\noindent Sia ora considerata la seguente MT
+\subfile{../Figure/Figura 5 - MT accettante Ld.tex}
+
+\noindent Supponendo che \(L_{U}^{C}\) sia decidibile, si sta rendendo decidibile \(L_{D}\) che è assurdo.
+\end{document}

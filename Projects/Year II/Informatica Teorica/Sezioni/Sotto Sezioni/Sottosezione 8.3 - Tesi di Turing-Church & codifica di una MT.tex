@@ -1,0 +1,46 @@
+\documentclass{subfiles}
+\begin{document}
+A differenza di un automa, le MT hanno la possibilità di non terminare mai la loro esecuzione.
+Da ciò nasce il \emph{problema di arresto di una MT}.
+
+\noindent Parlando ora dei linguaggi validi per una MT, si hanno
+\begin{itemize}
+    \item \emph{linguaggi riconosciuti:} linguaggi che per ogni parola appartenente o meno al linguaggio, portano ad un arresto;
+    \item \emph{linguaggi accettati:} linguaggi che portano ad un arresto solamente per parole interne al linguaggio.
+\end{itemize}
+
+\subsubsection{Tesi di Turing-Church}
+La tesi di Turing-Church, che sebbene sia solo una tesi non è mai stata confutata, stabilisce: \emph{una funzione è calcolabile se e solo se una MT la calcola.}
+
+\subsubsection{Codifica binaria di una MT}
+Sia \(M\) una macchina di Turing, siano \(q_{1}, \ldots, q_{r}\) suoi stati, sia \(q_{1}\) stato iniziale e \(q_{2}\) finale.
+Siano \(X_{1}, \ldots, X_{s}\) i simboli di nastro, siano \(0 = X_{1}, 1 = X_{2}, B = X_{3}\) siano infine \(L = D_{1}, R = D_{2}\).
+Considerando la funzione di transizione
+\[
+    \delta(q_{i}, X_{j}) = (q_{k}, X_{l}, D_{m})
+\]
+sia \(0^{i}10^{j}10^{k}10^{l}10^{m}\) la sua codifica.
+
+\noindent Poiché le transizioni sono in numero finito, posta \(C_{t}\) la t-esima transizione, segue che
+\[
+    C_{1}11C_{2}11 \cdots C_{n - 1} 11 C_{n}
+\]
+sono tutte le transizioni, descrivendo difatti l'intera MT.
+
+\begin{Example*}
+    Sia \(M = (\Set{q_{1}, q_{2}, q_{3}}, \Set{0, 1}, \Set{0, 1, B}, \delta, q_{1}, B, \Set{q_{2}})\). Stabilire la codifica di \(M\) sapendo che le transizioni sono le seguenti.
+    \[\begin{aligned}
+            T_{1} = \delta(q_{1}, 1) & = (q_{3}, 0, R) \\
+            T_{2} = \delta(q_{3}, 0) & = (q_{1}, 1, R) \\
+            T_{3} = \delta(q_{3}, 1) & = (q_{2}, 0, R) \\
+            T_{4} = \delta(q_{3}, B) & = (q_{3}, 1, L) \\
+        \end{aligned}\]
+    \begin{Solution*}
+        Siano \(q_{1} = 0^{1}, q_{2} = 0^{2}, q_{3} = 0^{3}\), siano \(0 = 0^{1}, 1 = 0^{2}\) inoltre siano \(B = 0^{3}, L = 0^{1}, R = 0^{2}\), separando ogni parte della transizione con un uno,
+        e ogni transizione con due uno segue che
+        \[
+            M = \underbrace{0100100010100}_{T_{1}} 11  \underbrace{0001010100100}_{T_{2}} 11 \underbrace{00010010010100}_{T_{3}} 11 \underbrace{0001000100010010}_{T_{4}}
+        \]
+    \end{Solution*}
+\end{Example*}
+\end{document}
