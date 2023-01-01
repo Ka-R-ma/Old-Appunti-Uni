@@ -1,0 +1,18 @@
+\documentclass{subfiles}
+\begin{document}
+Sia \(X\) un numero aleatorio. Questi dicasi avere distribuzione normale standard se, considerata la densità di probabilità si ha che
+\[
+    f(x) = \frac{1}{\sqrt{2 \pi}} e^{- \frac{x^{2}}{2}}, \quad \forall x \in \R
+\]
+
+\noindent Nel caso della distribuzione normale standard, generalmente si indica con \(\Phi\) la distribuzione di probabilità, cioè
+\[
+    \Phi(x) = F(x) = P(X \le x) = \int{- \infty}{x}{\frac{1}{\sqrt{2 \pi} e^{- \frac{x^{2}}{2}}}}{x}
+\]
+
+\noindent Si può infine dimostrare che
+\[\begin{aligned}
+        \mathbb{E}(x) & = 0                     \\
+        \Var(x)       & = \mathbb{E}(x^{2}) = 1
+    \end{aligned}\]
+\end{document}
