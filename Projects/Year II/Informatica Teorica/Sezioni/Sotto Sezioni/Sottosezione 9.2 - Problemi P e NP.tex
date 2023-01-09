@@ -1,0 +1,48 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{Definition*}
+    Sia \(Q\) un problema. Dicasi \(Q\) problema di \emph{classe P} se e solo se \(Q\) è risolvibile da una MT polinomialmente deterministica.
+\end{Definition*}
+
+\begin{Definition*}
+    Sia \(L\) un linguaggio. Si dirà \(L\) appartenente alla \emph{classe P} se:
+    esiste un polinomio \(f(n)\) tale che \(L\) sia deciso da una MT polinomialmente deterministica in tempo \(f(n)\).
+\end{Definition*}
+
+\begin{Definition*}
+    Sia \(L\) un linguaggio. Si dirà \(L\) appartenente alla \emph{classe NP} se:
+    esiste una MT polinomialmente non deterministica che lo riconosce in tempo polinomiale \(f(n)\).
+\end{Definition*}
+
+\begin{Remark*}
+    Poiché ogni MT deterministica è anche non deterministica, si ha
+    \[
+        P \subseteq NP
+    \]
+
+    \noindent Da cio ci si potrebbe chiedere \(P = NP\)? Ad oggi tale domanda rimane ancora senza una risposta certa.
+\end{Remark*}
+\clearpage
+
+\subsubsection{Problemi NP-completi}
+\begin{Definition*}
+    Sia \(P\) un problema. Dicasi \(P\) essere NP-completo se
+    \begin{itemize}
+        \item \(P \in NP\);
+        \item \(\forall P^{'} \in NP, \exists f \such \omega \in P^{'} \iff f(\omega) \in P\).
+    \end{itemize}
+\end{Definition*}
+
+\begin{Theorem}\label{thm:9.1}
+    Sia \(P_{1} \in NP-completi\), sia \(P_{2} \in NP\). Se \(P_{1}\) è polinomialmente riducibile a \(P_{2}\), allora \(P_{2} \in NP-completi\).
+\end{Theorem}
+
+\begin{Theorem}\label{thm:9.2}
+    Se \(Q \in NP-completi \land Q \in P \implies P = NP\).
+\end{Theorem}
+
+\begin{Note*}
+    Dal \emph{Teorema \eqref{thm:9.2}} segue che, qualora ci si riuscisse, dimostrando che un problema \(Q_{1}\) appartenente agli NP-completi è riducibile ad un problema \(Q_{2}\) in P,
+    si dimostrebbe dal \emph{Teorema \eqref{thm:9.1}} che ogni problema NP-completo è riducibile a \(Q_{2}\), dimostrando in tal modo \(P = NP\).
+\end{Note*}
+\end{document}
