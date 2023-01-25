@@ -5,14 +5,16 @@
 
         \tikzstyle{every state} = [fill={rgb:black,1;white,10}]
 
-        \node (q0) [state, initial] {\(q_{0}\)};
-        \node (q1) [state, accepting, right of = q0] {\(q_{1}\)};
+        \node (q0) [state, initial, accepting] {\(q_{0}\)};
+        \node (q1) [state, right of = q0] {\(q_{1}\)};
+        \node (q2) [state, below right of = q1] {\(q_{2}\)};
 
         \draw[-latex]
-        (q0) edge [bend left] node {1} (q1)
-        (q0) edge [loop below] node {0} ()
-        (q1) edge [bend left] node {0} (q0)
-        (q1) edge [loop right] node {1} ();
+        (q0) edge [bend left] node {a} (q1)
+        (q1) edge [bend left] node {a} (q0)
+        (q0) edge [bend right] node {b, c} (q2)
+        (q1) edge [bend left] node {b, c} (q2)
+        (q2) edge [loop below] node {a, b, c} ();
 
     \end{tikzpicture}
 \end{center}

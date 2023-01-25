@@ -6,11 +6,11 @@ Analogo ragionamento è estensibile agli NFA, sebbene per questi non è sempre v
 \subsubsection{Relazione di indistinguibilità}
 Sia \(A\) un DFA, siano \(p \text{e} q\) suoi stati. Si ha che
 \[
-    p \given q \iff (\delta^{*}(q, \omega) \land \delta^{*}(q, \omega)) \in F, \quad \forall \omega \in \Sigma^{*}
+    p \given q \iff (\delta^{*}(p, \omega) \land \delta^{*}(q, \omega)) \in F, \quad \forall \omega \in \Sigma^{*}
 \]
 oppure
 \[
-    p \given q \iff (\delta^{*}(q, \omega) \land \delta^{*}(q, \omega)) \notin F, \quad \forall \omega \in \Sigma^{*}
+    p \given q \iff (\delta^{*}(p, \omega) \land \delta^{*}(q, \omega)) \notin F, \quad \forall \omega \in \Sigma^{*}
 \]
 
 \noindent Cioè \(p \text{e} q\) sono indistinguibili se per ogni parola del linguaggio universale si ha che, calcolando la funzione di transizione estesa per i due stati,
