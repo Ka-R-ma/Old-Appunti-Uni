@@ -1,33 +1,28 @@
 \documentclass{subfiles}
 \begin{document}
 \begin{center}
-    \begin{tikzpicture}[node distance = 2cm, on grid, auto, every node/.style={scale=0.85}, initial text = start]
+    \begin{tikzpicture}[node distance = 2cm, on grid, auto, every node/.style={scale=0.75}, initial text = start]
 
         \tikzstyle{every state} = [fill={rgb:black,1;white,10}]
 
-        \node (q0) [state, initial] {\(q_{0}\)};
-        \node (q1) [state, above right of = q0] {\(q_{1}\)};
-        \node (q2) [state, right of = q1, accepting] {\(q_{2}\)};
-        \node (q3) [state, right of = q2, accepting] {\(q_{3}\)};
-        \node (q4) [state, below right of = q0, accepting] {\(q_{4}\)};
-        \node (q5) [state, right of = q4, accepting] {\(q_{5}\)};
+        \node (q0) [state, initial] {\(\Set{q_{0}}\)};
+        \node (qAC) [state, right of = q0] {\(\Set{q_{a}, q_{c}}\)};
+        \node (qB) [state, below of = qAC] {\(\Set{q_{b}}\)};
+        \node (qD) [state, below of = qB, accepting] {\(\Set{q_{d}}\)};
+        \node (qC) [state, right of = qAC] {\(\Set{q_{c}}\)};
+        \node (qF) [state, right of = qD, accepting] {\(\Set{q_{f}}\)};
 
-        \draw[-latex]
-        (q0) edge [bend left] node {a} (q1)
-        (q0) edge [bend right] node {b} (q4)
-
-        (q1) edge [loop above] node {a} ()
-        (q1) edge [] node {b} (q2)
-
-        (q2) edge [] node {a} (q4)
-        (q2) edge [bend left] node {a} (q3)
-
-        (q3) edge [bend left] node {b} (q2)
-        (q3) edge [loop right] node {a} ()
-
-        (q4) edge [] node {a} (q5)
-
-        (q5) edge [loop right] node {a} ();
+        \draw [-latex]
+        (q0) edge [bend left] node {a} (qAC)
+        (q0) edge [bend right] node {b} (qD)
+        (qAC) edge [bend left] node {a} (qC)
+        (qAC) edge [bend left] node {b} (qB)
+        (qB) edge [bend left] node {a} (qAC)
+        (qB) edge [] node {b} (qD)
+        (qC) edge [bend left] node {a} (qAC)
+        (qC) edge [] node {b} (qD)
+        (qD) edge [] node {a} (qF)
+        (qF) edge [loop right] node {a} ();
 
     \end{tikzpicture}
 \end{center}

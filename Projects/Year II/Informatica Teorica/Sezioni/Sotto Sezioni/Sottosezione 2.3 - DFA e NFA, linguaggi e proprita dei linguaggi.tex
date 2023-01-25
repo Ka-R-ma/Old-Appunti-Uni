@@ -1,7 +1,7 @@
 \documentclass{subfiles}
 \begin{document}
 \begin{Definition*}
-    Sia \(A\) un automa. Si definisce linguaggio di \(A, L(A)\), l'insieme delle stringhe \(\omega\) che accettate da \(A\). Cioè
+    Sia \(A\) un automa. Si definisce linguaggio di \(A, L(A)\), l'insieme delle stringhe \(\omega\) accettate da \(A\). Cioè
     \[\begin{cases}
             L(A) = \set{\omega}{\delta^{*}(q_{0}, \omega) \in F} \quad \text{se} A \text{è un DFA} \\
             L(A) = \set{\omega}{\delta^{*}(q_{0}, \omega) \cap F \neq \emptyset} \quad \text{se} A \text{è un NFA}
@@ -11,9 +11,9 @@
 \subsubsection{Proprietà dei linguaggi}
 Sia \(L\) il linguaggio riconosciuto da un automa; su di questi è possibile applicare le seguenti operazioni.
 \begin{itemize}
-    \item \emph{Potenza n-sima:} si intende la concatenazione di \(L\) un certo numero \emph{n} di volte.
+    \item \emph{Potenza n-sima:} si intende la concatenazione di stringhe in \(L\) un certo numero \emph{n} di volte.
           \begin{Example*}
-              Sia \(L = \set{\omega}{\omega \in \Sigma = \Set{a, b}}\), sia \(n = 2\). Segue
+              Sia \(L = \set{\omega}{\omega \in \Sigma = \Set{a, b}^{*}}\), sia \(n = 2\). Segue
               \[
                   L^{2} = L \circ L = \Set{aaaa, aaab, aabb, aaba, abaa, abab, abbb, abba, \dots}
               \]

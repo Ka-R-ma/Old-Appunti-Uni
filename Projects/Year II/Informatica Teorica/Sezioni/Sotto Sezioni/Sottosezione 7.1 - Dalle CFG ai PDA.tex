@@ -19,7 +19,7 @@ Sia \(G\) una CFG, questa può essere trasformata in PDA applicando il seguente 
               \begin{itemize}
                   \item Se la regola è del tipo \(A \to BA_{1} \cdots A_{n}, n \ge 0\), si aggiunge una transizione del tipo \(\delta(q_{0}, \varepsilon, A) \to (q_{0}, A_{n} \cdots A_{1}B)\).
                   \item Se la regola è del tipo \(A \to bA_{1} \cdots A_{n}, n \ge 0\), si aggiunge una transizione del tipo \(\delta(q_{0}, \varepsilon, A) \to (q_{0}, A_{n} \cdots A_{1})\).
-                  \item Se la regola è del tipo \(A \to \varepsilon \), si aggiunge una transizione del tipo \(\delta(q_{0}, \varepsilon, A) \to (q_{0}, \varepsilon)\).
+                  \item Se la regola è del tipo \(S \to \varepsilon \), si aggiunge una transizione del tipo \(\delta(q_{0}, \varepsilon, S) \to (q_{0}, \varepsilon)\).
               \end{itemize}
     \end{enumerate}
 \end{Algorithm*}
@@ -30,13 +30,13 @@ Sia \(G\) una CFG, questa può essere trasformata in PDA applicando il seguente 
     \begin{Solution*}
         Si procede stabilendo per prima cosa la CFG che genera \(L\). Posto \(S\) l'assioma, si ha
         \[\begin{aligned}
-                 & S \to Abb           \\
+                 & S \to Abb \given bb \\
                  & A \to ab \given aAb \\
             \end{aligned}\]
 
         \noindent Normalizzando secondo Chomsky, segue
         \[\begin{aligned}
-                 & S \to DB           \\
+                 & S \to DB \given BB \\
                  & D \to CB           \\
                  & C \to AD \given AB \\
                  & B \to b            \\
@@ -49,6 +49,7 @@ Sia \(G\) una CFG, questa può essere trasformata in PDA applicando il seguente 
                  & \delta(q_{0}, a, a) \to (q_{0}, \varepsilon)     \\
                  & \delta(q_{0}, b, b) \to (q_{0}, \varepsilon)     \\
                  & \delta(q_{0}, \varepsilon, S) \to (q_{0}, DB)    \\
+                 & \delta(q_{0}, \varepsilon, S) \to (q_{0}, BB)    \\
                  & \delta(q_{0}, \varepsilon, D) \to (q_{0}, CB)    \\
                  & \delta(q_{0}, \varepsilon, C) \to (q_{0}, AD)    \\
                  & \delta(q_{0}, \varepsilon, C) \to (q_{0}, AB)    \\

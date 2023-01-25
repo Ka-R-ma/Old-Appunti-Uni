@@ -1,7 +1,7 @@
 \documentclass{subfiles}
 \begin{document}
 \begin{center}
-    \begin{tikzpicture}[node distance = 2cm, on grid, auto, every node/.style={scale=0.85}, initial text = start]
+    \begin{tikzpicture}[node distance = 2cm, on grid, auto, every node/.style={scale=0.75}, initial text = start]
 
         \tikzstyle{every state} = [fill={rgb:black,1;white,10}]
 
@@ -14,11 +14,11 @@
 
         \draw[-latex]
         (q0) edge [bend left] node {a} (qa)
-        (q0) edge [] node {c} (qc)
+        (q0) edge [] node {a} (qc)
         (q0) edge [bend right] node {b} (qd)
 
         (qc) edge [bend left] node {a} (qa)
-        (qc) edge [loop above, right] node {c} ()
+        (qc) edge [loop above, right] node {a} ()
         (qc) edge [bend left] node {b} (qd)
 
         (qa) edge [bend left] node {b} (qb)
@@ -26,7 +26,7 @@
         (qd) edge [] node {a} (qf)
 
         (qb) edge [bend left] node {a} (qa)
-        (qb) edge [bend left] node {c} (qc)
+        (qb) edge [bend left] node {a} (qc)
 
         (qf) edge [loop right] node {a} (qf);
 
