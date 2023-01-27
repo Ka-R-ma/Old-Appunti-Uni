@@ -1,26 +1,30 @@
 \documentclass{subfiles}
 \begin{document}
 \begin{center}
-    \begin{tikzpicture}[node distance = 2cm, on grid, auto, every node/.style={scale=0.75}, initial text = start]
+    \begin{tikzpicture}[node distance = 3cm, on grid, auto, every node/.style={scale=0.75}, initial text = start]
 
         \tikzstyle{every state} = [fill={rgb:black,1;white,10}]
 
         \node (q0) [state, initial] {\(\Set{q_{0}}\)};
-        \node (qAC) [state, right of = q0] {\(\Set{q_{a}, q_{c}}\)};
-        \node (qB) [state, below of = qAC] {\(\Set{q_{b}}\)};
-        \node (qD) [state, below of = qB, accepting] {\(\Set{q_{d}}\)};
-        \node (qC) [state, right of = qAC] {\(\Set{q_{c}}\)};
+        \node (qAC) [state, right of = q1] {\(\Set{q_{a}, q_{b}}\)};
+        \node (qD) [state, below of = qAC, accepting] {\(\Set{q_{d}}\)};
+        \node (qDB) [state, right of = qAC, accepting] {\(\Set{q_{b}, q_{d}}\)};
+        \node (qACF) [state, right of = qDB, accepting] {\(\Set{q_{a}, q_{c}, q_{f}}\)};
         \node (qF) [state, right of = qD, accepting] {\(\Set{q_{f}}\)};
 
         \draw [-latex]
-        (q0) edge [bend left] node {a} (qAC)
+        (q0) edge [] node {a} (qAC)
         (q0) edge [bend right] node {b} (qD)
-        (qAC) edge [bend left] node {a} (qC)
-        (qAC) edge [bend left] node {b} (qB)
-        (qB) edge [bend left] node {a} (qAC)
-        (qB) edge [] node {b} (qD)
-        (qC) edge [bend left] node {a} (qAC)
-        (qC) edge [] node {b} (qD)
+
+        (qAC) edge [loop above] node {a} ()
+        (qAC) edge [] node {b} (qDB)
+
+        (qDB) edge [] node {b} (qD)
+        (qDB) edge [bend left] node {a} (qACF)
+
+        (qACF) edge [bend left] node {b} (qDB)
+        (qACF) edge [loop right] node {a} ()
+
         (qD) edge [] node {a} (qF)
         (qF) edge [loop right] node {a} ();
 
