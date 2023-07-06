@@ -1,0 +1,12 @@
+Si consideri un programma che è in esecuzione dalla CPU; ogni volta che questi necessita di un input dall'utente, o il verificarsi di un qualsiasi evento, questi genera un eccezione.
+Si pensi alle eccezione come dei messaggi alla CPU, la quale, terminata l'esecuzione dell'istruzione in corso, procede a risolvere.
+\\ \\
+Le eccezioni, anche dette interruzioni, sono di tre categorie \emph{trap, fault, abort}.
+\begin{itemize}
+    \item \textbf{Trap:} si tratta di eccezioni che sospendo l'istruzione, dopo la loro gestione riprendono l'esecuzione.
+    \item \textbf{Fault:} si tratta di interruzioni che interrompono l'istruzione, dopo la gestione procederanno al riavvio della stessa.
+    \item \textbf{Abort:} si tratta di eccezioni che interrompono l'istruzione, dopo la gestione riavvieranno il programma cui l'istruzione appartiene.
+\end{itemize}
+
+\noindent Ulteriore caratteristica delle interruzioni è il loro essere \emph{sincrone:} cioè causate dalla stessa CPU; \emph{asincrone:} se generate da un applicativo.
+Infine le interruzioni sono \emph{mascherabili:} se è possibile posticipare la loro gestione, senza causare danni al sistema; \emph{non mascherabili} viceversa.

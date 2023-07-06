@@ -1,0 +1,14 @@
+Si pensi alla GUI come una versione semplificata della CLI\footnotemark.
+In quanto versione semplificata risulta ovvio che la GUI sia meno potente della CLI, seppur svolgendone i medesimi compiti.
+
+\noindent Si può in tal senso pensare alla GUI come un programma che ne esegue altri.
+Analizzando la generica esecuzione di un programma da GUI, questa fa si che vengano eseguite, nell'ordine le \emph{syscall} fork ed exec.
+
+\subsubsection{SO e syscall}
+Considerando una generica syscall, questa si compone di due parti quali un'identificatore e un insieme di parametri.
+\begin{itemize}
+    \item \textbf{Identificatore:} codice univoco che permette di accedere in maniera diretta al programma.
+    \item \textbf{Parametri:} insieme di informazioni utili all'esecuzione del programma.
+          Si osservi che qual'ora il numero di parametri superi quello dei registri, i primi verranno memorizzati in un blocco di memoria,
+          successivamente si passerà a parametro il puntatore a tale locazione.
+\end{itemize}
