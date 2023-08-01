@@ -1,0 +1,56 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure}[!h]
+    \begin{subfigure}[b]{0.45\textwidth}
+        \begin{lstlisting}[language = algol]
+            begin
+                read r1
+                if r1 $\le$ 0 then write 0;
+                else
+                    begin
+                        r2 $\leftarrow$ r1;
+                        r3 $\leftarrow$ r1 - 1;
+                        while r3 > 0 do
+                            begin
+                                r2 $\leftarrow$ r2 * r1;
+                                r3 $\leftarrow$ r3 - 1;
+                            end
+                        write r2;
+                    end
+            end
+        \end{lstlisting}
+        \subcaption{Algoritmo per \(n^{n}\)}
+    \end{subfigure}
+    \hspace{12pt}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \begin{lstlisting}[language = RAM]
+                READ 1
+                LOAD 1
+                JGTZ pos
+                WRITE =0
+                JUMP enfif
+        pos:    LOAD 1
+                STORE 2
+                LOAD 1
+                SUB =1
+                STORE 3
+        while:  LOAD 3
+                SUB =1
+                JGTZ cont
+                JUMP endw
+        cont:   LOAD 2
+                MULT 1
+                STORE 2
+                LOAD 3
+                SUB =1
+                STORE 3
+                JUMP while
+        endw:   WRITE 2
+        endif:  HALT     
+    \end{lstlisting}
+        \subcaption{Programma ram per \(n^{n}\)}
+    \end{subfigure}
+    \caption{implementazioni di \(f(n)\)}
+    \label{Fig:2}
+\end{figure}
+\end{document}

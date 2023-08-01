@@ -14,7 +14,7 @@
 %% Packages used to implements some useful environments.
 \usepackage{tikz, pgfplots, circuitikz, caption, siunitx, forest}
 \usepackage{listings, lstautogobble}
-\usepackage{subfloat, subfig}
+\usepackage{caption, subcaption}
 %% Packages used for utilities.
 \usepackage{makecell}
 \usepackage[notext]{kpfonts}
@@ -79,6 +79,14 @@
 \lstset{
     autogobble = true,
     frame = single,
+    mathescape,
+    basicstyle = \scriptsize
+}
+
+\lstdefinelanguage{RAM}{
+    keywords = {LOAD, STORE, READ, WRITE, ADD, SUB, MULT, DIV, JUMP, JZERO, JGTZ, HALT},
+    keywordstyle = \bfseries,
+    autogobble = false,
 }
 
 % Edit on pre-existing macros
@@ -111,6 +119,7 @@
 \DeclareMathOperator{\Var}{\mathit{Var}}
 \DeclareSIUnit{\calorie}{cal}
 
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
 \newcommand{\set}[2]{\left\{#1 \such #2\right\}}
 \newcommand{\Set}[1]{\left\{#1\right\}}
 \newcommand{\given}{\:{|}\:}

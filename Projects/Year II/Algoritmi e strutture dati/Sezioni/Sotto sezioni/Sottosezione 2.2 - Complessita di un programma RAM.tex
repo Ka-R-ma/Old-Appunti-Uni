@@ -1,0 +1,25 @@
+\documentclass{subfiles}
+\begin{document}
+Il modello RAM sinora descritto è definito come \emph{modello RAM con costo uniforme}: in questo caso ogni istruzione richiede un'unità di tempo e ogni registro un'unità di spazio.
+Un'ulteriore modello è il \emph{modello RAM con costo logaritmico}, analizzato nel paragrafo seguente.
+
+\subsubsection{RAM con costo logaritmico}
+Nel modello con costo logaritmico si tiene conto della dimensione finita della memoria, nella fattispecie della dimensione limitata di una WORD.
+In tal senso, sia \(l(i)\) la seguente funzione che stabilisce il numero di bit per rappresentare l'operando
+\[
+    l(i) = \begin{cases}
+        \floor{\log \abs{i}} + 1, \quad & \text{se } i \neq 0 \\
+        1, \quad                        & \text{se} i = 0     \\
+    \end{cases}
+\]
+Si ha quindi che il costo per accedere agli operandi è quanto segue
+
+\[\begin{aligned}
+        =i: & \quad  l(i)                       \\
+        i:  & \quad l(i) + l(c(i))              \\
+        *i: & \quad l(i) + l(c(i)) + l(c(c(i))) \\
+    \end{aligned}\]
+
+\noindent Analizzando, a titolo di esempio, l'istruzione \lstinline[language = RAM]{ADD *i}, da quanto sopra si necessita \(l(i) + l(c(i)) + l(c(c(i)))\) per accedere ad *i,
+a cui aggiungere il costo di accesso all'accumulatore pari a \(l(c(0))\).
+\end{document}
