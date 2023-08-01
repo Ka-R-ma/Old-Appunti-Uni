@@ -1,17 +1,79 @@
 \documentclass{subfiles}
 \begin{document}
+In questa sezione saranno trattate brevemente strutture quali \emph{grafi} e \emph{alberi}.
+L'analisi di strutture quali \emph{insiemi}, \emph{dizionari} e varianti degli alberi saranno analizzate nelle successive sezioni.
+
+\subsubsection{Grafi}
+\begin{Definition*}
+    un grafo \(G = (V, E)\) si compone di un insieme finito e non vuoto di vertici \(V\), e uno di archi \(E\).
+    Si dirà che \(G\) è \emph{orientato} (o diretto) se
+
+    \begin{equation}
+        \forall (v, w) \in E, v \to w\footnote[5]{Con \(v \to w\) si intende che (v, w) è una coppia orientata.}
+    \end{equation}
+
+    \noindent Si dirà che \(G\) non è orientato se non vale \emph{Eq. \eqref{eq:1}}.
+\end{Definition*}
+
+Dato \(G\) un grafo orientato, si dirà che due vertici \(v \text{e} w\) sono \emph{adiacenti} se \((v, w) \in E\).
+Se \(G\) è invece un grafo non orientato, i dirà che due vertici \(v \text{e} w\) sono \emph{adiacenti} se \((v, w) \in E \land (w, v) \in E\):
+si assume infatti che \((v, w) = (w, v)\).
+
+\begin{Definition*}
+    Dato \(G\) un grafo, orientato o meno, dicasi \emph{cammino} una sequenza di archi del tipo \((v_{1}, v_{2}), (v_{2}, v_{3}), \ldots, (v_{n- 1}, v_{n})\).
+\end{Definition*}
+
+\begin{Definition*}
+    Un cammino semplice\footnote[6]{Un cammino si dice semplice se ogni arco viene percorso una sola volta} di lunghezza almeno 1, che inizia e finisce in uno stesso vertice, è detto \emph{ciclo}.
+\end{Definition*}
+
+\begin{Remark*}
+    In un grafo non diretto, un ciclo ha lunghezza almeno 3.
+\end{Remark*}
+
+\noindent Dato un grafo \(G\) questi può essere rappresentato in vari modi, tra queste vi è la rappresentazione come \emph{matrice di adiacenza}.
+Questa è una matrice \(\norm{V} \cp \norm{V}\) di 0 e 1 ove \(a_{ij} == 1 \iff (v_{i}, v_{j}) \in E\). Considerandone i vantaggi e gli svantaggi,
+tale rappresentazione è ottimale poiché permette di verificare la presenza di un arco in tempo costante, d'altro canto pero lo spazio richiesto è \(\order{\norm{V}^{2}}\).
+\\
+Ulteriore rappresentazione è effettuata per \emph{liste di adiacenza}: per ciascun vertice di \(V\) è memorizzata una lista di vertici ad esso adiacente.
+\clearpage
+
+\subsubsection{Alberi}
+\begin{Definition*}
+    Dato \(G\) un grafo orientato, aciclico, questi è detto albero se soddisfa le seguenti proprietà.
+    \begin{enumerate}
+        \item Esiste un vertice \(v\), la \emph{radice}, tale che in esso non entrino archi.
+        \item Ogni vertice, meno la radice, ha un unico arco d'entrata.
+        \item Esiste un cammino, che dimostrasi unico, dalla radice verso ogni vertice.
+    \end{enumerate}
+\end{Definition*}
+
 \begin{Note*}
-    In questa sezione saranno discusse solamente strutture elementari quali code, dizionari, pile, grafi e alberi, per le strutture avanzate si rimanda alle %TODO: uncomment \emph{Sezioni \ref{Sec:5} e \ref*{Sec:6}}.
+    Se \(G\) è un grafo diretto, composto da alberi questi questo è detto \emph{foresta}.
 \end{Note*}
 
-\subsubsection{Code}
-Una coda è una sequenza \(S\) di n elementi.
-Operazioni consentite sulle code sono le seguenti.
-\begin{itemize}
-    \item ISEMPTY(): verifica se \(S\) è vuota o meno.
-    \item ENQUEUE(elem e): aggiunge e come ultimo elemento.
-    \item DEQUEUE(): toglie da \(S\) il primo elemento e lo restituisce.
-    \item FIRST(): restituisce il primo elemento senza toglierlo
-\end{itemize}
+\begin{Definition*}
+    Sia \(F = (V, E)\) una foresta. Se \((v, w) \in E\) dicasi \(v\) \emph{antenato} e \(w\) \emph{discendente}.
+    Un vertice senza discendenti è detto \emph{foglia}. Dicasi inoltre l'insieme di un vertice e dei suoi discendenti \emph{sotto-albero} di \(F\).
+\end{Definition*}
 
+\noindent La \emph{profondità di un vertice} in un albero, è la lunghezza del cammino che vi è dalla radice al vertice.
+Dicasi \emph{altezza di un vertice} la lunghezza del cammino più lungo dal vertice ad una sua foglia; se il vertice è la radice si parlerà di \emph{altezza dell'albero}.
+In fine il \emph{livello di un vertice} è l'altezza dell'albero a cui si sottrae la profondità del vertice.
+
+\begin{Definition*}
+    Un albero binario è detto \emph{completo} se, per un qualche \(k\), tutti i vertici con profondità minore di \(k\) hanno sia figlio destro che sinistro,
+    e ogni vertice ddìi profondità \(k\) è una foglia.
+\end{Definition*}
+
+\begin{Remark*}
+    Un albero binario di altezza \(k\) ha esattamente \(2^{k + 1} - 1\) foglie.
+\end{Remark*}
+
+\noindent Molti algoritmi fanno uso degli alberi, sfruttando in genere la visita dello stesso. Tali visite sono riportate di seguito.
+\begin{itemize}
+    \item \textbf{pre-ordine:} si procede col visitare la radice successivamente, procedendo ricorsivamente, il sotto-albero sinistro e destro.
+    \item \textbf{post-ordine:} si procede a visitare il sotto-albero sinistro, il desto e in ultimo la radice.
+    \item \textbf{in-ordine:} si procede con il visitare il sotto-albero sinistro, la radice, e in fine il sotto-albero destro.
+\end{itemize}
 \end{document}
