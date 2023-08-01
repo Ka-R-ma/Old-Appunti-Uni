@@ -1,0 +1,72 @@
+\documentclass{subfiles}
+\begin{document}
+Il modello RAM\footnote[2]{La sigla RAM sta ad indicare \emph{Random Access Machine}.}, modella un computer in cui le istruzioni non modificano se stesse.
+Procedendo all'analisi strutturale di una RAM questa si compone di due nastri: uno di input, uno di output, ciascuno con la propria testina; un programma e una memoria.
+\\ \\
+Il nastro di input è rappresentato come una sequenza di celle, ciascuno contente un intero:
+ogni volta che un'istruzione di lettura è eseguita la testina è spostata di un posto verso destra.
+\\ \\
+Il nastro di output ha una struttura analoga a quello di input, con la differenza che inizialmente è completamente vouto.
+Quando un'istruzione di scrittura è eseguita sulla cella puntata dalla testina è impresso un intero, successivamente la testina si sposta di un cella a destra.
+\\ \\
+La memoria è un insieme di registri \(r_{0}, r_{1}, \ldots, r_{i}, \ldots\), ciascuno con la capacità di memorizzare un intero di taglia arbitraria.
+\\ \\
+Il programma, non risiedente in memoria, per cui si assume non auto-modificante, è una mera sequenza di istruzioni\footnote[3]{La natura delle istruzioni è trascurabile fintanto che queste somiglino a istruzioni macchina reali.}, opzionalmente, etichettate.
+
+\begin{Note*}
+    Tutte le computazioni avvengo in \(r_{0}\), l'\emph{accumulatore}.
+\end{Note*}
+\clearpage
+
+\subsubsection{Istruzioni e analisi di un programma RAM}
+Le istruzioni fondamentali di un programma RAM sono quelle di \emph{Figura \ref{Fig:1}}. A queste è possibile aggiungere ulteriori istruzioni,
+sempre con la condizione che questi siano simili ad istruzioni reali. Ciascun'istruzione si compone di due parti un \emph{codice} e un \emph{indirizzo}.
+
+\subfile{../Figure/Figura 1 - Tabella istruzioni RAM.tex}
+
+Gli operandi sono di tre tipi:
+\begin{enumerate}
+    \item \(=i\): indica l'intero stesso.
+    \item \(i\): un intero non negativo che indica il contenuto dell'i-esimo registro.
+    \item \(*i\): indica un indirizzamento indiretto. Cioè \(i\) è il contenuto del registro \(j\). Se \(j < 0\) la macchina si arresta.
+\end{enumerate}
+
+\noindent Considerando un programma \(P\), il suo significato è definibile tramite due quantità: una funzione \(c : \Z \to \N\) e un \emph{contatore di posizione} nel programma. \\
+Inizialmente \(c(i) = 0, \forall i \ge 0\) e il contatore di posizione è posto alla prima istruzione del programma.
+Ai fini di comprendere il significato di un'istruzione, si definisca \(v(a)\), definita come segue, il valore dell'operando \(a\).
+
+\[\begin{aligned}
+        v(=i) & = i       \\
+        v(i)  & = c(i)    \\
+        v(*i) & = c(c(i)) \\
+    \end{aligned}\]
+
+\noindent In generale, si può pensare ad un programma RAM come una ``mappatura" dei dati di in input in quelli di output.
+Sebbene esistano varie interpretazioni di tale mappatura, due delle più importanti sono le interpretazioni di analizzatore di funzioni e di linguaggi.
+\clearpage
+
+\noindent Procedendo all'analizzare le due rappresentazioni prima citate, si ha quanto segue.
+\begin{enumerate}
+    \item Sia \(P\) un programma che legge sempre \(n\) interi dal nastro di input, e che al più scriva un carattere su quello di output.
+          Se \(x_{1}, x_{2}, \ldots, x_{n}\) sono gli interi nelle prime \(n\) celle del nastro di input, \(P\) scrive \(y\) nella prima cella del nastro di output, e fatto ciò si arresta;
+          si dirà che \(P\) computa una funzione \(f(x_{1}, x_{2}, \ldots, x_{n}) = y\).
+
+    \item Sia \(\Sigma\) un certo alfabeto; rappresentando con \(1, \ldots, k\) i simboli dell'alfabeto, una RAM accertatrice di linguaggi si comporta come segue.
+          Se \(s = a_{1} a_{2} \ldots a_{n}\) è una stringa, si pone \(s\) sul nastro di input e nella (n + 1)-esima cella si pone un carattere terminale.
+          Si dirà che un programma \(P\) accetta \(s\) se, questi legge l'intera stringa e il carattere terminale, scrive sul nastro di output 1 e si arresta.
+          Con tale definizione, un linguaggio accettato è l'insieme delle stringhe accettate.
+\end{enumerate}
+
+\begin{Example*}
+    Sia \(f(n)\) la funzione di seguito definita, scrivere un programma RAM che la calcoli.
+
+    \[f(n) = \begin{cases}
+            n^{n}, \quad & \text{se} n \ge 1 \\
+            0, \quad     & \text{altrimenti} \\
+        \end{cases}\]
+
+    \noindent In \emph{Figura \ref{Fig:2}} rispettivamente l'implementazione algoritmica e quella in RAM.
+    \subfile{../Figure/Figura 2 - Esempio 2.1.tex}
+
+\end{Example*}
+\end{document}
