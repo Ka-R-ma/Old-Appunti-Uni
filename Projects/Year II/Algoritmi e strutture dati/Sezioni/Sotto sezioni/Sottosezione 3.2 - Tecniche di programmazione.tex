@@ -1,0 +1,100 @@
+\documentclass{subfiles}
+\begin{document}
+In questa sezione si discuteranno alcune tecniche di programmazione, quali \emph{divide-and-conquer} e \emph{programmazione dinamica}.
+
+\subsubsection{Divide-and-conquer}
+La tecnica divide-and-conquer si fonda sull'idea di suddividere un problema in problemi di taglia inferiore e, risolto ciascun sotto-problema,
+unire le sotto-soluzioni per risolvere in problema di partenza.
+\\ \\
+Si supponga di dover ricercare il massimo ed il minimo in un array di elementi S. Un idea semplice è quella di effettuare una procedura del tipo a seguire.
+\subfile{../Figure/Figura 4 - Ricerca elementare del massimo.tex}
+
+\noindent Con un algoritmo tipo quello sopra, si impiegano n - 1 confronti per ricercare il massimo, ed n - 2 per la ricerca del minimo.
+\\ \\
+Applicando ora una procedura divide-and-conquer, si dimostra che è possibile ricercare sia il massimo che il minimo in meno di \(\order{n^{2}}\) confronti.
+Sia considerato l'algoritmo a seguito riportato, e sia \(T(n)\) il numero di confronti effettuati.
+\subfile{../Figure/Figura 5 - Algoritmo MAXMIN.tex}
+
+\noindent Analizzando il numero di confronti si osserva
+\[
+    T(n) = \begin{cases}
+        1, \qquad           & n = 2 \\
+        2T(n/2) + 2, \qquad & n > 2 \\
+    \end{cases}
+\]
+\noindent Si dimostra che \(T(n) = \tfrac{3}{2} n - 2\) soddisfa la relazione ricorsiva.
+\clearpage
+
+\noindent Si consideri il prodotto di due interi a n bit. Con il metodo classica, si impiegherebbero \(\order{n^{2}}\) operazioni;
+se si applica invece il metodo a seguire si limita tala numero a \(\order{n^{\log_{2}{3}}}\).
+Siano \(x \text{e} y\) i due interi a n bit. Si proceda con il dividere i due, in altrettante parti:
+considerando ciascuna parte come numero a n/2 bit, il prodotto può essere espresso come
+\[
+    \begin{aligned}
+        xy & = (2^{n/2}a + b)(2^{n/2}c + d)     \\
+           & =  2^{n}ac + (ad + bc)2^{n/2} + bd
+    \end{aligned}
+\]
+\noindent Un'implementazione algoritmica risulta essere la seguente
+\subfile{../Figure/Figura 6 - Prodotto di interi a n bit.tex}
+
+\noindent il cui costo computazionale risulta essere
+\[
+    T(n) = \begin{cases}
+        c, \qquad            & n = 1 \\
+        3T(n/2) + cn, \qquad & n > 1 \\
+    \end{cases}
+\]
+\subsubsection{Master Theorem}
+Come visto, la tecnica di divide-and-conquer genera delle complessità di tempo espresse da equazioni ricorsive, le quali non risultano semplici da analizzare.
+Per tale ragione si necessità di uno strumento teorico che ne facilita il calcolo, tale strumento è il \emph{Master Theorem}.
+
+\begin{Theorem*}[Master]
+    Data una funzione ricorsiva del tipo
+    \[
+        T(n) = aT(\frac{n}{b}) + f(n)
+    \]
+    con \(a \ge 1, b > 1 \text{ed} f\) asintoticamente positiva, allora valgono i seguenti casi:
+    \begin{itemize}
+        \item \textbf{Caso 1.} Se \(f(n) = \order{n^{\log_{b}{a - \varepsilon}}}, \varepsilon > 0\),  allora \(T(n) = \Theta(n^{\log_{b}{a}})\).
+        \item \textbf{Caso 2.} Se \(f(n) = \Theta(n^{\log_{b}{a}})\),  allora \(T(n) = \Theta(n^{\log_{b}{a}} \log n)\).
+        \item \textbf{Caso 3.} Se \(f(n) = \Omega(n^{\log_{b}{a + \varepsilon}}), \varepsilon > 0\),  allora \(T(n) = \Theta(f(n))\).
+    \end{itemize}
+\end{Theorem*}
+\clearpage
+
+\subsubsection{Programmazione dinamica}
+La programmazione dinamica prevede la risoluzione di problemi, tramite la suddivisione e soluzione ricorsiva di sotto-problemi dello stesso.
+\\ \\
+Affinché un problema sia risolvibile con la programmazione dinamica è necessario che questo soddisfi certe condizioni:
+\begin{enumerate}
+    \item deve presentare una sotto-struttura ottimale, con la quale si intende la possibilità di trovare una soluzione ottimale come combinazione delle soluzioni ai suoi sotto-problemi;
+    \item i sotto-problemi devono essere sovrapponibili.
+\end{enumerate}
+
+\noindent In generale la computazione procede da sotto-problemi di taglia inferiore a sotto-problemi di taglia maggiore.
+Vantaggio di ciò è il fatto che ogni qual volta in problema di taglia minore è risolto, questi è memorizzato cosi da non dover essere eventualmente ricalcolarlo qualora servisse.
+
+\begin{Example*}
+    Si consideri dunque il seguente prodotto, poiché l'ordine di moltiplicazione influenza il numero di operazioni totali, ci si chiede quale ordine convenga scegliere.
+    \[
+        M = M_{1} \cp M_{2} \cp M_{3} \cp M_{4}
+    \]
+    \noindent rispettivamente di dimensioni \([10 \cp 20], [20 \cp 50], [50 \cp 1], [1 \cp 100]\).
+    \\
+    \'E ovvio che valutare tutti i possibili prodotti sia sconveniente, specie al crescere di n.
+    Fortunatamente la programmazione dinamica fornisce un'algoritmo con complessità \(\order{n^{3}}\), la cui implementazione algoritmica è riportata al termine della pagina.
+    \\
+    Sia \(m_{ij}\) il costo minimo per calcolare \(M_{i} \cp \ldots \cp M_{j}, 1 \le i \le j \le n\). Segue
+    \[
+        m_{ij} = \begin{cases}
+            0, \qquad                                                                        & \text{se} i = j \\
+            \min\limits_{i \le k \le j}{(m_{ik} + m_{k+1, j} + r_{i - 1}r_{k}r_{j})}, \qquad & \text{se} j > i
+        \end{cases}
+    \]
+    \noindent ove \(m_{ik}\) è il costo minimo per calcolare \(M' = M_{i} \cp \ldots \cp M_{k}\), \(m_{k + 1, j}\) è il costo minimo per valutare \(M" = M_{k + 1} \cp \ldots \cp M_{j}\),
+    infine \(r_{i - 1}r_{k}r_{j}\) è il costo per valutare \(M' \cp M"\).
+    \subfile{../Figure/Figura 7 - Moltiplicazione tra matrici.tex}
+
+\end{Example*}
+\end{document}

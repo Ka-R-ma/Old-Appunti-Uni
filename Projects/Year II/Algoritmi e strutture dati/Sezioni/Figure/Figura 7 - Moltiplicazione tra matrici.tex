@@ -1,0 +1,20 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure}[!h]
+    \centering
+    \begin{subfigure}[b]{0.6\textwidth}
+        \begin{lstlisting}[language = algol]
+            begin
+                for i $\leftarrow$ 1 to n do $m_{ii} \leftarrow $ i
+                for l $\leftarrow$ 1 to n - 1 do
+                    for i $\leftarrow$ 1 to n - 1 do
+                        begin
+                            j $\leftarrow$ i + 1
+                            $m_{ij} \leftarrow \min{i \le k \le j}{(m_{ik} + m_{k+1, j} + r_{i - 1}r_{k}r_{j})}$
+                        end
+                write $m_{im}$
+            end
+        \end{lstlisting}
+    \end{subfigure}
+\end{figure}
+\end{document}

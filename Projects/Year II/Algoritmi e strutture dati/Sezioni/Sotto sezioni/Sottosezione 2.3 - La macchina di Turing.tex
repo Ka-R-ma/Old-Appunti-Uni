@@ -3,11 +3,9 @@
 Prima di discutere la macchina di Turing, è necessario parlare di \emph{relazione polinomiale}
 \begin{Definition*}
     Due funzioni \(f_{1}(n) \text{e} f_{2}(n)\) sono in relazione polinomiale se esistono \(p_{1}(x) \text{e} p_{2}(x)\) tali da soddisfare la seguente relazione.
-
     \[
         f_{1}(n) \le p_{1}(f_{2}(n)) \land f_{2} \le p_{2}(f_{1}(n)) \qquad , \forall n
     \]
-
     \begin{Example*}
         Siano \(f_{1}(n) = 2n^{2} \text{e} f_{2}(n) = n^{5}\): si osserva che queste sono in relazione polinomiale.
         Infatti se \(p_{1}(x) = 2x \text{e} p_{2}(x) = x^{3}\) segue: \(2n^{2} \le 2n^{5} \text{e} n^{5} \le (2n^{2})^{3}\)
@@ -32,7 +30,6 @@ Formalmente una generica MT viene identificata tramite la settupla\footnote[4]{P
 \[
     (Q, T, I, \delta, b, q_{0}, q_{f})
 \]
-
 L'attività di una MT può formalmente essere descritta tramite istantanee (ID). Quest'ultime sono k-ple \(\alpha_{1}, \ldots, \alpha_{k}\),
 con \(\alpha_{i}\) una stringa del tipo \(xqy\) tale che, \(xy\) sia la stringa dell'i-esimo nastro esclusi i black iniziali e finali, con \(q\) lo stato della MT.
 \end{document}
