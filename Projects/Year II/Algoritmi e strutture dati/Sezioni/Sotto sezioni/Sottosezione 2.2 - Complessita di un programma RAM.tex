@@ -13,13 +13,11 @@ In tal senso, sia \(l(i)\) la seguente funzione che stabilisce il numero di bit 
     \end{cases}
 \]
 Si ha quindi che il costo per accedere agli operandi è quanto segue
-
 \[\begin{aligned}
         =i: & \quad  l(i)                       \\
         i:  & \quad l(i) + l(c(i))              \\
         *i: & \quad l(i) + l(c(i)) + l(c(c(i))) \\
     \end{aligned}\]
-
 \noindent Analizzando, a titolo di esempio, l'istruzione \lstinline[language = RAM]{ADD *i}, da quanto sopra si necessita \(l(i) + l(c(i)) + l(c(c(i)))\) per accedere ad *i,
 a cui aggiungere il costo di accesso all'accumulatore pari a \(l(c(0))\).
 \end{document}
