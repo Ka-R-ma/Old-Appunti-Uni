@@ -1,0 +1,37 @@
+\documentclass{subfiles}
+\begin{document}
+In questa sezione si analizzeranno alcuni algoritmi di ordinamento la cui complessità è \(\order{n^{2}}\).
+
+\subsubsection{Selection sort}
+Ricevuto l'input, l'algoritmo procede con l'estrarre all'i-esimo passo il minore degli n - i elementi rimasti.
+Si osserva dunque che la complessità dell'algoritmo è dato dalla seguente sommatoria.
+
+\[
+    \sum\limits_{i = 1}^{n - 1}{i} = \frac{n(n - 1)}{2} \implies \order{n^{2}}
+\]
+
+\noindent Di seguito si riporta la struttura algoritmica del selection sort.
+\subfile{../Figure/Figura 8 - Selection sort.tex}
+
+\subsubsection{Insertion sort}
+Ricevuto l'input, all'i-esimo passo, l'i-esimo elemento e ordinato rispetto gli i - 1, elementi precedentemente ordinati.
+Si osserva pertanto che la complessità dell'algoritmo è dato dalla seguente sommatoria.
+
+\[
+    \sum\limits_{i = 1}^{n - 1}{i} = \frac{n(n - 1)}{2} \implies \order{n^{2}}
+\]
+
+\noindent Di seguito si riporta la struttura algoritmica del selection sort.
+\subfile{../Figure/Figura 9 - Insertion sort.tex}
+
+\subsubsection{Bubble sort}
+Ricevuto l'input, all'i-esimo passo, si confronta un coppia adiacente di elementi, se non sono ordinati si procede a scambiarli.
+La complessità dell'algoritmo è dato dalla seguente sommatoria.
+
+\[
+    \sum\limits_{i = 1}^{n - 1}{n - 1} = (n -1)^{2} \implies \order{n^{2}}
+\]
+
+\noindent Di seguito si riporta la struttura algoritmica del selection sort.
+\subfile{../Figure/Figura 10 - Bubble sort.tex}
+\end{document}

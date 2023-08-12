@@ -1,0 +1,20 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure}[!h]
+    \centering
+    \begin{subfigure}[b]{0.5\textwidth}
+        \begin{lstlisting}[language = algol]
+            algorithm SelectionSort(Array A)
+            begin
+                for k $\leftarrow$ 1 to n - 1 do 
+                    m $\leftarrow$ k
+
+                    for j $\leftarrow$ k + 1 to n do
+                        if (A[j] < A[m]) then m $\leftarrow$ j
+                    switch A[m] and A[k]
+            end
+        \end{lstlisting}
+    \end{subfigure}
+    \label{Fig:}
+\end{figure}
+\end{document}
