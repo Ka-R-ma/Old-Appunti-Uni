@@ -80,7 +80,7 @@ Vantaggio di ciò è il fatto che ogni qual volta in problema di taglia minore �
     \[
         M = M_{1} \cp M_{2} \cp M_{3} \cp M_{4}
     \]
-    \noindent rispettivamente di dimensioni \([10 \cp 20], [20 \cp 50], [50 \cp 1], [1 \cp 100]\).
+    \noindent Rispettivamente di dimensioni \([10 \cp 20], [20 \cp 50], [50 \cp 1], [1 \cp 100]\).
     \\
     \'E ovvio che valutare tutti i possibili prodotti sia sconveniente, specie al crescere di n.
     Fortunatamente la programmazione dinamica fornisce un'algoritmo con complessità \(\order{n^{3}}\), la cui implementazione algoritmica è riportata al termine della pagina.
@@ -97,4 +97,22 @@ Vantaggio di ciò è il fatto che ogni qual volta in problema di taglia minore �
     \subfile{../Figure/Figura 7 - Moltiplicazione tra matrici.tex}
 
 \end{Example*}
+
+\subsubsection{Tecniche Greedy}
+L'utilizzo di tecniche Greedy è opportuno per quei problemi d'ottimo, in cui scegliere ad ogni passo l'opzione migliore, comporta una soluzione ottimale nel complesso.
+\\ \\
+Problema legato alle tecniche Greedy; non è tanto la ricerca dell'algoritmo, quanto più dimostrare che l'algoritmo scelto produca effettivamente la soluzione ottima.
+In genere, per provare che l'algoritmo scelto sia quello ottimo, si procede con un ragionamento per assurdo, sulla base di quanto segue.
+\\ \\
+Siano \(S_{g} \text{e} S_{O}\), rispettivamente, la successione di scelte Greedy e quella ottima.
+Sia per assurdo \(S_{g} \neq S_{O}\). Da tale assunzione deve esistere almeno una scelta per cui le due soluzioni differiscano.
+Si considera la prima di tali scelte e si procede con definire una nuova successione di scelte \(S_{O}'\), ottenuta da \(S_{O}\) sostituendo la scelta non Greedy con quella Greedy.
+Si verificano i seguenti casi:
+\begin{enumerate}
+    \item risulta che \(S_{O}'\) sia meno ottimizzata rispetto \(S_{O}\). Da ciò segue,
+          poiché le scelte Greedy per definizione sono da effettuare passo dopo passo, segue che effettivamente \(S_{O} \neq S_{g}\).
+    \item risulta che \(S_{O}'\) sia ugualmente o meglio ottimizzata di \(S_{O}\). Da cui applicare la scelta Greedy è conveniente.
+\end{enumerate}
+
+Se iterando per ciascuna delle scelte che differiscono tra \(S_{g} \text{e} S_{O}\), non si rientra nel primo caso, \(S_{g}\) è ottima.
 \end{document}

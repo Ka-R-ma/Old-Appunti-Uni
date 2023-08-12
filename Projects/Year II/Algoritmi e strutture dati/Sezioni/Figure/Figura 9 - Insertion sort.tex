@@ -1,0 +1,24 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure}[!h]
+    \centering
+    \begin{subfigure}[b]{0.5\textwidth}
+        \begin{lstlisting}[language = algol]
+            algorithm InsertionSort(Array A)
+            begin
+                for k $\leftarrow$ 1 to n - 1 do 
+                    x $\leftarrow$ A[k]
+
+                    for j $\leftarrow$ 1 to k + 1 do
+                        if (A[j] > x) then break
+
+                    if (j < k + 1) then
+                        for (l = k) down to j do 
+                        A[l + 1] $\leftarrow$ A[l]
+                        A[j] $\leftarrow$ x
+            end
+        \end{lstlisting}
+    \end{subfigure}
+    \label{Fig:}
+\end{figure}
+\end{document}
