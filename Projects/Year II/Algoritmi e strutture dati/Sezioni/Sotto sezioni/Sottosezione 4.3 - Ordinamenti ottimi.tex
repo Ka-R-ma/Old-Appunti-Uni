@@ -1,0 +1,24 @@
+\documentclass{subfiles}
+\begin{document}
+In questa sezione si discuteranno gli algoritmi di ordinamento, che a meno di casi particolari, risultano essere pià efficenti.
+Si tratta di algoritmi la cui complessità è \(\order{n \log n}\).
+
+\subsubsection{Merge sort}
+Ricevuto l'input, il merge sort procede applicando una strategia divide-and-conquer.
+Si fa in modo che un l'ordinamento di n elementi, è ridotto ricorsivamente, all'ordinamento di due sotto-problemi di taglia n/2.
+Giunti a problemi di taglia unitaria, questi vengono a risolti ordinando coppie distinte di elementi, ottenendo problemi di taglia 2, e cosi via.
+
+Si osserva dunque che il costo dell'algoritmo è dato dalla seguente espressione ricorsiva.
+
+\[
+    C(n) = \begin{cases}
+        1, \qquad                    & \text{se} n = 1 \\
+        2 C(n/2) + \order{n}, \qquad & \text{se} n > 1
+    \end{cases}\]
+
+\noindent Applicando il \emph{Teorema Master}, si osserva che si rientra nel secondo caso, dunque il costo complessivo è \(\order{n \log n}\).
+Di seguito si riporta l'implementazione algoritmica del Merge sort.
+
+\subfile{../Figure/Figura 11 - Merge sort.tex}
+
+\end{document}

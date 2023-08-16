@@ -1,0 +1,35 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure}[!h]
+    \centering
+    \begin{subfigure}[b]{0.65\textwidth}
+        \begin{lstlisting}[language = algol]
+            procedure Merge(Array A, integer right, middle, left)
+                k $\leftarrow$ right, i $\leftarrow$ right, j $\leftarrow$ middle + 1;
+                while(i $\le$ middle and j $\le$ left)
+                    if(A[i] $\le$ A[j]) then
+                        X[k] $\leftarrow$ A[i];
+                        increase i and k
+                    else 
+                        X[k] $\leftarrow$ A[j];
+                        increase j and k
+
+                if (i $\le$ middle) then
+                    copy A[i : middle] at the end of X
+                else
+                    copy A[middle + 1 : left] at the end of X
+                copy X in A
+        \end{lstlisting}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.65\textwidth}
+        \begin{lstlisting}[language = algol]
+            algorithm MergeSort(Array A, integer right, left)
+                if(right > left) break
+                middle $\leftarrow$ (right + left) / 2;
+                MergeSort(A, right, middle);
+                MergeSort(A, middle + 1, left);
+                Merge(A, right, middle, left)
+        \end{lstlisting}
+    \end{subfigure}
+\end{figure}
+\end{document}
