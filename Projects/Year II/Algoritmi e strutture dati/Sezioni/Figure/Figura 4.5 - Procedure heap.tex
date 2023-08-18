@@ -1,0 +1,33 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure}[!h]
+    \centering
+    \begin{subfigure}[b]{0.75\textwidth}
+        \begin{lstlisting}[language = algol]
+            procedure fixHeap(node v, heap H)
+                begin
+                    if (v is a leaf) then return
+                    else
+                        let u be the son of v, with the highest value
+                        if (value(v) < value(u)) then
+                        swap v and u;
+                        fixHeap(u, H)
+                end
+        \end{lstlisting}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \begin{lstlisting}[language = algol]
+            procedure heapify(heap H)
+                begin
+                    if (H is empty) the return;
+                    else
+                    heapify(left subtree of H);
+                    heapify(right subtree of H);
+                    fixHeap(root(H), H)
+                end
+        \end{lstlisting}
+    \end{subfigure}
+    \caption{Procedure per l'implementazione degli heap.}
+    \label{Fig:4.5}
+\end{figure}
+\end{document}

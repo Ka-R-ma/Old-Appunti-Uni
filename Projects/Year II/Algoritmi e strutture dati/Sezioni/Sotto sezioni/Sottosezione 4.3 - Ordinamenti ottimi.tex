@@ -19,6 +19,56 @@ Si osserva dunque che il costo dell'algoritmo è dato dalla seguente espressione
 \noindent Applicando il \emph{Teorema Master}, si osserva che si rientra nel secondo caso, dunque il costo complessivo è \(\order{n \log n}\).
 Di seguito si riporta l'implementazione algoritmica del Merge sort.
 
-\subfile{../Figure/Figura 11 - Merge sort.tex}
+\subfile{../Figure/Figura 4.4 - Merge sort.tex}
+\clearpage
+
+\subsubsection{Heap sort}
+L'heap sort è un algoritmo con approccio incrementale, che fa uso di una struttura dati per la ricerca del minimo: l'\emph{heap}.
+Considerando l'heap in se, questi è implementato come albero con le seguenti proprietà.
+\begin{enumerate}
+    \item Fino al penultimo livello, l'albero è completo.
+    \item Ciascun nodo contiene un elemento.
+    \item Il valore del nodo padre è maggiore o uguale a quello dei nodi figlio.
+\end{enumerate}
+
+\noindent Per il modo in cui è implementato, l'heap ha le seguenti caratteristiche.
+\begin{itemize}
+    \item Il massimo risiede nella radice.
+    \item L'altezza è logaritmica rispetto il numero dei nodi.
+\end{itemize}
+
+\noindent Parlando dell'implementazione vera e propria, questa è effettuata grazie alle due procedure in \emph{Figura \ref{Fig:4.5}}
+\subfile{../Figure/Figura 4.5 - Procedure heap.tex}
+
+\noindent Analizzando la complessità delle due procedure: si osserva che fixHeap segue al più un cammino lungo quanto l'altezza dell'albero, dunque è \(\order{\log n}\);
+circa la procedura heapify, questa è espressa dalla seguente relazione di ricorrenza
+\[
+    T(n) = 2 T(n / 2) + \order{\log n}
+\]
+che per il \emph{Master theorem} risulta essere \(\order{n}\).
+\\ \\
+\noindent Circa l'heap sort in se: data una sequenza di elementi da ordinare, questi sono posti su un heap, ad ogni passo da quest'ultimo è estratto il massimo;
+estrazione alla quale segue una chiamata a fixHeap. Poiché l'estrazione del massimo richiede \(\order{\log n}\), e dato che ciò avviene n volte,
+il costo totale è \(\order{n \log n}\).
+
+\subsubsection{Quick sort}
+Il quick sort è un algoritmo con complessità \(\order{n^{2}}\), quindi la classificazione come algoritmo ottimo appare erronea.
+Nonostante non rientri nella definizione classica di algoritmi ottimi, il quick sort si dimostra essere superiore al merge e all'heap sort nel caso medio.
+
+Parlando dell'quick sort in se: questi si basa sul principio di divide-and-conquer, secondo la seguente ``struttura''.
+\begin{itemize}
+    \item Seleziona un elemento pivot \(x\) della sequenza. Separa gli elementi della sequenza in elementi minori o uguali e elementi maggiori di \(x\).
+    \item Procede ricorsivamente sulle due sotto sequenze.
+    \item Restituisce la concatenazione delle due sotto-sequenze ordinate.
+\end{itemize}
+
+\begin{Note*}
+    Di grande importanza è la scelta del pivot, difatti l'efficienza dell'algoritmo dipende da ciò.
+\end{Note*}
+
+\noindent In \emph{Figura \ref{Fig:4.6}} è riportata un'implementazione del quick sort, ne esiste un'altra che procede con effettuando scambi in loco,
+sfruttando la procedura partition in \emph{Figura \ref{Fig:4.7}}.
+\subfile{../Figure/Figura 4.6 - Quick sort.tex}
+\subfile{../Figure/Figura 4.7 - Quick sort con partition.tex}
 
 \end{document}

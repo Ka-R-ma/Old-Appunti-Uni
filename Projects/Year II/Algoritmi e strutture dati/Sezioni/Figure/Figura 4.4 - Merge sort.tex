@@ -1,10 +1,10 @@
 \documentclass{subfiles}
 \begin{document}
-\begin{figure}[!h]
+\begin{figure*}[!h]
     \centering
     \begin{subfigure}[b]{0.65\textwidth}
         \begin{lstlisting}[language = algol]
-            procedure Merge(Array A, integer right, middle, left)
+            procedure Merge(Array A, integer: right, middle, left)
                 k $\leftarrow$ right, i $\leftarrow$ right, j $\leftarrow$ middle + 1;
                 while(i $\le$ middle and j $\le$ left)
                     if(A[i] $\le$ A[j]) then
@@ -31,5 +31,6 @@
                 Merge(A, right, middle, left)
         \end{lstlisting}
     \end{subfigure}
-\end{figure}
+    \caption{Procedura merge ed implementazione MergeSort.}
+\end{figure*}
 \end{document}

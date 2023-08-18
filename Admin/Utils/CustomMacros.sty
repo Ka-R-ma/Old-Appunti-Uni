@@ -65,6 +65,10 @@
 \newtheorem*{Base*}{Base}
 
 \AtEndEnvironment{equation}{\label{eq:\theequation}}
+\counterwithin{figure}{section}
+
+\captionsetup[subfigure]{labelformat=simple} % default is 'parens'
+\renewcommand\thesubfigure{\thefigure.\alph{subfigure}:}
 
 % Some package options
 %% AMS math options

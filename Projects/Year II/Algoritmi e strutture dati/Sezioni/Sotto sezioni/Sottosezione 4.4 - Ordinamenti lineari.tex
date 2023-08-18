@@ -1,0 +1,19 @@
+\documentclass{subfiles}
+\begin{document}
+Nel caso di sequenze da ordinare con particolari proprietà, esistono algoritmi che restituiscono la sequenza corretta in tempo proporzionale alla taglia della sequenza.
+Questi algoritmi sono detti di \emph{ordinamento lineare}.
+
+\subsubsection{Integer sorting}
+Data una sequenza da ordinare di \(n\) interi tutti compresi tra \([1, k]\), questa è ordinabile in tempo lineare tramite diversi algoritmi,
+quali \emph{counting sort, bucket sort}.
+\\ \\
+Partendo con il counting sort: sia X la sequenza da ordinare, e Y un array di supporto di taglia k.
+Ad ogni passo, se \(x \in X \text{allora} Y[x] = Y[x] + 1\). Completata la lettura di X, procede a copiare \(x\) in X, tante volte quante indicate da \(Y[x]\).
+Da quanto descritto e dall'implementazione algoritmica di \emph{Figura \ref{Fig:4.8}}, si osserva che il counting sort ha complessità \(\order{n + k}\).
+\subfile{../Figure/Figura 4.8 - Counting sort.tex}
+
+\noindent Considerando ora il bucket sort: si supponga di voler ordinare n record con chiave intera appartenenti a \([1, k]\), prendendo spunto dal counting sort,
+sia Y un array tale che \(Y[i]\) sia una lista di elementi con chiave i. Da ciò segue che l'ordinamento degli n record, è dato dalla concatenazione delle liste in Y.
+\'E facile osservare, proprio per la similarità al counting sort, che il bucket sort ha complessità \(\order{n + k}\).
+
+\end{document}

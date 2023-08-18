@@ -1,0 +1,24 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure}[!h]
+    \centering
+    \begin{subfigure}[b]{0.75\textwidth}
+        \begin{lstlisting}[language = algol]
+            procedure partition(Array A, integer: left, right) $\rightarrow$ integer
+                begin
+                    x $\leftarrow$ A[left], inf $\leftarrow$ left, sup $\leftarrow$ right + 1
+                    do
+                        do {inf $\leftarrow$ inf + 1} while (A[inf] < x)
+                        do {sup $\leftarrow$ sup - 1} while (A[sup] > x)
+                        if (inf < sup) swap A[inf] and A[sup];
+                        inf $\leftarrow$ inf - 1, sup $\leftarrow$ sup - 1
+                    while (inf < sup)
+                    swap A[left] and A[sup]
+                    return sup
+                end
+        \end{lstlisting}
+    \end{subfigure}
+    \caption{Procedura partition, per l'implementazione di QuickSort in loco.}
+    \label{Fig:4.7}
+\end{figure}
+\end{document}

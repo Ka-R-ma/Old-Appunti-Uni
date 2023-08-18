@@ -7,13 +7,13 @@ La tecnica divide-and-conquer si fonda sull'idea di suddividere un problema in p
 unire le sotto-soluzioni per risolvere in problema di partenza.
 \\ \\
 Si supponga di dover ricercare il massimo ed il minimo in un array di elementi S. Un idea semplice è quella di effettuare una procedura del tipo a seguire.
-\subfile{../Figure/Figura 4 - Ricerca elementare del massimo.tex}
+\subfile{../Figure/Figura 3.1 - Ricerca elementare del massimo.tex}
 
 \noindent Con un algoritmo tipo quello sopra, si impiegano n - 1 confronti per ricercare il massimo, ed n - 2 per la ricerca del minimo.
 \\ \\
 Applicando ora una procedura divide-and-conquer, si dimostra che è possibile ricercare sia il massimo che il minimo in meno di \(\order{n^{2}}\) confronti.
 Sia considerato l'algoritmo a seguito riportato, e sia \(T(n)\) il numero di confronti effettuati.
-\subfile{../Figure/Figura 5 - Algoritmo MAXMIN.tex}
+\subfile{../Figure/Figura 3.2 - Algoritmo MAXMIN.tex}
 
 \noindent Analizzando il numero di confronti si osserva
 \[
@@ -36,7 +36,7 @@ considerando ciascuna parte come numero a n/2 bit, il prodotto può essere espre
     \end{aligned}
 \]
 \noindent Un'implementazione algoritmica risulta essere la seguente
-\subfile{../Figure/Figura 6 - Prodotto di interi a n bit.tex}
+\subfile{../Figure/Figura 3.3 - Prodotto di interi a n bit.tex}
 
 \noindent il cui costo computazionale risulta essere
 \[
@@ -94,7 +94,7 @@ Vantaggio di ciò è il fatto che ogni qual volta in problema di taglia minore �
     \]
     \noindent ove \(m_{ik}\) è il costo minimo per calcolare \(M' = M_{i} \cp \ldots \cp M_{k}\), \(m_{k + 1, j}\) è il costo minimo per valutare \(M" = M_{k + 1} \cp \ldots \cp M_{j}\),
     infine \(r_{i - 1}r_{k}r_{j}\) è il costo per valutare \(M' \cp M"\).
-    \subfile{../Figure/Figura 7 - Moltiplicazione tra matrici.tex}
+    \subfile{../Figure/Figura 3.4 - Moltiplicazione tra matrici.tex}
 
 \end{Example*}
 

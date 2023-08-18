@@ -1,0 +1,23 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure*}[!h]
+    \centering
+    \begin{subfigure}[b]{0.9\textwidth}
+        \begin{lstlisting}[language = algol]
+            procedure MAXMIX(set S):
+                if $\norm{S}$ == 2 then
+                    begin
+                        let S = {a, b};
+                        return (MAX(a, b), MIN(a, b));
+                    end
+                else
+                    begin
+                        divide S in S1 and S2, with both half of the elements of S;
+                        (max1, min1) $\leftarrow$ MANMIX(S1);
+                        (max2, min2) $\leftarrow$ MANMIX(S2);
+                        return (MAX((max1, max2)), MIN(min1, min2));
+                    end
+        \end{lstlisting}
+    \end{subfigure}
+\end{figure*}
+\end{document}
