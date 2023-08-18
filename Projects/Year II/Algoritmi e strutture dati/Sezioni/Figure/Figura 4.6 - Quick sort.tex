@@ -1,0 +1,21 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure}[!h]
+    \centering
+    \begin{subfigure}[b]{0.65\textwidth}
+        \begin{lstlisting}[language = algol]
+            algorithm QuickSort(Array A)
+                begin
+                    choose an element x in A;
+                    procede partitioning A respect to x
+                    let $A_{1} = \set{y \in A}{y \le x}, A_{2} = set{y \in A}{y > x}$
+                    if ($norm{A_{1}} > 1$) then quickSort($A_{1}$)
+                    if ($norm{A_{2}} > 1$) then quickSort($A_{2}$)
+                    concatenate $A_{1}$ and $A_{2}$, copy the result on a
+                end
+        \end{lstlisting}
+    \end{subfigure}
+    \caption{Implementazione QuickSort.}
+    \label{Fig:4.6}
+\end{figure}
+\end{document}

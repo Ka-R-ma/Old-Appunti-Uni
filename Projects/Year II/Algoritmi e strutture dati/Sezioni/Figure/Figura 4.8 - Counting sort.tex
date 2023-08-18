@@ -1,0 +1,24 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure}[!h]
+    \centering
+    \begin{subfigure}[b]{0.75\textwidth}
+        \begin{lstlisting}[language = algol]
+            algorithm countingSort(Array A, integer k)
+                begin
+                    let COUNT be an array of k elements
+                    for i $\leftarrow$ 1 to n do COUNT[i] $\leftarrow$ 0
+                    for j $\leftarrow$ 1 to n do COUNT[A[j]] $\leftarrow$ COUNT[A[j]] + 1
+                    j $\leftarrow$ 1
+                    for i $\leftarrow$ 1 to k do
+                        while (COUNT[i] > 0) do
+                        A[j] $\leftarrow$ i;
+                        j $\leftarrow$ j + 1;
+                        COUNT[i] $\leftarrow$ COUNT[i] - 1
+                end
+        \end{lstlisting}
+    \end{subfigure}
+    \caption{Implementazione CountingSort.}
+    \label{Fig:4.8}
+\end{figure}
+\end{document}
