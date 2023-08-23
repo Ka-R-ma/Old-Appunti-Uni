@@ -1,0 +1,24 @@
+\documentclass{subfiles}
+\begin{document}
+Sia \(S\) un insieme di elementi: come gestire efficientemente i cambiamenti dello stesso?
+Se \(S\) è formato da elementi che possono appartenere ad un universo molto ampio, allora questo può essere gestito tramite l'\emph{hashing}.
+Sebbene esistano variazioni all'hashing, nel seguito si considera l'idea alla base.
+Partendo col definire la funzione di hashing \(h\), questa è definita dall'insieme \(S\) ad un sottoinsieme dei naturali. Cioè
+\[
+    h : S \to \mathbb{M} \subseteq \N
+\]
+Sia \(A\) un array di taglia \(m\), i cui elementi sono puntatori a lista di elementi di S, ossia: \(A[i] = \set{a \in S}{h(a) = i}\).
+Si assuma che \(\forall a \in S, h(a) \in \Set{0, 1, \ldots, m - 1}\), e che ciò richieda tempo costante.
+\\ \\
+Considerando le operazioni: l'esecuzione di INSERT computa \(h(a)\), verificando nella lista \(A[h(a)]\) l'assenza di a, nel cui caso lo accoda;
+l'esecuzione di DELETE procede inversamente, in fine MEMBER scannerizza \(A[h(a)]\) e fornisce una risposta.
+\\ \\
+Circa la complessità: se si assume che la funzione di hashing abbia la stessa probabilità di assegnare un valore compreso tra \(0\) e \(m - 1\),
+e al più \(n = m\), risulta che il tempo richiesto è \(\order{n}\).
+\\
+Risulta ovvio che procedere così non è sempre possibile, specie perché \(n\) non è sempre noto.
+Segue pertanto, che necessario dover possibilmente costruire più tabelle di hash \(T_{0}, T_{1}, \ldots\).
+Si procede allora creando una prima tabella di hash \(T_{0}\) di una taglia \(m\) adeguata, si continua ad utilizzate \(T_{0}\) finché gli elementi non superano \(m\).
+Raggiunto tale limite, si applica una nuova funzione di hash per copiare gli elementi di \(T_{0}\) in una nuova tabella \(T_{1}\) di taglia \(2m\).
+Si continua ripetendo lo stesso processo, ogni volta che si raggiunge la dimensione massima.
+\end{document}

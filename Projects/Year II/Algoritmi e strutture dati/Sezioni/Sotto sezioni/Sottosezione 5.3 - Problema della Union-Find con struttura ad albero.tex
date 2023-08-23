@@ -1,0 +1,41 @@
+\documentclass{subfiles}
+\begin{document}
+Il problema della union-find può essere semplicemente descritto come segue: dati degli insiemi, come gestire efficientemente operazioni di unione e ricerca?
+
+\begin{Note*}
+    Esistono soluzioni che sfruttano gli array, ma per quanto efficienti risultano lente se comparate a quelle di seguito proposte.
+\end{Note*}
+
+\noindent Ogni insieme \(A\) può essere rappresentato come un albero non orientato, i cui vertici sono elementi di \(A\).
+\\ \\
+Considerando l'istruzione UNION, se \(T_{A} \text{e} T_{B}\) rappresentato, rispettivamente, gli insiemi \(A \text{e} B\), segue che questa richiede tempo costante.
+Si osserva infatti che basta aggiungere un puntatore tra i due alberi.
+Circa l'istruzione FIND, questa è effettuata localizzando il vertice ricercato e percorrendo il cammino dallo stesso,
+verso la radice. Risulta ovvio che questo richiede al più \(\order{n}\)\footnote[7]{Questo perché potrebbe capitare che l'albero risulti sbilanciato.} operazioni.
+\\ \\
+Si osserva che il costo dell'istruzione FIND può essere ridotto, se l'albero è bilanciato.
+Come ottenere tale bilanciamento? Sfruttando il seguente lemma.
+
+\begin{Lemma}
+    Se nell'eseguire un'istruzione di UNION, si fa in modo che l'albero di altezza minore punti a quello di altezza maggiore,
+    non esisterà albero nella foresta\footnote[8]{Con foresta in questo caso ci si riferisce ad altri possibili insiemi su cui si deve eseguire una UNION} di altezza \(h\),
+    a meno che questi non abbia almeno \(2^{h}\) vertici.
+
+    \begin{Proof*}
+        La dimostrazione procede per induzione su \(h\).
+        \begin{Base*}
+            Sia \(h = 0\), l'ipotesi è ovviamente vera, poiché ogni albero ha almeno un nodo.
+        \end{Base*}
+        \begin{Induction*}
+            Si supponga che quanto detto sia vero per ogni valore minore di \(h \ge 1\).
+            Sia \(T\) un albero di altezza \(h\) col numero minore di foglie. Allora \(T\) è ottenuto come UNION di \(T_{1} \text{e} T_{2}\),
+            con \(\norm{T_{1}} = h - 1 \text{e} T_{1}\) ha al più lo stesso numero di vertici di \(T_{2}\).
+            Per ipotesi induttiva \(T_{1} \text{e} T_{2}\) hanno almeno \(2^{h - 1}\) vertici, per cui \(T\) ne ha almeno \(2^{h}\).
+        \end{Induction*}
+    \end{Proof*}
+\end{Lemma}
+
+\noindent Una modifica all'algoritmo prevede la \emph{path compression}. Si è visto che il costo maggiore dell'intero algoritmo è dato dall'istruzione FIND,
+pertanto ciò che è di interesse è ridurre tale costo. Si è detto che un'istruzione FIND(i) comporta ol dover percorrere un cammino del tipo, \(i, v_{1}, \ldots, v_{k}, r\).
+Se si rende ciascuno di questi vertici figlio di \(r\), si dimostra che le FIND successive risultano più efficienti.
+\end{document}

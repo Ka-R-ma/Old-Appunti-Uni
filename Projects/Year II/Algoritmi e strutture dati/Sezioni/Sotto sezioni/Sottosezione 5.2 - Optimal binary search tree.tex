@@ -1,0 +1,35 @@
+\documentclass{subfiles}
+\begin{document}
+Sia \(a_{1}, a_{2}, \ldots, a_{n}\) una sequenza di elementi di un insieme \(S\). Siano inoltre \(p_{i}\) la probabilità di ricercare l'i-esimo elemento,
+\(q_{0}\) la probabilità di ricercare \(a < a_{1}\), \(q_{i}\) la probabilità di ricercare \(a_{i} < a < a_{i + 1}\) e \(q_{n}\) la probabilità di ricercare l'ultimo elemento.
+\\ \\
+Per definire il costo di un \emph{BST}, si osserva quanto segue:
+\begin{enumerate}
+    \item l'elemento \(a\) ricercato è l'etichetta di un qualche vertice \(v_{i}\), da cui per ricercare \(a\) si sono visitati DEPTH(v) + 1 vertici;
+    \item l'elemento \(a \notin S\).
+\end{enumerate}
+
+\noindent Da ciò, il costo di un BST risulta essere
+\[
+    \sum\limits_{i = 1}^{n}{p_{i}(DEPTH(a_{i}) + 1)} + \sum\limits_{i = 0}^{n}{a_{i}DEPTH(i)}
+\]
+
+\noindent Sorge ora una domanda: come trovare il BST di costo minimo?
+Si osserva che un approccio divide-and-conquer non è applicabile, poiché anche se si potrebbe procedere costruendo i sotto-alberi, rimane il problema di costruire la radice.
+Cio suggerisce però che si considerano 2n sotto-problemi, due per ogni radice possibile, segue che una soluzione prevede la programmazione dinamica.
+\\ \\
+Siano \(T_{ij}, 1 \le i \le j \le n\) gli alberi di costo minimo per gli elementi \(a_{i + 1}, \ldots, a_{j}\).
+Sia \(c_{ij}\) il costo di \(T_{ij}\),  e \(r_{ij}\) la sua radice. Sia infine \(w_{ij}\) il peso di \(T_{ij}\),
+definito come \(q_{i} + (p_{i} + q_{i + 1}) + \ldots + (p_{i} + q_{j})\).
+\\ \\
+Si può quindi considerare ogni \(T_{ij}\) come l'albero con radice \(a_{k}\) e sotto-alberi \(T_{i, k - 1}\) e \(T_{k, j}\).
+Sia per convenzione \(T_{ii}\) l'albero vuoto, per cui \(c_{ii} = 0\).
+\\
+Considerando \(C_{ij}, i < j\) si ha
+\[
+    \begin{aligned}
+        c_{ij} & = w_{ik} + p_{k} + w_{ij} + c_{i, k - 1} + c_{kj} \\
+               & = w_{ij} + c_{i, k - 1} + c_{kj}
+    \end{aligned}
+\]
+Da cui \(T_{ij}\) ottimo ha costo \(c_{ij} = MIN(w_{ij} + c_{i, k - 1} + c_{kj})\).

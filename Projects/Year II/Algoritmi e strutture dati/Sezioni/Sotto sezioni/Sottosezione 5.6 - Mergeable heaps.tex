@@ -1,0 +1,24 @@
+\documentclass{subfiles}
+\begin{document}
+Un mergeable heap è una struttura dati che permette almeno le istruzioni di INSERT, DELETE, MIN, UNION, tutte con costo \(\order{\log n}\).
+
+\noindent Sia \(T\) un albero 2-3 che rappresenta elementi di un insieme \(S\). Ogni \(x \in S\) appare come etichetta di una qualche foglia di \(T\):
+foglie che su cui non è posto nessun ordine. Per ogni vertice interno a \(T\), sia SMALLEST[v] l'elemento con valore minimo nel sotto-albero di radice v.
+\\ \\
+L'operazione di MIN risulta \(order{\log n}\) poiché basta seguire il cammino indicato dai vertici con SMALLEST minore.
+Circa DELETE: se gli elementi di \(S\) possono essere indicati dagli interi \(1, 2, \ldots, n\), è possibile allora indicizzare le foglie direttamente.
+Se ciò non è possibile, è necessario far uso di una struttura di supporto, che contenga puntatori alle foglie di \(T\).
+\\ \\
+Siano \(S_{1} \text{e} S_{2}\) due insiemi di cui \(T_{1} \text{e} T_{2}\) sono la rappresentazione tramite alberi 2-3.
+L'esecuzione di un'istruzione UNION è effettuata con un chiamata alla procedura Implant, di \emph{Figura \ref{Fig:5.2}}.
+
+\subfile{../Figure/Figura 5.2 - Procedura Implant.tex}
+
+\noindent Analizzando la procedura: sia \(h_{1}\) l'altezza di \(T_{1} \text{e} h_{2}\) l'altezza di \(T_{2}\).
+Si ricerca nel cammino più a destra di \(T_{1}\) una foglia \(v\), tale che questa abbia altezza \(h_{2}\) e si rende la radice di \(T_{2}\) fratello destro di \(v\).
+Si hanno due possibilità a seguito della procedura, posto \(f\) padre di \(v\), quali
+\begin{enumerate}
+    \item \(f\) ha tre figli, non sorgono problemi.
+    \item \(f\) ha quattro figli, è necessario ripristinare la proprietà di albero 2-3, si effettua una chiamata ad AddSon.
+\end{enumerate}
+\end{document}

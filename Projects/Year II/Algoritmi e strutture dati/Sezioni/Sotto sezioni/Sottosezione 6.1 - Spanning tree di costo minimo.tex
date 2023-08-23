@@ -1,0 +1,46 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{Definition*}
+    Sia \(G = (V, E)\) un grafo non orientato. Si definisce uno \emph{Spanning-Tree} di \(G\), un albero non orientato \(S = (V, T)\), ottenuto a partire da \(G\).
+    Si definisce analogamente \emph{Spanning Forest} di \(G\) l'insieme degli Spanning-Trees \(\Set{(V_{1}, T_{1}), \ldots, (V_{k}, T_{k})}\),
+    tali che ciascuna delle \(V_{i}, i = 1, \ldots, k, \text{sia una partizione di} V\) e gli \(T_{i}, i = 1, \ldots, k\) siano sottoinsiemi, possibilmente vuoti di \(E\).
+\end{Definition*}
+
+\noindent Posto che il costo di uno Spanning-Tree è dato dalla somma dei costi dei suoi archi, ciò che risulta interessante è la ricerca dello Spanning-Tree di costo minimo.
+Si riportano a seguito due lemmi; sui di essi sono basati gran parte degli algoritmi sugli Spanning-Tree .
+
+\begin{Lemma}\label{Lemma:6.1}
+    Sia \(G = (V, E)\) un grafo connesso (esiste un cammino tra ogni coppia di vertici) e non orientato, sia \(S = (V, T)\) un suo Spanning-Tree. Allora
+    \begin{enumerate}
+        \item per ogni \(u, v \in V\) esiste un unico cammino da \(u \text{a} v \text{in} S\);
+        \item se un'arco in \(E \setminus T\) è aggiunto ad \(S\), si viene ad avere un ciclo.
+    \end{enumerate}
+
+    \begin{Proof*}
+        Dimostrare il primo punto è banale: se vi fosse più di un cammino ne risulterebbe un ciclo.
+        La dimostrazione del secondo punto è altrettanto banale, poiché vi deve necessariamente gia essere una cammino tra gli estremi dell'arco aggiunto.
+    \end{Proof*}
+\end{Lemma}
+
+\begin{Lemma}
+    Sia \(G =(V, E)\) un grafo connesso e non orientato, sia inoltre \(c\) una funzione di costo sugl'archi di \(G\).
+    Sia \(\Set{(V_{1}, T_{1}), \ldots, (V_{k}, T_{k})}, k > 1\) Spanning Forest di \(G\), con \(T = \bigcup_{i = 1}^{k}{T_{i}}\).
+    Supposto \(e = (v, w)\) un arco di costo minimo in \(E \setminus T \text{,} v \in V_{1} \text{,} w \notin V_{1}\),
+    allora esiste uno Spanning-Tree di \(G\) che include \(T \cup \Set{e}\), con costo equivalente a qualsiasi altro Spanning-Tree che includa \(T\).
+
+    \begin{Proof*}
+        Si supponga per assurdo che \(S' = (V, T')\) sia uno Spanning-Tree di \(G\), tale che \(T'\) contenga \(T \text{ma non} e\).
+        Si supponga inoltre che \(S'\) sia lo Spanning-Tree con costo minore tra tutti gli altri Spanning-Tree di \(G\) che includono \(T \cup \Set{e}\).
+        Per il \emph{Lemma \ref{Lemma:6.1}}, aggiungere \(e \text{ad} S\) crea un ciclo.
+        Se ciò avviene esiste allora \(e' = (v', w') \text{,} v' \in V \text{e} w' \in V \text{oltre} e\).
+        \\ \\
+        Sia \(S\) lo Spanning-Tree ottenuto aggiungendo \(e \text{ad} S' \text{e rimuovendo} e'\). Per ipotesi \(c(e) \le c(e')\), quindi \(S\) non è più costoso di \(S'\),
+        ma poiché \(S\) contiene sia \(T \text{che} e\) ciò contraddice la minimalità di \(S'\).
+    \end{Proof*}
+\end{Lemma}
+
+\noindent La costruzione dello Spanning-Tree minimo può essere effettuata con vari algoritmi, tra i quali quello di \emph{Figura \ref{Fig:6.1}}.
+\subfile{../Figure/Figura 6.1 - Algoritmo di Kruskal.tex}
+
+\noindent Si dimostra che la complessità risulta essere \(\order{m \log n} \text{con} m = \norm{E} \text{e} n = \norm{V}\).
+\end{document}

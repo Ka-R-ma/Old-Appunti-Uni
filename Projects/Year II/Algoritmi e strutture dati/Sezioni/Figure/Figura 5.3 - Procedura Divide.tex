@@ -1,0 +1,26 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure}[!h]
+    \centering
+    \begin{subfigure}[b]{0.95\textwidth}
+        \begin{lstlisting}[language = algol]
+                procedure DIVI DE(a, T):
+                    begin
+                        on the path from ROOT[T] to the leaf labeled a remove all vertices
+                        except the leaf;
+                        while (there is more than one tree in the left forest) do
+                            begin
+                                let T' and T" be the two rightmost trees in the left forest;
+                                IMPLANT(T', T")
+                            end;
+                        while (there is more than one tree in the right forest) do
+                            begin
+                                let T' and T" be the two leftmost trees in the right forest:
+                            IMPLANT(T', T")
+                            end
+                    end       
+            \end{lstlisting}
+    \end{subfigure}
+    \label{Fig:}
+\end{figure}
+\end{document}

@@ -1,0 +1,26 @@
+\documentclass{subfiles}
+\begin{document}
+Un coda concatenabile, è una struttura dati che permette operazioni di INSERT, DELETE, MEMBER, CONCATENATE, SPLIT.
+
+\begin{Remark*}
+    Le operazioni di INSERT, DELETE e MEMBER, risultano analoghe a quelle dei dizionari.
+\end{Remark*}
+
+\noindent Analizzando le operazioni di CONCATENATE e SPLIT, entrambe richiedono tempo \(\order{\log n}\).
+Considerando per prima CONCATENATE: siano \(S_{1} \text{e} S_{2}\) due sequenze di elementi, tali che ogni elemento in \(S_{1}\) sia minore di ogni elemento in \(S_{2}\);
+allora CONCATENATE restituisce \(S_{1}S_{2}\). Supponendo che \(T_{1} \text{e} T_{2}\) siano due alberi 2-3 che rappresentano i due insiemi,
+l'operazione di CONCATENATE si risolve con un chiamata a Implant.
+\\ \\
+Analizzando ora SPLIT: questa fa si che l'insieme venga suddiviso in due metà, una prima contenente gli elementi minori o uguali a un certo \(a\),
+la seconda contenente gli elementi con valore maggiore.
+\\
+Considerando l'implementazione con alberi 2-3, ciò è effettuato con la procedura DIVIDE. Questa fa si che ricevuti \(a\) un valore e \(T\) un albero 2-3,
+questa divide \(T\) in due sotto-alberi \(T_{1} \text{e} T_{2}\), rispettivamente, con elementi minori o uguali ad \(a\), ed elementi maggiori di \(a\).
+\subfile{../Figure/Figura 5.3 - Procedura Divide.tex}
+
+\noindent Generalizzando dato \(T\) un albero 2-3 si segue il cammino dalla radice ad \(a\), Tale cammino divide l'albero in una foresta di sotto-alberi,
+le cui radici non esse stesse nel cammino. Con tale suddivisione i sotto-alberi nel cammino sinistro, uniti ad \(a\), sono combinati componendo \(T_{1}\).
+Analogo discorso per i sotto-alberi nel cammino destro.
+\\
+Per un teorema che qui non si riporta, DIVIDE richiede \(\order{HEIGHT(T)}\), dunque \(\order{\log n}\).
+\end{document}
