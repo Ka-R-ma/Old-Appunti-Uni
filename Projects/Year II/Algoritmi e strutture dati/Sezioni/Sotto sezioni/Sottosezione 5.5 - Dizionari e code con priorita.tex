@@ -1,0 +1,47 @@
+\documentclass{subfiles}
+\begin{document}
+Operazioni elementari comuni ad un dizionari e a una coda con priorità sono: INSERT, DELETE; operazioni specifiche risultano essere rispettivamente:
+MEMBER per i dizionari e MIN per le code con priorità.
+\\ \\
+Considerando l'istruzione INSERT (in \emph{Figura \ref{Fig:5.1}} se ne riporta l'implementazione algoritmica): sia \(a\) un elemento da inserire.
+Per prima cosa si ricerca la posizione per una foglia \(l\) che conterrà \(a\).
+Assunto che l'albero abbia più di un elemento, la ricerca prosegue fin quando si trova un vertice \(f\) con due o tre figli.
+Se \(f\) ha solo due figli, si supponga \(l_{1} \text{e} l_{2}\), si fa in modo che \(l\) diventi figlio di \(f\).
+\\
+Definendo \(E[x]\) il valore contenuto nel vertice \(x\), \(L[x]\) il massimo valore contenuto nel sotto-albero con radice il figlio sinistro di \(x\),
+ed \(M[x]\) il massimo valore contenuto nel sotto-albero con radice il figlio centrale di \(x\); si presentano tre casi.
+\begin{enumerate}
+    \item \(a < E[l_{1}]\), allora si rende \(l\) figlio sinistro di \(f\). Inoltre, \(L[f] = a \text{e} M[f] = l_{1}\).
+    \item \(E[l_{1}] < a < E[l_{2}]\), si rende \(l\) figlio centrale di \(f\). Inoltre \(M[f] = a\).
+    \item \(E[l_{2}] < a\), si rende \(l\) il terzo figlio di \(f\).
+\end{enumerate}
+
+\noindent Supponendo che \(f\) abbia tre figli, si supponga \(l_{1}, l_{2}, l_{3}\), segue che dover rendere \(l\) figlio di \(f\), comporta che questi abbia quattro figli,
+violando così la proprietà di albero 2-3. Sia \(g\) un nuovo vertice, al fine di mantenere la proprietà di albero 2-3, si rendono i due figli più a destra di \(f\) figli di \(g\).
+In fine, si rendono \(f \text{e} g\) figli dello stesso padre, eventualmente ripetendo ricorsivamente la procedura.
+\\
+Caso particolare è quello della radice. Se la radice ha quattro figli, si crea una nuova radice con due figli,
+ciascuno dei quali a loro volta avrà due dei figli della precedente radice.
+\subfile{../Figure/Figura 5.1 - Procedura AddSon.tex}
+
+\begin{Theorem}
+    La procedura di \emph{Figura \ref{Fig:5.1}}, inserisce un nuovo elemento in \(\order{\log n}\). In più mantiene l'ordine originale e conserva la struttura di albero 2-3.
+\end{Theorem}
+\clearpage
+
+\noindent Analizzando ora l'operazione di DELETE, sia \(x\) il vertice da eliminare, si osservano le seguenti possibilità.
+\begin{enumerate}
+    \item Il vertice \(x\) è la radice: si procede eliminandola\footnote[9]{Caso banale: si ha un'unico vertice.}.
+    \item Il vertice \(x\) è figlio di un vertice con tre figli: lo si elimina.
+    \item Il vertice \(x\) è figlio di un vertice  \(f\) con due figli, si hanno i seguenti casi.
+          \begin{enumerate}
+              \item \(f\)è la radice: si eliminano sia \(x\) che la radice; l'ultimo figlio è reso la nuova radice.
+              \item Il padre non è la radice. Si supponga che \(f\) abbia una fratello \(g\) con due figli, si rende il vertice da non eliminare figlio di \(g\).
+                    Procedendo con l'eliminare \(f \text{ed} x\). Se \(g\) ha tre figli, si rende il figlio più a destra figlio sinistro di \(f\); si procede con eliminare \(x\).
+          \end{enumerate}
+\end{enumerate}
+
+\noindent Considerando in fine l'operazione di MIN: si osserva che per costruzione, il minimo risiede nella foglia più a sinistra, richiedendo dunque tempo \(\order{\log n}\).
+\\ \\
+In conclusione, gli alberi due tre permettono di implementare dizionari e code con priorità in \(\order{n \log n}\).
+\end{document}

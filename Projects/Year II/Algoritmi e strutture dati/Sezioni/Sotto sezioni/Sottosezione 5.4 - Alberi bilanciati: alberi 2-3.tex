@@ -1,0 +1,26 @@
+\documentclass{subfiles}
+\begin{document}
+Come anticipato nella precedente sezione, se un albero è bilanciato, le operazioni che lo coinvolgono risultano più efficienti.
+\\ \\
+Si è finora visto una situazione statica cioè: gli insiemi su cui svolgere le operazioni, era già noto.
+Da adesso si procede col considerare il caso dinamico.
+\\
+Per far ciò si considererà come struttura dati un albero bilanciato: alberi la cui altezza è logaritmica rispetto al numero di nodi.
+\\ \\
+Risulta banale che la costruzione iniziale di un albero bilanciato sia semplice, il problema sorge quando su di esso si eseguono operazioni di INSERT e DELETE.
+
+\begin{Note*}
+    Esistono varie tecniche per mantenere un albero bilanciato, di maggiore importanza sono gli \emph{AVL tree \emph{e gli } alberi 2-3}. Saranno considerati solo quest'ultimi.
+\end{Note*}
+
+\begin{Definition*}
+    Un albero 2-3 è un albero in cui ciascun vertice non foglia, ha 2 o 3 figli. Inoltre, ogni cammino dalla radice a una qualsiasi foglia deve avere la medesima lunghezza.
+\end{Definition*}
+
+\begin{Lemma}
+    Sia \(T\) un albero 2-3 di altezza \(h\). Allora \(T\) ha un numero di vertici compreso tra \(2^{h + 1} - 1 \text{e} 3^{h + 1} - 1\),
+    il numero di foglie è invece compreso tra \(2^{h} \text{e} 3^{h}\).
+\end{Lemma}
+
+\noindent Nelle successive sezioni si dimostrerà come implementare \emph{dizionari, code con priorità, mergeable heap \emph{e} code concatenabili}, per mezzo di alberi 2-3.
+\end{document}

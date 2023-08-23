@@ -1,0 +1,23 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure}[!h]
+    \centering
+    \begin{subfigure}[b]{0.85\textwidth}
+        \begin{lstlisting}[language = algol]
+            procedure Implant(2-3 tree: T1, T2)
+                begin
+                    if (HIGHT(T1) == HIGHT(T2)) then
+                        create a new root, make T1 and T2, respectively,
+                        left and right sons of said root
+                    else // assuming HIGHT(T1) > HIGHT(T2)
+                        let v be the vertex on the rightest path of T1,
+                        such that HIGHT(v) == HIGHT(T1) - HIGHT(T2),
+                        make ROOT(T2) right brother of v
+                    if (f has four sons) then AddSon(f)
+                end
+            \end{lstlisting}
+    \end{subfigure}
+    \caption{Procedura Implant, per l'unione di alberi 2-3.}
+    \label{Fig:5.2}
+\end{figure}
+\end{document}

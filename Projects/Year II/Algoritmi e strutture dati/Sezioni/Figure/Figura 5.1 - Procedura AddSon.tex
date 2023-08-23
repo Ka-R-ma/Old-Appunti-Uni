@@ -1,0 +1,23 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure}[!h]
+    \centering
+    \begin{subfigure}[b]{0.85\textwidth}
+        \begin{lstlisting}[language = algol]
+                procedure AddSon(vertex v)
+                    begin
+                        create a new vertex v';
+                        make the two rightest sons of v, left and right sons of v'
+                        if (v has no father) then
+                            create a new root r;
+                            make v and v', respectively, left and right sons of r
+                        else
+                            let f be father of v;
+                            make v' right brother of v
+                        if (f has four sons) then AddSon(f)
+            \end{lstlisting}
+    \end{subfigure}
+    \caption{Procedura AddSon, per la creazione di alberi 2-3}
+    \label{Fig:5.1}
+\end{figure}
+\end{document}
