@@ -1,0 +1,81 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{Definition*}
+    Dato un grafo pesato e orientato \(G\), dicasi costo di un cammino \(p\), la somma dei costi degli archi in \(p\) stesso.
+\end{Definition*}
+
+\noindent Legati al costo di un cammino vi sono due problemi, quali
+\begin{itemize}
+    \item chiusura transitiva;
+    \item single-source problem.
+\end{itemize}
+
+\subsubsection{Chiusura transitiva}
+\noindent Sia \(G* = (V, E*)\) un grafo ottenuto da un grafo orientato \(G = (V, E)\), tale che \((v, w) \in E*\) se e solo se esiste in \(G\) un cammino da \(v \text{a} w\).
+\begin{Definition*}
+    Un sistema \((S, +, \cdot, 0, 1)\) è detto \emph{semi-anello chiuso}, con \(S\) insieme di elementi, \(+, \cdot\) operazioni binarie tali da soddisfare le seguenti proprietà.
+    \begin{itemize}
+        \item \((S, +, 0)\) è un monoide, ossia:
+              \begin{itemize}
+                  \item \(\forall a, b \in S, a + b \in S\);
+                  \item \(\forall a, b, c \in S, a + (b + c) = (a + b) + c\);
+                  \item \(\forall a \in S, a + 0 = 0 + a = a\).
+              \end{itemize}
+              discorso analogo per \((S, \cdot, 1)\).
+        \item \(+\) è commutativo;
+        \item \(\cdot\) è distributivo rispetto \(+\);
+        \item se \(a_{1}, \ldots, a_{i}, \ldots\) è una sequenza di elementi in \(S\), allora \(a_{1} + \ldots + a_{i} + \ldots\) esiste ed è unico in \(S\).
+        \item \(\cdot\) distribuisce su somme infinite numerabili, come su quelle finite.
+    \end{itemize}
+\end{Definition*}
+
+\noindent Dalle proprietà quattro e cinque, segue
+\[
+    \left(\sum\limits_{i}{a_{i}}\right) \cdot \left(\sum\limits_{j}{b_{j}}\right) = \sum\limits_{i}\left(\sum\limits_{j}{(a_{i} \cdot b_{j})}\right)
+\]
+
+\begin{Example*}
+    Sia \(S_{1} = (\Set{0, 1}, +, \cdot, 0, 1)\), con \(+, \cdot\) definite come segue.
+    \begin{center}
+        \begin{tabular}{c|c c}
+            + & 0 & 1 \\
+            \hline
+            0 & 0 & 1 \\
+            1 & 1 & 1 \\
+        \end{tabular}
+        \hspace{25pt}
+        \begin{tabular}{c|c c}
+            \(\cdot\) & 0 & 1 \\
+            \hline
+            0         & 0 & 0 \\
+            1         & 0 & 1 \\
+        \end{tabular}
+    \end{center}
+    Le prime tre proprietà sono dimostrate banalmente, circa ultime due si osserva che una somma è \(0\) se tutti gli elementi sono \(0\).
+\end{Example*}
+
+\begin{Example*}
+    Sia \(S_{2} = (\R^{+}, MIN, +, +\infty, 0)\). Risulta ovvio che \(+\infty\) sia elemento neutro per \(MIN \text{e} 0 \text{per} +\).
+\end{Example*}
+
+\begin{Example*}
+    Sia \(S_{3} = (F_{\Sigma}, \cup, \cdot, \emptyset, \Set{\varepsilon})\) dove \(F_{\Sigma}\) è la famiglia di stringhe su un alfabeto \(\Sigma\).
+    Le prime tre proprietà sono banalmente dimostrate, le ultime due sono definite se si definisce
+    \[
+        x \in (A_{1} \cup \ldots \cup A_{i} \cup \ldots) \iff x \in A_{i}, \text{per qualche}i
+    \]
+\end{Example*}
+
+\noindent Se \((S, +, \cdot, 0, 1)\) è un semi-anello chiuso, inoltre \(a \in S\), si definisce \(*\) come l'operazione di chiusura, nel seguente modo.
+\[
+    \sum\limits_{i = 0}^{+\infty}{a^{i}}
+\]
+
+\noindent Sia \(G = (V, E)\) un grafo orientato, in cui ogni arco è etichettato da un elemento di un semi-anello \((S, + , \cdot, 0, 1)\).
+Per ogni \((v, w)\) si definisce \(c((v, w))\): la somma delle etichette di tutti i cammini tra \(v, w\).
+La computazione di \(c((v, w))\) è effettuata col seguente algoritmo.
+\subfile{../Figure/Figura 6.4 - Algoritmo per il calcolo di c.tex}
+
+si osservi che \(l(v_{i}, v_{j})\) è 0 se non esiste un arco \((v_{i}, v_{j}) \in E\), 1 altrimenti.
+Inoltre se il semi-anello considerato è \(S_{1}\), l'operazione di chiusura \((C^{k - 1}_{kk})*\) può essere omessa.
+\end{document}

@@ -1,0 +1,31 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure}[!h]
+    \centering
+    \begin{subfigure}[b]{0.5\textwidth}
+        \begin{lstlisting}[language = algol]
+                procedure SEARCH(vertex v)
+                    begin
+                        mark v ``old''
+                        for each vertex on L[v] do
+                        if (w is marked ``new'') then
+                            add (v, w) to T;
+                            SEARCH(w)
+                    end
+            \end{lstlisting}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.65\textwidth}
+        \begin{lstlisting}[language = algol]
+                algorithm DFS(graph G = (V, E))
+                begin
+                    T $\leftarrow \emptyset$
+                    for all v in V do mark v ``new''
+                    while (there exists v in v marked ``new'') do
+                    SEARCH(v)
+                end
+            \end{lstlisting}
+    \end{subfigure}
+    \caption{Algoritmo per la visita in DFS.}
+    \label{Fig:6.2}
+\end{figure}
+\end{document}

@@ -1,0 +1,79 @@
+\documentclass{subfiles}
+\begin{document}
+Si considera ora un'applicazione della DFS: la ricerca di componenti biconnesse di un grafo non orientato.
+
+\begin{Definition*}
+    Sia \(G = (V, E)\) un grafo connesso e non orientato. Dicasi che un vertice \(a\) è punto di articolazione se esistono due vertici \(v \text{e} w\),
+    tali che ogni cammino tra i due passa per \(a\).
+\end{Definition*}
+\begin{Definition*}
+    Un grafo \(G\) è detto \emph{biconnesso} se per ogni tripla \(v,w,a\), esiste un cammino tra \(v, w\) che non passa per \(a\).
+\end{Definition*}
+
+\noindent Si definisce ora una relazione di equivalenza su gli archi di un grafo \(G\).
+Per tale relazione due archi \(e_{1}, e_{2}\) sono in relazione se \(e_{1} = e_{2}\), oppure esiste un ciclo che li contiene entrambi.
+Per \(1 \le i \le k \text{, sia} V_{i}\) l'insieme dei vertici degl'archi in \(E_{i}\).
+Ogni sottografo \(G_{i} = (V_{i}, E_{i})\) è detta \emph{componente biconnessa} di \(G\).
+
+\begin{Lemma}
+    Per \(1 \le \i \le k\), sia \(G_{i} = (V_{i}, E_{i})\) una componente biconnessa di un grafo \(G\). Allora
+    \begin{enumerate}
+        \item \(G_{i}\) è biconnesso per ogni \(i, 1 \le i \le k\);
+        \item per ogni \(i \neq j, \norm{V_{i} \cap V_{j}} \le 1\);
+        \item un vertice \(a\) è punto di articolazione per \(G\) se e solo se \(a \in V_{i} \cap V_{j}, i \neq j\).
+    \end{enumerate}
+
+    \begin{Proof*}
+        \begin{enumerate}
+            \item []
+            \item Si suppongano \(v, w, a \in V_{i}\) tali che ogni cammino da \(v \text{a} w \text{passi per} a\).
+                  Dunque \((v, w) \notin E_{i} \implies \exists (v, v'), (w, w') \in E_{i}\) e vi è un ciclo che li contiene entrambi.
+                  Per definizione stessa di componente biconnessa ogni arco e vertice nel ciclo, appartengono a \(E_{i} \text{e} V_{i}\) rispettivamente.
+                  Esistono dunque due cammini uno solo dei quali passa per \(a\), il che è una contraddizione.
+
+            \item Si suppongano \(v \text{e} w\) due vertici distinti appartenenti a \(V_{i} \cap V_{j}\). Esiste quindi un ciclo \(C_{1}\) in \(G_{i}\) che li contiene entrambi,
+                  e un ciclo \(C_{2} \text{in} G_{j}\) che li contiene entrambi. Ora, poiché \(E_{i} \cap E_{j} = \emptyset\), necessariamente \(C_{1} \cap C_{2} = \emptyset\).
+                  Ma si può costruire un ciclo che contiene sia vertici di \(C_{1}\) che \(C_{2}\), esiste quindi un vertice in \(E_{i}\) equivalente a un vertice in \(E_{j}\).
+                  Ma se ciò fosse vero \(E_{i} \text{ed} E_{j}\) non sarebbero classi di equivalenza, come si è invece supposto.
+
+            \item Si suppongano \(a\) punto di articolazione per \(G\). Esistono quindi due vertici \(v, w\) tali che \(v, w, a\) siano distinti,
+                  ed ogni cammino tra \(v \text{e} w \text{contiene} a\).
+                  Siano \((x, a) \text{e} (y, a)\) due archi in un cammino tra \(v \text{e} w\) incidenti\footnote[10]{Due archi sono incidenti se contengono almeno un vertice comune.} su \(a\).
+                  Se esiste un ciclo contenente questi archi, esiste pertanto un cammino tra \(v \text{e} w\) che non passa per \(a\).
+                  Dunque \((x, a) \text{e} (y, a)\) sono in due componenti biconnesse diverse, e \(a\) è punto di intersezione dei loro insiemi.
+                  Il viceversa è banale.
+        \end{enumerate}
+    \end{Proof*}
+\end{Lemma}
+
+\begin{Lemma}
+    Sia \(G = (V, E)\) un grafo connesso e non orientato, sia \(S = (V, T)\) un suo Spanning-Tree.
+    Un vertice \(a\) è punto di articolazione per \(G\), se e solo se
+    \begin{enumerate}
+        \item \(a\) è radice di \(S\), ed ha più di un figlio; oppure
+        \item \(a\) non è la radice, per qualche figlio \(s\) di \(a\) non vi è un back-edge tra un discendente di \(s\) e un'antenato di \(a\).
+    \end{enumerate}
+
+    \begin{Proof*}
+        \begin{enumerate}
+            \item []
+            \item Risulta banale.
+            \item Sia \(f\) padre di \(a\). Dalla definizione stessa di back-edge, un discendente \(v\) di \(s\) va ad un antenato di \(v\).
+                  Ciò implica che \(v\) vada in \(a\) o ad un discendente di \(s\). Ma pertanto ogni cammino da \(s \text{ad} f\) passa per \(a\), quindi segue \(a\) punto di articolazione.
+                  \\ \\
+                  Viceversa, sia supposto \(a\) punto di articolazione, ma non radice. Siano \(x \text{e} y\) due vertici distinti oltre \(a\), tali che ogni cammino tra i due passi per \(a\).
+                  Almeno uno dei due è discendente proprio di \(a\), si supponga \(x\). Sia \(s\) figlio di \(a\) tale che \(x\) sia discendente di \(s\).
+                  Allora o non vi è un back-edge tra \(v\) discendente di \(s\) e un'antenato \(w\) di \(a\), nel cui caso l'ipotesi è immediatamente vera, o esiste tale back-edge.
+                  In quest'ultimo caso seguono due possibilità.
+
+                  \begin{enumerate}
+                      \item Si supponga che \(y\) non discenda da \(a\). Esiste a questo punto un cammino \(x \to v \to w \to y\), che eviti \(a\), ma ciò è una contraddizione.
+                      \item Si supponga che \(y\) sia discendente di \(a\). Sicuramente \(y\) non è discendente di \(s\). Sia allora \(s'\) figlio di \(a\) tale che \(y\) discenda da \(s'\).
+                            In questo caso non vi è un back-edge tra un discendente \(v' \text{di} s'\) e un'antenato proprio \(w' \text{di} a\) , da cui l'ipotesi è immediatamente vera,
+                            oppure esiste un cammino \(x \to v \to w \to w' \to y\) che evita \(a\), ma ciò è una contraddizione.
+
+                  \end{enumerate}
+        \end{enumerate}
+    \end{Proof*}
+\end{Lemma}
+\end{document}

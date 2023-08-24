@@ -1,0 +1,75 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{Definition*}
+    Sia \(G = (V, E)\) un grafo diretto.
+    Siano \(V_{i}, 1 \le i \le k\) partizioni di \(V\), tali che presi due vertici \(v, w\),
+    i due sono in relazione se e solo se esiste un cammino dall'uno all'altro e viceversa.
+    Siano \(E_{i}, 1 \le i \le k\) le partizioni di \(E\) che collegano vertici di \(V_{i}\).
+    \\
+    Il sottografo \(G_{i} = (V_{i}, E_{i})\) è detta \emph{componente fortemente connessa} di \(G\).
+    Un grafo è detto fortemente connesso se e solo se esiste un'unica componente fortemente connessa al suo interno.
+\end{Definition*}
+
+\noindent Si analizza ora la relazione tra componenti fortemente connesse e DFS.
+
+\begin{Lemma}
+    Sia \(G_{i} = (V_{i}, E_{i})\) una componente fortemente connessa di un certo grafo orientato \(G\).
+    Sia \(S = (V, T)\) Spanning-Forest per \(G\). Allora i vertici di \(G_{i}\) e gli archi di \(E_{i} \cap T\) formano un albero.
+
+    \begin{Proof*}
+        Siano \(v, w \text{vertici in} V_{i}\). Senza perdita di generalità, si assuma \(v < w\).
+        Poiché \(v, w\) sono nella stessa componente fortemente connessa, esiste un cammino \(p\) tra i due.
+        Sia \(x\) il vertice di \(p\) minore. Giunti ad un discendente di \(x\) tramite \(p\), accade che non si può uscire dal sotto-albero di discendenti di \(x\).
+        Dunque \(w\) è discendente di \(x\). Poiché ciascun vertice è numerato in pre-ordine, ogni vertice compreso tra \(x, w\) è discendente di \(x\).
+        Segue che poiché \(x \le v < w, v\) è discendente di \(x\).
+        \\ \\
+        Sia \(r\) antenato comune dei vertici in \(G_{i}\), col DFNUMBER minore.
+        Se \(v\) è in \(G_{i}\), ogni vertice nel cammino tra \(r, v\) è in \(G_{i}\).
+    \end{Proof*}
+\end{Lemma}
+
+\begin{Lemma}
+    Per ogni \(1 \le i \le j, G_{i}\) si compone di tutti i vertici discendenti da \(r_{i}\), che non sono in \(G_{1}, \ldots, G_{i - 1}\).
+    \begin{Proof*}
+        La radice \(r_{j} \text{, per } j > i\) non può discendere da \(r_{i}\). Infatti la chiamata a \(SEARCH(r_{i})\) termina prima di quella a \(SEARCH(r_{j})\).
+    \end{Proof*}
+\end{Lemma}
+
+
+\noindent Al fine di semplificare la ricerca delle radici, sia definita la seguente funzione.
+\[
+    \begin{aligned}
+        LOWLINK[v] = MIN(\Set{v} \cup \{w \such & \text{esista un cross edge, o un back edge tra} v \text{e} w. \\
+                                                & \text{Inoltre la radice contente} w \text{è antenato di} v\}) \\
+    \end{aligned}
+\]
+\clearpage
+
+\begin{Lemma}
+    Sia \(G\) un grafo orientato. Un vertice \(v\) è radice di una componente fortemente connessa se e solo se \(LOWLINK[v] = v\).
+    \begin{Proof*}
+        Sia \(LOWLINK[v] = v\). Se \(v\) non è la radice di una componente fortemente connessa contente \(v\) stesso, allora un antenato proprio \(r \text{di} v\) lo è.
+        Esiste quindi un cammino \(p\) tra \(v, r\). Si considera il primo arco in \(p\) da un discendente di \(v\) ad un certo vertice \(w\), che non discenda da \(v\).
+        Segue che \((v, w)\) è un back edge o un cross edge. comune \(w < v\). In quanto, \(r \text{è antenato di} v\),
+        segue che esiste un cammino da \(v \text{a} w\).
+        Si conclude che \(w,r\) sono nella stessa componente fortemente connessa; se però ciò fosse vero \(LOWLINK[v] \le w < v\): una contraddizione.
+
+        Sia viceversa \(v\) radice di una componente fortemente connessa di un grafo \(G\).
+        Per definizione stessa \(LOWLINK[v] \le v\). Si supponga \(LOWLINK[v] < v\).
+        Segue che esistono \(w, r\) tali che
+        \begin{enumerate}
+            \item \(w\) sia raggiunto da un discendente di \(v\) tramite back edge o cross edge;
+            \item \(r\) è radice della componente fortemente connessa contente \(w\);
+            \item \(r \text{è antenato di} v\);
+            \item \(w < v\).
+        \end{enumerate}
+
+        \noindent Per il secondo punto \(r \le w\). Per il quarto \(r < v\), implicando, per il punto tre, che \(r\) sia antenato proprio di \(v\).
+        Segue però che, poiché in \(G\) esiste un cammino da \(v \text{a} r\) passante per \(w\), quest'ultimi sono nella stessa componente fortemente connessa;
+        concludendo pertanto che \(v\) non sia radice: una contraddizione.
+    \end{Proof*}
+\end{Lemma}
+
+\noindent La ricerca delle componenti fortemente connesse è riportata di seguito.
+\subfile{../Figure/Figura 6.3 - Algoritmo per la ricerca delle CFC.tex}
+\end{document}

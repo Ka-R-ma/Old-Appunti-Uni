@@ -1,0 +1,34 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure}[!h]
+    \centering
+    \begin{subfigure}[b]{0.9\textwidth}
+        \begin{lstlisting}[language = algol]
+                procedure SEARCH(v):
+                    begin
+                        ... // look at the first four instruction of the DFS algorithm
+                        push v on STACK;
+                        for each vertex w on L [v] do
+                            if (w is marked "new") then
+                                begin
+                                    SEARCHC(w);
+                                    LOWLINK[v] $\leftarrow$ MIN(LOWLINK[v], LOWLINK[w])
+                                end
+                            else if (DFNUMBER[w] < DFNUMBER[v] and w is on STACK) then
+                                LOWLINK[v] $\leftarrow$ MIN(DFNUMBER[w],LOWLINK[v]);
+                        if LOWLINK[v] = DFNUMBER[v] then
+                        begin
+                            repeat
+                                begin
+                                    pop x from top of STACK;
+                                    print x
+                                end
+                            until x = v;
+                            print "end of strongly connected component"
+                        end
+                    end
+            \end{lstlisting}
+    \end{subfigure}
+    %\caption{Procedura di ricerca delle componenti fortemente connesse.}
+\end{figure}
+\end{document}

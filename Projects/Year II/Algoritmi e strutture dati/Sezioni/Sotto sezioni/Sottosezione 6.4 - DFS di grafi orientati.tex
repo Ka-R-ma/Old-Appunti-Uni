@@ -1,0 +1,15 @@
+\documentclass{subfiles}
+\begin{document}
+Nel caso in cui il grafo su cui si deve effettuare la DFS sia un grafo orientato, se si applica opportune modifiche, si può sfruttare l'algoritmo sin ora visto.
+Nel caso di grafi orientati infatti, la DFS produce una Spanning-Forest i cui archi sono di quattro tipi.
+\begin{itemize}
+    \item Tree edge: collegano vertici ancora non visitati.
+    \item Back edge: collegano discendente e antenato di un vertice.
+    \item Forward edge: collegano l'antenato e il discendente di un vertice, se questi non è Tree edge.
+    \item Cross edge: archi che collegano vertici tra i quali non vie relazione di discendenza.
+\end{itemize}
+
+\begin{Lemma}
+    Se \((v, w)\) è un Cross edge, allora \(DFNUMBER[v] > DFNUMBER[w]\).
+\end{Lemma}
+\end{document}

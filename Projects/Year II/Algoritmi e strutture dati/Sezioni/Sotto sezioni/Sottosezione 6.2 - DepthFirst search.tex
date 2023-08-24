@@ -1,0 +1,18 @@
+\documentclass{subfiles}
+\begin{document}
+Dato un grafo \(G\) effettuare una depth-first search, rappresenta il seguente processo.
+\begin{enumerate}
+    \item Si sceglie un vertice \(x\) e lo si visita.
+    \item Si seleziona un vertice \(y\) discendente di \(x\), e lo si visita.
+\end{enumerate}
+
+\noindent Più in generale: supposto \(x\) il vertice visitato più di recente, la ricerca prosegue selezionando un arco inesplorato \((x, y)\).
+Se \(y\) è stato precedentemente visitato, si ricerca un'altro arco. Viceversa, si visita \(y\) è si riprende la visita a partire da esso.
+Terminate le visite su tutti i cammini con radice \(y\), si ritorna ad \(x\). La DFS termina quando tutti i vertici risultano esplorati.
+\\ \\
+Nel caso di grafi non orientati, segue che la DFS suddivide gli archi in due insiemi \(T \text{e} B\), rispettivamente, i \emph{tree edges} e i \emph{back edges}.
+Il sottografo \((V, T)\) risulta essere una foresta non orientata detta \emph{depth-first spanning forest}.
+\\ \\
+La visita in DFS è effettuata con il seguente algoritmo.
+\subfile{../Figure/Figura 6.2 - Visita in DFS.tex}
+\end{document}

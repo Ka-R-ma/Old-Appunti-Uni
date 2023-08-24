@@ -1,0 +1,19 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure}[!h]
+    \centering
+    \begin{subfigure}[b]{0.65\textwidth}
+        \begin{lstlisting}[language = algol]
+                begin
+                    for i $\leftarrow$ 1 to n do $C^{0}_{ii} \leftarrow$ 1 + $l(v_{i}, v_{i})$
+                    for $1 \le i, j \le n$ and $i \ne j$ do $C^{0}_{ij} \leftarrow l(v_{i}, v_{j})$
+                    for k $\leftarrow$ 1 to n do
+                        for $1 \le i,j \le n$ do
+                            $C^{k}_{ij} \leftarrow C^{k - 1}_{ij} + C^{k - 1}_{ik} \cdot (C^{k - 1}_{kk})* \cdot C^{k - 1}_{kj}$
+                    for $1 \le i,j \le n$ do $c(v_{i}, v_{j}) \leftarrow C^{n}_{ij}$
+                end 
+            \end{lstlisting}
+    \end{subfigure}
+    \label{Fig:}
+\end{figure}
+\end{document}
