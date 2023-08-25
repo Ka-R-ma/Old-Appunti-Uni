@@ -78,4 +78,23 @@ La computazione di \(c((v, w))\) è effettuata col seguente algoritmo.
 
 si osservi che \(l(v_{i}, v_{j})\) è 0 se non esiste un arco \((v_{i}, v_{j}) \in E\), 1 altrimenti.
 Inoltre se il semi-anello considerato è \(S_{1}\), l'operazione di chiusura \((C^{k - 1}_{kk})*\) può essere omessa.
+\clearpage
+
+\subsubsection{Single-Source problem}
+Il \emph{single-source problem} può essere espresso come segue: dato \(G = (V, E)\) un grafo orientato e pesato, fissato un vertice \(s \in V\) detto \emph{sorgente},
+calcolare il cammino ottimo (cioè il cammino con costo minimo) tra \(s \text{e} v, \forall v \in V\).
+\\ \\
+Informalmente, il \emph{single source shortest path} cerca di stabilire se dato un grafo pesato e orientato,
+esiste un cammino da un vertice a tutti gli altri, nel qual caso lo calcola.
+\\ \\
+Un primo algoritmo per la risoluzione del problema risulta essere il \emph{Bellman-Ford, Figura \ref{Fig:6.5}}.
+Realizzato con programmazione dinamica, questi calcola il costo minimo per andare da \(s \text{a} v_{k}\) iterativamente, in termini di vertici precedenti.
+\subfile{../Figure/Figura 6.5 - BellmanFord.tex}
+
+\noindent nel caso dell'algoritmo di cui sopra, i pesi degli archi possono assumere valori anche negativi. \\
+Nel caso di grafi in cui i pesi risultano tutti maggiori di o uguali a 0, è possibile applicare l'algoritmo di \emph{Dijkstra}.
+\subfile{../Figure/Figura 6.6 - Dijkstra.tex}
+
+\noindent Circa il costo computazionale: Bellman-Ford risulta essere \(\order{\norm{V} + \norm{E}}\), Dijkstra risulta invece \(\order{n^{2}}\) se D è implementata come array,
+\(\order{\norm{E} \log n}\) se implementata come coda con priorità.
 \end{document}

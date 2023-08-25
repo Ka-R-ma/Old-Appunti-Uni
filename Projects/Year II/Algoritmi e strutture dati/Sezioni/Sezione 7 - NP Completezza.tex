@@ -1,0 +1,50 @@
+\documentclass{subfiles}
+\begin{document}
+La teoria dell'NP-completezza nasce a partire dagli anni `70, diventando subito fondamento dell'informatica, sia con risvolti teorici che pratici.
+\\ \\
+Si è in precedenza visto come con la programmazione dinamica sia possibile realizzare algoritmi polinomiali, a partire da algoritmi esponenziali.
+Nonostante ciò, nel corso degli anni si dimostrata l'esistenza di problemi che sono (almeno al momento) risolvibili in tempi esponenziali.
+\\ \\
+Lo svilupparsi dell'intelligenza artificiale, porto gli studiosi ad associare l'abilità di una macchina alla capacità della stessa di dimostrare teoremi:
+è la nascite delle tecniche \emph{theorem proving}. Si osservi che quest'ultime cercano una soluzione esaustiva, pertanto sono esponenziali.
+\\ \\
+Molti studiosi, tra cui \emph{Eugene Lewler}, ma ben più importante \emph{Steven Cook}, cercarono di comprendere i limiti di queste tecniche.
+In particolare Cook, giunse alla conclusione che qual'ora si fossero riuscite a trovare delle tecniche ottimali in logica proposizionale,
+si sarebbero trovate delle tecniche per una classe molto più vasta di problemi.
+\\ \\
+L'effettiva nascita della teoria è da attribuire a \emph{Richard Karp}, questi riusci a trovare un nesso tra gli studi Cook e osservazioni di logica combinatoria,
+gia note al tempo.
+\\ \\
+Si può riassumere in breve l'NP-completezza affermando che: esistono linguaggi tali che
+\begin{enumerate}
+    \item Il problema del riconoscimento prende tempo esponenziale su una TM classica.
+    \item Non è noto un lower bound di tipo esponenziale.
+    \item Contributo di Cook e Levin: Se uno di questi problemi è risolvibile in tempo polinomiale, lo sono anche gli altri.
+    \item Questa classe contiene un nucleo “STORICO” (identi cato da Karp) che poi è stato ampliato considerevolmente.
+\end{enumerate}
+\clearpage
+
+\subsection{MT non deterministica}
+\subfile{Sotto sezioni/Sottosezione 7.1 - MT non deterministica.tex}
+
+\subsection{Classi di problemi}
+\subfile{Sotto sezioni/Sottosezione 7.2 - Classi di problemi.tex}
+
+\subsection{Problema di soddisfacibilità di espressioni booleane}
+\subfile{Sotto sezioni/Sottosezione 7.3 - SAT.tex}
+\clearpage
+
+\subsection{Clique problem}
+\subfile{Sotto sezioni/Sottosezione 7.4 - Clique problem.tex}
+\clearpage
+
+\subsection{Vertex cover}
+\subfile{Sotto sezioni/Sottosezione 7.5 - Vertex cover.tex}
+\clearpage
+
+\subsection{Isomorfismo tra sotto-grafi}
+\subfile{Sotto sezioni/Sottosezione 7.6 - Isomorfismo tra sottografi.tex}
+
+\subsection{P-space e EXP-space}
+\subfile{Sotto sezioni/Sottosezione 7.7 - PSpace e EXPSpace.tex}
+\end{document}

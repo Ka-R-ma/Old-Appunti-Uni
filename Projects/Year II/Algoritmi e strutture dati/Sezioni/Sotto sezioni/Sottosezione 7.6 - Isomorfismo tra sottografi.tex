@@ -1,0 +1,27 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{Definition*}
+    Siano \(G \text{e} H\) due grafi. Dicasi che \(G \text{e} H\) sono isomorfi se hanno lo stesso numero di vertici, archi e si mantiene la connettività degli archi.
+    Cioè esiste una funzione biettiva \(f\) tale che, considerati due vertici \(u, v \in G\), questi sono adiacenti se e solo se \(f(u), f(v)\) sono adiacenti in \(H\).
+\end{Definition*}
+
+\begin{Theorem}
+    Il problema del clique può essere polinomialmente ridotto al problema di Isomorfismo tra sotto-grafi. Quindi quest'ultimo è \(\mathcal{NP}-completo\).
+    \begin{Proof*}
+        Per prima cosa di dimostra che il problema sia effettivamente \(\mathcal{NP}\). Sia \(G'\) un sotto-grafo di un grafo \(G\).
+        Per ipotesi è nota la relazione tra \(G' \text{e} H\). Si deve dunque verificare che
+        \begin{itemize}
+            \item la stessa sia una biezione;
+            \item per ogni arco \((u, v)\) di \(G'\), esiste \((f(u), f(v))\) in \(H\).
+        \end{itemize}
+        Ciò richiede al più tempo polinomiale. Quindi il problema è effettivamente \(\mathcal{NP}\).
+        \\ \\
+        Si procede ora a ridurre clique all'isomorfismo tra sotto-grafi. \\
+        Sia \(G\) un grafo, sia \(k\) un intero.
+        Verificare che in \(G\) esista un clique di \(k\) vertici, può essere inteso come ricercare un sotto-grafo \(G_{1} \text{di} G\) con \(k\) vertici.
+        Si osserva che \(k \le n\), dove \(n\) è il numero di vertici in \(G\), se \(k > n\) banalmente non vi sarebbe un clique di \(k\) vertici.
+        Se si pone \(H = G'\), si ha che \(G\) ha un clique di taglia \(k\) se e solo se \(H\) è sotto-grafo isomorfismo di \(G\).
+        Da cui l'isomorfismo tra sottografi è \(\mathcal{NP}-completo\).
+    \end{Proof*}
+\end{Theorem}
+\end{document}

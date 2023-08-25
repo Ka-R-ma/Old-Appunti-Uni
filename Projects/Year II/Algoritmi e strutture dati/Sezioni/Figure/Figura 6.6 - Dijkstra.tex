@@ -1,0 +1,25 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure}[!h]
+    \centering
+    \begin{subfigure}[b]{0.85\textwidth}
+        \begin{lstlisting}[language = algol]
+                begin
+                    $S \leftarrow \Set{v_{0}}$ // S set of vertex such that
+                                the shortest path from $v_{0}$ to v in S, lies in S wholly
+                    $D[v_{0}] \leftarrow 0$ // D array of integer; contains
+                                the current distance from source to v
+                    for each $v \in V \setminus \Set{v_{0}}$ do D[v] $\leftarrow l(v_{0}, v)$ 
+                    while $S \ne V$ do 
+                        begin 
+                            choose w in $V \setminus S$ such tha D[w] is minimum
+                            add w to S
+                            foreach v in $V \setminus S$ do 
+                            D[v] $leftarrow$ MIN(D[v], D[w] + l(w, v))
+                        end
+                end        
+            \end{lstlisting}
+    \end{subfigure}
+    \label{Fig:}
+\end{figure}
+\end{document}

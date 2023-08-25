@@ -1,0 +1,21 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure}[!h]
+    \centering
+    \begin{subfigure}[b]{0.75\textwidth}
+        \begin{lstlisting}[language = algol]
+                algorithm BellmanFord(graph G = (V, E), vertex s)
+                    begin
+                        initialize D such that $D_{sv} \leftarrow + \infty, v \ne s, D_{ss} \leftarrow 0$ 
+                        for i $\leftarrow$ 1 to n do
+                            for each (u, v) in E do
+                                if ($D_{su} + WEIGHT(u, v) < D_{sv}$) then 
+                                    $D_{sv} \leftarrow D_{su} + w(u, v)$
+                        return D
+                    end
+            \end{lstlisting}
+    \end{subfigure}
+    \caption{Algoritmo di Bellman-Ford.}
+    \label{Fig:6.5}
+\end{figure}
+\end{document}

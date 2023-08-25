@@ -1,0 +1,39 @@
+\documentclass{subfiles}
+\begin{document}
+Il problema del clique è il seguente: dato un grafo non diretto, esiste al suo interno un sotto-grafo completo di k vertici?
+
+\begin{Theorem}
+    Il clique problem è un problema \(\mathcal{NP}-completo\).
+
+    \begin{Proof*}
+        Verificare che il problema sia \(\mathcal{NP}\) è banale.
+        Si procede pertanto col dimostrare la sua \(mathcal{NP}-completezza\).
+        Sia \(F = F_{1}F_{2} \cdots F_{q}\) un CNF, con ciascun fattore \(F_{i}\) della forma \((x_{i1} + \ldots + x_{ik}), x_{ij}\) letterale.
+        Si deve costruire un grafo \(G = (V, E)\) i cui vertici siano coppie di interi \([i, j], 1 \le i \le q, 1 \le j \le k\).
+        Il primo componente rappresentante il fattore, il secondo il letterale del fattore.
+        \\ \\
+        Gli archi di \(G\) sono coppie \(([i, j], [k, l])\) tali che \(i \ne k \land x_{ij} \ne \overline{x_{ik}}\).
+        Intuitivamente \([i, j], [k, l]\) sono adiacenti in \(G\) se corrispondono a fattori diversi, è possibile assegnare alle variabili dei letterali in modo che entrambi abbiano valore 1.
+        Segue \(x_{ij} = x_{jl}\) oppure \(x_{ij} \text{e} x_{kl}\) sono versioni complementari, o non, di variabili diverse.
+        \\ \\
+        Il numero dei vertici è chiaramente minore della lunghezza di \(F\), inoltre gli archi sono al più il quadrato di tale numero.
+        Si deve dimostrare che \(G\) ha un clique di taglia \(k\) se e solo se \(F\) è soddisfacibile.
+
+        \begin{itemize}
+            \item [SE.] Si assuma \(F\) soddisfacibile. Esiste allora un'assegnazione delle variabili per cui \(F = 1\).
+                  Per tale assegnazione ogni \(F_{i} = 1\), dunque \(F_{i}\) contiene almeno un fattore uguale a 1. Sia questi \(x_{im}\).
+                  Si dichiara che l'insieme dei vertice \(\set{[i, m_{i}]}{1 \le i \le q}\) forma un clique di taglia \(q\).
+                  Esistono altrimenti \(i, j, \i ne j\) tali per cui non vi sia un arco tra \([i, m_{i}], [j, m_{j}]\).
+                  Ma per quanto detto ciò implicherebbe \(x_{im_{i}} = x_{jm_{j}}\), che per come sono stati definiti gli \(x_{im_{i}}\) ciò è impossibile.
+
+            \item [SOLO SE] Si assuma che \(G\) abbia un clique di taglia \(q\). Ogni vertice in esso deve avere una prima componente diversa.
+                  Poiché si hanno \(q\) vertici, si ha una corrispondenza 1 a 1 tra i vertici e le componenti di \(F\).
+                  Siano i vertici del clique \([i, m_{i}], 1 \le i \le q\).
+                  Siano \(S_{1} = \set{y}{x_{im_{i}} = y, \text{ove} 1 \le i \le q \text{e} y \text{una variabile}}\),
+                  \(S_{2} = \set{y}{x_{im_{i}} = \overline{y}, \text{over} 1 \le i \le q \text{e} y \text{variabile}}\).
+                  Risulta ovvio \(S_{1} \cap S_{2} = \emptyset\). Impostando le variabili in \(S_{1}\) ad uno e a zero quelle in \(S_{2}\), le \(F_{i} = 1\). Quindi \(F = 1\).
+
+        \end{itemize}
+    \end{Proof*}
+\end{Theorem}
+\end{document}

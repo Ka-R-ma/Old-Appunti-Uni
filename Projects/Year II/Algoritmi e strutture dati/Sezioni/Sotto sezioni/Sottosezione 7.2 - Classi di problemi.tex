@@ -1,0 +1,32 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{Definition*}
+    Si definisce \(\mathcal{P}\) l'insieme dei linguaggi che possono essere accettati da una DTM di complessità polinomiale. Cioé
+    \[\begin{aligned}
+            \mathcal{P} = \set{L}{\exists DTM  \ M \land p(n) \in \mathbb{P}_{x}, T(M) = p(n) \land L(M) = L}
+        \end{aligned}\]
+
+    \noindent Si definisce invece \(mathcal{NP}\) l'insieme dei problemi che possono essere accettati da un NDTM di complessità polinomiale.
+\end{Definition*}
+
+\begin{Definition*}
+    Un linguaggio \(L_{0} \in \mathcal{NP}\) è detto essere \(\mathcal{NP}-completo\) se questi soddisfa la seguente condizione:
+    dato un algoritmo con complessità \(T(n) \ge n\) che riconosce \(L_{0}\), allora per ogni altro linguaggio \(L \in \mathcal{NP}\),
+    si può trovare un algoritmo deterministico di complessità \(T(p_{1}(n))\), con \(P_{1}(n) \text{dipendente da} L\).
+\end{Definition*}
+
+\begin{Definition*}
+    Dicasi che un linguaggio \(L\) è \emph{polinomialmente trasformabile} ad un linguaggio \(L_{0}\), se esiste una DTM polinomiale che converta ogni stringa \(w \in L\),
+    in una stringa \(w_{0} \in L_{0}\), tale che \(w \in L \iff w_{0} \in L_{0}\).
+\end{Definition*}
+
+\noindent Si definisce nel seguito uno standard per la rappresentazione dei problemi\footnote[11]{Nel corso della discussione si useranno i termini linguaggi e problemi intercambiabilmente.}.
+Si assume in particolare che
+\begin{itemize}
+    \item gli interi saranno rappresentati in decimale;
+    \item grafi a \(n\) vertici, avranno gli stessi rappresentati da interi, gli archi da stringhe;
+    \item le espressioni booleane con \(n\) variabili saranno rappresentate da stringhe.
+\end{itemize}
+
+\noindent Si discutono nel seguito alcuni dei problemi appartenenti al nucleo originale dei problemi identificati da Karp.
+\end{document}

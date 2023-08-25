@@ -1,0 +1,15 @@
+\documentclass{subfiles}
+\begin{document}
+Un MT non deterministica (NDTM) è definita tramite la medesima settupla della sua corrispondente deterministica, da quest'ultima differisce per la funzione di transizione,
+che nel caso non deterministico è definita come
+\[
+    \delta : Q \cp T^{k} \to Q \cp (T \cp \Set{L, R, S})^{k}
+\]
+Invariata riamane anche la definizione di istantanea.
+
+\begin{Definition*}
+    Dicasi che una NDTM ha complessità \(T(n)\) se, per ogni stringa accettata di taglia \(n\), esiste una sequenza accettante di al più \(T(n)\) mosse.
+    Dicasi che invece una NDTM ha complessità di spazio \(S(n)\) se, per ogni stringa accettata di taglia \(n\), esiste una sequenza di mosse per cui si ha accettazione,
+    nella quale al più \(S(n)\) celle sono lette da un qualsiasi nastro.
+\end{Definition*}
+\end{document}

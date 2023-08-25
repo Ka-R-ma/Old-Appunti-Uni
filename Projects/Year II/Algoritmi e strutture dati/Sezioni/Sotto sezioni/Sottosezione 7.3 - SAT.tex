@@ -1,0 +1,135 @@
+\documentclass{subfiles}
+\begin{document}
+Il problema di soddisfacibilità di espressioni booleane, o SAT, è il primo fra i problemi che si studieranno.
+Il problema è il seguente: data un'espressione booleana, esiste una combinazione di ``VERO'' e ``FALSO'' delle sue variabili, tale che questa risulti vera?
+
+Primo ad occuparsi del problema fu Cook, che col suo teorema dimostro che SAT fosse un NP-completo.
+
+\begin{Theorem*}[di Cook]
+    il problema di determinare se un'espressione booleane è soddisfacibile, è un problema \(\mathcal{NP}-completo\).
+
+    \begin{Proof*}
+        In quanto si suppone che SAT sia \(\mathcal{NP}-completo\), si deve prima dimostrare essere \(\mathcal{NP}\),
+        per poi dimostrare che ogni altro linguaggio in \(\mathcal{NP}\), è polinomialmente trasformabile in SAT.
+        \\ \\
+        Partendo col dimostrare che SAT \(\in \mathcal{NP}\): sia \(L\) il linguaggio di tutte le stringhe soddisfacenti espressioni booleane.
+        Si assuma unicamente che \(L \in \mathcal{NP}\). Un'algoritmo non deterministico tale da accettare \(L\),
+        dovrebbe procedere ``indovinando'' un'assegnazione di 1 e 0 delle variabili della stringa in input, se questa esiste.
+        \\
+        Supponendo che questa esista, dovrebbe procedere col sostituire gli 0 e gli 1 alle variabili, ovunque esse compaiano nella stringa di input:
+        valutando così l'espressione e verificando se essa assuma valore 1. Cio di fatti può essere effettuato in tempo proporzionale alla lunghezza con vari algoritmi di parsing.
+        Pertanto esiste una MT non deterministica che accetta espressioni booleana soddisfacibili in tempo polinomiale, da cui il SAT si dimostra essere \(\mathcal{NP}\).
+        \\ \\
+        Dimostrato SAT \(\in \mathcal{NP}\), si procede col dimostrare che lo stesso è \(\mathcal{NP}-completo\).
+        Sia \(M\) un NDTM di tempo polinomiale che accetta un qualsiasi linguaggio \(L \in \mathcal{NP}\), sia \(\omega\) una stringa di input per \(M\).
+        Da \(M \text{e} \omega\) si costruisce \(\omega_{0}\): espressione booleana che è soddisfatta se e solo se \(\omega\) è accettata da \(M\).
+        \'E noto che se un linguaggio è in \(\mathcal{NP}\), questi è accettato da una NDTM polinomiale.
+        Da ciò si può assumere \(M\) a singolo nastro. Sia supposto che \(M\) abbia stati \(q_{0}, \ldots, q_{s}\), simboli di nastro \(X_{1}, \ldots, X_{m}\),
+        sia infine \(p(n)\) la complessità di \(M\).
+        \\ \\
+        Sia \(\omega\) un'input di \(M\) di lunghezza \(n\). Se \(\omega\) è accettata da \(M\), ciò è effettuato in \(p(n)\) mosse.
+        Se ciò avviene necessariamente esiste una sequenza \(Q_{0}, \ldots, Q_{q}\) di istantanee, tali che \(Q_{0}\) sia l'istantanea iniziale e \(Q_{q}\) quella accettante,
+        \(q \le p(n)\), con nessuna delle istantanee aventi più di \(p(n)\) celle.
+        Considerando dunque \(\omega_{0}\) questa rappresenta al più una sequenza di istantanee di \(M\), possibilmente non valida.
+        Segue che \(\omega_{0}\) sarà 1 se e solo se l'assegnazione alle variabili, rappresenta un sequenza \(Q_{0}, \ldots, Q_{q}\) di istantanee che portano ad accettazione.
+        Quindi come anticipato: \(\omega_{0} = 1 \iff M \text{accetta} \omega\).
+        \clearpage
+
+        Sia \(\omega_{0}\) definita per mezzo delle seguenti variabili proporzionali.
+        \begin{itemize}
+            \item \(C(i, j, t)\): questa è 1 se e solo se l'i-esima cella di \(M\) contiene il j-esimo simbolo al tempo t-esimo.
+            \item \(S(k, t)\): è 1 se e solo se \(M\) è nel k-esimo stato al tempo t-esimo.
+            \item \(H(i, t)\): posta ad 1 se e solo se al tempo t-esimo si sta leggendo la i-esima cella.
+        \end{itemize}
+
+        \noindent Si anno cosi \(\order{p^{2}(n)}\) variabili\footnote[12]{Per il resto della dimostrazione si suppone che le variabili siano rappresentate da un'unico bit, ciò non comporta una perdita di generalità.},
+        che rappresentate in binario richiedono \(c \log n\) bit, con \(c \text{dipendente da} p\).
+        Nella costruzione di \(\omega_{0}\) si deve tenere conto del seguente predicato: \(U(X_{1}, \ldots, X_{r})\); questi sarà vero se uno è uno solo degli \(X_{i}\) è vero.
+        Con
+        \[
+            U(X_{1}, \ldots, Q_{q}) = (X_{1} + \ldots + X_{r})\left(\prod\limits_{i, j, i \ne j}{\lnot X_{i} + \lnot X_{j}}\right)
+        \]
+
+        \noindent Se \(M \text{accetta} \omega\), vi è una sequenza accettante di istantanee \(Q_{0}, \ldots, Q_{q}\) prodotta da \(M \text{processando} \omega\).
+        Si assuma che \(M\) sia stata modificata in modo tale che, se questa termina la computazione prima delle \(p(n)\) mosse, continuerà a svolgere mosse ``a vuoto'',
+        finché si siano raggiunte le \(p(n)\) mosse. Si può asserire che stabile se \(Q_{0}, \ldots, Q_{q}\) sia una sequenza accettante,
+        sia equivalente ad asserire che le seguenti espressioni sono contemporaneamente verificate.
+        \begin{itemize}
+            \item Sia \(A\) l'espressione che stabilisce che ad ogni unità di tempo, \(M\) sta leggendo esattamente una cella.
+                  Posto \(A_{t}\) il fatto che al tempo t sia letto un solo simbolo, allora \(A = A_{0} A_{1} \cdots A_{p(n)}\), con
+                  \[
+                      A_{t} = U(H(1, t), \ldots, H(p(n), t))
+                  \]
+            \item Sia \(B\) l'espressione che asserisce che per ogni nastro, un solo simbolo è presente in ciascuna cella.
+                  Posto \(B_{t}\) il fatto che al tempo t il nastro contiene un solo simbolo, allora
+                  \[
+                      B = \prod\limits_{i, t}{B_{it}}
+                  \]
+                  con \(B_{it} = U(C(i, 1, t), \ldots, C(i, p(n), t))\).
+
+            \item Sia \(C\) l'espressione che stabilisce che per ogni \(t, M\) sia in unico stato. Segue
+                  \[
+                      C = \prod\limits_{0 \le t \le p(n)}{U(S(1, t)), \ldots, S(p(n), t)}
+                  \]
+            \item Sia \(D\) l'espressione che impone che al più una cella per volta può essere modificata, per ogni t. Si ha
+                  \[
+                      D = \prod\limits_{i, j, t}{(C(i,j, t) \equiv C(i,j, t + 1)) + H(i, t)}
+                  \]
+                  L'espressione \((C(i,j, t) \equiv C(i,j, t + 1)) + H(i, t)\) stabilisce che
+                  \begin{itemize}
+                      \item la cella i è letta al tempo t, o che
+                      \item il simbolo j è nella cella i al tempo t + 1, se e solo se lo era al tempo t.
+                  \end{itemize}
+
+            \item Sia \(E\) l'espressione che stabilisce che ciascuna ID successiva, sia ottenuta dalla precedente per una mossa consentita dalla funzione di transizione.
+                  Siano \(E_{ijkt}\) espressioni che stabiliscono una delle seguenti proposizioni
+                  \begin{itemize}
+                      \item la i-esima cella non contiene il simbolo j-esimo al tempo t;
+                      \item la testina non sta leggendo la cella i-esima al tempo t;
+                      \item \(M\) non è nel k-esimo stato al tempo t;
+                      \item l'istantanea successiva è ottenuta dalla precedente, per una mossa consentita dalla funzione di transizione di \(M\).
+                  \end{itemize}
+                  Allora
+                  \[
+                      E = \prod\limits_{i,j,k,t}{E_{ijkt}}
+                  \]
+                  con
+                  \[
+                      E_{ijkt} = \lnot C(i,j,t) + \lnot H(i,t) + \lnot S(k, t) + \sum\limits_{i}{C(i, j_{t}, t + 1) S(k_{t}, t + 1) H(k_{t}, t + 1)}
+                  \]
+
+            \item Sia \(F\) l'espressione che asserisce che le condizioni iniziali, siano soddisfatte
+                  \[
+                      F = S(1, 0)H(1, 0) \prod\limits_{1 \le i \le n}{C(i, j_{i}, 0)} \prod\limits_{n \le i \le p(n)}{C(i, B, 0)}
+                  \]
+
+            \item Sia \(G\) l'espressione che stabilisce che \(M\) rimane nello stato accettante, terminata la computazione.
+                  Allora \(G = (S(s, p(n)))\), assunto \(q_{s}\) stato finale.
+        \end{itemize}
+
+        \noindent L'espressione \(\omega_{0}\) è dunque uguale a \(ABCDEFG\). Poiché ciascun fattore richiede al più \(\order{p^{3}(n)}\) simboli,
+        \(\omega_{0} \text{stesso ha} \order{p^{3}(n)}\) simboli. Per quanto detto sui simboli, segue che \(\omega_{0}\) ha lunghezza \(\order{p^{3}(n)\log n}\).
+        \\
+        Da ciò si conclude che data una sequenza di ID \(Q_{0}, \ldots, Q_{q}\) accettante, è possibile trovare un'assegnazione di 0 e 1 tali da rendere vera \(\omega_{0}\);
+        viceversa data un'assegnazione che rende \(\omega_{0}\) vera, si può trovare una sequenza di istantanee accettante. Indi per cui \(\omega_{0}\) soddisfatta se e solo se \(M \text{accetta} \omega\).
+        Pertanto dimostrando che SAT sia \(\mathcal{NP}-completo\).
+    \end{Proof*}
+\end{Theorem*}
+
+\begin{Theorem*}[3-SAT] Il problema di soddisfacibilità di espressioni booleane, con variabili a tre letterali è \(\mathcal{NP}-completo\).
+    \begin{Proof*}
+        Dato un prodotto di somme, si rimpiazza ciascuna delle somma \((x_{1} + x_{2} + \ldots + x_{k}), k \ge 4\) con
+        \[\begin{aligned}
+                (x_{1} + x_{2} + y_{1})(x_{3} + \overline{y_{1}} + y_{2}) & (x_{4} + \overline{y_{2}} + y_{3}) \cdots                                                \\
+                                                                          & (x_{k - 2} + \overline{y_{k - 4}} + y_{k - 3})(x_{k - 1} + x_{k} + \overline{y_{k - 3}})
+            \end{aligned}\]
+        per nuove variabili \(y_{1}, \ldots, y_{k-3}\).
+        Vi è un'assegnazione delle nuove variabili che rende l'espressione sostitutiva vera se e solo se uno dei letterali \(x_{1}, \ldots, x_{k}\) è vero,
+        ossia se l'espressione originale è vera. Si assuma \(x_{i} = 1\) allora \(y_j = 1 \text{per} j \le i - 2, 0\) altrimenti.
+        Viceversa si assuma che qualche assegnazione di \(y_{i}\) renda vera l'espressione. Se \(y_{0} = 0\), allora uno tra \(x_{1} \text{e} x_{2}\) ha valore 1.
+        In ogni modo qualche \(x_{i} = 1\). Per ogni CNF \(E\) si può trovare una 3-CNF \(E'\) tale che quest'ultima sia vera se e solo se \(E\) è vera.
+        Inoltre, ciò può essere effettuato in tempo lineare poiché la trasformazione si applica direttamente.
+    \end{Proof*}
+
+\end{Theorem*}
+\end{document}
