@@ -1,33 +1,17 @@
 \documentclass{article}
 \begin{document}
-Principale applicazione delle MT è quello di determinare un \emph{lower bound} al tempo e allo spazio necessari alla risoluzione di un problema.
+La \emph{tesi di Church} stabilisce che tutti i modelli di calcolo sono equivalenti, ossia che risolvono i medesimi problemi, differendo solo per le prestazioni.
 \\ \\
-Considerando la relazione tra MT e RAM, risulta ovvio che una RAM possa simulare una MT a k nastri, semplicemente mantenendo un cella del nastro della MT in un registro.
-Si supponga una MT con complessità di tempo \(T(n) \ge n\); ne segue che una RAM legga gli input in \(\order{T(n)}\) se a costo uniforme,
-in \(\order{T(n) \ln T(n)}\) se con costo logaritmico. In ambo i casi, il tempo di una RAM è limitato superiormente dal tempo della MT.
-Un risultato inverso, cioè la possibilità che una MT simuli un RAM, vale solo se la RAM è con costo logaritmico.
-In tal caso vale il teorema a seguire.
-
-\begin{Theorem}
-    Sia \(L\) un linguaggio accettato da una RAM con costo logaritmico, in tempo \(T(n)\).
-    Se la RAM non fa uso di istruzioni \lstinline[language = RAM]{MULT} e/o \lstinline[language = RAM]{DIV}, allora la complessità di tempo è al più \(\order{T^{2}(n)}\).
-\end{Theorem}
-
-\begin{Proof*}
-    Sia rappresentato ciascun registro della RAM, non contenente zeri, come in \emph{Figura \ref{Fig:2.3}}.
-    \subfile{../Figure/Figura 2.3 - MT simulante RAM con costo logaritmico.tex}
-
-    \noindent Il nastro è dunque una sequenza di coppie \((i_{j}, c_{j})\), scritte in binario, separate da un delimitatore.
-    Il contenuto dell'accumulatore è memorizzato su di un secondo nastro, e un terzo nastro è usato come supporto.
-    In aggiunta a questi vi sono due nastri aggiuntivi: uno per gli input e uno per gli output della RAM.
-    Segue che un passo della RAM è rappresentato da un insieme finito di passi della MT.
-    \\ \\
-    Si procede ora col dimostrare che una RAM con costo computazionale \(k\) richiede al più \(\order{k^{2}}\) passi di una MT.
-    Il costo per memorizzare \(c_{j} \text{in} i_{j}\) è \(l(c_{j}) + l(i_{j})\), da cui si conclude che la lunghezza di caratteri non blank è \(\order{k}\).
-    \\
-    La simulazioni di istruzioni diverse da \lstinline[language = RAM]{STORE} sono \(\order{k}\), poiché il costo principale è dato dalla ricerca nel nastro.
-    Analogamente il costo di uno \lstinline[language = RAM]{STORE} è dato dal tempo di ricerca nel nastro, in aggiunta al tempo necessario per copiarlo entrambe \(\order{k}\).
-    Da cio si deduce che, a meno di \lstinline[language = RAM]{MULT} e/o \lstinline[language = RAM]{DIV}, un'istruzione RAM può essere simulata in \(\order{k}\) passi della MT.
-    Infine poiché sotto il criterio logaritmico ciascuna istruzione RAM costa almeno un'unita di tempo, il costo totale speso dalla MT è \(\order{k^{2}}\)
-\end{Proof*}
+Considerato ciò, segue che RAM ed MT devono essere equivalenti.
+Sia considerato l'esecuzione della funzione \(f(n) = 2^{(2^{n})}\).
+Si osserva che se calcolata con una RAM con costo uniforme, applicando doubling, questa richiede \(\order{n}\) unita di tempo.
+Considerata una MT, d'altra parte si ha che, tralasciato il calcolo effettivo di \(f(n)\), sono necessari almeno \(2^{n}\) celle per la sola rappresentazione.
+Inoltre poiché nel caso delle MT lo spazio è un lower bound del tempo, segue che sono necessarie \(\Omega(2^{n})\) unità di tempo.
+\\ \\
+Da quanto detto segue che in apparenza non vi sia relazione tra i due modelli.
+Ma come detto quello analizzato è il modello RAM a costo uniforme, che per certi versi è inverosimile nella realtà.
+\\
+Sia quindi considerato il modello RAM con costo logaritmico, poiché per accedere in memoria questi impiega tempo proporzionale all'operando,
+sempre con doubling si ha che tale modello richiede \(\order{n2^{n}}\) unità di tempo.
+Segue che MT e RAM con costo logaritmico siano in relazione polinomiale tra loro, dimostrandone l'equivalenza tra i due.
 \end{document}

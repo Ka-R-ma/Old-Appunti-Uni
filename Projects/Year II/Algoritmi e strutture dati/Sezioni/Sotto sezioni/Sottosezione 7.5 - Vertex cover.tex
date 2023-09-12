@@ -9,9 +9,9 @@ Il problema del Vertex cover è il seguente: dato un grafo non orientato \(G = (
         \[
             \overline{E} = \set{(v, w)}{v, w \in V, v \ne w, (v, w) \notin E}
         \]
-        Si dichiara che \(S \subseteq V\) è clique in \(G\) se e solo se \(V \setminus S\) è una vertex cover per \(G\).
-        Si ha infatti che se \(S\) è clique per \(G\), nessun arco in \(G\) connette due vertici in \(S\).
-        Dunque ogni arco in \(G\) è incidente ad almeno un vertice in \(V \setminus S\), quindi \(V \setminus S\) è una vertex cover per \(G\).
+        Si dichiara che \(S \subseteq V\) è clique in \(G\) se e solo se \(V \setminus S\) è una vertex cover per \(\overline{G}\).
+        Si ha infatti che se \(S\) è clique per \(G\), nessun arco in \(\overline{G}\) connette due vertici in \(S\).
+        Dunque ogni arco in \(\overline{G}\) è incidente ad almeno un vertice in \(V \setminus S\), quindi \(V \setminus S\) è una vertex cover per \(\overline{G}\).
         Viceversa, se \(V \setminus S\) è una vertex cover per \(\overline{G}\), allora ogni arco di \(\overline{G}\) è incidente ad almeno un arco in \(V \setminus S\).
         Conseguentemente, nessun arco in \(\overline{G}\) connette due vertici in \(S\).
         Indi per cui, ogni coppia di vertici in \(S\) è connesso in \(G\), quindi \(S\) è clique per \(G\).
