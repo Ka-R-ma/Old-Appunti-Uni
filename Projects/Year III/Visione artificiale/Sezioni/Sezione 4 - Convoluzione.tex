@@ -1,0 +1,72 @@
+\documentclass{subfiles}
+\begin{document}
+Prima di parlare di convoluzione è necessario fare alcune puntualizzazioni.
+Per prima cosa si farà una distinzione tra operazione matriciale e puntuale. Si considerino le seguenti matrici
+\[
+    \begin{pmatrix}
+        a_{11} & a_{12} \\
+        a_{21} & a_{22} \\
+    \end{pmatrix}
+    \qquad
+    \begin{pmatrix}
+        b_{11} & b_{12} \\
+        b_{21} & b_{22} \\
+    \end{pmatrix}
+\]
+per il prodotto matriciale si avrebbe
+\[
+    \begin{pmatrix}
+        a_{11} & a_{12} \\
+        a_{21} & a_{22} \\
+    \end{pmatrix}
+    \cp
+    \begin{pmatrix}
+        b_{11} & b_{12} \\
+        b_{21} & b_{22} \\
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        a_{11}b_{11} + a_{12}b_{21} & a_{11}b_{12} + a_{12}b_{22} \\
+        a_{21}b_{11} + a_{22}b_{21} & a_{21}b{12} + a_{22}b_{22}  \\
+    \end{pmatrix}
+\]
+per quello matriciale risulta invece
+\[
+    \begin{pmatrix}
+        a_{11} & a_{12} \\
+        a_{21} & a_{22} \\
+    \end{pmatrix}
+    \cp
+    \begin{pmatrix}
+        b_{11} & b_{12} \\
+        b_{21} & b_{22} \\
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        a_{11}b_{11} & a_{12}b_{12} \\
+        a_{21}b_{21} & a_{22}b_{22} \\
+    \end{pmatrix}
+\]
+
+\begin{Note*}
+    per il resto del documento saranno considerate operazioni puntuali, se non espressamente specificato.
+\end{Note*}
+
+\noindent Ulteriore nozione è quella di operatore lineare. Si ricorda che \(H\) è un operatore lineare se
+\[
+    H[\alpha f(x,y) + \beta f(x,y)] = \alpha H[f(x,y)] + \beta H[f(x, y)]
+\]
+
+\noindent Di interesse per l'utilizzo di MATLAB, risultano essere le seguenti operazioni lineari.
+\[\begin{gathered}
+        I^{(0)} = \set{(i,j,g)}{g = 0} \implies \text{Immagine completamente nera.} \\
+        I^{(255)} = \set{(i,j,g)}{g = 255} \implies \text{Immagine completamente bianca.} \\
+        kI = \set{(i,j,g)}{g = \min{G - 1, \floor{k \cdot g}}} \implies \text{Eventuale saturazione a G} \\
+        k + I = \set{(i,j,g)}{g = \min{G - 1, \floor{k + g}}} \implies \text{Eventuale saturazione a G} \\
+        \min{I_{1}, I_{2}} = \set{(i,j,g)}{g = \min{g_{1}, g_{2}}} \implies \text{Immagine risultante è più scura} \\
+        \max{I_{1}, I_{2}} = \set{(i,j,g)}{g = \max{g_{1}, g_{2}}} \implies \text{Immagine risultante è più chiara} \\
+        I_{1} + I_{2} = \set{(i,j,g)}{g = \min{G - 1, g_{1} + g_{2}}} \implies \text{Eventuale saturazione a G} \\
+        I_{1} \cp I_{2} = \set{(i,j,g)}{g = \floor{(g_{1} \cdot g_{2})/G - 1}} \implies \text{Eventuale saturazione a G} \\
+    \end{gathered}\]
+\clearpage
+\end{document}

@@ -1,0 +1,16 @@
+\documentclass{subfiles}
+\begin{document}
+Il CCD è un dispositivo che conta quanti fotoni sono presenti in un areola, maggiore è tale numero, maggiore l'illuminazione dell'areola.
+
+\begin{Remark*}
+    il CCD non è molto sensibile alle variazioni di luce, si ha quindi una soglia limite entro la quale i fotoni sono considerati.
+\end{Remark*}
+
+\noindent \`E evidente che il CCD sinora descritto non permette che l'acquisizione di immagini in scala di grigio.
+Per far si che il CCD descritto permetta l'acquisizione di immagini a colore sarebbe necessaria un'areola per colore,
+ma ciò renderebbe difficile e costosa l'implementazione del CCD.
+\\ \\
+Per ovviare a tale problema si utilizza il \emph{filtro di Bayer}.
+Sebbene ne esistano varie versioni, tutte condividono una proprietà comune: in un areola 2 x 2, due pixel sono verdi, uno rosso e uno blu.
+Segue che ad essere esatto è un solo colore per volta, i restanti sono ottenuti tramite media.
+\end{document}

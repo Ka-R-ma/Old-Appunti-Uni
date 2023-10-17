@@ -1,0 +1,24 @@
+\documentclass{subfiles}
+\begin{document}
+Sia assunto che l'immagine ammette frequenze massime \(v_{x} \text{e} v_{y}\).
+Supponendo di dover campionare l'immagine, è così possibile determinare l'ampiezza campionante ad intervalli spaziali, dati da
+\[
+    \Delta_{x} = \frac{1}{2v_{x}} \qquad \qquad \Delta_{y} = \frac{1}{2 v_{y}}
+\]
+
+\noindent Nel caso di pixel quadrati si impone \(\Delta = \min{\Delta_{x}, \Delta_{y}}\).
+\\ \\
+Parlando di effettivo campionamento, si identificano principalmente tre casi, quali
+\begin{itemize}
+    \item \emph{sotto-campionamento}: il numero di campioni del segnale da campionare, non è sufficiente a ricostruire il segnale di partenza;
+    \item \emph{campionamento critico}: si campiona il segnale con un numero sufficiente di campioni, permettendo di ripristinare il segnale;
+    \item \emph{sovra-campionamento}: il segnale è perfettamente ricostruibile, ma il numero di campioni è eccessivo.
+\end{itemize}
+
+\subsection{Sistema di output a scala di grigio}
+\subfile{Sotto Sezioni/Sottosezione 2.1 - Sistema di output a scala di grigio.tex}
+
+\subsection{Sistemi di output a colori}
+\subfile{Sotto Sezioni/Sottosezione 2.2 - Sistemi di output a colori.tex}
+\clearpage
+\end{document}

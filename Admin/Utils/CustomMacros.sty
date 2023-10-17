@@ -104,10 +104,14 @@
 \let\oldDim\dim
 \let\oldKer\ker
 \let\oldInf\inf
+\let\oldMin\min
+\let\oldMax\max
 \renewcommand{\det}[1]{\oldDet #1}
 \renewcommand{\dim}[1]{\oldDim #1}
 \renewcommand{\ker}[1]{\oldKer #1}
 \renewcommand{\inf}[1]{\oldInf \Set{#1}}
+\renewcommand{\min}[1]{\oldMin \Set{#1}}
+\renewcommand{\max}[1]{\oldMax \Set{#1}}
 \let\oldToC\tableofcontents
 \let\oldMaketitle\maketitle
 
@@ -122,7 +126,9 @@
 % Custom defined macros
 \DeclareMathOperator{\such}{\: {:} \:}
 \DeclareMathOperator{\Var}{\mathit{Var}}
-\DeclareSIUnit{\calorie}{cal}
+\DeclareSIUnit{\calorie}{ {cal}}
+\DeclareSIUnit\atmosphere{ {atm}}
+
 
 \newcommand{\floor}[1]{\lfloor #1 \rfloor}
 \newcommand{\set}[2]{\left\{#1 \such #2\right\}}

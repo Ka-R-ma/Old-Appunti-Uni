@@ -1,0 +1,17 @@
+\documentclass{subfiles}
+\begin{document}
+Una qualsiasi immagine digitale \(I\), può essere vista come una funzione
+\[
+    I = \set{(i,j,g)}{i \in \Set{0, \ldots, W - 1}, j \in \Set{0, \ldots, H - 1}, g \in \Set{0, \ldots, G - 1}}
+\]
+dove \(W, H, G\) rappresentano rispettivamente i valori massimi di larghezza, altezza e livello di grigio\footnotemark[1] dell'immagine.
+Si deduce banalmente che la qualità dell'immagine sia dipendente dalla codifica di tali parametri.
+In generale si deve avere che
+\[\begin{gathered}
+        i = \min{\floor{W \cp (x - x_{min}) /(x_{max} - x_{min})}, W - 1} \\
+        j = \min{\floor{H \cp (y - y_{min}) /(y_{max} - y_{min})}, H - 1} \\
+        g = \min{\floor{G \cp (l - l_{min}) /(l_{max} - l_{min})}, G - 1} \\
+    \end{gathered}\]
+
+\footnotetext[1]{A meno che non sia esplicitato, saranno considerati valori di grigio nel range [0, 255].}
+\end{document}
