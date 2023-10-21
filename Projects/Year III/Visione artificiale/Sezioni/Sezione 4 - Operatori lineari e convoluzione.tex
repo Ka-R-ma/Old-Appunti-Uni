@@ -30,7 +30,7 @@ per il prodotto matriciale si avrebbe
         a_{21}b_{11} + a_{22}b_{21} & a_{21}b{12} + a_{22}b_{22}  \\
     \end{pmatrix}
 \]
-per quello matriciale risulta invece
+per quello punto-punto risulta invece
 \[
     \begin{pmatrix}
         a_{11} & a_{12} \\
@@ -47,9 +47,10 @@ per quello matriciale risulta invece
         a_{21}b_{21} & a_{22}b_{22} \\
     \end{pmatrix}
 \]
+Ossia nel prodotto punto-punto ad essere moltiplicati sono gli elementi i cui indici coincidono, pertanto le matrici coinvolte devono avere le medesime dimensioni
 
 \begin{Note*}
-    per il resto del documento saranno considerate operazioni puntuali, se non espressamente specificato.
+    per il resto del documento saranno considerate operazioni punto-punto, se non espressamente specificato.
 \end{Note*}
 
 \noindent Ulteriore nozione è quella di operatore lineare. Si ricorda che \(H\) è un operatore lineare se
@@ -57,7 +58,7 @@ per quello matriciale risulta invece
     H[\alpha f(x,y) + \beta f(x,y)] = \alpha H[f(x,y)] + \beta H[f(x, y)]
 \end{equation}
 
-\noindent Di interesse per l'utilizzo di MATLAB, risultano essere le seguenti operazioni lineari.
+Di interesse per l'utilizzo di MATLAB, risultano essere le seguenti operazioni lineari.
 \[\begin{gathered}
         I^{(0)} = \set{(i,j,g)}{g = 0} \implies \text{Immagine completamente nera.} \\
         I^{(255)} = \set{(i,j,g)}{g = 255} \implies \text{Immagine completamente bianca.} \\
@@ -72,4 +73,15 @@ per quello matriciale risulta invece
 
 \subsection{Convoluzione}
 \subfile{Sotto Sezioni/Sottosezione 4.1 - Convoluzione.tex}
+
+\subsection{Filtro di convoluzione blur}
+\subfile{Sotto Sezioni/Sottosezione 4.2 - Filtro di convoluzione blur.tex}
+\clearpage
+
+\subsection{Filtro mediano}
+\subfile{Sotto Sezioni/Sottosezione 4.3 - Filtro mediano.tex}
+\clearpage
+
+% \subsection{Filtro di sharpening}
+% \subfile{Sotto Sezioni/Sottosezione 4.4 - Filtro di sharpening.tex}
 \end{document}
