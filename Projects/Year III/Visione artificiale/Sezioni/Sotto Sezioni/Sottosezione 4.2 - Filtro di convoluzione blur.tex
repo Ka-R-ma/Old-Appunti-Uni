@@ -35,8 +35,8 @@ La sfocatura è così minima da risultare impercettibile, sebbene se osservate d
 Sia ora considerato il seguente codice MATLAB.
 \begin{center}
     \begin{lstlisting}[language = MATLAB]
-                    % caricamento dell'immagine Lena
-                    ker = [0 4 0; 4 8 4; 0 4 0]/24;
+        % caricamento dell'immagine Lena
+        ker = [0 4 0; 4 8 4; 0 4 0]/24;
         convLena = conv2(single(Lena), ker, `same');
         figure; imshow(uint8(convLena), [0, 255]);
     \end{lstlisting}
