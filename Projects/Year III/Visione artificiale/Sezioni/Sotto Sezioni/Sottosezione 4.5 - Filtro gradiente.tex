@@ -46,7 +46,7 @@ Considerando dunque questi ultimi, è possibile calcolare la norma e l'orientame
 Partendo dalla norma: essendo questa la radice quadrata della somma dei quadrati
 \begin{wrapfigure}[10]{r}{0.425\textwidth}
     \centering
-    \includegraphics[scale = 0.325]{../Images/Airplane/NormAirplane.png}
+    \includegraphics[scale = 0.325]{../Images/Airplane/ModulesAirplane.png}
     \caption{Contorni  omnidirezionali di \emph{Figura \ref{fig:4.9}}}
     \label{fig:4.10}
 \end{wrapfigure}
@@ -74,23 +74,21 @@ questi sono di seguito riportati nel rispettivo ordine.
 \end{center}
 
 \begin{Note*}
-    l'utilizzo di ``.\textasciicircum '' sta ad indicare che il quadrato non è della matrice, ma si tratta di un quadrato punto-punto.
+    l'utilizzo di ``.\textasciicircum '' nei codici di cui sopra, è utilizzato per indicare che il quadrato non è della matrice, ma si tratta di un quadrato punto-punto.
 \end{Note*}
-
-Passando al considerare l'orientamento, questi è ottenuto punto per punto come arcotangente del rapporto delle due derivate,
-volendo dunque osservare a cosa ciò equivalga, eseguendo
 \begin{wrapfigure}{l}{0.425\textwidth}
     \centering
     \includegraphics[scale = 0.325]{../Images/Airplane/OrientationAirplane.png}
     \caption{\emph{Figura \ref{fig:4.9}} da un punto di vista dell'orientamento dei moduli del gradiente.}
     \label{fig:4.11}
 \end{wrapfigure}
-l'opportuno codice MATLAB, a seguire, quel che si ottiene è mostrato in \emph{Figura \ref{fig:4.11}}.
+Passando al considerare l'orientamento, questi è ottenuto punto per punto come arcotangente del rapporto delle due derivate,
+volendo dunque osservare a cosa ciò equivalga, eseguendo l'opportuno codice MATLAB, a seguire, quel che si ottiene è mostrato in \emph{Figura \ref{fig:4.11}}.
 \begin{center}
     \begin{lstlisting}[language = MATLAB]
-        % dx e dy sono le immagine sin ora calcolate
-        orientation = atan2(double(dx), double(dy));
-        figure; imshow(orientation, [-pi, pi]);
-    \end{lstlisting}
+            % dx e dy sono le immagine sin ora calcolate
+            orientation = atan2(double(dx), double(dy));
+            figure; imshow(orientation, [-pi, pi]);
+        \end{lstlisting}
 \end{center}
 \end{document}
