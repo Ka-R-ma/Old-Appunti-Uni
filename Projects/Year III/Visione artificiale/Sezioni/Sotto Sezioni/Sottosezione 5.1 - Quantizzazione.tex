@@ -1,0 +1,21 @@
+\documentclass{subfiles}
+\begin{document}
+La quantizzazione è un processo che permette, a partire da un'immagine true color, di ottenere un immagine riconducibile all'originale,
+il cui numero di colori è però significativamente ridotto.
+
+Per quanto visto sinora circa gli spazi colore, le immagini true color possono essere pensate come un parte dello spazio RGB, che come noto contiene oltre 16 milioni di colori.
+Si osserva però che, a meno di risoluzione elevate, le immagini non presenteranno mai tutti i colori: considerando ad esempio un immagine 512 x 512,
+questa ammette al più circa 262 mila colori distinti,
+quindi rappresentare le stesse come immagini RGB comporta uno spreco significativo di memoria.
+Tale spreco ad oggi può risultare trascurabile date le capacità dei moderni sistemi di storage,
+si pensi però che la quantizzazione nasce in un periodo storico in cui le memorie avevano dimensioni molto limitate, qualche centinaio di kB, qualche MB nei casi migliori.
+\`E dunque ovvio che all'epoca era necessario ottimizzare quanto più possibile l'uso della memoria, da cui segue la nascita della quantizzazione.
+
+Parlando del processo di quantizzazione in se\footnotemark[5]: punto di partenza è il cubo RGB, che si assume essere l'intera immagine;
+il cubo è tagliato lungo il punto medio dell'asse più lungo, assicurando che un eguale numero di colori sia assegnato a ciascuno dei due nuovi cubi.
+Si applica ricorsivamente la procedura ai due nuovi cubi, fintanto che si ottengo 256 cubi. Fatto ciò, per ciascun cubo si considera il centroide (in alcune varianti i medoide),
+che rappresenterà uno dei 256 colori da utilizzare nella tavolozza.
+
+\footnotetext[5]{Sebbene sarà discussa la \emph{median-cut color quantization}, questa non è l'unica tecnica applicabile.%
+    Ulteriori tecniche sono il \emph{nearest color algorithm} e soluzioni basate su gli \emph{octrees}.}
+\end{document}
