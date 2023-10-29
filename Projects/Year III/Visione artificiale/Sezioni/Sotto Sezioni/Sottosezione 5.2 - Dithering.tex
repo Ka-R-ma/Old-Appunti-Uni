@@ -41,7 +41,34 @@ ciò che si ottiene è mostrato in \emph{Figura \ref{fig:5.4}}.
         img = uint8(img);
     \end{lstlisting}
 \end{center}
-Sebbene ad una prima visione \emph{Figura \ref{fig:5.4}} possa sembrare esattamente l'immagine di \emph{Figura \ref{fig:5.3}},
-osservata da vicini si nota che le due differiscono. Inoltre \emph{Figura \ref{fig:5.4}} risulta essere una quantizzazione di \emph{Figura \ref{fig:5.3}}.
+\clearpage
+
+Sebbene ad una prima visione \emph{Figura \ref{fig:5.4}} possa sembrare esattamente \emph{Figura \ref{fig:5.3}}, se osservata da vicino, si nota che le due differiscono.
+
+Si considera ora il caso di un immagine a colore, per farlo si considera \emph{Figura \ref{fig:5.5}.a}.
+\subfile{../Figure/Figure 5.5 - Quantizzazione di immagine a colori.tex}
+Per prima cosa si applica la quantizzazione alla stessa, risultando nell'immagine di \emph{Figura \ref{fig:5.5}.b}.
+Come precedentemente detto la quantizzazione, specie nel caso di immagini a colore, presenta
+\begin{wrapfigure}{r}{0.425\textwidth}
+    \centering
+    \includegraphics[scale = 0.325]{../Images/Cat/DitheredCat.png}
+    \caption{Dithering applicato a \emph{Figura \ref{fig:5.5}.b}.}
+    \label{fig:5.6}
+\end{wrapfigure}
+pattern che risultano sgradevoli, come evidente da \emph{Figura \ref{fig:5.5}.b}.
+Applicando adesso il dithering a \emph{Figura \ref{fig:5.5}}, quello che si ottiene è mostrato in \emph{Figura \ref{fig:5.6}}.
+Per quel che riguarda il codice MATLAB utilizzato per l'applicazione del dithering, questi è di seguito riportato ed analizzato.
+\begin{center}
+    \begin{lstlisting}[language = MATLAB]
+        % Caricamento di Gatto.png
+        [toDither, palette] = rgb2ind(Gatto, 16);
+        dithered = ind2rgb(toDither, palette);
+        figure; imshow(dithered); 
+    \end{lstlisting}
+\end{center}
+Analizzando il codice: con \lstinline[language = MATLAB]{rgb2ind} si crea un'immagine indicizzata e quantizzata a k colori, 16 nel caso in esame, a partire da un'immagine RGB;
+l'istruzione \lstinline[language = MATLAB]{ind2rgb} effettua l'operazione inversa, ossia a partire da un'immagine indicizzata e dalla relativa tavolozza colori,
+si crea un'immagine RGB.
+
 
 \end{document}
