@@ -1,0 +1,20 @@
+\documentclass{subfiles}
+\begin{document}
+Considerando le immagini sinora viste, queste sono immagini cosiddette \emph{true color}, convertite in scala di grigio.
+Si osserva che la tecnologia odierna non è la stessa di 20/30 anni fa: all'epoca non era possibile rappresentare immagini con gli oltre 16 milioni di colori,
+che un'immagine true color permette oggigiorno. Per ovviare a tale problema si sono sviluppate le \emph{immagini indicizzate}.
+Queste sono immagini con un ridotto numero di colori\footnotemark[4], in cui ciascun elemento della matrice corrispondente all'immagine non indica un livello di grigio,
+bensì funge da indice per una seconda matrice, la \emph{tavolozza colori}, che specifica l'effettiva terna di colori RGB da utilizzare.
+
+Nasce da ciò un problema: come selezionare i 256 colori in modo che il risultato sia riconducibile all'originale?
+Risposta a tale quesito è la \emph{quantizzazione}, spiegata a seguire.
+
+\footnotetext[4]{Sarà considerato il caso di immagini indicizzate a 256 colori.}
+
+\subsection{Quantizzazione}
+\subfile{Sotto Sezioni/Sottosezione 5.1 - Quantizzazione.tex}
+\clearpage
+
+\subsection{Dithering}
+\subfile{Sotto Sezioni/Sottosezione 5.2 - Dithering.tex}
+\end{document}
