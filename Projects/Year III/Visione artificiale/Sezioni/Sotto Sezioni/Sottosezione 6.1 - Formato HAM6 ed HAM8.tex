@@ -1,0 +1,27 @@
+\documentclass{subfiles}
+\begin{document}
+Come ormai ovvio, i computer del passato non erano in grado di mostrare a video immagini con lo stesso numero di colori di un computer moderno.
+In questa sezione si parlerà del metodo con cui il \emph{Commodore Amiga}, sebbene possedeva una tavolozza di soli 16 colori, riusciva a mostrarne immagini con 4096.
+
+Tale sproporzione nel numero di colori era permesso dal formato grafico \emph{Hold-and-Modify}, anche noto come HAM6.
+Con tale formato ciascun colore era codificato con 6 bits: due, detti \emph{control bits}, e i restanti quattro detti \emph{data bits}.
+Funzione dei control bits era quella di stabilire cosa rappresentassero i data bits, permettendo le seguenti quattro possibilità:
+\begin{enumerate}
+    \item i bit di controllo sono posti a 00: ciò sta ad indicare che il colore di quel pixel è uno dei 16 colori della tavolozza,
+          allora si trattano i data bits come indice nella palette;
+    \item i bit di controllo sono posti a 01: modifica il blu, i valori di verde e rosso sono quelli del pixel precedente;
+    \item i bit di controllo sono posti a 10: modifica il rosso, i valori di verde e blue sono quelli del pixel precedente;
+    \item i bit di controllo sono posti a 11: modifica il verde, i valori di rosso e verde sono quelli del pixel precedente.
+\end{enumerate}
+
+Tale formato presenta un grave problema: nel caso di cambi netti di colore si verificano delle ``strisciate'' nel colore,
+questo ovviamente perché può cambiare un solo colore per volta.
+Per risolvere tale problema, o quantomeno ridurre la possibilità che questi si verificasse, fu sviluppato SHAM6.
+Con tale formato la tavolozza non era più da utilizzare per l'intera immagine, quanto più di riga:
+cioè per ogni riga dell'immagine si creava una tavolozza colori propria della riga,
+secondo l'idea che verosimilmente buona parte dei pixel della riga avrebbero avuto un colore presente nella tavolozza.
+\\ \\
+Con l'evolversi della tecnologia si passo da SHAM6 ad HAM8.
+Questi adoperando analogamente ad HAM6, semplicemente aggiungendo due data bits, permetteva da una tavolozza di 64 colori, di mostrarne oltre 262 mila.
+
+\end{document}

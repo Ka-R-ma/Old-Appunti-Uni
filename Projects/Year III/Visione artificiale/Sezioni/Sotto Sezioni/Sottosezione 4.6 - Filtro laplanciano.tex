@@ -1,0 +1,27 @@
+\documentclass{subfiles}
+\begin{document}
+Similarmente a quanto fatto con il filtro gradiente, si consideri la definizione matematica di operatore di Laplace.
+Questa, nel caso di funzioni a due variabili, da un punto di vista analitico risulta essere
+\[
+    \laplacian{I} = \pdv[2]{I}{x} + \pdv[2]{I}{y}
+\]
+
+Considerando ora le componenti della sua controparte discreta, per quanto detto precedentemente circa le derivate parziali nel discreto, questi risulta essere
+\[\begin{aligned}
+        \pdv[2]{I}{x} & \approx \pdv{(I(i, j + 1) - I(i,j))}{x} = \cdots = I(i, j + 2) - 2I(i, j + 1) + I(i, j) \\
+        \pdv[2]{I}{y} & \approx \pdv{(I(i + 1, j) - I(i,j))}{y} = \cdots = I(i + 2, j) - 2I(i + 1, j) + I(i, j) \\
+    \end{aligned}\]
+
+Si osserva però che il kernel, se realizzato cosi non è centrato in I(i,j) come supposto, per tale ragione ciò che si fa è traslare lo stesso in I(i,j),
+secondo quanto segue.
+\[\begin{aligned}
+        \pdv[2]{I}{x} & \approx I(i, j + 2) - 2I(i, j + 1) + I(i, j) = \Delta^{2}_{x}I = \begin{bmatrix}
+                                                                                             1 & -2 & 1 \\
+                                                                                         \end{bmatrix} \\
+        \pdv[2]{I}{y} & \approx I(i + 2, j) - 2I(i + 1, j) + I(i, j) = \Delta^{2}_{y}I = \begin{bmatrix}
+                                                                                             1  \\
+                                                                                             -2 \\
+                                                                                             1  \\
+                                                                                         \end{bmatrix} \\
+    \end{aligned}\]
+\end{document}
