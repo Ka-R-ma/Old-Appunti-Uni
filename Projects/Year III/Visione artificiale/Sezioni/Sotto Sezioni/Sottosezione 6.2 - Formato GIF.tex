@@ -1,4 +1,56 @@
 \documentclass{subfiles}
 \begin{document}
 
+Il formato GIF venne sviluppato per la prima volta nel 1987. La nascita di tale formato, di cui a seguito si spiegherà il funzionamento,
+era dovuto al fatto che il formato BMP, allora utilizzato per la trasmissioni di immagini, non era sufficientemente prestate:
+poiché internet si stava sempre più diffondendo era necessario che la trasmissione delle immagini avvenisse quanto più velocemente possibile.
+
+\begin{Note*}
+    premettendo che il formato trasmette immagini indicizzate, quest'ultime possono essere a 256, 16 o 2 colori.
+    Nel resto della discussione sarà considerato il caso di immagini a 256 colori, ma un ragionamento analogo lo si puo applicare per gli altri casi.
+\end{Note*}
+
+Analizzando pertanto il formato, alla base di questi vi è l'algoritmo di Lempel-Ziv-Welch.
+Quello che fa l'algoritmo è, a partire dagli indici dell'immagine da trasmettere, crea un dizionario (lo si pensi ad un array bidimensionale).
+Partendo dal pixel in alto a sinistra, si legge l'indice a cui questi fa riferimento, essendo ovviamente questi uno dei 256 indici di partenza,
+si trasmette il pixel, ripetendo lo stesso ragionamento per il pixel alla sua destra. Letti questi due indici,
+l'algoritmo suppone che la successione dei due si ripeterà nell'immagine, è crea così un nuovo indice, il 257-esimo, che conterrà gli indici ai due pixel appena trasmessi.
+Procede con il leggere l'indice del pixel successivo, verifica a se questi rientra nei primi 256, e lo trasmette.
+Dopo la trasmissione di quest'ultimo, si presentano due possibilità: un'indice \(I\) del dizionario contiene già gli indici del pixel tramesso e del suo successivo,
+in questo caso si ``annulla'' la trasmissione del l'indice del pixel e si trasmette l'indice \(I\);
+nel dizionario non è presente nessun indice che faccia riferimento all'indice del pixel e al suo successivo,
+si crea allora un indice \(I'\) che conterrà gli ultimi due indici trasmessi.
+
+\begin{Example*}
+    Con il mero scopo di dare un'illustrazione grafica dell'algoritmo precedentemente descritto, si consideri \emph{Figura \ref{fig:6.1}}.
+    \subfile{../Figure/Figure 6.1 - Dizionario GIF.tex}
+
+    Come detto i due pixel in alto a sinistra sono trasmessi appena letti, così anche il pixel 15, poiché non esiste ancora un'indice che lo contenga.
+    Successivamente letto nuovamente il pixel 33, che dovrebbe essere trasmesso, si verifica che il pixel che lo segue non dia vita ad un indice del dizionario,
+    poiché lo fa, anziché trasmettere 33 si trasmette 256.
+\end{Example*}
+
+Quanto sinora descritto è noto come \emph{GIF 87a}: denominato così per via dell'anno di rilascio e poiché si supponeva di rilasciarne una nuova versione nello stesso anno.
+Tale release però non avvenne, infatti la successiva versione del formato richiese ulteriori due anni di sviluppo, anni che portarono all'ormai consolidato \emph{GIF 89a}.
+
+\begin{Remark*}
+    GIF 87a presenta un sostanziale problema, via via che si creano nuovi indici, questi richiedono sempre più bit per essere rappresentati,
+    venendo così meno la compressione. Per risolvere tale problema vi sono due possibilità: la prima consiste nell'ignorarlo; la seconda prevede, raggiunta una soglia limite,
+    di trasmettere una segnale con il quale si resetta il dizionari.
+\end{Remark*}
+\hfill\\
+
+Analizzando questa nuova versione, GIF 89a introdusse le seguenti funzionalità.
+\begin{itemize}
+    \item Trasmissione interlacciata: era necessario poter visualizzare le immagini sempre più velocemente, si penso allora di trasmettere le immagini secondo quanto segue.
+          Si trasmette la prima riga per altre 15, poi la 17-esima per altre 15 righe e così via fino a giungere alla fine dell'immagine.
+          Giunti alla fine, a partire dalla prima ripetizione, si trasmette la riga che nell'immagine originale equivale a quella di mezzo della ripetizione.
+
+    \item Trasparenza: da non confondere con il fattore alpha, questi stabiliva se nella trasmissione dell'immagine si dovesse o meno visualizzare un determinato pixel.
+    \item Animazioni: si penso sfruttando la trasparenza, di includere delle animazioni.
+          L'idea nasceva dal fatto che di supponeva che i fotogrammi componenti l'immagine differissero per pochi dettagli,
+          dunque sfruttando la trasparenza si poteva trasmettere solo quell'insieme di pixel che formavano il dettaglio.
+\end{itemize}
+
+
 \end{document}
