@@ -28,7 +28,7 @@ Applicando ad essa il seguente codice MATLAB, che effettua lo sharpening secondo
 Analizzando il codice utilizzato, la funzione \lstinline[language = MATLAB]{fspecial('average', [5, 5])} è equivalente all'istruzione
 \lstinline[language = MATLAB]{ones(5)/25}, cioè essa un kernel 5 x 5 i cui valori sono normalizzati.
 La restante parte del codice
-\begin{wrapfigure}{l}{0.425\textwidth}
+\begin{wrapfigure}[13]{l}{0.425\textwidth}
     \centering
     \includegraphics[scale = 0.325]{../Images/Barbara/SharpBarbara.png}
     \caption{\emph{Figura \ref{fig:4.6}} sottoposta a filtro di sharpening.}
@@ -53,4 +53,8 @@ Volendo utilizzare una versione del codice meno verbosa, quindi piu sintetica e 
 \begin{Remark*}
     si tenga a mente che i due codici sono del tutto equivalenti, nessuna delle due implementazioni è superiore all'altra.
 \end{Remark*}
+
+\begin{Note*}
+    altro filtro di denoise è il filtro di Gauss, questi però si comporta più come un filtro di media: cioè si limita a spargere il rumore per l'immagine.
+\end{Note*}
 \end{document}
