@@ -91,4 +91,9 @@ volendo dunque osservare a cosa ciò equivalga, eseguendo l'opportuno codice MAT
             figure; imshow(orientation, [-pi, pi]);
         \end{lstlisting}
 \end{center}
+
+\begin{Note*}
+    tutte le immagini di cui sopra sono state normalizzate nel range [0, 255] secondo la seguente formula \lstinline[language = MATLAB]{img = 255*(img + 255)/(2 * 255)}.
+    Se non si applicasse tale normalizzazione l'immagine risulterebbe con 510 livelli di grigio, e sarebbe impossibile effettuarne il salvataggio con formati tradizionali.
+\end{Note*}
 \end{document}

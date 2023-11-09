@@ -50,4 +50,8 @@ più precisamente si riportano in \emph{Figura \ref{fig:4.12}} le componenti dx 
 \subfile{../Figure/Figure 4.12 - Componendti dx con filtri Sobel e Prewitt.tex}
 
 Come precedentemente detto i filtri differiscono minimamente, risultato di ciò è il fatto che le immagini risultanti appaiono essere pressoché uguali.
+\begin{Note*}
+    come per il filtro di Gauss, anche per i filtri di Prewitt e Sobel si è effettuata una normalizzazione: si è passati da un range di [-1020, 1020] ad uno di 255,
+    per mezzo della segue formula \lstinline[language = MATLAB]{img = 255*(img + 1020)/(2 * 1020)}.
+\end{Note*}
 \end{document}
