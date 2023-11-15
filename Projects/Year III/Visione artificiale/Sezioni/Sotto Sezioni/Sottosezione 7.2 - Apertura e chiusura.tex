@@ -1,0 +1,35 @@
+\documentclass{subfiles}
+\begin{document}
+Dalle due operazioni di erosione e dilatazione si definiscono altre due operazioni: l' \emph{apertura} e la \emph{chiusura}.
+Queste, definite come segue, sono operazioni che nascono dal fatto che erosione e dilatazione \underline{\textbf{non}} sono l'una inversa all'altra.
+\[
+    \gamma_{S}(I) = \delta_{S}(\varepsilon_{S}(I)) \qquad \varphi_{S}(I) = \varepsilon_{S}(\delta_{S}(I))
+\]
+Quanto appena detto è difatti sostenuto dal fatto che se con l'erosione dei dettagli vengono completamente rimossi, la dilatazione non può ovviamente rigenerarli.
+L'unico legame che si dimostra esservi tra erosione e dilatazione è il fatto che, l'una equivale al completamento dell'altra. Cioè
+\[
+    \varepsilon_{S}(I) = \overline{\delta_{S}(I)} \qquad \delta_{S}(I) = \overline{\varepsilon_{S}(I)}
+\]
+
+Tornando a parlare delle operazioni di apertura e chiusura: a livello pratico l'apertura è utilizzata per rimuovere dall'immagine piccoli dettagli,
+mentre la chiusura è utilizzata per chiudere piccoli buchi.
+\subfile{../Figure/Figure 7.2 - Esempio apertura e chiusura.tex}
+
+In \emph{Figura \ref{fig:7.2}} sono mostrate rispettivamente l'applicazione dell'operazione di apertura e di chiusura a \emph{Figura \ref{fig:4.1}}.
+
+\begin{Remark*}
+    si tenga presente che l'esecuzione di entrambe le operazioni applicano la seguente logica: l'operazione interna è effettuata normalmente,
+    quella esterna invece è effettuata ribaltando lungo ambo gli assi l'elemento strutturale.
+\end{Remark*}
+
+Vale in generale la seguente relazione d'ordine
+\[
+    \varepsilon_{S}(I) \le \gamma_{S}(I) \le I \le \varphi_{S}(I) \le \delta_{S}(I)
+\]
+per la quale è possibile definire le operazioni descritte nella seguente sezione.
+
+\begin{Note*}
+    per quel che riguarda il codice MATLAB per i due operatori, e per gli operatori \(\varepsilon \text{e} \delta\), sebbene sia possibile implementarli secondo quanto detto,
+    in MATLAB sono gia definite rispettivamente tramite le funzioni \lstinline[language = MATLAB]{imerode, imdilate, imopen, imclose}.
+\end{Note*}
+\end{document}
