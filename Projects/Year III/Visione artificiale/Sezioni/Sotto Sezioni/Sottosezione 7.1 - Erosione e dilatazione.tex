@@ -1,0 +1,23 @@
+\documentclass{subfiles}
+\begin{document}
+Si parta ora con il considerare le due operazione alla base della morfologia, quali l'\emph{erosione} \(\varepsilon\) e la \emph{dilatazione} \(\delta\).
+Tali operazioni sono definite rispettivamente come
+\[
+    \varepsilon_{S}(I(\vb{p})) = \min\limits_{\vb{b} \in S}{I(\vb{p} + \vb{q})} \qquad \delta_{S}(I(\vb{p})) = \max\limits_{\vb{b} \in S}{I(\vb{p} + \vb{q})}
+\]
+ove \(S\) rappresenta è la matrice che rappresenta l'elemento strutturale da ricercare nell'immagine,
+\(\vb{p}, \vb{q}\) sono vettori: nel caso di \(\vb{p}\) questi rappresenta le coordinate di un pixel nell'immagine;
+\(\vb{q}\) invece rappresenta le coordinate di un elemento in \(S\).
+
+\begin{Note*}
+    per una mera questione di semplicità per il resto della sezione saranno considerati elementi strutturali di forma circolare.
+    In generale si dovrebbero considerare tutte le orientazioni che l'elemento potrebbe assumere nell'immagine.
+\end{Note*}
+
+Per comprendere gli effetti delle due operazioni, sia \(I\) l'immagine di \emph{Figura \ref{fig:4.1}}.
+Quanto ne risulta dall'applicazione delle due operazioni è mostrato in \emph{Figura \ref{fig:7.1}}.
+\subfile{../Figure/Figure 7.1 - Esempio erosione e dilatazione.tex}
+
+Analizzando brevemente gli effetti delle due operazioni, quel che accade con l'erosione è l'eliminazione dei dettagli le cui forme e dimensioni sono somigliano a quelle di \(S\);
+viceversa con la dilatazione tali dettagli vengono ``allargati''.
+\end{document}

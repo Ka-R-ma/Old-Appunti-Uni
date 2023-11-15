@@ -1,9 +1,9 @@
 \documentclass{subfiles}
 \begin{document}
-La quantizzazione soffre di un problema: potrebbe capitare che a seguito della quantizzazione di un immagine, si osservi ad esempio \emph{Figura \ref{fig:5.3}},
+La quantizzazione soffre di un problema: potrebbe capitare che a seguito della quantizzazione di un immagine, si osservi ad esempio \emph{Figura \ref{fig:5.1}},
 l'immagine quantizzata presenta dei pattern di colore che all'occhio umano risultano evidenti e sgradevoli.
 Segue dunque il bisogno di eliminare tali pattern, e per farlo, tra le altre tecniche, si usa il dithering.
-\subfile{../Figure/Figure 5.3 - Accostamento immagine GS e sua quantizzazione.tex}
+\subfile{../Figure/Figure 5.1 - Accostamento immagine GS e sua quantizzazione.tex}
 Per quanto descritto sinora, risulta ovvio che un'immagine quantizzata presenta un certo errore rispetto l'originale:
 logica del dithering è quella di distribuire tale errore per tutta l'immagine.
 \\ \\
@@ -12,11 +12,11 @@ a seguire riportato nel sua
 \begin{wrapfigure}{l}{0.4\textwidth}
     \centering
     \includegraphics[scale = 0.325]{../Images/Lighthouse/DitheredLighthouse.png}
-    \caption{Applicazione dell'algoritmo di Floyd-Steinberg a \emph{Figura \ref{fig:5.3}}}.
-    \label{fig:5.4}
+    \caption{Applicazione dell'algoritmo di Floyd-Steinberg a \emph{Figura \ref{fig:5.1}}}.
+    \label{fig:5.2}
 \end{wrapfigure}
-versione in MATLAB. Si consideri di applicare l'algoritmo all'immagine quantizzata mostrata in \emph{Figura \ref{fig:5.3}},
-ciò che si ottiene è mostrato in \emph{Figura \ref{fig:5.4}}.
+versione in MATLAB. Si consideri di applicare l'algoritmo all'immagine quantizzata mostrata in \emph{Figura \ref{fig:5.1}},
+ciò che si ottiene è mostrato in \emph{Figura \ref{fig:5.2}}.
 \begin{center}
     \begin{lstlisting}[language = MATLAB]
         function img = FloydSteinberg(img)
@@ -43,32 +43,30 @@ ciò che si ottiene è mostrato in \emph{Figura \ref{fig:5.4}}.
 \end{center}
 \clearpage
 
-Sebbene ad una prima visione \emph{Figura \ref{fig:5.4}} possa sembrare esattamente \emph{Figura \ref{fig:5.3}}, se osservata da vicino, si nota che le due differiscono.
+Sebbene ad una prima visione \emph{Figura \ref{fig:5.2} } possa sembrare esattamente \emph{Figura \ref{fig:5.1}}, se osservata da vicino, si nota che le due differiscono.
 
-Si considera ora il caso di un immagine a colore, per farlo si considera \emph{Figura \ref{fig:5.5}.a}.
-\subfile{../Figure/Figure 5.5 - Quantizzazione di immagine a colori.tex}
-Per prima cosa si applica la quantizzazione alla stessa, risultando nell'immagine di \emph{Figura \ref{fig:5.5}.b}.
+Si considera ora il caso di un immagine a colore, per farlo si considera \emph{Figura \ref{fig:5.3}.a}.
+\subfile{../Figure/Figure 5.3 - Quantizzazione di immagine a colori.tex}
+Per prima cosa si applica la quantizzazione alla stessa, risultando nell'immagine di \emph{Figura \ref{fig:5.3}.b}.
 Come precedentemente detto la quantizzazione, specie nel caso di immagini a colore, presenta
 \begin{wrapfigure}{r}{0.425\textwidth}
     \centering
     \includegraphics[scale = 0.325]{../Images/Cat/DitheredCat.png}
-    \caption{Dithering applicato a \emph{Figura \ref{fig:5.5}.b}.}
-    \label{fig:5.6}
+    \caption{Dithering applicato a \emph{Figura \ref{fig:5.3}.b}.}
+    \label{fig:5.4}
 \end{wrapfigure}
-pattern che risultano sgradevoli, come evidente da \emph{Figura \ref{fig:5.5}.b}.
-Applicando adesso il dithering a \emph{Figura \ref{fig:5.5}}, quello che si ottiene è mostrato in \emph{Figura \ref{fig:5.6}}.
+pattern che risultano sgradevoli, come evidente da \emph{Figura \ref{fig:5.3}.b}.
+Applicando adesso il dithering a \emph{Figura \ref{fig:5.3}}, quello che si ottiene è mostrato in \emph{Figura \ref{fig:5.4}}.
 Per quel che riguarda il codice MATLAB utilizzato per l'applicazione del dithering, questi è di seguito riportato ed analizzato.
 \begin{center}
     \begin{lstlisting}[language = MATLAB]
         % Caricamento di Gatto.png
-        [toDither, palette] = rgb2ind(Gatto, 16);
-        dithered = ind2rgb(toDither, palette);
-        figure; imshow(dithered); 
+        [dithered, palette] = rgb2ind(Gatto, 16);
+        figure; imshow(dithered, palette); 
     \end{lstlisting}
 \end{center}
-Analizzando il codice: con \lstinline[language = MATLAB]{rgb2ind} si crea un'immagine indicizzata e quantizzata a k colori, 16 nel caso in esame, a partire da un'immagine RGB;
-l'istruzione \lstinline[language = MATLAB]{ind2rgb} effettua l'operazione inversa, ossia a partire da un'immagine indicizzata e dalla relativa tavolozza colori,
-si crea un'immagine RGB.
-
+Passando all'analisi del codice: l'istruzione \lstinline[language = MATLAB]{rgb2ind} restituisce un immagine indicizzata e la relativa palette,
+inoltre è possibile passare un terzo parametro per indicare se effettuare dithering o meno.
+Qual'ora quest'ultimo è tralasciato di default l'immagine risultante presenterà dithering.
 
 \end{document}
