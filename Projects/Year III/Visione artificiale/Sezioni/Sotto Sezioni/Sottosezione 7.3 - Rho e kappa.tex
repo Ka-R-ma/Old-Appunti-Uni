@@ -1,0 +1,62 @@
+\documentclass{subfiles}
+\begin{document}
+Come precedentemente anticipato, per la relazione di cui sopra, si definiscono gli operatori \(\rho \text{e} \kappa\).
+Partendo con il considerare \(\rho\), definito come segue, può essere utilizzato per definire i contorni dell'immagine.
+\[
+    \varrho_{S} = \gamma_{S}(I) - \varepsilon_{S}(I)
+\]
+Per quanto detto, segue che l'operatore morfologico \(\varrho\) è simile al filtro gradiente, precedentemente studiato.
+L'effettiva similarità è dimostrata, in maniera esemplificativa, in \emph{Figura \ref{fig:7.3}}.
+\subfile{../Figure/Figure 7.3 - Similarita tra operatore rho e filtro gradietne.tex}
+
+Considerando l'implementazione in MATLAB, l'immagine di \emph{Figura \ref{fig:7.3}.a} è ottenuta tramite l'esecuzione del seguente codice.
+\begin{center}
+    \begin{lstlisting}[language = MATLAB]
+        % caricamento di LenaGS
+        struct = [0 1 1 1 0; 1 1 1 1 1; 1 1 1 1 1; 1 1 1 1 1; 0 1 1 1 0];
+        rho = LenaGS - imopen(LenaGS, struct);
+        figure; imshow(rho, []);
+    \end{lstlisting}
+\end{center}
+
+\begin{Remark*}
+    per quanto simili, l'operatore rho e il filtro gradiente possono differire. Tale differenza banalmente può essere data dal livello di threshold dato al filtro gradiente,
+    che si ricorda essere la lunghezza minima dei vettori che compongono il gradiente, oppure dalla forma e dalle dimensioni dell'elemento strutturale usato.
+\end{Remark*}
+
+Considerando ora l'operatore \(\kappa\), questi definito come segue, può essere utilizzato per aumentare il contrasto di un immagine
+\[
+    \kappa = \max\Set{0, \min\Set{255, I + th - bh}}
+\]
+ove \(th \text{e} bh\) sono i due operatori \emph{top-hat \emph{e} bottom-hat}: si pensi a questi come dei filtri passa alto,
+secondo una definizione simile a quanto fatto con il filtro di sharpening. Definendo pertanto tali operatori si ha
+\[
+    th = I - \gamma_{S}(I) \qquad bh = \varphi_{S}(I) - I
+\]
+\begin{Note*}
+    gli operatori \(th\) e \(bh\), se usati in maniera indipendente, evidenziano dettagli chiari su sfondo scuro per quel che riguarda \(th\),
+    viceversa per \(bh\).
+\end{Note*}
+\clearpage
+
+Con le considerazioni fatte per l'operatore \(\varrho\), risulta evidente la similarità tra l'operatore \(\kappa\) ed un filtro di sharpening.
+Come per l'operatore \(\varrho\), di seguito si riporta un esempio di tale similarità.
+\subfile{../Figure/Figure 7.4 - Similarita tra operatore kappa e filtro di sharpening.tex}
+
+Per quel che concerne il codice MATLAB, questi di seguito riportato, segue banalmente la definizione stessa di \(\kappa\).
+\begin{center}
+    \begin{lstlisting}[]
+        % caricamento di LenaGS
+        struct = [0 1 1 1 0; 1 1 1 1 1; 1 1 1 1 1; 1 1 1 1 1; 0 1 1 1 0];
+        top = imtophat(LenaGS, struct);
+        bottom = imbothat(LenaGS, struct);
+        kappa = max(0, min(255, LenaGS + top - bottom))
+        figure; imshow(LenaGS, []);
+    \end{lstlisting}
+\end{center}
+
+\begin{Note*}
+    Per una questione di velocità nella scrittura del codice si è deciso di utilizzare le funzioni \lstinline[language = MATLAB]{imtophat, imbothat} pre-definite in MATLAB.
+    Inoltre, tale scelta è dovuta al fatto che, in generale, queste risultano maggiormente ottimizzate rispetto quelle definite dall'utente.
+\end{Note*}
+\end{document}

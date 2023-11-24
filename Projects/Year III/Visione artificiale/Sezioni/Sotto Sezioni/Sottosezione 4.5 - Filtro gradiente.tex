@@ -13,7 +13,6 @@ da un punto di vista matematico, è definito come
 \[
     \grad{I(x,y)} = \left(\pdv{I}{x} i, \pdv{I}{y} j\right)
 \]
-
 Dalla definizione continua del rapporto incrementale, si può derivare la definizione discreta delle componenti di \(\grad{I(x, y)}\), la quali risultano essere
 \[\begin{aligned}
         \pdv{I}{x} & \approx I(x, y+1) - I(x, y) = \Delta_{x}I = \begin{bmatrix}
@@ -24,7 +23,6 @@ Dalla definizione continua del rapporto incrementale, si può derivare la defini
                                                                        1  \\
                                                                    \end{bmatrix}
     \end{aligned}\]
-
 La definizione data risulta sensata dato che, il pixel \(p_{1}\) più prossimo ad un pixel \(p_{0}\) è banalmente quello ad esso adiacente.
 
 Si consideri ora \emph{Figura \ref{fig:4.8}}. Procedendo dunque col calcolare le derivare in ambo le direzioni della stessa,
@@ -41,7 +39,6 @@ Essendo il gradiente un vettore, questi ammette modulo e l'orientamento, che si 
 \[
     \norm{\grad{I(x,y)}} = \sqrt{\Delta_{x}^{2}I + \Delta_{y}^{2}I} \quad \text{e} \quad \measuredangle I = \arctan \frac{\Delta_{y}}{\Delta_{x}}
 \]
-
 Considerando dunque questi ultimi, è possibile calcolare la norma e l'orientamento di un'immagine.
 Partendo dalla norma: essendo questa la radice quadrata della somma dei quadrati
 \begin{wrapfigure}[10]{r}{0.425\textwidth}

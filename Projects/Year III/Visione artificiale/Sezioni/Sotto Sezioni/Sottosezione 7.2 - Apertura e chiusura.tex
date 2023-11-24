@@ -10,12 +10,9 @@ L'unico legame che si dimostra esservi tra erosione e dilatazione è il fatto ch
 \[
     \varepsilon_{S}(I) = \overline{\delta_{S}(I)} \qquad \delta_{S}(I) = \overline{\varepsilon_{S}(I)}
 \]
-
 Tornando a parlare delle operazioni di apertura e chiusura: a livello pratico l'apertura è utilizzata per rimuovere dall'immagine piccoli dettagli,
 mentre la chiusura è utilizzata per chiudere piccoli buchi.
 \subfile{../Figure/Figure 7.2 - Esempio apertura e chiusura.tex}
-
-In \emph{Figura \ref{fig:7.2}} sono mostrate rispettivamente l'applicazione dell'operazione di apertura e di chiusura a \emph{Figura \ref{fig:4.1}}.
 
 \begin{Remark*}
     si tenga presente che l'esecuzione di entrambe le operazioni applicano la seguente logica: l'operazione interna è effettuata normalmente,
@@ -29,7 +26,8 @@ Vale in generale la seguente relazione d'ordine
 per la quale è possibile definire le operazioni descritte nella seguente sezione.
 
 \begin{Note*}
-    per quel che riguarda il codice MATLAB per i due operatori, e per gli operatori \(\varepsilon \text{e} \delta\), sebbene sia possibile implementarli secondo quanto detto,
-    in MATLAB sono gia definite rispettivamente tramite le funzioni \lstinline[language = MATLAB]{imerode, imdilate, imopen, imclose}.
+    per quel che riguarda il codice MATLAB per i due operatori di apertura e chiusura, e per gli operatori \(\varepsilon \text{e} \delta\),
+    sebbene sia possibile implementarli secondo quanto detto, in MATLAB sono queste sono gia definite, nell'ordine,
+    tramite le funzioni \lstinline[language = MATLAB]{imopen, imclose, imerode, imdilate}.
 \end{Note*}
 \end{document}
