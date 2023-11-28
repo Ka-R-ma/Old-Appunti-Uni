@@ -1,0 +1,38 @@
+\documentclass{subfiles}
+\begin{document}
+Si supponga \(I\) una certa immagine e sia \(\alpha\) un certo angolo: come suggerisce il nome, l'operazione di rotazione ruota l'immagine di \(\alpha\) gradi.
+In generale, a meno di casi particolari\footnotemark[7], l'immagine \(I'\) ottenuta dalla rotazione, risulterà avere dimensioni maggiori rispetto \(I\).
+
+Nascono così due problemi:
+\begin{enumerate}
+    \item come calcolare la nuova posizione di ciascun pixel in \(I\);
+    \item come stabilire le dimensioni di \(I'\).
+\end{enumerate}
+
+Per quel che riguarda il calcolo delle nuove coordinate, ciò è realizzato semplicemente utilizzando il seguente sistema lineare
+\begin{equation}
+    \begin{cases}
+        X = \floor{x \cos(\alpha) - y \sin(\alpha)} \\
+        Y = \floor{x \sin(\alpha) + y \cos(\alpha)} \\
+    \end{cases}
+\end{equation}
+ove \((X, Y)\) rappresentano le coordinate dell'immagine ruotata.
+
+\begin{Remark*}
+    in realtà utilizzando il sistema \eqref{eq:2}, l'immagine risultate presenterà dei puntini neri quando visualizzata, dati dall'approssimazione.
+    Per tale ragione si preferisce optare per una mappatura inversa. Cioè supposto \(I'(X, Y)\) un pixel nell'immagine ruotata,
+    si cerca ricercano le coordinate \((x, y)\) del pixel corrispondente in \(I\). Ciò è effettuato sfruttando la relazione inversa a quella sopra, data in \eqref{eq:3}.
+    \begin{equation}
+        \begin{cases}
+            x = \floor{X \cos(\alpha) + Y \sin(\alpha)}  \\
+            y = \floor{Y \cos(\alpha) -  X \sin(\alpha)} \\
+        \end{cases}
+    \end{equation}
+\end{Remark*}
+
+Considerando ora il come stabilire le dimensioni della nuova immagine, si osserva che indipendentemente dall'immagine, in un certo qual senso,
+a determinare le dimensioni sono le posizioni dei quattro pixel agli angoli. Da tale osservazione segue che per stabilire le nuove dimensioni,
+assumendo di aver posto il riferimento dell'immagine al centro della stessa, che queste sono a loro volta dipendenti dalla posizione ruotata dei pixel agli angoli.
+Più precisamente, per una questione di semplicità espositiva, posti \(A, B, C, D\) i pixel agli angoli, secondo un senso orario,
+le nuove dimensioni sono definite come \([2 \abs{A_{x}}, 2 \abs{B_{y}}]\), con \(A_{x} \text{e} B_{y}\) rispettivamente le posizione in \(I'\) di \(A, B\) lungo i due assi.
+\end{document}

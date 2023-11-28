@@ -1,0 +1,57 @@
+\documentclass{subfiles}
+\begin{document}
+Partendo col definire l'equalizzazione: sia \(s\) la soglia di equalizzazione: ossia il numero di pixel che si dovrebbe presentare nell'immagine per ciascun livello di grigio.
+Siano \(g_{0}, g_{1}, \ldots, g_{255}\) tutti i possibili livelli di grigio e siano \(q_{0}, q_{1}, \ldots, q_{255}\) il numero di pixel per ciascuno dei livelli.
+
+Da un punto di vista teorico, ciò che si dovrebbe verificare è che \(q_{0} = q_{1} = \cdots = q_{255}\): ossia si ha uno stesso numero di pixel per ciascun grigio.
+Se si considera però il punto di vista pratico, tale risultato difficilmente è verificato.
+Nella realtà dei fatti quel che si fa è accorpare sotto uno stesso livello di grigio, tanti livelli successivi in modo tale che sommando il numero di pixel con tali livelli,
+la somma risulti prossima al valore soglia. Cioè
+\[
+    \text{per opportuni indici} i,j \in [0, 255], i < j, \sum\limits_{k = i}^{j}{q_{k}} \approx s
+\]
+con \(q_{k}\) numero di pixel con livello di grigio \(g_{k}\).
+
+Passando al come stabilire il valore soglia, ciò risulta banale: si ha infatti che questi è dato dal rapporto tra l'area dell'immagine e la variazione massima tra i livelli di grigio.
+Cioè,
+\begin{wrapfigure}{l}{0.425\textwidth}
+    \centering
+    \includegraphics[scale = 0.325]{../Images/Airplane/Equalised Airplane.png}
+    \caption{Equalizzazione di \emph{Figura \ref{fig:4.8}}.}
+    \label{fig:8.3}
+\end{wrapfigure}
+supposte \(h \text{e} w\) rispettivamente altezza e larghezza dell'immagine, il valore di soglia \(s\) è definito come
+\[
+    s = \floor{\frac{h * w}{255}}
+\]
+
+Per dare un esempio di equalizzazione, si supponga di applicare quanto descritto a \emph{Figura \ref{fig:4.8}}, quel che ne deriva è mostrato in \emph{Figura \ref{fig:8.3}}.
+Sorge ora spontanea una domanda: è possibile stabilire se ad un'immagine è stata applicata equalizzazione? La risposta è ovviamente si.
+% chiedi prof
+\clearpage
+
+\subsubsection{Threshold}
+Parlando più in generale del valore di sogliatura \(s\), questi in generale, dipende, oltre che dal valore di grigio del singolo pixel, anche dalla posizione di quest'ultimo.
+Segue così la possibilità di effettuare una sogliatura, o threshold, globale e locale.
+Per comprendere la differenza tra i due, si assuma che \(s\) sia determinato da una funzione \(f(x)\).
+Con tale notazione si ha che
+\begin{enumerate}
+    \item nel caso globale \(s = f(g(\vb{p}))\), ove \(g(\vb{p})\) rappresenta il livello di grigio del pixel \(\vb{p}\);
+    \item nel caso locale \(s = f(g(\vb{p}), x, y)\), ove \(g(\vb{p})\) rappresenta il livello di grigio del pixel \(\vb{p}\) e \(x, y\) le sue coordinate
+\end{enumerate}
+
+Si considerano ora alcune tipologie di threshold.
+\begin{itemize}
+    \item \textbf{Threshold geometrico:} si assume che l'immagine abbia un istogramma bimodale:
+          ossia è possibile separare le componenti dell'immagine in \emph{foreground \emph{e} background}.
+          L'effettivo calcolo del valore di sogliatura è ottenuto congiungendo i due picchi del segnale e, tracciando dei segmenti ortogonali al segmento così formatosi,
+          si considera il piede di quello la cui lunghezza risulta essere maggiore.
+
+    \item \textbf{Threshold adattivo:} potrebbe capitare, come accade nella maggior parte dei casi, che l'istogramma non sia bimodale,
+          oppure lo è ma è mascherato dal rumore. In questi casi si può determinare un livello di threshold per un intorno di pixel.
+
+    \item \textbf{Threshold iterativo:} %TODO: chiarimento col prof
+\end{itemize}
+
+
+\end{document}
