@@ -1,8 +1,7 @@
 \documentclass{subfiles}
 \begin{document}
-Si supponga \(I\) una certa immagine e sia \(\alpha\) un certo angolo: come suggerisce il nome, l'operazione di rotazione ruota l'immagine di \(\alpha\) gradi.
-In generale, a meno di casi particolari\footnotemark[7], l'immagine \(I'\) ottenuta dalla rotazione, risulterà avere dimensioni maggiori rispetto \(I\).
-
+Si supponga \(I\) una certa immagine e sia \(\alpha\) un certo angolo: come suggerisce il nome, l'operazione di rotazione, procede a ruotare l'immagine di \(\alpha\) gradi.
+In generale, a meno di casi particolari\footnotemark[7], l'immagine \(I'\) ottenuta a seguito della rotazione, risulterà avere dimensioni maggiori rispetto \(I\).
 Nascono così due problemi:
 \begin{enumerate}
     \item come calcolare la nuova posizione di ciascun pixel in \(I\);
@@ -19,20 +18,26 @@ Per quel che riguarda il calcolo delle nuove coordinate, ciò è realizzato semp
 ove \((X, Y)\) rappresentano le coordinate dell'immagine ruotata.
 
 \begin{Remark*}
-    in realtà utilizzando il sistema \eqref{eq:2}, l'immagine risultate presenterà dei puntini neri quando visualizzata, dati dall'approssimazione.
-    Per tale ragione si preferisce optare per una mappatura inversa. Cioè supposto \(I'(X, Y)\) un pixel nell'immagine ruotata,
-    si cerca ricercano le coordinate \((x, y)\) del pixel corrispondente in \(I\). Ciò è effettuato sfruttando la relazione inversa a quella sopra, data in \eqref{eq:3}.
-    \begin{equation}
-        \begin{cases}
-            x = \floor{X \cos(\alpha) + Y \sin(\alpha)}  \\
-            y = \floor{Y \cos(\alpha) -  X \sin(\alpha)} \\
-        \end{cases}
-    \end{equation}
+    è giusto puntualizzare che utilizzando l'\emph{Equazione \eqref{eq:2}}, una volta visualizzata,
+    l'immagine risultante presenterà dei mancamenti di colore, mancamenti che si presentano come puntini neri.
+    Il presentarsi di tali puntini è banalmente spiegato dal fatto che le nuove coordinate sono ottenute per arrotondamento, dunque introducendo un errore.
 \end{Remark*}
 
-Considerando ora il come stabilire le dimensioni della nuova immagine, si osserva che indipendentemente dall'immagine, in un certo qual senso,
-a determinare le dimensioni sono le posizioni dei quattro pixel agli angoli. Da tale osservazione segue che per stabilire le nuove dimensioni,
-assumendo di aver posto il riferimento dell'immagine al centro della stessa, che queste sono a loro volta dipendenti dalla posizione ruotata dei pixel agli angoli.
-Più precisamente, per una questione di semplicità espositiva, posti \(A, B, C, D\) i pixel agli angoli, secondo un senso orario,
-le nuove dimensioni sono definite come \([2 \abs{A_{x}}, 2 \abs{B_{y}}]\), con \(A_{x} \text{e} B_{y}\) rispettivamente le posizione in \(I'\) di \(A, B\) lungo i due assi.
+Dall'osservazione appena fatta, deriva la necessità di poter calcolare le nuove coordinate in altra maniera.
+Per una questione di semplicità espositiva, in breve, quel che si fa è partire dall'immagine ruotata, e per ciascun pixel di coordinate \((X, Y) \text{in} I'\),
+si ricerca in \(I\) il pixel di coordinate \((x, y)\) tali da soddisfare l'\emph{Equazione \eqref{eq:2}}, applicando una relazione inversa a quest'ultima a seguito riportata.
+\[\begin{cases}
+        x = \floor{X \cos(\alpha) + Y \sin(\alpha)}  \\
+        y = \floor{Y \cos(\alpha) -  X \sin(\alpha)} \\
+    \end{cases}\]
+Passando ora a considerare come stabilire le dimensioni della nuova immagine, si parta col fare un'osservazione in apparenza banale.
+Considerando una qualsiasi immagine, sia questa quadrata o rettangolare, si ha che, denominando \(A, B, C, D\) i quattro pixel agli angoli secondo una disposizione oraria,
+e ponendo il riferimento dell'immagine al suo centro, la larghezza dell'immagine è data dalla differenza, considerata in modulo, delle coordinate in \emph{x} tra \(A \text{e} B\),
+equivalentemente per \(C \text{e} D\).
+Analogamente l'altezza è data dalla differenza, anch'essa da considerare in modulo, tra le coordinate in \emph{y} di \(A \text{e} D\), equivalentemente per \(B \text{e} C\).
+Segue spontaneo chiedersi dunque se quanto detto, valga anche nel caso di immagini ruotate. La risposta a tale domanda risulta essere affermativa.
+Da quanto detto segue che per determinare le nuove dimensioni dell'immagine ruotata, basta calcolare le posizioni dei pixel \(A, B, C, D\) e applicare quanto detto in precedenza.
+
+\footnotetext[7]{Si consideri il caso di un immagine quadrata ruotata di 90 gradi, banalmente questa mantiene le medesime dimensioni. %
+    Discorso simile vale nel caso di immagini rettangolari ruotate di 90 gradi, queste semplicemente scambieranno altezza con larghezza e viceversa.}
 \end{document}
