@@ -1,0 +1,48 @@
+\documentclass{subfiles}
+\begin{document}
+Come anticipato, quando si comprime un file, indipendentemente dalla sua tipologia, si introduce un errore.
+Errore che, in un certo senso, stabilisce quanto un dato algoritmo di compressione sia efficiente: per tale ragione si sono definite varie \emph{misure di qualità}.
+
+Passando dunque alle varie misure di qualità, alcune di queste sono a seguito riportate.
+\[\begin{gathered}
+        \text{\underline{mean absolute error}:} MAE \equiv \frac{1}{N} \sum\limits_{i = 1}^{N}{\abs{g_{i} - g_{i}'}} \\
+        \text{\underline{mean square error}:} MSE \equiv \frac{1}{N} \sum\limits_{i = 1}^{N}{(g_{i} - g_{i}')^{2}} \\
+        \text{\underline{peak-to-peak signal to noise ration}:} PSNR \equiv 10\log_{10}\frac{(G - 1)^{2}}{MSE}
+    \end{gathered}\]
+
+\begin{Remark*}
+    è corretto puntualizzare che le misure riportate sono ormai inutilizzate.
+    Motivo di ciò è da ricercare nella natura delle stesse: quest considerano l'errore che si effettua su ciascun pixel dell'immagine,
+    cosa che da un punto di vista teorico è ottimale; se si considera però un punto di vista pratico, tali misure risultano erronee,
+    poiché, per sua natura, l'occhio umano non confronta pixel per pixel, quanto più tende a ricercare la correttezza delle strutture.
+\end{Remark*}
+
+Si riporta ora una misura di qualità effettivamente utilizzata, nel farlo saranno prima definite le sue componenti.
+\[
+    d_{l} = \frac{2 \mu_{1}\mu_{2} + l}{\mu_{1}^{2} + \mu_{2}^{2} + l} \qquad
+    d_{c} = \frac{2 \sigma{1}\sigma_{2} + c}{\sigma_{1}^{2} + \sigma_{2}^{2} + c} \qquad
+    d_{s} = \frac{\sigma_{1,2} + s}{\mu_{1}\mu_{2} + s}
+\]
+ove \(\mu_{1}, \mu_{2}, \sigma_{1} \text{e} \sigma_{2}\) sono, rispettivamente nell'ordine, medie e deviazione standard delle due immagini.
+Le quantità \(l, c, s\) sono sufficientemente piccole da impedire instabilità numerica nei casi in cui \(\mu_{1}^{2} + \mu_{2}^{2} = 0\),
+\( \sigma_{1}^{2} + \sigma_{2}^{2}\) e \(\sigma_{1}\sigma_{2} = 0\). Inoltre, si ha che
+\[
+    \sigma_{1, 2} = \frac{1}{N} \sum\limits_{i = 1}^{N}{(g_{i} - \mu_{1})(g_{i}' - \mu_{2})}
+\]
+
+\begin{Note*}
+    nell'ordine \(d_{l}, d_{c}, d_{s}\) confrontano rispettivamente, luminosità, contrasto e strutture delle immagini.
+\end{Note*}
+
+Dalle tre quantità di cui sopra, si definisce la misura di qualità strutturale \(SSIM\), la quale è una misura che non considera i singoli pixel, quanto più le strutture dell'immagine,
+definita come segue.
+\[
+    SSIM = d_{l}^{\alpha} \cp d_{c}^{\beta} \cp d_{s}^{\gamma}
+\]
+In genere si pone che \(\alpha = \beta = \gamma = 1 \text{e} s = \tfrac{c}{2}\). Da cui
+\[
+    SSIM = \frac{(2 \mu_{1}\mu_{2} + l)(\sigma_{1,2} + c)}{(\mu_{1}^{2} + \mu_{2}^{2} + l)(\sigma_{1}^{2} + \sigma_{2}^{2} + c)}
+\]
+
+%TODO: zigzag-ing e DCT
+\end{document}

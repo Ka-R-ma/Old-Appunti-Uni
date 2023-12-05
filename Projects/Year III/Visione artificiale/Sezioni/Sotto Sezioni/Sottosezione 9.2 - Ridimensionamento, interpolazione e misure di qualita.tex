@@ -1,0 +1,32 @@
+\documentclass{subfiles}
+\begin{document}
+Sia supposta \(I\) una certa immagine, e si supponga di volerne ridurne o aumentarne le dimensioni.
+Ciò è effettuato con l'operazione di ridimensionamento, con la quale a partire da un immagine e un certo fattore di \emph{scaling},
+si produce una nuova immagine le cui dimensioni sono proporzionali a quelle dell'immagine originale.
+Il processo che permette di effettuare il ridimensionamento è detto \emph{interpolazione}.
+
+\begin{Note*}
+    esistono molte forme di interpolazione, di interesse risultano però essere la \emph{nearest-neighbor-interpolation \emph{e la} bilinear-interpolation}.
+\end{Note*}
+
+Partendo con il considerare la nearest-neighbor-interpolation: sia \(I\) l'immagine che si vuole ridimensionare,
+siano \([h, w]\) le sue dimensioni e sia \(\lambda\) il fattore di scala. Da ciò segue che l'immagine ridimensionata \(I'\) ha dimensioni \([h\lambda, w\lambda]\).
+Derivano così due casi:
+\begin{enumerate}
+    \item \(\lambda < 1\) per la quale l'immagine finale risulterà più piccola;
+    \item \(\lambda > 1\) per la quale l'immagine risulterà più grande.
+\end{enumerate}
+
+\begin{Note*}
+    sarà considerato unicamente il caso \(\lambda < 1\), poiché per il caso \(\lambda > 1\) vale l'esatto opposto di quanto a seguito descritto.
+\end{Note*}
+
+Si supponga \(I\) l'immagine da ridimensionare e \(\lambda\) il fattore di scaling; l'interpolazione nearest-neighbor procede con il creare una nuova immagine \(I'\) in cui,
+ciascuno dei pixel rappresenta una areola di dimensioni \(\lambda \cp \lambda\) dell'immagine originale.
+Problema di tale tecnica è difatti il fatto che tanto minore (maggiore rispettivamente) è \(\lambda\), tanto peggiore sarà il risultato.
+Un esempio di ciò è mostrato in \emph{Figura \ref{fig:9.1}}: a partire da \emph{Figura \ref{fig:4.8}}, questa è stata ridotta secondo un valore di scala \(\lambda = 0.0625\),
+successivamente si è applicato il processo inverso così da riottenere le dimensioni originali.
+\subfile{../Figure/Figure 9.1 - Esempio interpolazione nearest neighbor.tex}
+
+%TODO: codice interpolazione bilineare
+\end{document}
