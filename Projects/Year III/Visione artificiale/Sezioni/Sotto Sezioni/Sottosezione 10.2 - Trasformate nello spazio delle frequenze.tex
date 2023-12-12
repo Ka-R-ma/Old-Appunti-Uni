@@ -1,0 +1,31 @@
+\documentclass{subfiles}
+\begin{document}
+Come ormai noto, un immagine può essere intesa come la propagazione di un segnale.
+Considerando la compressione di immagini, è possibile ``operare'' su tale segnale, così da avere una maggiore compressione.
+
+\subsubsection{DCT}
+La DCT o \emph{discrete-cosine-transform} è una trasformata che, a partire da una certa funzione \(f(x)\) restituisce, tramite una opportuna base di coseni,
+una combinazione lineare \(C(u)\) della stessa. Nel caso monodimensionale si ha che
+\[\begin{aligned}
+        C(u) & = a(u) \sum\limits_{x = 0}^{N - 1}{f(x) \cos\left(\frac{(2x + 1) u\pi}{2N}\right)} \\
+        f(x) & = \sum\limits_{u = 0}^{N - 1}{a(u) C(u) \cos\left(\frac{(2x + 1) u\pi}{2N}\right)} \\
+        a(u) & = \begin{cases}
+                     \sqrt{\frac{1}{N}}, u = 0                \\
+                     \sqrt{\frac{2}{N}}, u = 1, \ldots, N - 1 \\
+                 \end{cases}
+    \end{aligned}\]
+ove \(N\) è il numero di elementi e \(u\) è un indice.
+
+Nel caso bidimensionale, utilizzato da JPG, semplicemente si effettua una combinazione lineare di una funzione \(f(x, y)\).
+Da quanto appena detto, seguono
+\[\begin{aligned}
+        C(u, v) & = a(u)a(v) \sum\limits_{x = 0}^{N - 1}\sum\limits_{y = 0}^{N - 1}{f(x, y) \cos\left(\frac{(2x + 1) u\pi}{2N}\right) \cos\left(\frac{(2y + 1) v\pi}{2N}\right)} \\
+        f(x, y) & = \sum\limits_{u = 0}^{N - 1}\sum\limits_{v = 0}^{N - 1}{a(u)a(v) C(u, v) \cos\left(\frac{(2x + 1) u\pi}{2N}\right) \cos\left(\frac{(2y + 1) v\pi}{2N}\right)} \\
+        a(u)    & = \begin{cases}
+                        \sqrt{\frac{1}{N}}, u = 0                \\
+                        \sqrt{\frac{2}{N}}, u = 1, \ldots, N - 1 \\
+                    \end{cases}
+    \end{aligned}\]
+
+Si dimostra infine che vale la separabilità delle variabili.
+\end{document}

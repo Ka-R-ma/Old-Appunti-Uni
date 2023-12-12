@@ -1,0 +1,24 @@
+\documentclass{subfiles}
+\begin{document}
+Nato negli anni '90, JPG è un formato grafico \emph{lossy}; con ciò si intende che, considerata \(I\) un immagine e \(I'\) la sua versione JPG,
+\(I'\) presenterà una perdita di informazioni rispetto \(I\). Sebbene la sua natura lossy, JPG è il formato più vastamente usato.
+
+\begin{Remark*}
+    si puntualizza che la qualità delle informazioni perse è direttamente dipendente dal fattore di compressione usato. Banalmente,
+    maggiore è il fattore di compressione, maggiore è la qualità dei ``dettagli'' persi.
+\end{Remark*}
+
+\begin{Note*}
+    il formato prevede l'uso di una trasformata nello spazio delle frequenze nota come \emph{discrete-cosine-transform} (DCT).
+    Questa sarà analizzata nel dettaglio in \emph{Sezione \ref{sec:10.2}}, qui ci si limita a spiegarne l'utilizzo.
+\end{Note*}
+
+Parlando dunque del formato, per semplicità si assume che l'immagine abbi dimensioni multiple di 8:
+a partire da un immagine RGB, si assume tale poiché l'utilizzo del formato è sconsigliato per immagini a scala di grigio;
+questa è convertita nella corrispettiva immagine YUV. Effettuata tale conversione, si suddivide l'immagine nel canale di luminanza in blocchi 8 x 8,
+mentre quelli di crominanza in blocchi 16 x 16, successivamente ridotti a blocchi 8 x 8.
+Tramite tale operazione si riduce della metà, lo spazio occupato dall'immagine.
+Seconda operazione è la DCT, la quale, tramite una opportuna base, l'input è convertito in una ``sequenza'' di valori floating-point.
+Effettuata la DCT, che non applica distinzione al canale di appartenenza del blocco, si passa alla quantizzazione delle stesse, tramite apposite tabelle.
+Infine si procede a comprimere i blocchi, nel farlo si utilizza l'algoritmo di Huffman.
+\end{document}
