@@ -1,5 +1,6 @@
 \documentclass{subfiles}
 \begin{document}
+\label{sec:6.2}
 Nato negli anni '90, JPG è un formato grafico \emph{lossy}; con ciò si intende che, considerata \(I\) un immagine e \(I'\) la sua versione JPG,
 \(I'\) presenterà una perdita di informazioni rispetto \(I\). Sebbene la sua natura lossy, JPG è il formato più vastamente usato.
 
@@ -18,7 +19,7 @@ a partire da un immagine RGB, si assume tale poiché l'utilizzo del formato è s
 questa è convertita nella corrispettiva immagine YUV. Effettuata tale conversione, si suddivide l'immagine nel canale di luminanza in blocchi 8 x 8,
 mentre quelli di crominanza in blocchi 16 x 16, successivamente ridotti a blocchi 8 x 8.
 Tramite tale operazione si riduce della metà, lo spazio occupato dall'immagine.
-Seconda operazione è la DCT, la quale, tramite una opportuna base, l'input è convertito in una ``sequenza'' di valori floating-point.
+Seconda operazione è la DCT, la quale, tramite una opportuna base, convertite l'input in una ``sequenza'' di valori floating-point.
 Effettuata la DCT, che non applica distinzione al canale di appartenenza del blocco, si passa alla quantizzazione delle stesse, tramite apposite tabelle.
 Infine si procede a comprimere i blocchi, nel farlo si utilizza l'algoritmo di Huffman.
 \end{document}
