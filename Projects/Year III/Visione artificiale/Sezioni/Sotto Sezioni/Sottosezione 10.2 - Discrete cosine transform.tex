@@ -1,0 +1,40 @@
+\documentclass{subfiles}
+\begin{document}
+Legata alla \emph{trasformata di Fourier}, la \emph{discrete-cosine-transform} è una tecnica utilizzata nell'analisi dei segnali e nella compressione di dati.
+Di tale trasformata si distingue il caso monodimensionale e quello bidimensionale. Si dimostra inoltre che il caso bidimensionale gode di separabilità delle variabili,
+indi per cui, una DCT bidimensionale può essere ottenuta come prodotto tensoriale di due DCT monodimensionali.
+
+Parlando del funzionamento della trasformata: questa riceve in input una funzione \(f(x)\), che si può supporre rappresentare una sequenza finita di valori,
+e di questa procede a restituire una sua rappresentazione nello spazio delle frequenze, i cui termini \(C(u)\),
+sono ottenuti come combinazione lineare di \(f(x)\) e una opportuna base di coseni. Cioè
+\begin{equation}
+    \begin{aligned}
+        C(u) & = a(u) \sum\limits_{x = 0}^{N - 1}{f(x) \cos\left(\frac{(2x + 1) u\pi}{2N}\right)} \\
+        f(x) & = \sum\limits_{u = 0}^{N - 1}{a(u) C(u) \cos\left(\frac{(2x + 1) u\pi}{2N}\right)} \\
+        a(u) & = \begin{cases}
+                     \sqrt{\frac{1}{N}}, u = 0                \\
+                     \sqrt{\frac{2}{N}}, u = 1, \ldots, N - 1 \\
+                 \end{cases}
+    \end{aligned}
+\end{equation}
+ove, considerata \(f(x)\) una sequenza di elementi, \(N\) rappresenta il numero degli stessi.
+\\ \\
+Come anticipato in \emph{Sezione \ref{sec:6.2}}, la DCT è utilizza nel processo di compressione del formato JPG.
+Dando una maggiore descrizione del suo funzionamento in tale formato, si consideri \(B\) uno dei blocchi 8 x 8 ottenuti dalla prima fase della compressione con JPG.
+In questo caso, poiché si opera di fondo con gli elementi di una matrice, la formulazione in \emph{Equazione \eqref{eq:3}} va estesa al caso bidimensionale,
+da cui
+\[\begin{aligned}
+        C(u, v) & = a(u)a(v) \sum\limits_{x = 0}^{N - 1}\sum\limits_{y = 0}^{N - 1}{f(x, y) \cos\left(\frac{(2x + 1) u\pi}{2N}\right) \cos\left(\frac{(2y + 1) v\pi}{2N}\right)} \\
+        f(x, y) & = \sum\limits_{u = 0}^{N - 1}\sum\limits_{v = 0}^{N - 1}{a(u)a(v) C(u, v) \cos\left(\frac{(2x + 1) u\pi}{2N}\right) \cos\left(\frac{(2y + 1) v\pi}{2N}\right)} \\
+        a(u)    & = \begin{cases}
+                        \sqrt{\frac{1}{N}}, u = 0                \\
+                        \sqrt{\frac{2}{N}}, u = 1, \ldots, N - 1 \\
+                    \end{cases} \qquad
+        a(v) = \begin{cases}
+                   \sqrt{\frac{1}{N}}, v = 0                \\
+                   \sqrt{\frac{2}{N}}, v = 1, \ldots, N - 1 \\
+               \end{cases}
+    \end{aligned}\]
+Sfruttando la formulazione di cui sopra, posto che \(f(x, y)\) rappresenti \(B\), si ottiene una rappresentazione di \(B\) nello spazio delle frequenze,
+rappresentazione che verrà sfruttata nelle successive fasi di compressione del formato.
+\end{document}
