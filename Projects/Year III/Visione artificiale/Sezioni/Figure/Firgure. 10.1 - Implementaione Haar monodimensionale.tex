@@ -1,0 +1,19 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure}[!h]
+    \begin{center}
+        \begin{lstlisting}[language = MATLAB]
+            function out = haar(vec)
+                len = length(vec);
+                out = zeros(1, len);
+                for i = 1 : log2(len)
+                    out(1:len) =  [vec(1:2:end) + vec(2:2:end), vec(1:2:end) - vec(2:2:end)] * 0.5;
+                    len = len * 0.5;
+                    vec = out(1:len);
+            end
+        \end{lstlisting}
+    \end{center}
+    \label{fig:10.1}
+    \caption{Implementazione Haar monodimensionale.}
+\end{figure}
+\end{document}

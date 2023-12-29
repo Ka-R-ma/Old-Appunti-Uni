@@ -1,0 +1,43 @@
+\documentclass{subfiles}
+\begin{document}
+Partendo da definire il concetto di \emph{wavelet}; queste sono funzioni il cui ``moto'' è di tipo oscillatorio.
+Dal concetto di funzione wavelet nascono le trasformate wavelet.
+\\ \\
+Da un punto di vista matematico, una trasformata wavelet permette di rappresentare una funzione integrabile per quadrati mediante una determinata serie ortonormale generata da una wavelet,
+soddisfacendo proprietà che non risultano di interesse. Dal punto di vista pratico, ciò comporta la possibilità di decomporre il segnale tramite l'uso di filtri passa-alto e passa-basso,
+definiti in funzione della wavelet, e successivamente ripristinarlo. Tale ricomposizione è effettuata moltiplicando per opportuni valori, i cosiddetti \emph{coefficienti wavelet},
+le cosiddette funzioni madre, che definiscono la portante del segnale, e funzioni di scala.
+
+Per quanto riguarda le DWT, queste sono un sottoinsieme delle trasformate wavelet in cui la funzione wavelet è campionata in modo discreto.
+
+\begin{Note*}
+    da un punto di vista teorico, le DWT sono in numero finito; tale numero è però così elevato da risultare infinito dal punto di vista pratico.
+\end{Note*}
+
+\subsubsection{Trasformata Haar}
+Proposta per la prima volta nel 1909 da \emph{Alfred Haar}, da cui prende il nome, è la prima delle trasformate wavelet, la quale oltre a prestarsi bene per i segnali ad onda quadra,
+risulta facilmente implementabile.
+
+Essendo una trasformata wavelet, Haar possiede una propria funzione madre e una propria funzione di scala, a seguito riportate.
+\[\underbrace{\varphi = \begin{cases}
+            1, & \quad 0 \le t < 1       \\
+            0, & \quad \text{altrimenti} \\
+        \end{cases}}_{\text{funzione madre}} \qquad \underbrace{\psi = \begin{cases}
+            1,  & \quad 0 \le t < \frac{1}{2} \\
+            -1, & \quad \frac{1}{2} \le t < 1 \\
+            0,  & \quad \text{altrimenti}
+        \end{cases}}_{\text{funzione di scala}}\]
+
+Come detto Haar è facilmente implementabile, motivo di ciò è il fatto che sfrutta unicamente semi-somme e semi-differenze\footnotemark[9], come si può vedere da \emph{Figura \ref{fig:10.1}}.
+Per comprendere il funzionamento nel caso monodimensionale, l'estensione al caso bidimensionale è immediata poiché si ha separabilità delle variabili, si consideri quanto segue.
+
+Si consideri \(v\) un certo vettore di numeri, la cui lunghezza è una qualche potenza di due, la trasformata si riduce a calcolare passo dopo passo semi-somme e semi-differenze\footnotemark[15],
+fintanto che si ottengono vettori di lunghezza unitaria.
+
+\subfile{../Figure/Firgure. 10.1 - Implementaione Haar monodimensionale.tex}
+
+\footnotetext[9]{Data una coppia di numeri dicasi semi-somma, la media della somma dei due; analogamente dicasi semi-differenza, la media della differenza tra i due.}
+
+
+
+\end{document}
