@@ -38,6 +38,42 @@ fintanto che si ottengono vettori di lunghezza unitaria.
 
 \footnotetext[9]{Data una coppia di numeri dicasi semi-somma, la media della somma dei due; analogamente dicasi semi-differenza, la media della differenza tra i due.}
 
+\subsubsection{Filter bank}
+Il termine "filter-bank" si riferisce a un insieme di filtri applicati a un segnale, o a un insieme di segnali,
+con lo scopo principale di dividere tale segnale in diverse bande di frequenza o di estrarre particolari caratteristiche a diverse scale o orientamenti.
+\\ \\
+Nel contesto dei segnali audio o immagini, un filter-bank opera spesso nel dominio della frequenza.
+Ciò significa che il segnale di ingresso viene scomposto nelle sue componenti di frequenza utilizzando vari filtri, in genere una successione di filtri passa-alto e passa-basso.
+\\ \\
+Una delle applicazioni più diffuse dei filter-bank sono le trasformazioni wavelet.
+Una trasformata wavelet, come detto, utilizza una serie di filtri passa-alto e passa-basso per decomporre un segnale in diverse bande di frequenza.
+Da ciò segue la possibilità di un'analisi multirisoluzione, è particolarmente utile per compiti come la compressione di immagini, il denoising e l'estrazione di caratteristiche.
+\\ \\
+In sintesi, un filter-bank è un insieme di filtri progettati per estrarre componenti di frequenza o caratteristiche specifiche da un segnale.
+Nell'audio, nell'elaborazione delle immagini o nei sistemi di comunicazione, i filter-bank svolgono un ruolo cruciale nell'analisi,
+nell'elaborazione e nell'estrazione di informazioni significative da segnali a frequenze o scale diverse.
 
+\subsubsection{Decomposizione standard e non standard}
+Quando si parla di decomposizione standard nel contesto dell'elaborazione dei segnali, in particolare nell'ambito delle trasformate wavelet,
+di solito ci si riferisce a un'analisi gerarchica multirisoluzione di un segnale o di un'immagine.
+\\ \\
+Con la trasformata wavelet, un segnale o un'immagine viene decomposto in diverse sotto-bande o scale di frequenza. Questa decomposizione è gerarchica,
+il che significa che è possibile continuare a scomporre ulteriormente le sottobande per ottenere informazioni di frequenza più dettagliate.
+\\ \\
+La decomposizione standard impiega in genere due filtri:
+\begin{itemize}
+    \item Filtro passa-basso (LPF): Noto anche come filtro di scala, questo filtro estrae le componenti a bassa frequenza del segnale o dell'immagine.
+    \item Filtro passa-alto (HPF): Noto anche come filtro wavelet, questo filtro cattura le componenti ad alta frequenza, evidenziando i dettagli e i bordi del segnale o dell'immagine.
+\end{itemize}
 
+Dopo l'applicazione dei filtri, i coefficienti risultanti vengono spesso sotto-campionati (o decimati) di un fattore 2.
+Questo sotto-campionamento riduce le dimensioni dei dati, preservando le informazioni di frequenza essenziali. I coefficienti declassati servono quindi come input per il livello di decomposizione successivo.
+\\ \\
+Una volta ottenuti i coefficienti di decomposizione ai vari livelli, è possibile ricostruire il segnale o l'immagine utilizzando la trasformata wavelet inversa.
+Questa ricostruzione consente di ricostruire il segnale originale con vari livelli di dettaglio, da approssimazioni grossolane a dettagli fini.
+
+\begin{Note*}
+    Nel caso di immagini, se l'applicazione alternata dei filtri è effettuata lungo una direzione prima, e lungo l'altra poi, si parla di decomposizione standard;
+    se si procede applicando i filtri alternativamente nelle due direzioni, si parla di decomposizione non standard.
+\end{Note*}
 \end{document}
