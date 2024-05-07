@@ -1,0 +1,39 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{Definition*}
+    sia $X = \Tuple{X}{1}{n}$ un vettore aleatorio.
+    Questi si dice essere discreto se
+    $$
+        \exists C \subset \Real^{n} \Such \forall x \in C, \Prob{X = x} \ge 0 \land \Prob{X = y} = 0 \forall y \notin C
+    $$\vspace{-10pt}
+\end{Definition*}
+
+Sia $n = 2$, e siano $X, Y$ due numeri aleatori. Si indica con
+$$
+    C_{(X, Y)} = \Set{(x_{i}, y_{j}) \in C \subset \Real^{2}}[\Prob{X = x_{i}, Y = y_{j}} = p_{x_{i}, y_{j}} > 0]
+$$
+Risulta che $C \subseteq C_{X} \times C_{Y}$.
+
+Sia ora fissato un $x_{i} \in C_{X}$, osservando che
+$$
+    \Omega = \Bigvee*{Y = y_{j}}{y_{j} \in C_{Y}}
+$$
+si può decomporre $(X = x_{i})$ come
+$$\begin{aligned}
+        (X = x_{i}) & = (X = x_{i}) \land \Omega                                 \\
+                    & = \cdots = \Bigvee*{X = x_{i}, Y = y_{j}}{y_{j} \in C_{Y}}
+    \end{aligned}$$
+da cui
+\begin{equation}
+    \Prob{X = x_{i}, Y = y_{j}} = \Sum{p_{x_{i}, y_{j}}}{y_{j}}
+\end{equation}
+dicasi la $\eqref{Eq:2}$, distribuzione marginale di $X$.
+Se
+$$
+    \Prob{X = x_{i}, Y = y_{j}} = \Prob{Y = y_{j}}[X = x_{i}] \Prob{X = x_{i}}
+$$
+si parla di distribuzione marginale condizionata.
+
+\subsubsection{Indipendenza stocastica}
+\subfile{../Livello III/Sottosottosezione 6.1.1 - Indipendenza stocastica.tex}
+\end{document}

@@ -1,0 +1,42 @@
+\documentclass{subfiles}
+\begin{document}
+Il concetto di clustering fa riferimento ad una classe di algoritmi di machine learning non-supervisionato,
+generalmente utilizzati per il data-mining o per la ricerca degli outliers\footnotemark[1].
+
+In generale, a decidere i cluster è l'utente, scelta che deve però minimizzare la seguente funzione
+$$
+    O = \Sum{\Min*{dist\left(X_{i}, Y_{j}\right)}[j]}{i = 1}[n]
+$$
+ove $Y_{j}$ è il rappresentante del cluster $C_{j}$.
+Più nel dettaglio la definizione di clustering è la seguente.
+\begin{Definition*}
+    sia $X \in \Real^{n}$, allora un \emph{m-clustering} di $X$ è un partizione $\List{C}{1}{m}$ tale che
+    \begin{itemize}
+        \item $C_{i} \neq \varnothing, \forall i \in \Set{1, \dots, m}$;
+        \item $\Bigcup{C_{i}}{i = 1}[m] = X$;
+        \item $C_{i} \cap C_{j} = \varnothing, \text{per} i \neq j$.
+    \end{itemize}
+\end{Definition*}
+Come sarà discusso a seguire se $dist\left(X_{i}, Y_{j}\right) = \Norm{X_{i} - Y_{j}}[2]^{2}$, si parlera di \emph{k-mean} clustering.
+Circa il processo di clustering, questi si compone di cinque fasi, quali
+\begin{itemize}
+    \item selezione della soglia di clustering;
+    \item selezione della metodologia di clustering;
+    \item scelta del modello di clustering;
+    \item validazione dei risultati;
+    \item interpretazione dei risultati.
+\end{itemize}
+
+\subsection{Tipologie di clustering}
+\subfile{../Livello II/Sottosezione 5.1 - Tipologie di clustering.tex}
+
+\subsection{Misura della qualità di clustering}
+\subfile{../Livello II/Sottosezione 5.2 - Misure di qualita di clustering.tex}
+
+\subsection{K-mean clustering}
+\subfile{../Livello II/Sottosezione 5.3 - K-mean clustering.tex}
+
+\footnotetext[1]{Si tratta di osservazioni del dataset, che hanno poca correlazione con tutti le altre.}
+\footnotetext[2]{Si raggiunge la convergenza se vi è una ripetizione di medie, o se si è definito un qualche criterio di arresto.}
+\clearpage
+\end{document}

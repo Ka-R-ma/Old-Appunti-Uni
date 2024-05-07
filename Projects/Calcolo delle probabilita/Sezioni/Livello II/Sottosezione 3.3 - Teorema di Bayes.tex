@@ -1,0 +1,21 @@
+\documentclass{subfiles}
+\begin{document}
+Dalla formula di disintegrazione segue il seguente risultato, noto come \emph{Teorema di Bayes}.
+\begin{Theorem*}[di Bayes]
+    Siano $E, H$ due eventi. Allora
+    $$
+        \Prob{H}[E] = \Frac{\Prob{H} \Prob{E}[H]}{\Prob{E}}
+    $$
+\end{Theorem*}
+Questi, nella sua versione più generale stabilisce quanto segue.
+\begin{Theorem*}[di Bayes (generalizzato)]
+    Siano $\Set{\List{H}{1}{n}}$ un partizione di $\Omega$, sia $E$ un evento.
+    Si ha allora
+    $$
+        \Prob{H_{i}}[E] = \Frac{\Prob{H_{i}} \Prob{E}[H_{i}]}{\Prob{E}[H_{1}] \Prob{H_{1}} + \cdots + \Prob{E}[H_{n}] \Prob{H_{n}}}
+    $$
+\end{Theorem*}
+
+\subsubsection{Indipendenza stocastica}
+\subfile{../Livello III/Sottosottosezione 3.3.1 - Indipendenza stocastica.tex}
+\end{document}

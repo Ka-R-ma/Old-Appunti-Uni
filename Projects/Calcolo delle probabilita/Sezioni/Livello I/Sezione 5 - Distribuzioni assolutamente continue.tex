@@ -1,0 +1,56 @@
+\documentclass{subfiles}
+\begin{document}
+Sia $\Omega$ un evento certo, sia $A$ una sua partizione, tale che $\Norm{A} > \Norm{\Natural}$.
+Si può dimostrare in questi casi che si può attribuire una probabilità solamente ad un sottoinsieme $B \subset A \text{tale che} \Norm{B} = \Norm{\Natural}$.
+
+In questi casi, se un numero aleatorio $X$ può assumere valori la cui cardinalità è pari a quella del continuo, si dice che $X$ è un numero aleatorio continuo.
+In generale, se $X$ è un numero aleatorio continuo, si ha
+$$
+    \Prob{X = x} = 0, \forall x \in \Real
+$$
+Una definizione più rigorosa è la seguente.
+\begin{Definition*}
+    dicasi che un numero aleatorio $X$ è continuo se
+    \begin{itemize}
+        \item $\Prob{X = x} = 0, \forall x$;
+        \item $\exists f(x) > 0$ integrabile secondo Riemann, tale che $\forall A \subseteq \Real$ misurabile secondo Peano-Jordan, si abbia
+              $$
+                  \Prob{A} = \Prob{X \in A} = \Int{f(x)}{x}[A]
+              $$
+    \end{itemize}
+    \begin{MarginNote}
+        Dicasi $f$ densità di probabilità di $X$.
+    \end{MarginNote}
+\end{Definition*}
+
+Nel caso di numeri aleatori continui, si dimostra esservi un legame tra funzione di ripartizione e densità di probabilità.
+Infatti, sia $F(x)$ la funzione di ripartizione di un qualche numero aleatorio continuo $X$, poiché per definizione
+$$
+    F(x) = \Prob{X \le x} = \Prob{X \in ]-\infty, x]}
+$$
+segue
+$$
+    F(x) = \Prob{X \le x} = \Int{f(t)}{t}[-\infty][x].
+$$
+Si ha cioè che
+$$
+    f(x) = F'(x)
+$$
+
+\subsection{Previsione e varianza}
+\subfile{../Livello II/Sottosezione 5.1 - Previsione e varianza.tex}
+\clearpage
+
+\subsection{Distribuzione uniforme}
+\subfile{../Livello II/Sottosezione 5.2 - Distribuzione uniforme.tex}
+
+\subsection{Distribuzione esponenziale}
+\subfile{../Livello II/Sottosezione 5.3 - Distribuzione esponenziale.tex}
+
+\subsection{Distribuzione Normale}
+\subfile{../Livello II/Sottosezione 5.4 - Distribuzione normale.tex}
+
+\subsection{Distribuzione Gamma}
+\subfile{../Livello II/Sottosezione 5.5 - Ditribuzione gamma.tex}
+\clearpage
+\end{document}

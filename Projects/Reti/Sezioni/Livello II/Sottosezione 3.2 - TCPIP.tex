@@ -1,0 +1,10 @@
+\documentclass{subfiles}
+\begin{document}
+Predecessore di ISO/OSI, è un modello di riferimento a 5 livelli. Questi sono: applicazione, trasporto, rete, data link, fisico.
+\begin{MarginNote}
+    una descrizione approfondita di ciascun livello sarà argomento della sezione successiva.
+\end{MarginNote}
+
+Con TCP/IP la trasmissione tra livelli adiacenti è eseguita come segue:
+il livello $k$ prende i dati dal livello $k + 1$; a questi aggiunge un header e crea i \emph{protocol data unit} (PDU). Infine trasferisce i PDU al livello $k - 1$.
+\end{document}

@@ -1,0 +1,34 @@
+\documentclass{subfiles}
+\begin{document}
+Un \emph{trie} è una struttura ad albero che permette di rappresentare efficientemente le stringhe.
+Più precisamente, sono definiti come segue.
+
+\begin{Definition*}
+    sia \(\Sigma\) un alfabeto, si definisce trie un albero radicato i cui nodi hanno al più \(\Abs{\Sigma}\) figli;
+    si deve avere inoltre che
+    \begin{enumerate}
+        \item ogni arco è etichettato con un simbolo \(x \in \Sigma\);
+        \item per ogni coppia di nodi \(v, w\) distinti, ogni cammino da \(v\) verso una sua foglia è diverso da ogni cammino di \(w\) a una sua foglia.
+    \end{enumerate}
+\end{Definition*}
+
+\begin{Example*}
+    sia \(S = \Set{pippo, pluto, plurale, topolino,}\). Il suo trie è quello mostrato di seguito.
+    \subfile{../../Figure/Tikz Figure/Figure *.1 - Esempio di Trie.tex}
+
+    \begin{Remark*}
+        Qui \raisebox{-1.25pt}{\tikz{\node at (0, 0) [circle, radius=2pt, fill=black!12.5, draw=black] {};}}, oltre ad indicare la radice del trie,
+        è utilizzata per indicare il termine di una stringa.
+    \end{Remark*}
+\end{Example*}
+
+Per quanto concerne le operazioni di inserimento (di cui in \emph{Figura \ref{Fig:8}} è riportata l'implementazione), cancellazione e ricerca,
+si dimostra che tutte richiedono tempo \(\OrderOf{\Abs{S}}\) e spazio \(\OrderOf{\Abs{S}\Abs{\Sigma}}\).
+\subfile{../../Figure/Tikz Figure/Figure 8 - Pseudo codice inserimento Trie.tex}
+
+\subsubsection{PATRICIA tree}
+\subfile{../Livello III/Sottosottosezione 2.3.1 - PATRICIA tree.tex}
+
+\subsubsection{Ternary search tree}
+\subfile{../Livello III/Sottosottosezione 2.3.2 - Ternary search tree.tex}
+\end{document}

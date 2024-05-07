@@ -1,0 +1,29 @@
+\documentclass{subfiles}
+\begin{document}
+La funzione caratteristica è uno strumento teorico utile ad analizzare diversi aspetti dei numeri aleatori.
+Nello specifico, questa è definita come segue.
+\begin{Definition*}
+    sia $X$ un numero aleatorio, e sia
+    $$
+        Y = e^{itX} = \Cos{tX} + i\Sin{tX}
+    $$
+    si definisce funzione caratteristica $\varphi_{X}$ quanto segue.
+    $$\begin{cases}
+            \Sum{p_{h} e^{itx_{h}}}{h}, \text{se} X \text{è discreto} \\
+            \Int{e^{itx}}{x}[-\infty][\infty], \text{se} X \text{è continuo}
+        \end{cases}$$
+\end{Definition*}
+
+Considerando unicamente il caso continuo, vale lo stesso ragionamento nel caso discreto, valgono le seguenti proprietà:
+\begin{enumerate}
+    \item $\varphi_{X}(0) = 1$
+    \item $\Abs{\varphi_{X}(t)} \le \varphi_{X}(0)$, si ha infatti
+          $$\begin{aligned}
+                  \Abs{\varphi_{X}(t)} = \Abs{\Int{e^{itx} f(x)}{x}[-\infty][\infty]} & \le \Int{\Abs{e^{itx} f(x)}}{x}[-\infty][\infty]   \\
+                                                                                      & = \Int{\Abs{e^{itx}} f(x)}{x}[-\infty][\infty] = 1
+              \end{aligned}$$
+\end{enumerate}
+
+\subsubsection{Somma di numeri aleatori stocasticamente indipendenti}
+\subfile{../Livello III/Sottosottosezione 6.4.1 - Somma di numeri aleatori stocasticamente indipendenti.tex}
+\end{document}

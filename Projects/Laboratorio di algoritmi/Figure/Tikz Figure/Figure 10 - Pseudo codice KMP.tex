@@ -1,0 +1,25 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[b]{.7\textwidth}
+        \centering
+        \begin{lstlisting}[language = C++]
+            void KMP_pattern_matching(String text, String pattern)
+                int m = pattern.length;
+                int** dfa = new int*[ALPHABET];
+                for (int i = 0; i < ALPHABET; i++)
+                    dfa[i] = new int[m];
+                dfa[pattern[0]][0] = 1;
+                for (int x = 0, j = 1; j < m; j++)
+                    for (int c = 0; c < ALPHABET){
+                        dfa[c][j] = dfa[c][x];
+                        dfa[pattern[j]][j] = j++;
+                        x = dfa[pattern[j]][x];
+                    }
+        \end{lstlisting}
+    \end{subfigure}
+    \caption{Codice C++ per la costruzione dell'automa per KMP.}
+    \label{Fig:10}
+\end{figure}
+\end{document}

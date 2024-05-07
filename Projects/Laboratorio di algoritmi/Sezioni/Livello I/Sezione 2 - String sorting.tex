@@ -1,0 +1,24 @@
+\documentclass{subfiles}
+\begin{document}
+Si assume noto che relativamente al sorting, esiste un lower-bound di \(\OrderOf{n \Log{n}[2]}\) per quel che riguarda l'ordinamento di dati primitivi,
+presupposto l'esistenza di una relazione d'ordine tra gli stessi.
+Relativamente le stringhe (così come per altri dati non elementari), tale lower-bound risulta non essere corretto.
+Ciò segue da una semplice osservazione: siano \(s_1, s_2\) due stringhe da ordinare, si nota banalmente che è necessario confrontare almeno l'\emph{lcp} tra le due,
+ossia è necessario confrontare almeno il prefisso comune alle due. Generalizzando a \(n\) stringhe vale il seguente teorema.
+\begin{Theorem}
+    Sia \(R = \Set{\List{s}{1}{n}} \text{insieme di} n\) stringhe.
+    Allora, se utilizzato un algoritmo basato su confronti, ordinare \(R\) richiede \(\OmegaOf{\Sigma LCP(R) + n \Log{n}[2]}\)
+\end{Theorem}
+
+In questa sezione si discuteranno algoritmi e strutture dati studiati per ordinare efficientemente le stringhe.
+
+\subsection{3-Way quicksort}
+\subfile{../Livello II/Sottosezione 2.1 - 3Way quicksort.tex}
+
+\subsection{Radix sort}
+\subfile{../Livello II/Sottosezione 2.2 - Radix sort.tex}
+
+\subsection{Trie}
+\subfile{../Livello II/Sottosezione 2.3 - Trie.tex}
+\clearpage
+\end{document}

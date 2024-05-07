@@ -1,0 +1,26 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure}[h!]
+    \resizebox{\textwidth}{!}{
+        \begin{tabular}{|c|c|c|c|c|c||c|c|}
+            \hline
+            \# & \multicolumn{5}{|c||}{ACTION} & \multicolumn{2}{|c|}{GOTO}                                                                                    \\
+            \hline
+               & (                             & )                          & x                    & \$                   & ,                    & S    & L    \\
+            \hline
+            q0 & S: q3                         &                            & S: q1                &                      &                      & G:q2 &      \\
+            q1 & R:$\Grammar{S}{x}$            & R:$\Grammar{S}{x}$         & R:$\Grammar{S}{x}$   & R:$\Grammar{S}{x}$   & R:$\Grammar{S}{x}$   &      &      \\
+            q2 &                               &                            &                      & accept               &                      &      &      \\
+            q3 & S: q3                         &                            & S: q1                &                      &                      & G:q6 & G:q7 \\
+            q4 & S: q3                         &                            & S: q1                &                      &                      & G:q5 &      \\
+            q5 & R:$\Grammar{L}{L,S}$          & R:$\Grammar{L}{L,S}$       & R:$\Grammar{L}{L,S}$ & R:$\Grammar{L}{L,S}$ & R:$\Grammar{L}{L,S}$ &      &      \\
+            q6 & R:$\Grammar{L}{S}$            & R:$\Grammar{L}{S}$         & R:$\Grammar{L}{S}$   & R:$\Grammar{L}{S}$   & R:$\Grammar{L}{S}$   &      &      \\
+            q7 &                               & S: q8                      &                      &                      & S: q4                &      &      \\
+            q8 & R:$\Grammar{S}{(L)}$          & R:$\Grammar{S}{(L)}$       & R:$\Grammar{S}{(L)}$ & R:$\Grammar{S}{(L)}$ & R:$\Grammar{S}{(L)}$ &      &      \\
+            \hline
+        \end{tabular}
+    }
+    \caption{Esempio tabella LR(0).}
+    \label{tab:1}
+\end{figure}
+\end{document}

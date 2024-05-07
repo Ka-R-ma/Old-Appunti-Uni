@@ -1,0 +1,16 @@
+\documentclass{subfiles}
+\begin{document}
+Il filtro mediano tenta di risolvere il problema del rumore ``sale e pepe'', secondo la seguente logica.
+Poiché il rumore sale-pepe aggiunge quà e là pixel bianchi e neri per l'immagine, da cui il nome,
+l'idea è quella di considerare una porzione MxN dell'immagine, una cosiddetta finestra $W$,
+procedere ad ordinare secondo tonalità di colore i pixel nella stessa e sostituire quello in posizione centrale al pixel in posizione centrale della finestra.
+Questo perché un pixel nero (analogamente uno bianco) non sarà eliminato se $\tfrac{MN}{2} + 1$ dei pixel nella finestra sono neri.
+
+\subfile{../../Figure/Tikz Figure/Figure 3.3 - Esempio di filtro mediano.tex}
+\begin{Remark*}
+    l'applicazione del filtro potrebbe non rimuovere completamente tutto il rumore.
+    A tal proposito si potrebbe riapplicare il filtro aumentato le dimensioni della finestra, o applicare il filtro unicamente ai pixel soggetti a rumore.
+    Ulteriore problema del filtro è il fatto che finestre troppo grandi potrebbero trasformare il filtro in uno di blur.
+\end{Remark*}
+
+\end{document}

@@ -1,0 +1,9 @@
+\documentclass{subfiles}
+\begin{document}
+L'algoritmo, che deve il nome agli sviluppatori che lo hanno scoperto, parte da una semplice osservazione:
+ogni qualvolta si ha un mismatch, anziché ricercare il pattern dal carattere successivo,
+è più sensato riprendere la ricerca da quella porzione di patter trovato che risulti essere prefisso del pattern effettivo e suffisso di quello già trovato.
+Per quanto concerne l'implementazione, KMP parte col costruire un apposito automa a stati finiti, (\emph{Figura \ref{Fig:10}}),
+\subfile{../../Figure/Tikz Figure/Figure 10 - Pseudo codice KMP.tex}
+e simula l'esecuzione dello stesso con il patter da ricercare.
+\end{document}

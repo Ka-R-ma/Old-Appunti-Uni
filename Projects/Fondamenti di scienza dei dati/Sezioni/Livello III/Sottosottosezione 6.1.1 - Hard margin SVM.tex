@@ -1,0 +1,14 @@
+\documentclass{subfiles}
+\begin{document}
+Da quanto precedentemente detto, posto $\VectorBold{x}$ il vettore associato a un punto $p$,
+$ \VectorBold{w}$ il vettore ortogonale all'iper-piano e $c$ la distanza tra $\VectorBold{w}$ e l'iper-piano, segue che
+\begin{itemize}
+    \item se $\VectorBold{wx} = c$: il punto $p$ sara sovrapposto al limite decisionale, e dunque non sarà classificabile;
+    \item se $\VectorBold{wx} < c$: il punto sara classificato negativamente;
+    \item in ultima istanza, $p$ è classificato positivamente.
+\end{itemize}
+Da ciò, risulta fondamentale massimizzare $c$, e si dimostra che ciò si verifica massimizzando
+\begin{equation}
+    \arg\Min*{\frac{2}{\Norm{\VectorBold{w}}}}[\VectorBold{w}, \VectorBold{x}]
+\end{equation}
+\end{document}

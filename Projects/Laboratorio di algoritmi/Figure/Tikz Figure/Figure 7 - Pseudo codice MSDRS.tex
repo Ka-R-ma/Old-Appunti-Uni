@@ -1,0 +1,20 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[b]{0.35\textwidth}
+        \begin{lstlisting}[language = PSEUDO]
+            function MSD_radix_sort
+            if __*$\Abs{R} < \sigma$*__ then 
+                return quickSort(R, l);
+            __*$R_{\perp} = \Set{s \in R}[\Abs{s} = l]$*__;
+            __*$(\List{R}{1}{\sigma}) = countingSort(R, l)$*__;
+            for i = 0 to __*$\sigma - 1$*__ do
+                __*$R_{i} = MSD\_radix\_sort(R_{i}, l + 1)$*__;
+            return __*$R_{\perp} \cdot R_{0} \cdot R_{1} \cdot \ldots \cdot R_{\sigma}$*__;  
+        \end{lstlisting}
+    \end{subfigure}
+    \caption{Pseudo codice MSD radix sort.}
+    \label{Fig:7}
+\end{figure}
+\end{document}

@@ -1,0 +1,43 @@
+\documentclass{subfiles}
+\begin{document}
+Come suggerito dal nome, si tratta di parser che verificano la generabilità dell'input a partire dall'assioma.
+Si osservi però che tali parser soffrono di un problema: non sono deterministici.
+Banalmente, motivo di ciò è dato dal fatto che un non terminale possa produrre delle derivazioni, nel seguito indicate come \(\Derivation\),
+che iniziano con uno stesso carattere.
+
+Prima di descrivere il principale dei parser top-down, si descrivono due tecniche in genere utilizzate per eliminare il non determinismo.
+\begin{enumerate}
+    \item Si supponga il caso di un non terminale che ha un prefisso comune a diversi terminali.
+          Cioè si ha qualcosa del tipo
+          \[
+              \Grammar{A}{\gamma \alpha_{1}}[\gamma \alpha_{2}, \cdots, \gamma \alpha_{n}, \omega]
+          \]
+          con\(\gamma \in T, \alpha_{i} \in N \cup T, \forall i = 0, \ldots, n\). T insieme di terminali, N dei non terminali.
+
+          Per risolver il problema si introduce un nuovo non terminale, così da posticipare la scelta.
+          Cioè, la grammatica di cui sopra diventa
+          \[\begin{aligned}
+                   & \Grammar{A}{\gamma B}[\gamma B, \cdots, \gamma B, \omega] \\
+                   & \Grammar{B}{\gamma \alpha_{1}}[\cdots, \alpha_{n}]        \\
+              \end{aligned}\]
+    \item Si supponga ora che un non terminale presenti una ricorsione sinistra.
+          Si ha cioè qualcosa del tipo
+          \[
+              \Grammar{A}{A \alpha_{1}}[A \alpha_{2}, \beta_{1}, \beta_{2}]
+          \]
+          considerando unicamente il caso in cui la ricorsione sia immediatamente a sinistra,
+          come prima si introduce un nuovo non terminale cosi da ritardare la scelta.
+          Dalla grammatica di sopra si ottiene dunque qualcosa del tipo
+          \[\begin{aligned}
+                   & \Grammar{A}{\beta_{1} B}[\beta_{2} B]                \\
+                   & \Grammar{B}{\alpha_{1} B}[\alpha_{2} B, \varepsilon] \\
+              \end{aligned}\]
+\end{enumerate}
+Circa i parser top-down in se, si distinguono
+\begin{itemize}
+    \item i parser \emph{a discesa ricorsiva}: di poco interesse al corso;
+    \item i parser \emph{LL(k)}: sono parser che analizzano l'input da sinistra a destra,
+          costruendo una derivazione sinistra sulla base dei k simboli successivi.
+          Nello specifico saranno trattati i parser LL(1).
+\end{itemize}
+\end{document}

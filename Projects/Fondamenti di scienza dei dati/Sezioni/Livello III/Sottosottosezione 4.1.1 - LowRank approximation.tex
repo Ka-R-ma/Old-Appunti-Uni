@@ -1,0 +1,18 @@
+\documentclass{subfiles}
+\begin{document}
+La Low-Rank approximation è una tecnica appartenente alle cosiddette \emph{budget} SVD,
+dove per ``budget'' si intende il fatto che dimensioni delle matrici sono ridotte a un certo $k$.
+Più rigorosamente, la low-rank approximation è definita come segue.
+\begin{Definition*}
+    sia $X \in \Real^{n, m}$ e sia $r = \RankOf{X}$, se
+    $$
+        X_{r} = \Sum{\sigma_{i}u_{i}v_{i}^{T}}{i = 1}[r]
+    $$
+    è una SVD di $X$, allora scelto un $k < r$ è possibile definire una SVD ridotta ai primi $k$ termini. Ossia,
+    $$
+        X_{k} = \Sum{\sigma_{i}u_{i}v_{i}^{T}}{i = 1}[k].
+    $$
+    Si definisce $X_{k}$ matrice di miglior approssimazione di $X$ di rango $k$.
+\end{Definition*}
+Cioè sostanzialmente, $X_{k}$ è la matrice di rango $k$ che, fra tutte le matrici di rango $k$, approssima meglio $X$.
+\end{document}

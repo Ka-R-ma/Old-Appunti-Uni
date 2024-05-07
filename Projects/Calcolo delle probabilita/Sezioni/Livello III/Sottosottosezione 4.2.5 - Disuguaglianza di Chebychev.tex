@@ -1,0 +1,26 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{Theorem}
+    Dato un numero aleatorio discreto $X$ con $\Expected{X} = \mu < \infty \text{e} \Var{X} < \infty$,
+    si ha
+    $$
+        \Prob{\Abs{X - \mu} \ge \varepsilon} \le \Frac{\sigma^{2}}{\varepsilon^{2}}, \forall \varepsilon > 0
+    $$
+    \begin{Proof*}
+        a partire da Markov (\emph{Teorema \ref{Thm:4.1}}), si consideri $Y = (X - \mu)^{2}$.\\
+        Si ha che $Y \ge 0 \text{e} \Expected{Y} = \sigma^{2}$. Da Markov
+        $$
+            \Prob{Y \ge \alpha} \le \frac{\Expected{Y}}{\alpha}
+        $$
+        posto allora $\alpha = \varepsilon^{2}$, segue
+        $$
+            \Prob{(X - \mu)^{2} \ge \varepsilon^{2}} \le \Frac{\sigma^{2}}{\varepsilon^{2}}
+        $$
+        ma poiché $(X - \mu)^{2} \ge \varepsilon^{2} \iff \Abs{X - \mu} \ge \varepsilon$, segue
+        $$
+            \Prob{\Abs{X - \mu} \ge \varepsilon} \le \Frac{\sigma^{2}}{\varepsilon^{2}}
+        $$
+    \end{Proof*}
+\end{Theorem}
+\clearpage
+\end{document}

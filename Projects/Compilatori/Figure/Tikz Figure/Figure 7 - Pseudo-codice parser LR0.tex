@@ -1,0 +1,23 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[b]{0.7\textwidth}
+        \begin{lstlisting}[language = PSEUDO]
+                let __*$ip$*__ be first symbol the string __*$w\$$*__ to parse;
+                while true do 
+                    __*S = stack.top(); a = ip*__;
+                    if action[S, a] == shift __*$S'$*__ then {
+                        stack.push(a); stack.push(S'); ip = ip.next();
+                    } else if action[S, a] == reduce __*$\Grammar{A}{B}$*__ then {
+                        stack.pop(); // pop di 2*|B| simboli
+                        __*$S' = stack.top()$*__;
+                        stack.push(a); stack.push(goto[S', A]);
+                    } if action[S', A] == accept then accept()
+                         error();
+            \end{lstlisting}
+    \end{subfigure}
+    \caption{Pseudo codice LR(0).}
+    \label{fig:7}
+\end{figure}
+\end{document}

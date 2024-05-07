@@ -1,0 +1,164 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[b]{0.475\textwidth}
+        \centering
+        \begin{tikzpicture}[
+                treeNode/.style={circle, minimum size=18.875pt, draw=black, shade, top color=black!12.5, bottom color=white,},
+                subTree/.style={isosceles triangle, minimum height=18.875pt, minimum width=22.5pt, draw=black, shape border rotate=90},
+                every label/.style={SkyBlue4, font=\bfseries, scale=.875, auto, swap},
+                legend/.style={rectangle, minimum width=60pt, minimum height=45pt, draw=black, scale=.75}
+            ]
+
+            \node (root) at (0pt, 0pt) [treeNode, label=center:{r}] {};
+            \node (leftSubTreeRoot) at ($(root) - (20pt, 20pt)$) [treeNode, label=center:{k}] {};
+            \node (rightSubTree) at ($(root) + (20pt, -35pt)$) [subTree, label=center:{\(T_{3}\)}] {};
+
+            \node (LeftLeftSubTree) at ($(leftSubTreeRoot) - (20pt, 35pt)$) [subTree, label=center:{\(T_{1}\)}] {};
+            \node (RightLeftSubTree) at ($(leftSubTreeRoot) + (20pt, -27.5pt)$) [subTree, label=center:{\(T_{2}\)}] {};
+
+            \path (root)
+            edge (leftSubTreeRoot.north)
+            edge (rightSubTree.north);
+
+            \path (leftSubTreeRoot)
+            edge (LeftLeftSubTree.north)
+            edge (RightLeftSubTree.north);
+
+            \node at ($(root) + (65pt, -22.5pt)$) [legend] {\(\begin{aligned}
+                     & \text{Altezze}       \\
+                     & r = h + 1            \\
+                     & k, T_{2} = h         \\
+                     & T_{1}, T_{3} = h - 1
+                \end{aligned}\)};
+        \end{tikzpicture}
+        \caption{}
+        \label{Fig:2.a}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.475\textwidth}
+        \centering
+        \begin{tikzpicture}[
+                treeNode/.style={circle, minimum size=18.875pt, draw=black, shade, top color=black!12.5, bottom color=white,},
+                subTree/.style={isosceles triangle, minimum height=18.875pt, minimum width=22.5pt, draw=black, shape border rotate=90},
+                every label/.style={SkyBlue4, font=\bfseries, scale=.875, auto, swap},
+                legend/.style={rectangle, minimum width=60pt, minimum height=45pt, draw=black, scale=.75}
+            ]
+
+            \node (root) at (0pt, 0pt) [treeNode, label=center:{r}] {};
+            \node (leftSubTreeRoot) at ($(root) - (20pt, 20pt)$) [treeNode, label=center:{k}] {};
+            \node (rightSubTree) at ($(root) + (20pt, -35pt)$) [subTree, label=center:{\(T_{3}\)}] {};
+
+            \node (LeftLeftSubTree) at ($(leftSubTreeRoot) - (20pt, 35pt)$) [subTree, label=center:{\(T_{1}\)}] {};
+            \node (RightLeftSubTreeRoot) at ($(leftSubTreeRoot) + (18pt, -20pt)$) [treeNode, label=center:{\(i\)}] {};
+
+            \node (LeftRightLeftSubTRee) at ($(RightLeftSubTreeRoot) - (20pt, 35pt)$) [subTree, label=center:{\(i_{l}\)}] {};
+            \node (RightRightLeftSubTRee) at ($(RightLeftSubTreeRoot) + (20pt, -35pt)$) [subTree, label=center:{\(i_{r}\)}] {};
+
+            \path (root)
+            edge (leftSubTreeRoot.north)
+            edge (rightSubTree.north);
+
+            \path (leftSubTreeRoot)
+            edge (LeftLeftSubTree.north)
+            edge (RightLeftSubTreeRoot.north);
+
+            \path (RightLeftSubTreeRoot)
+            edge (LeftRightLeftSubTRee.north)
+            edge (RightRightLeftSubTRee.north);
+
+            \node at ($(root) + (65pt, -22.5pt)$) [legend] {\(\begin{aligned}
+                     & \text{Altezze}                     \\
+                     & r = h + 1                          \\
+                     & k, i = h                           \\
+                     & T_{1}, i_{l}, i_{r}, T_{3} = h - 1
+                \end{aligned}\)};
+        \end{tikzpicture}
+        \caption{}
+        \label{Fig:2.b}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.475\textwidth}
+        \centering
+        \begin{tikzpicture}[
+                treeNode/.style={circle, minimum size=18.875pt, draw=black, shade, top color=black!12.5, bottom color=white,},
+                subTree/.style={isosceles triangle, minimum height=18.875pt, minimum width=22.5pt, draw=black, shape border rotate=90},
+                every label/.style={SkyBlue4, font=\bfseries, scale=.875, auto, swap},
+                legend/.style={rectangle, minimum width=60pt, minimum height=45pt, draw=black, scale=.75}
+            ]
+
+            \node (root) at (0pt, 0pt) [treeNode, label=center:{r}] {};
+            \node (rootLeftSon) at ($(root) - (20pt, 20pt)$) [treeNode, label=center:{i}] {};
+            \node (rootRightSon) at ($(root) + (20pt, -35pt)$) [subTree, label=center:{\(T_{3}\)}] {};
+
+            \node (rootLeftSonLeftSon) at ($(rootLeftSon) - (20pt, 20pt)$) [treeNode, label=center:{k}] {};
+            \node (rootLeftSonRightSon) at ($(rootLeftSon) + (20pt, -35pt)$) [subTree, label=center:{\(i_{r}\)}] {};
+
+            \node (rootLeftSonLeftSonLeftSon) at ($(rootLeftSonLeftSon) - (20pt, 35pt)$) [subTree, label=center:{\(T_{1}\)}] {};
+            \node (rootLeftSonLeftSonRightSon) at ($(rootLeftSonLeftSon) + (20pt, -35pt)$) [subTree, label=center:{\(i_{l}\)}] {};
+
+            \path (root)
+            edge (rootLeftSon.north)
+            edge (rootRightSon.north);
+
+            \path (rootLeftSon)
+            edge (rootLeftSonLeftSon.north)
+            edge (rootLeftSonRightSon.north);
+
+            \path (rootLeftSonLeftSon)
+            edge (rootLeftSonLeftSonLeftSon.north)
+            edge (rootLeftSonLeftSonRightSon.north);
+
+            \node at ($(root) + (65pt, -22.5pt)$) [legend] {\(\begin{aligned}
+                     & \text{Altezze}              \\
+                     & r = h + 2                   \\
+                     & i = h + 1                   \\
+                     & k, i_{r} = h                \\
+                     & T_{1}, i_{l}, T_{3} = h - 1
+                \end{aligned}\)};
+        \end{tikzpicture}
+        \caption{}
+        \label{Fig:2.c}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.475\textwidth}
+        \centering
+        \begin{tikzpicture}[%TODO: complete
+                treeNode/.style={circle, minimum size=18.875pt, draw=black, shade, top color=black!12.5, bottom color=white,},
+                subTree/.style={isosceles triangle, minimum height=18.875pt, minimum width=22.5pt, draw=black, shape border rotate=90},
+                every label/.style={SkyBlue4, font=\bfseries, scale=.875, auto, swap},
+                legend/.style={rectangle, minimum width=60pt, minimum height=45pt, draw=black, scale=.75}
+            ]
+
+            \node (root) at (0pt, 0pt) [treeNode, label=center:{i}] {};
+            \node (rootLeftSon) at ($(root) - (32.5pt, 40pt)$) [treeNode, label=center:{k}] {};
+            \node (rootRightSon) at ($(root) + (32.5pt, -40pt)$) [treeNode, label=center:{r}] {};
+
+            \node (rootLeftSonLeftSon) at ($(rootLeftSon) - (20pt, 35pt)$) [subTree, label=center:{\(T_{1}\)}] {};
+            \node (rootLeftSonRightSon) at ($(rootLeftSon) + (20pt, -35pt)$) [subTree, label=center:{\(i_{l}\)}] {};
+
+            \node (rootRightSonLeftSon) at ($(rootRightSon) - (20pt, 35pt)$) [subTree, label=center:{\(i_{r}\)}] {};
+            \node (rootRightSonRightSon) at ($(rootRightSon) + (20pt, -35pt)$) [subTree, label=center:{\(T_{3}\)}] {};
+
+            \path (root)
+            edge (rootLeftSon.north)
+            edge (rootRightSon.north);
+
+            \path (rootLeftSon)
+            edge (rootLeftSonLeftSon.north)
+            edge (rootLeftSonRightSon.north);
+
+            \path (rootRightSon)
+            edge (rootRightSonLeftSon.north)
+            edge (rootRightSonRightSon.north);
+
+            \node at ($(root) + (100pt, -22.5pt)$) [legend] {\(\begin{aligned}
+                     & \text{Altezze}              \\
+                     & i = h + 1                   \\
+                     & k, r = h                    \\
+                     & T_{k}, i_{l}, i_{l} = h - 1
+                \end{aligned}\)};
+        \end{tikzpicture}
+        \caption{}
+        \label{Fig:2.d}
+    \end{subfigure}
+\end{figure}
+\end{document}

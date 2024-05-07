@@ -1,0 +1,45 @@
+\documentclass{subfiles}
+\begin{document}
+Storicamente il prima ad interessarsi a quella che sarebbe poi divenuto lo studio della probabilità fu il cavaliere \emph{De Mere}.
+Questi accanito scommettitore, suppose che vi fosse un legame tra la frequenza con cui uscisse un certo risultato e la sua probabilità.
+\begin{Example*}
+    Come esempio della logica di De Mere si consideri quanto segue: siano
+    $$\begin{aligned}
+            A & = \text{``Lanciando un dado a sei facce 4 volte, esce almeno un 6''}               \\
+            B & = \text{``Lanciando due dadi a sei facce 24 volte, esce almeno una coppia (6,6)''}
+        \end{aligned}$$
+    ci si chiede: $\Prob{A} = \Prob{B}$?
+
+    Secondo De Mere si avrebbe
+    $$\begin{aligned}
+            \Prob{A} & = \Frac{1}{6} + \Frac{1}{6} + \Frac{1}{6} + \Frac{1}{6} = \Frac{2}{3}                                                     \\
+            \Prob{B} & = \underbrace{\Frac{1}{36} + \Frac{1}{36} + \cdots + \Frac{1}{36}}_{\times 36} = \Frac{2}{3} \implies \Prob{A} = \Prob{B}
+        \end{aligned}$$
+    Si osserva però che una valutazione più ``corretta'' è ottenuta sottraendo a tutti casi possibili, quelli a sfavore di $A \text{e} B$ rispettivamente,
+    da cui
+    $$\begin{aligned}
+            \Prob{A} & = \Frac{6^{4} - 5^{4}}{6^{4}} \approx 0.518       \\
+            \Prob{B} & = \Frac{36^{24} - 35^{24}}{36^{24}} \approx 0.491
+        \end{aligned}$$
+    Concludendo dunque che $\Prob{A} > \Prob{B}$.
+\end{Example*}
+
+Introducendo un po di formalismo, quelli che nell'esempio di sopra sono stati indicati con $A \text{e} B$ prendono il nome di eventi.
+Più in generale, fissato un certo spazio campionario $\Omega$, dicasi ogni suo sottoinsieme $E$ evento.
+Cioè un evento descrive uno dei possibili esiti di un esperimento.
+Casi particolari di evento sono l'evento certo $\Omega$ e quello impossibile $\varnothing$.
+In fine dato $E$ un evento, si definisce $\Abs{E}$ il suo indicatore e si ha
+$$\Abs{E} = \begin{cases}
+        1, \text{se $E$ è vero;} \\
+        0, \text{se $E$ è falso.}
+    \end{cases}$$
+Dove con ``vero'' e ``falso'' ci si riferisce al verificarsi o meno di $E$.
+
+\begin{MarginNote}
+    la definizione di probabilità data da De Mere prende il nome di \emph{criterio classico}.
+\end{MarginNote}
+
+\subsection{Partizione dell'evento certo}
+\subfile{../Livello II/Sottosezione 1.1 - Partiozione dell'evento ceerto.tex}
+\clearpage
+\end{document}

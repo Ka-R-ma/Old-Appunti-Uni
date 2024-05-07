@@ -1,0 +1,28 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure}[!h]
+    \centering
+    \begin{tikzpicture}[scale = 1, every node/.style={scale = 0.75}]
+
+        \node (lvl) at (0, 6) {level};
+        \foreach \i in {1, ..., 5}{
+                \node (lvl\i) at (0, \i) {\i};
+            }
+
+        \draw (2.5, 5) rectangle (3.5, 4.5);
+
+        \draw (2.25, 4) rectangle (3.75, 3.5);
+        \draw (2.75, 4) to (2.75, 3.5);
+        \draw [->] (3, 4.5) -- (3, 4);
+
+        \draw (1.25, 3) rectangle (2.75, 2.5);
+        \draw (1.75, 3) to (1.75, 2.5);
+        \draw (2.25, 3) to (2.25, 2.5);
+
+        //TODO: completare con riferimento figura slide 9 Reti PDF2.z
+
+    \end{tikzpicture}
+    \caption{Esempio di impacchettamento dati.}
+    \label{fig:1}
+\end{figure}
+\end{document}

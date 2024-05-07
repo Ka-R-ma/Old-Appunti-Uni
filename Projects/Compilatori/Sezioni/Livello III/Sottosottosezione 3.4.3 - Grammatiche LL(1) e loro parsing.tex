@@ -1,0 +1,19 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{Definition*}
+    sia \(G\) una grammatica, questa è LL(1) se e solo se \(\forall \Grammar{A}{\alpha}[\beta]\) si ha che:
+    \begin{itemize}
+        \item \(\alpha \text{e} \beta\) non derivano stringhe che iniziano con uno stesso terminale \(a\).
+              Cioè \(FIRST(\alpha) \neq FIRST(\beta)\).
+        \item al più uno dei due deriva \(\varepsilon\).
+        \item se \(\beta \Derivation \varepsilon\), allora \(\alpha\) non deriva stringhe che iniziano con terminali in \(FOLLOW(A)\), o viceversa.
+    \end{itemize}
+\end{Definition*}
+
+Dalla definizione segue la possibilità di realizzare un parser predittivo per le grammatiche LL(1), il cui pseudo-codice è di seguito riportato.
+\subfile{../../Figure/Tikz Figure/Figure 5 - Pseudo-codice parser LL1.tex}
+
+\noindent Per struttura delle grammatiche LL(1) e da un'analisi dell'algoritmo, si osserva che il parser LL(1) ha complessità \(\OrderOf{n}\),
+con \(n\) lunghezza dell'input.
+
+\end{document}

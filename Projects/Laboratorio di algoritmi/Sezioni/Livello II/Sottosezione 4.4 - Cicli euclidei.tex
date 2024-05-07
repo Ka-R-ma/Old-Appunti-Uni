@@ -1,0 +1,66 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{Definition*}
+    Sia \(G\) un grafo non orientato. Si definisce ciclo euclideo un ciclo \(C\) in \(G\) tale che,
+    \(C\) contenga tutti gli archi di \(G\) una e una sola volta.
+\end{Definition*}
+
+Rimane il problema di come determinare se un grafo abbia o meno un ciclo euclideo.
+Fortunatamente, il seguente teorema fornisce una condizione necessaria e sufficiente affinche un grafo ammetta un ciclo euclideo.
+
+\begin{Theorem}
+    Sia \(G\) un grafo non orientato, allora \(G\) ammette un ciclo euclideo se e solo se \(G\) è connesso e ogni suo nodo ha grado pari.
+    \begin{MarginNote}
+        Si dimostra che, con le dovute modifiche,
+        un grafo orientato ha un ciclo euclideo se per ogni nodo il numero di archi entrati è uguale a quello degli archi uscenti da esso.
+    \end{MarginNote}
+
+    \begin{Proof*}
+        la dimostrazione segue dai seguenti lemmi.
+
+        \begin{Lemma}
+            Se \(G\) ha un ciclo euclideo, allora ogni nodo di \(G\) ha grado pari.
+
+            \begin{Proof*}
+                sia \(G = (V, E)\) un grafo con ciclo euclideo \(C\). Scelto un qualsiasi nodo \(v \in C\),
+                necessariamente si passera da esso un numero pari di volte. Segue che \(deg(v) = 2h, h \in \Natural\).
+            \end{Proof*}
+        \end{Lemma}
+
+        \begin{Lemma}
+            Sia \(G\) un grado non diretto, connesso e tale che ogni nodo abbia grado pari.
+            Supposto \(P\) un cammino in \(G\) tale che questi sia privo di cicli, a meno di ripetizioni di archi,
+            allora questi può essere esteso ad un cammino \(P'\) più lungo.
+
+            \begin{Proof*}
+                Poiché non è un ciclo, \(P\) inizia e finisce in nodi distinti. Sia allora \(t\) il nodo terminale.
+                Essendo che \(P\) termina in \(t\), segue che ogni qualvolta passa per esso, o termina o lo lascia per poi ritornarvi successivamente.
+                Contando dunque il numero di archi in \(P\) incidenti a \(t\), segue che tale numero è dispari, ma si è assunto che ogni nodo abbia grado pari;
+                esiste pertanto un nodo \((t, u) \notin P\). Da ciò segue che è possibile estendere \(P \text{a} P'\) aggiungendo semplicemente tale arco.
+            \end{Proof*}
+        \end{Lemma}
+
+        \begin{Lemma}
+            Sia \(G\) un grafo non diretto e connesso, tale che ogni nodo abbia grado pari.
+            Se \(C\) è un ciclo in \(G\) che non include tutti gli archi, allora è possibile estendere \(C \text{a un cammino} P'\) che include tutti i suoi archi.
+
+            \begin{Proof*}
+                sia \(M\) l'insieme dei nodi in \(C\). Ciò che si deve dimostrare è che esiste \((u, v) \in E \setminus C \Such u \in M\).
+                Dimostrata l'esistenza di tale arco, l'estensione a \(P'\) è garantita per il \emph{Lemma \ref{Lemma:4.3.2}}.
+                Si distinguono due possibili casi:
+                \begin{itemize}
+                    \item esistono degli archi non utilizzati, per cui si può immediatamente costruire \(P'\);
+
+                    \item non vale il caso precedente: si considera allora un qualsiasi \(x \in M\) e \(y \in V \setminus M\).
+                          Poiché \(G\) è connesso, esiste un cammino tra \(x \text{e} y\), sia questi \(P\).
+                          Sia ora \(u\) l'ultimo nodo di \(P\) che sia anche in \(M\). Essendo che \(P\) termina in un nodo in \(V \setminus M\),
+                          \(u\) non può essere l'ultimo nodo di \(P\); sia allora \(v\) il nodo successivo a \(u \text{in} P\).
+                          Per quanto detto, \(u\) è l'ultimo nodo in \(P\) che sia in \(M\), segue allora che \(v \notin M\).
+                          Esiste allora \((u,v) \notin C\).
+                \end{itemize}
+            \end{Proof*}
+        \end{Lemma}
+    \end{Proof*}
+\end{Theorem}
+
+\end{document}

@@ -1,0 +1,55 @@
+\documentclass{subfiles}
+\begin{document}
+Tecnica fondamentale per la riduzione della dimensionalità, permette di decomporre la matrice rappresentanti i dati in tre sotto-matrici.
+Nel dettaglio, questa è definita come segue.
+\begin{Definition*}
+    sia $X \in \Real^{n,m}$, allora
+    $$
+        \exists U, \Sigma, V \Such X = U\Sigma V^{T}, \forall X \in \Real^{n, m}
+    $$
+    ove $U \in \Real^{n,n} , \Sigma \in \Real^{n,m} \text{e} V \in \Real^{m,m}$.
+\end{Definition*}
+Ciò equivale a dire, da un punto di vista numerico, che
+$$
+    X = \Sum{\sigma_{i}u_{i}v_{i}^{T}}{i = 1}[n]
+$$
+ove $u_{i} \in U, v_{i} \in V \text{e} \sigma_{i} \in \Sigma, \sigma_{i} \ge \sigma_{j}, \forall i < j < n$.\\
+\begin{MarginNote}
+    Si definiscono i $\sigma_{i}$ valori singolari.
+\end{MarginNote}
+Geometricamente segue che
+\begin{itemize}
+    \item $\Sigma$ è una matrice diagonale, nello specifico è data dagli autovalori di $XX^{T} \text{e} X^{T}X$;
+    \item rispettivamente, $U \text{e} V$, sono le matrici date dagli autovettori di $XX^{T} \text{e} X^{T}X$.
+\end{itemize}
+
+Dalla definizione si è detto che la SVD esiste comunque scelta la matrice $X$. La dimostrazione di ciò è sostenuta dal seguente teorema.
+\begin{Theorem*}
+    Sia $C = X^{T}X \in \Real^{m,m}$, allora $C$ è diagonale, simmetrica e definita positiva.
+    \begin{Proof*}
+        da dimostrazione segue banale dal \emph{Teorema di decomposizione spettrale}.
+        Per esso si ha che $C = V T V^{T}$, con $T = \Diagonal{\List{\lambda}{1}{m}} \text{e} r = \RankOf{X}$.
+        Posto allora $\sigma_{i} = \sqrt{\lambda_{i}}$, segue che
+        $$\Sigma = \begin{pmatrix}
+                \Diagonal{\List{\sigma}{1}{r}} & 0_{r, (m - r)}   \\
+                0_{r, (m - r)}                 & 0_{m - r, m - r} \\
+            \end{pmatrix}$$
+        e ponendo inoltre
+        $$
+            u_{i} = \Frac{X}{\sigma_{i}}v_{i}
+        $$
+        che si dimostrano ortogonali, segue, completando a base
+        $$U = \begin{bmatrix}
+                u_{1} & \cdots & u_{r} & u_{r + 1} & \cdots & u_{n}
+            \end{bmatrix}$$
+    \end{Proof*}
+\end{Theorem*}
+\clearpage
+
+\subsubsection{Low-Rank approximation}
+\subfile{../Livello III/Sottosottosezione 4.1.1 - LowRank approximation.tex}
+
+\subsubsection{PCA: principal component analysis}
+\subfile{../Livello III/Sottosottosezione 4.1.2 - PCA: principal component analysis.tex}
+
+\end{document}

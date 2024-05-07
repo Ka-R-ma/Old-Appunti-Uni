@@ -1,0 +1,14 @@
+\documentclass{subfiles}
+\begin{document}
+Partendo dall'identificare il problema: sia \(T\) un testo di lunghezza \(n\) e sia \(P\) un pattern (una sotto-stringa) di lunghezza \(m\) da ricercare in \(T\),
+con \(n >> m\), in generale; di interesse è verificare se esista un qualche \(T[i, i + m]\).
+Ossia, si è interessati a verificare se esista almeno un'occorrenza di \(P \text{in} T\).
+
+Soluzione più semplice, per tale ragione detta \emph{naive}, consiste nel verificare per ogni carattere se i successivi \(m\) caratteri identificano un pattern.
+Risulta però ovvio che tale soluzione è inefficiente in termini di tempo, richiedendo infatti \(\OrderOf{nm}\) confronti.
+Esiste però un algoritmo molto più efficiente, il \emph{Knuth-Morris-Pratt} discusso a seguire.
+
+\subsection{Algoritmo di Knuth-Morris-Pratt (KMP)}
+\subfile{../Livello II/Sottosezione 3.1 - Algoritmo di KMP.tex}
+\clearpage
+\end{document}

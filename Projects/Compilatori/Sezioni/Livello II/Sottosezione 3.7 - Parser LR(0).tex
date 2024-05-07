@@ -1,0 +1,25 @@
+\documentclass{subfiles}
+\begin{document}
+I parser LR(0) possono essere intesi come una versione migliorata dei parser SR.
+Partendo dalla costruzione della tabella: similarmente ai parser LL(1), per indicare a che punto una produzione è stata analizzata,
+si aggiunge in quella posizione un punto.
+
+\begin{Example*}
+    si supponga la seguente produzione: \(\Grammar{A}{XYZ}\);
+    in questo caso le posizioni distinte in cui è possibile trovarsi sono
+    \[
+        \Grammar{A}{.XYZ} \quad \Grammar{A}{X.YZ} \quad \Grammar{A}{XY.Z} \quad \Grammar{A}{XYZ.}
+    \]
+    ognuna delle ``produzioni'' di cui sopra è detta \emph{item}.
+\end{Example*}
+
+\subsubsection{Costruzione dell'automa}
+\subfile{../Livello III/Sottosottosezione 3.7.1 - Costruzione dell'automa LR0.tex}
+
+\subsubsection{Problematiche di LR(0)}
+\subfile{../Livello III/Sottosottosezione 3.7.2 - Problemi di LR(0).tex}
+
+\subsubsection{Esempio di parsing LR(0)}
+\subfile{../Livello III/Sottosottosezione 3.7.3 - Esempio di parsing LR0.tex}
+\clearpage
+\end{document}

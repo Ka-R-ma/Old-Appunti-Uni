@@ -1,0 +1,37 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{Definition*}
+    dato $X$ un numero aleatorio discreto, questi si dice avere distribuzione geometrica di parametro $p \in \Range*{0}{1}$ se
+    $$
+        \Prob{X = n} = (1 - p)^{n - 1} p, \forall n \in \Natural
+    $$
+\end{Definition*}
+Più in generale, siano \(\List{E}{1}{n}\) eventi equiprobabili e indipendenti. Sia
+$$
+    X = \text{``Numero di prove fino al primo successo''}
+$$
+ossia $X = \Min{n}[\Abs{E_{n}} = 1]$. Segue che se $X$ è discreto si ha
+$$
+    (X = n) = \begin{cases}
+        E_{1}, n = 1 \\
+        \List{{E^{C}}}{1}{n - 1}E_{n}, \forall n \ge 2
+    \end{cases}
+$$
+da cui
+$$
+    \Prob{X = n} =(1 - p)^{n - 1}p, \forall n \in \Natural
+$$
+Considerando valore atteso e varianza si ha che, poiché $X \in \Natural$ e nello specifico $X = \Abs{X > 0} + \Abs{X > 1} + \cdots$,
+segue, posto $(1 - p) = q$, che
+$$
+    \Expected{X} = \Sum{\Prob{X > n}}{n = 0}[\infty]  = 1 + q + q^{2} + \cdots = \Sum{q_{i}}{i = 0}[\infty] = \Frac{1}{1 - q}
+$$
+Per calcolare la varianza, sia considerato $X^{2}$, poiché
+$$
+    X^{2} = \Abs{X > 0} + 3 \Abs{X > 1} + \cdots
+$$
+segue $\Expected{X^{2}} = 1 + 3(1 - p) + \cdots = \cdots = \tfrac{2 - p}{p^{2}}$, da cui
+$$
+    \Var{X} = \Expected*{(X - \mu)^{2}} = \Frac{1 - p}{p^{2}}
+$$
+\end{document}

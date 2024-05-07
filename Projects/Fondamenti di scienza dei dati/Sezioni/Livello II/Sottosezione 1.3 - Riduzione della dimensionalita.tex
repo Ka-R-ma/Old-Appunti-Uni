@@ -1,0 +1,20 @@
+\documentclass{subfiles}
+\begin{document}
+In generale, quando si opera con i dati, questi risultano essere di grandi quantità.
+Poiché gestirli tutti risulta complesso, si preferisce molto spesso ridurre al necessario i dati da utilizzare.
+Per far ciò si utilizza una delle diverse tecniche di riduzione della dimensionalità, tra queste
+\begin{itemize}
+    \item \emph{l'aggregazione:} simile a quella descritta nella fase di trasformazione;
+    \item \emph{la selezione degli attributi minimi:} si procede ad estrarre un sottoinsieme dei dati,
+          tali che questi siano sufficienti a rappresentare l'intero insieme.
+          Di questa tecnica si distinguono
+          \begin{itemize}
+              \item \emph{la selezione in avanti:} a partire dall'intero set di dati \(S\),
+                    si costruisce un sottoinsieme \(S'\) estraendo di passo in passo un elemento da \(S\) e inserendolo in \(S'\),
+                    se e solo se questi migliora la qualità dei dati in \(S'\).
+
+              \item \emph{la selezione all'indietro:} da \(S\) si rimuove un elemento, se a seguito di una sua eventualmente estrazione,
+                    la qualità degli elementi in \(S\) risulta massimizzata.
+          \end{itemize}
+\end{itemize}
+\end{document}

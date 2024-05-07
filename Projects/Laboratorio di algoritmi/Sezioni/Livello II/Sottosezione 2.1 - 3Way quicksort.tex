@@ -1,0 +1,17 @@
+\documentclass{subfiles}
+\begin{document}
+Prima di descrivere il 3-way-quicksort, si procede a ricordare il quicksort nella sua versione base.
+Supposto \(S\) un insieme di dati da ordinare, dati sui quali esiste una relazione d'ordine,
+si procede scegliendo ricorsivamente uno degli elementi (il pivot) e sulla base di questi si suddivide l'insieme in due sottoinsiemi;
+il primo contenente quegli elementi di \(S\) tali che questi risultino minori o al più uguali al pivot, il secondo contenente quegli elementi che risultano invece maggiori.
+Si procede applicando la procedura per ciascuno dei sottoinsiemi, terminando quando i sottoinsiemi contengono un solo elemento.
+
+Essendo una sua evoluzione, 3-way-quicksort procede similarmente al classico quicksort con una sola differenza: anziché formare due sole partizioni,
+se ne costruiscono tre, identificando pertanto i sottoinsiemi di elementi minori, uguali e maggiori al pivot scelto.
+Da un punto di vista implementativo, lo pseudo-codice è il seguente.
+\subfile{../../Figure/Tikz Figure/Figure 5 - Pseudo codice 3-Way quicksort.tex}
+\begin{Remark*}
+    Qui con \(\Abs{R}\) si indica il numero di stringhe rimaste.
+
+\end{Remark*}
+\end{document}

@@ -1,0 +1,30 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \begin{tikzpicture}[
+                mark/.style={fill=black!12.5}, mark/.default=
+            ]
+            \graph [trie, simple,
+            nodes={draw, circle},
+            edges={nodes={inner sep =1pt, anchor=south, auto, swap}},
+            put node text on incoming edges,
+            grow down, branch right = 2cm
+            ]{
+            root[mark] -- {
+            pippo,
+            plu -- {
+            to,
+            rale
+            },
+            topolino
+            }
+            };
+        \end{tikzpicture}
+    \end{subfigure}
+    \caption{PATRICIA tree di \emph{Figura \ref{Fig:8}.}}
+    \label{Fig:9}
+\end{figure}
+\end{document}

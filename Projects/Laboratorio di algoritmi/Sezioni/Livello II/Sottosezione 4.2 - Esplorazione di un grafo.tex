@@ -1,0 +1,13 @@
+\documentclass{subfiles}
+\begin{document}
+Dato \(G\) un grafo, esistono sostanzialmente di modi per visitarlo, queste sono
+\begin{itemize}
+    \item \emph{\textbf{visita (ricerca) in profondita (o DFS):}} scelto un nodo si esplora ciascun nodo a cui esso è connesso, fintanto che cio è possibile.
+          Più precisamente, supposti \(u,v,z\) nodi del grafo, tali per cui \(\exists (u, v), (v, z) \in E\),
+          visitando in DFS, si visita \(u\) lo si segna come visitato, da questi si passa ad \(v\), lo si visita, si segna come visitato e si passa ad \(z\).
+          Si ripete la procedura per ogni nodo (non segnato come visitato) per cui esista un arco in \(E\).
+
+    \item \emph{\textbf{visita in ampiezza (o BFS):}} differisce dalla DFS semplicemente perché, invece di visitare un singolo nodo per volta,
+          visita in contemporanea tutti i nodi \(v\) connessi ad un nodo \(u\) per cui esiste un arco.
+\end{itemize}
+\end{document}

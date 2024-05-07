@@ -1,0 +1,8 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{lstlisting}[language = MATLAB]
+    %% loading Lena.png
+    ker = fspecial("average", [21, 21]);
+    out = conv2(Lena, ker, ``same");
+\end{lstlisting}
+\end{document}

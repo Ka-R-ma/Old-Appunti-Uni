@@ -1,0 +1,19 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[b]{0.53\textwidth}
+        \begin{lstlisting}[language = PSEUDO]
+                input = __*$x_{1} \ldots x_{n}$*__
+                __*$x_{n + 1}$*__ = __*\textdollar*__
+                for j = 0 to n do
+                    foreach state in S[j] choose between: scanner, predictor, completed
+                if S[n + 1] == __*\textdollar*__
+                    accept()
+                refuse()
+            \end{lstlisting}
+    \end{subfigure}
+    \caption{Pseudo codice Earley.}
+    \label{fig:2}
+\end{figure}
+\end{document}

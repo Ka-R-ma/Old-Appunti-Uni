@@ -1,0 +1,33 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[b]{0.75\textwidth}
+        \begin{lstlisting}[language = PSEUDO]
+                LL_1_parser(stack p, input i, LL_1_table M, axiom S):
+                    error = false;
+                    p.push(__*\$*__);
+                    p.push(S);
+                    while (__*p.top() $\neq$ \$*__ AND i.top() __*\$*__ AND !error) do {
+                        if isTerminal(p.top())then {
+                            if p.top() == i.top() then {
+                                p.pop();
+                                i.next();
+                            }
+                            error = true;
+                        }
+                        if isEmpty(M[p.top(), i.top()]) then error = true;
+                        else{
+                            p.pop();
+                            for (j = n; j > 0; j--)
+                                p.push(__*$X_{j}$*__)
+                        }
+                    }
+                    if (!error) accept();
+                    raise_error();
+            \end{lstlisting}
+    \end{subfigure}
+    \caption{Pseudo codice parser LL(1).}
+    \label{fig:5}
+\end{figure}
+\end{document}

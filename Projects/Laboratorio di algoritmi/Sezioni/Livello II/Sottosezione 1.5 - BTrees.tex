@@ -1,0 +1,38 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{Definition*}
+    sia \(M = 2h, h > 0\), si definisce B-Tree di ordine \(M\) un albero con \(k\) nodi interni o un k-nodo,
+    tali che
+    \begin{itemize}
+        \item ogni cammino radice-nodo esterno ha la stessa lunghezza;
+        \item per la radice \(2 \le k \le M -1\);
+        \item per ogni altro nodo \(\nicefrac{M}{2} \le k \le M -1\).
+    \end{itemize}
+
+    \begin{Remark*}
+        Si può pensare ai B-Tree come ad una generalizzazione degli alberi 2-3.
+    \end{Remark*}
+\end{Definition*}
+\begin{Example*}
+    sia \(M = 4\). Un B-Tree di ordine 4 è quello in \emph{Figura \ref{Fig:4}}.
+    \begin{MarginNote}
+        Qui \(*\) rappreseta una chiave sentinella, la cui chiave è minore di ogni altra.
+    \end{MarginNote}
+    \subfile{../../Figure/Tikz Figure/Figure 4 - Esempio BTree ordine 6.tex}
+\end{Example*}
+
+Circa le operazioni, si dimostra che, dato un B-Tree di ordine \(M\) con \(N\) chiavi,
+queste richiedono un tempo compreso tra \(\OrderOf{\Log{N}[M - 1]} \text{e} \OrderOf{\Log{N}[\nicefrac{M}{2}]}\).
+
+\begin{Remark*}
+    I B-Tree sono generalmente utilizzati per la gestione della memoria. Nello specifico per operazioni di I/O.
+    Segue da questo che scegliendo blocchi proporzionali alla dimensione dei blocchi di memoria \(B\),
+    la complessita si riduce a \(\OrderOf{\Log{N}[2]}\).
+\end{Remark*}
+
+\subsubsection{Ricerca}
+\subfile{../Livello III/Sottosottosezione 1.5.1 - Ricerca in un B-Tree.tex}
+
+\subsubsection{Inserimento}
+\subfile{../Livello III/Sottosottosezione 1.5.2 - Inserimento in un B-Tree.tex}
+\end{document}

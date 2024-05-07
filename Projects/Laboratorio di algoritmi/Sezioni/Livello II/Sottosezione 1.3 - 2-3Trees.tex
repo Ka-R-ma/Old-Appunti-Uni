@@ -1,0 +1,41 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{Definition*}
+    un albero che in ogni suo nodo interno abbia due o tre figli, tali che
+    \begin{itemize}
+        \item se il nodo è un 2-nodo, questi abbia due link, rispettivamente sinistro e destro, tali che,
+              il figlio sinistro abbia chiave minore del nodo e il figlio sinistro chiave maggiore;
+        \item se il nodo è un 3-node, in aggiunta ai link precedenti ne presenta un centrale in cui figli hanno chiave compresa tra il link sinistro e destro;
+    \end{itemize}
+    si dice essere un albero 2-3.
+\end{Definition*}
+
+Come visto per gli alberi binari, anche nel caso degli alberi 2-3 si dimostra esservi un legame tra altezza dell'albero e numero di nodi;
+in particolare si ha il seguente teorema.
+
+\begin{Theorem}
+    Sia \(T\) un albero 2-3.  Posti \(n\) il numero di nodi, \(f\) il numero di foglie e \(h\) l'altezza dell'albero, si ha
+    \[\begin{gathered}
+            2^{h + 1} - 1 \le n \le \Frac{3^{h + 1} - 1}{2} \\
+            2^{h} \le f \le 3^{h}
+        \end{gathered}\]
+    \begin{Proof*}
+        segue banalmente procedendo per induzione su \(h\).
+    \end{Proof*}
+\end{Theorem}
+
+Parlando delle operazioni: la ricerca è analoga a quella dei BST; inserimento e cancellazione, similarmente a quanto detto per gli AVL,
+rischiano di sbilanciare l'albero, sono per tale ragione modificate così da ripristinare la condizione di albero 2-3.
+In questo caso, il bilanciamento è effettuato eseguendo opportunamente la procedura \lstinline{addSon}:
+sostanzialmente, nel caso dell'inserimento, se questi è da eseguire su un 2-nodo, non si hanno problemi; se si inserisce in un 3-nodo,
+si divide il 4-nodo venuto a formarsi. Tale divisione è dipendente dal genitore \(p\) del 4-nodo, se infatti \(p\) è un 2-nodo,
+si aggiunge a questi l'elemento centrale del 4-nodo;
+se invece \(p\) è a sua volta un 3-nodo, si procede ricorsivamente eventualmente creando una nuova radice.
+
+\begin{Example*}
+    sia considerato l'albero di \emph{Figura \ref{sub@Fig:3.a}}, e a questi di aggiungere \(X\).
+    Si è in tal modo creato un 4-nodo (\(SXZ\) di \emph{Figura \ref{sub@Fig:3.b}}).
+    \subfile{../../Figure/Tikz Figure/Figure 3 - Esempio di 4-nodo.tex}
+\end{Example*}
+Circa il costo, si dimostra che tutte le operazioni sono \(\OrderOf{\Log{n}[2]}\).
+\end{document}

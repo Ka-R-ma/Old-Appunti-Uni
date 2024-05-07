@@ -1,0 +1,26 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[b]{.525\textwidth}
+        \begin{lstlisting}[language = PSEUDO]
+                procedure addToTrie(Trie root, String s)
+                    v = root;
+                    j = 0;
+                    while child(v, s[j]) __*$\neq$*__ null do
+                        v = child(v, s[j]);
+                        j++;
+                    while j < m do 
+                        create node u;
+                        for each __*$c \in \Sigma$*__ do 
+                            child(u, c) = null;
+                        child(v, s[j]) = u;
+                        v = u;
+                        j++;
+                    mark v rappresentative of s;
+            \end{lstlisting}
+    \end{subfigure}
+    \caption{Pseudo codice inserimento di una stringa in un trie.}
+    \label{Fig:8}
+\end{figure}
+\end{document}

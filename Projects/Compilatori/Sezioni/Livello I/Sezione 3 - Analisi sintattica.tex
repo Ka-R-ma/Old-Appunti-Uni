@@ -1,0 +1,38 @@
+\documentclass{subfiles}
+\begin{document}
+Secondo step della compilazione è l'analisi sintattica, con la quale si verifica se il programma rispetta le regole sintattiche del linguaggio;
+regole che sono definite attraverso grammatiche context-free.
+
+Definita la sintassi del linguaggio, è compito del parser verificare che ciascuno dei token generati dal lexer, possa effettivamente essere generato.
+
+Parlando dei parser, se ne distinguono tre classi: top-down. i bottom-up e gli universali.
+A quest'ultima categoria appartengono gli algoritmi di \emph{Cocke-Younger-Kasami} e quello di \emph{Earley} a seguito descritto.
+Entrambi gli algoritmi appena citati sono, come tutti i parser universali, capaci di riconoscere qualsiasi CFG,
+ma per tale ragione risultano troppo inefficienti per scopi pratici.
+
+\subsection{Algoritmo di Earley}
+\subfile{../Livello II/Sottosezione 3.1 - Algoritmo di Earley.tex}
+\clearpage
+
+\subsection{Gestione degli errori in un parser}
+\subfile{../Livello II/Sottosezione 3.2 - Gestione degli errori in un parser.tex}
+
+\subsection{Top-Down parser}
+\subfile{../Livello II/Sottosezione 3.3 - TopDown parse.tex}
+\clearpage
+
+\subsection{Parser LL(1)}
+\subfile{../Livello II/Sottosezione 3.4 - Parser LL(1).tex}
+
+\subsection{Parser Bottom-Up}
+\subfile{../Livello II/Sottosezione 3.5 - Parser BottomUp.tex}
+
+\subsection{Parser shift-reduce}
+\subfile{../Livello II/Sottosezione 3.6 - Parser shift-reduce.tex}
+
+\subsection{Parser LR(0)}
+\subfile{../Livello II/Sottosezione 3.7 - Parser LR(0).tex}
+
+\subsection{Altri parser SR}
+\subfile{../Livello II/Sottosezione 3.8 - Altri parser SR.tex}
+\end{document}

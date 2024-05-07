@@ -1,0 +1,21 @@
+\documentclass{subfiles}
+\begin{document}
+Sia dato \(G = (V, E)\) un grafo. Si dice che \(G\) è non orientato se,
+per ogni coppia di nodi \(u, v\) tali per cui esista \((u, v) \in E\), esiste anche \((v, u) \in E\).
+
+Per quanto concerne la loro rappresentazione, in generale si opta per una delle seguenti soluzioni.
+\begin{itemize}
+    \item \emph{\textbf{matrice di adiacenza:}} può essere intesa come una matrice booleana,
+          in cui l'elemento di posizione \(a_{i,j} = 1 \iff \exists (u, v) \in E\).
+          Tale rappresentazione è utile quando si ha un'elevato numero di archi, viceversa, assunto \(n\) il numero dei nodi nel grafo,
+          il costo spaziale di \(\OrderOf{n^{2}}\) non sarebbe giustificato.
+
+          Per quanto riguarda le operazioni, con tale rappresentazione l'inserimento di un nodo (\lstinline{insert}),
+          e di verifica dell'esistenza di connessione con un'altro nodo (\lstinline{adjacent}) risultano efficienti, essendo \(\OrderOf{1}\).
+
+    \item \emph{\textbf{lista di adiacenza:}} questa è da intendere come una lista contenente i nodi,
+          in cui per ogni elemento si memorizza un vettore contenente i nodi a cui esso è connesso.
+          Questa richiede spazio \(\OrderOf{n + m}\), posti \(n\) il numero di nodi e \(m\) il numero di archi.
+          Le operazioni \lstinline{insert} e \lstinline{adjacent} richiedono, rispettivamente \(\OrderOf{1} \text{e} \OrderOf{deg(v)}\).
+\end{itemize}
+\end{document}

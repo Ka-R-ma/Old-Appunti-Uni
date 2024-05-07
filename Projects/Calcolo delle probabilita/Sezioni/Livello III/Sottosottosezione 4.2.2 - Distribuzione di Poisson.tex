@@ -1,0 +1,18 @@
+\documentclass{subfiles}
+\begin{document}
+Sia $X$ un numero aleatorio discreto, questi si dice avere distribuzione di Poisson se
+\begin{enumerate}
+    \item $X \in \Natural_{0} \implies X \in \Set{0, 1, \cdots, n, \cdots}$
+    \item $\Prob{X = n} = p_{n} = \tfrac{\lambda^{n}}{n!} e^{-\lambda}, \forall n \in \Natural_{0}$
+\end{enumerate}
+Si dimostra che
+$$
+    \Expected{X} = \Var{X} = \lambda
+$$
+\begin{MarginNote}
+    Tale distribuzione permette di approssimare una binomiale.
+\end{MarginNote}
+
+\paragraph{Proprietà di assenza di memoria}
+\subfile{../Livello IIII/Sottosottosottosezione 4.2.2.1 - Proprieta di assenza di memoria.tex}
+\end{document}

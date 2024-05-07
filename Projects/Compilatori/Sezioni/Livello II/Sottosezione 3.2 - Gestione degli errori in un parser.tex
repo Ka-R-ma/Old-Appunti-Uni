@@ -1,0 +1,14 @@
+\documentclass{subfiles}
+\begin{document}
+Affinché la compilazione sia corretta, è necessario che un parser sia in grado di scoprire, diagnosticare e correggere efficientemente gli errori,
+così da riprendere l'analisi quanto prima.
+Sia supposto un parser che abbia rilevato un errore, resta il problema di come procedere per risolverlo.
+In generale si utilizza una delle seguenti tecniche.
+\begin{itemize}
+    \item \textbf{Panic mode:} l'idea è quella di saltare simboli fintantoché non si legge un token di sincronizzazione (eg. begin-end).
+          L'efficacia dipende fortemente dalla scelta dei token, scelta che può essere effettuata euristicamente.
+
+    \item \textbf{Phrase level:} si fa in modo che il parser proceda a correzioni locali.
+          Per far ciò, inevitabilmente si procederà ad alterare lo stack.
+\end{itemize}
+\end{document}

@@ -1,0 +1,25 @@
+\documentclass{subfiles}
+\begin{document}
+Ora sebbene gli algoritmi di clustering siano utilizzati per il ML non-supervisionato, è necessario stabilire la qualità dell'algoritmo,
+e per far ciò si definiscono delle misure relativamente ai cluster. Tali misure si dividono in
+\begin{itemize}
+    \item \emph{interne:} si tratta di misure dipendenti unicamente dai dati del cluster;
+    \item \emph{esterne:} misure da utilizzare, nel caso siano comunque presenti delle etichette.
+\end{itemize}
+\begin{MarginNote}
+    Banalmente minore è SSE, migliore è la qualità del clustering.
+\end{MarginNote}
+Tra le pù diffuse ed utilizzate la \emph{sum of square errors (SSE)}, definita come
+$$
+    SSE = \Sum{\Sum{dist(x, y_{j})}{x \in C_{j}}}{j = 1}[m]
+$$
+
+\subsubsection{Misure interne: coesione e separazione}
+\subfile{../Livello III/Sottosottosezione 5.2.1 - Misure interne: coerenza e coesione.tex}
+
+\subsubsection{Misure interne: WSS}
+\subfile{../Livello III/Sottosottosezione 5.2.2 - Misure interne: WSS.tex}
+
+\subsubsection{Stima del numero di cluster}
+\subfile{../Livello III/Sottosottosezione 5.2.3 - Stima del numero di cluster.tex}
+\end{document}

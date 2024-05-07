@@ -1,0 +1,42 @@
+\documentclass{subfiles}
+\begin{document}
+Come anticipato, se $X$ è un numero aleatorio è il numero di valori $x_{i}$ che questi può assumere è finito, o al più numerabile,
+si dice che $X$ è un numero aleatorio discreto.
+
+Sia $p_{i} = \Prob{X = x_{i}}, \forall i \in \Natural$ la distribuzione di probabilità di $X$, sia supposto anche che
+$$
+    \Sum{p_i}{i = 1}[\infty] = 1 \quad \text{e} \quad \Sum{\Abs{x_{i}} p_i}{i = 0}[\infty] < \infty
+$$
+allora si può definire il \emph{valore atteso} di $X$, come
+$$
+    \Expected{X} = \Sum{x_{i} p_{i}}{i = 1}[\infty] = \mu
+$$
+Sia ora assunto che $\mu$ esista finito, e $\Expected*{(X - \mu)^{2}} < \infty$, si definisce quest'ultima quantità varianza.
+Cioè
+$$
+    \Var{X} = \Expected*{(X - \mu)^{2}} = \Sum{(X - \mu)^{2} p_{i}}{i = 1}[\infty]
+$$
+In fine, si definisce
+$$
+    F(x) = \Prob{X \le x}
+$$
+\emph{funzione di ripartizione} di $X$. Se $X$ è discreto si ha che
+$$
+    F(x) = \Prob{X \le x} = \Sum{p_{i}}{x_{i} \le x}, \quad x \in \Real
+$$
+
+\subsubsection{Distribuzione geometrica}
+\subfile{../Livello III/Sottosottosezione 4.2.1 - Distribuzione geometrica.tex}
+
+\subsubsection{Distribuzione di Poisson}
+\subfile{../Livello III/Sottosottosezione 4.2.2 - Distribuzione di Poisson.tex}
+
+\subsubsection{Distribuzione di Pascal e binomiale inversa}
+\subfile{../Livello III/Sottosottosezione 4.2.3 - Distribuzione di Pascal e binomiale inversa.tex}
+
+\subsubsection{Disuguaglianza di Markov}
+\subfile{../Livello III/Sottosottosezione 4.2.4 - Disuguaglianza di Markov.tex}
+
+\subsubsection{Disuguaglianza di Chebychev}
+\subfile{../Livello III/Sottosottosezione 4.2.5 - Disuguaglianza di Chebychev.tex}
+\end{document}

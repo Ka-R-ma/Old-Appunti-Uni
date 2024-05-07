@@ -1,0 +1,15 @@
+\documentclass{subfiles}
+\begin{document}
+Siano \(\List{E}{1}{n}\) eventi indipendenti ed equiprobabili. Sia $\Prob{E_{i}} = p_{i}$ e sia $T_{k}$ il numero di prove fino al k-esimo successo.
+Si ha, posto $(1 - p) = q$, che
+$$
+    \Prob{T_{k} = n} = \binom{n - 1}{k - 1} p^{k} q^{n -k}
+$$
+Dicasi che $T_{k}$ ha distribuzione di Pascal di parametri $p \text{e} k$.
+\\ \\
+Sia $Z_{k} = T_{k} - k$ il numero di insuccessi prima dei $k$ successi. Si ha
+$$
+    \Prob{Z_{k} = h} = \Prob{T_{k} = k + h} = \binom{k + h - 1}{k - 1} p^{k}q^{h}
+$$
+Dicasi che $Z_{k}$ ha distribuzione binomiale inversa di parametri $k \text{e} p$.
+\end{document}

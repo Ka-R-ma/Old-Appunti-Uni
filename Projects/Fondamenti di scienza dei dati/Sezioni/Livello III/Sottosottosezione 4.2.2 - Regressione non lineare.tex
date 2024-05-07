@@ -1,0 +1,22 @@
+\documentclass{subfiles}
+\begin{document}
+Si tratta di un tipo di regressione in cui la funzione \(f(x)\) utilizzata,
+risulta essere un polinomio di grado superiore o una funzione trascendentale (seni, coseni, ecc.).
+Ossia, si ha una funzione del tipo
+\[
+    f(x) = a + b_{1}x + b_{2}x^{2} + \cdots + \varepsilon
+\]
+genericamente di grado non superiore a quattro, oppure
+\[
+    f(x) = ae^{bx} + \varepsilon
+\]
+\paragraph*{Gradient descent}
+Nel caso di curve non lineari, si dimostra che il fitting porta alla risoluzione di equazioni non lineari, che risultano complesse da risolvere.
+Per tale ragione si preferisce utilizzare funzioni convesse, per la quale vi è garanzia di convergenza.
+In tali casi si applica il metodo di discesa del gradiente, il quale permette iterativamente di minimizzare le funzioni differenziabili.
+
+\paragraph*{K-Fold cross-validation}
+Sia posto \(X\) un data-set; l'idea è quello di dividere \(X\) in \(k\) sotto-set,
+per ognuna di esse addestrare il modello con le restanti \(k - 1\) partizioni,
+e utilizzare la k-esima come train-set.
+\end{document}

@@ -1,0 +1,34 @@
+\documentclass{subfiles}
+\begin{document}
+Un parser ascendente (o bottom-up), è un parser che a partire dalla stringa di input, tenta di risalire all'assioma.
+La definizione di ``bottom-up'', deriva dal fatto che la costruzione dell'albero sintattico procede dalle foglia verso la radice.
+
+\begin{Remark*}
+    Tutti i parser bottom-up procedono cercando  derivazioni right-most della grammatica.
+
+    \begin{Example*}
+        sia supposta la seguente grammatica
+        \[\begin{aligned}
+                 & \Grammar{E}{E}[E + T] \\
+                 & \Grammar{T}{int}[(E)]
+            \end{aligned}\]
+        e si supponga di dover analizzare \(int  + (int + int + int)\).
+        Di interesse risulta verificare che tale stringa sia generabile con la grammatica di cui sopra.
+        Osservando la stringa in input si nota che
+        \[\begin{aligned}
+                  & int + (int + int + int) \\
+                = & E + (int + int + int)   \\
+                = & E + (E + int + int)     \\
+                = & E + (E + T + int)       \\
+                = & E + (E + int)           \\
+                = & E + (E + T)             \\
+                = & E + (E)                 \\
+                = & E + T                   \\
+                = & E
+            \end{aligned}\]
+        per cui si conclude, essendo risaliti all'assioma, che la stringa è derivabile.
+    \end{Example*}
+\end{Remark*}
+
+
+\end{document}

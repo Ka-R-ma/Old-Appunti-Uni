@@ -1,0 +1,26 @@
+\documentclass{subfiles}
+\begin{document}
+Dato $\Omega$ uno spazio di probabilità, un numero aleatorio può essere inteso come una funzione a variabili reali definita su $\Omega$ stesso.
+Sia dunque $X$ un numero aleatorio, e sia $x \in \Real$ un valore assumibile da $X$.
+Allora posto considerato l'evento $(X = x)$, a questi si associa la probabilita $\Prob{X = x}$.
+
+In genere, si distinguono due ``classi'' di numeri aleatori:
+\begin{itemize}
+    \item \textbf{discreti:} se il numero di valori assumibili dal numero aleatorio è finito o al più numerabile;
+    \item \textbf{continuo:} se non discreto.
+\end{itemize}
+\begin{Remark*}
+    banalmente, si deve verificare che
+    $$
+        \Sum{\Prob{X = x_{i}}}{i = 1}[n] = \Sum{p_{i}}{i = 1}[n] = 1
+    $$
+    affinche l'assegnazione di probabilità risulti coerente.
+\end{Remark*}
+
+\subsection{Numeri aleatori semplici}
+\subfile{../Livello II/Sottosezione 4.1 - Numeri aleatori semplici.tex}
+\clearpage
+
+\subsection{Numeri aleatori discreti}
+\subfile{../Livello II/Sottosezione 4.2 - Numeri aleatori discreti.tex}
+\end{document}

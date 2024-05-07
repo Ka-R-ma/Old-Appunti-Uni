@@ -1,0 +1,18 @@
+\documentclass{subfiles}
+\begin{document}
+Si è parlato di stimatori e predittori, rimane dunque da discutere come determinare la ``bonta'' degli stessi.
+Sebbene ne esistano altre, la tecnica che risulta di interesse è l'\emph{MSE}.
+Questi nel caso degli stimatori è definito come
+\[
+    MSE(\Theta_{n}) =  \Expected*{(\Theta_{n} - \Theta)^{2}} %
+    = \underbrace{\Expected{\Theta_{n}}^{2} + \Theta^{2} - 2\Expected{\Theta_{n}}\Theta}_{\Bias{\Theta_{n}}^{2}} %
+    + \underbrace{\Expected{\Theta_{n}^{2}} - \Expected{\Theta_{n}}^{2}}_{\Var{\Theta_{n}}}
+\]
+\begin{Remark*}
+    Tale decomposizione prende il nome di \emph{bias-variance decomposition}.
+\end{Remark*}
+Supposto infine \(y = f(x) + \varepsilon\) un predittore, e \(\overset{\sim}{f}\) l'approssimazione di \(f\) sulla base dei dati, si dimostra che
+\[
+    MSE(y) = \Expected*{\left(y - \overset{\sim}{f}\right)^{2}} = \cdots = \Var{f(x)} + \Var{\varepsilon} + \Bias{f(x)}^{2}
+\]
+\end{document}

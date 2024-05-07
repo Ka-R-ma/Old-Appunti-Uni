@@ -1,0 +1,65 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{Theorem*}[centrale del limite]
+    Sia $\Sequence{X_{n}}$ una successione di numeri aleatori indipendenti ed equi-distribuite, con $\Expected{X_{i}} < \infty, \Var{X_{i}} < \infty$.
+    Sia per ogni $n \in \Natural$
+    $$
+        Z_{n} = \Frac{\Sum{X_{i} - n\mu}{i = 1}[n]}{\sqrt{\sigma^{2} n}} = \Frac{1}{\sqrt{n}} \Sum{\Frac{X - \mu}{\sigma}}{i = 1}[n]
+    $$
+    la media aritmetica di \(\List{X}{1}{n}\).
+    Allora, la successione $\Sequence{Z_{n}}$ converge ad un numero aleatorio $Z$ con distribuzione normale standard.
+    Ossia
+    $$
+        \Lim{n}{\infty}{\Prob{Z_{n} \le z}} = \Int{\Frac{1}{\sqrt{2\pi}} e^{-\Frac{t^{2}}{2}}}{t}[-\infty][z], \forall z \in \Real
+    $$
+    \begin{Proof*}
+        sia $\varphi_{n}(t) = \Expected{e^{itZ_{n}}}, n \in \Natural$, si dimostra banalmente che
+        $$
+            \varphi_{n}(t) \to e^{-\Frac{t^{2}}{2}}
+        $$
+
+        Sia ora $Y_{i} = \Frac*{(X_{i} - \mu)}{\sigma}$, cioè $X_{i}$ standardizzato, si ha
+        $$
+            Z_{n} = \Frac{1}{\sqrt{n}} \Sum{Y_{i}}{i = 1}[n]
+        $$
+        Considerando la funzione caratteristica di $Z_{n}$, segue
+        $$\begin{aligned}
+                \varphi_{n}(t) & = \varphi_{Y_{1}}(\Frac*{t}{\sqrt{n}}) \varphi_{Y_{2}}(\Frac*{t}{\sqrt{n}}) \cdots \varphi_{Y_{n}}(\Frac*{t}{\sqrt{n}}) \\
+                               & = \left[ \varphi_{Y_{i}}(\Frac*{t}{\sqrt{n}}) \right]^{n}
+            \end{aligned}$$
+        dove l'ultima uguaglianza deriva dal fatto che gli $Y_{i}$ sono stocasticamente indipendenti.
+        Dalla relazione tra i momenti e le derivate calcolate in zero, si ha $\varphi_{X}^{(k)} = i^{k} \Expected{X^{n}}$.
+        Da ciò, considerata la serie di MacLaurin arrestata al secondo ordine, si ha
+        $$
+            \varphi_{Y_{1}} = \varphi_{Y_{1}}(0) + \varphi_{Y_{1}}'(0)t + \varphi_{Y_{1}}''(0) \Frac{t^{2}}{2!} + \LittleO{t^{2}}
+        $$
+        da cui
+        $$\begin{aligned}
+                \Lim{n}{\infty}{\varphi_{n}(t)} & = \Lim{n}{\infty}{\left(1 - \Frac{t^{2}}{2n} + \LittleO{\Frac{t^{2}}{n}}\right)^{n}} \\
+                                                & = e^{\Lim{n}{\infty}{n \Log*{1 - \Frac{t^{2}}{2n} + \LittleO{\Frac{t^{2}}{n}}}}}
+            \end{aligned}$$
+        Poiché $\Lim{x}{0}{\Log*{\Frac*{x + 1}{x}}} = 1$, segue
+        $$
+            \Lim{n}{\infty}{n \Log*{1 - \Frac{t^{2}}{2n} + \LittleO{\Frac{t^{2}}{n}}}} = \cdots = \Lim{n}{\infty}{n \Log*{1 - \Frac{t^{2}}{2n}}}
+        $$
+        In conclusione, da ciò
+        $$
+            \Lim{n}{\infty}{\varphi_{n}(t)} = \Lim{n}{\infty}{n \Log*{1 - \Frac{t^{2}}{2n}}} = e^{-\Frac{t^{2}}{2}}
+        $$
+    \end{Proof*}
+\end{Theorem*}
+\begin{Remark*}
+    Siano \(\List{E}{1}{n}\) una successione di eventi indipendenti ed equiprobabili, con $\Prob{E_{i}} = p, \text{e sia} X_{i} = \Abs{E_{i}} \forall i$.
+    Si ha $\Expected{X_{i}} = p, \Var{X_{i}} = p(1 - p)$.
+    Posto, per ogni $n \in \Natural$, che
+    $$
+        S_{n} = X_{1} + \cdots + X_{n} = \Abs{E_{1}} + \cdots +\Abs{X_{n}}
+    $$
+    si ha che $S_{n} \sim Bin(n, p), \text{con} \Expected{S_{n}} = np \text{e} \Var{S_{n}} = np(1 - p)$
+    per il teorema centrale del limite, segue
+    $$
+        \Prob{\Frac{S_{n} - np}{\sqrt{np(1-p)}} \le x} \xrightarrow[n \to \infty]{} \Phi_{0, 1}(x)
+    $$
+    Ossia, per $n$ grandi, la distribuzione binomiale può essere approssimata da una normale standard.
+\end{Remark*}
+\end{document}

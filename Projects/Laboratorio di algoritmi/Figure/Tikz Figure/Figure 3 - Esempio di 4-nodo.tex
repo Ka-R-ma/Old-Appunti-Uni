@@ -1,0 +1,74 @@
+\documentclass{subfiles} %TODO: ottimizzare il codice
+\begin{document}
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[b]{.475\textwidth}
+        \centering
+        \begin{tikzpicture}[
+                treeNode/.style={circle, minimum size=18.75pt, shade, top color=black!12.5, bottom color=white, draw=black, distance= 2cm},
+                every label/.style={SkyBlue4, label distance=5pt, font=\bfseries, scale=.875}
+            ]
+
+            \node (root) at (0pt, 0pt) [treeNode, label=center:{M}] {};
+            \node (leftSubTree) at ($(root) - (37.5pt, 18.75pt)$) [treeNode, label=center:{EJ}] {};
+            \node (rightSubTree) at ($(root) + (37.5pt, -18.75pt)$) [treeNode, label=center:{R}] {};
+
+            \node (leftSubTreeNode1) at ($(leftSubTree) - (23.75pt, 37.5pt)$) [treeNode, label=center:{AC}] {};
+            \node (leftSubTreeNode2) at ($(leftSubTree) - (0pt, 37.5pt)$) [treeNode, label=center:{H}] {};
+            \node (leftSubTreeNode3) at ($(leftSubTree) + (23.75pt, -37.5pt)$) [treeNode, label=center:{L}] {};
+
+            \node (rightSubTreeNode1) at ($(rightSubTree) - (18.75pt, 37.5pt)$) [treeNode, label=center:{P}] {};
+            \node (rightSubTreeNode2) at ($(rightSubTree) + (18.75pt, -37.5pt)$) [treeNode, label=center:{SZ}] {};
+
+            \path (root)
+            edge (leftSubTree.north)
+            edge (rightSubTree.north);
+
+            \path (leftSubTree)
+            edge (leftSubTreeNode1.north)
+            edge (leftSubTreeNode2.north)
+            edge (leftSubTreeNode3.north);
+
+            \path (rightSubTree)
+            edge (rightSubTreeNode1.north)
+            edge (rightSubTreeNode2.north);
+        \end{tikzpicture}
+        \caption{Esempio di albero 2-3 bilanciato.}
+        \label{Fig:3.a}
+    \end{subfigure}
+    \begin{subfigure}[b]{.475\textwidth}
+        \centering
+        \begin{tikzpicture}[
+                treeNode/.style={circle, minimum size=18.75pt, shade, top color=black!12.5, bottom color=white, draw=black, distance= 2cm},
+                every label/.style={SkyBlue4, label distance=5pt, font=\bfseries, scale=.875}
+            ]
+
+            \node (root) at (0pt, 0pt) [treeNode, label=center:{M}] {};
+            \node (leftSubTree) at ($(root) - (37.5pt, 18.75pt)$) [treeNode, label=center:{EJ}] {};
+            \node (rightSubTree) at ($(root) + (37.5pt, -18.75pt)$) [treeNode, label=center:{R}] {};
+
+            \node (leftSubTreeNode1) at ($(leftSubTree) - (23.75pt, 37.5pt)$) [treeNode, label=center:{AC}] {};
+            \node (leftSubTreeNode2) at ($(leftSubTree) - (0pt, 37.5pt)$) [treeNode, label=center:{H}] {};
+            \node (leftSubTreeNode3) at ($(leftSubTree) + (23.75pt, -37.5pt)$) [treeNode, label=center:{L}] {};
+
+            \node (rightSubTreeNode1) at ($(rightSubTree) - (18.75pt, 37.5pt)$) [treeNode, label=center:{P}] {};
+            \node (rightSubTreeNode2) at ($(rightSubTree) + (18.75pt, -37.5pt)$) [treeNode, label=center:{SXZ}] {};
+
+            \path (root)
+            edge (leftSubTree.north)
+            edge (rightSubTree.north);
+
+            \path (leftSubTree)
+            edge (leftSubTreeNode1.north)
+            edge (leftSubTreeNode2.north)
+            edge (leftSubTreeNode3.north);
+
+            \path (rightSubTree)
+            edge (rightSubTreeNode1.north)
+            edge (rightSubTreeNode2.north);
+        \end{tikzpicture}
+        \caption{Esempio di albero 2-3 sbilanciato.}
+        \label{Fig:3.b}
+    \end{subfigure}
+\end{figure}
+\end{document}

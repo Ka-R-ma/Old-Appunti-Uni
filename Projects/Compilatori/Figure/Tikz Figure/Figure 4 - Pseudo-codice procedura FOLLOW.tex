@@ -1,0 +1,21 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[b]{0.7125\textwidth}
+        \begin{lstlisting}[language = PSEUDO]
+                FOLLOW(AXIOM) = __*$\Set{\text{\$}}$*__;
+                for each non-terminal __*$X$*__ AND __*$X \neq AXIOM$*__ do FOLLOW(X) = __*$\varnothing$*__;
+                    while there are changes to any FOLLOW do 
+                        for each __*$\Grammar{X}{\List{Y}{1}{k}}$*__ do 
+                            for each __*$Y_{i}$*__ do {
+                                add __*FIRST($\List{Y}{i + 1}{k}$) $\setminus \Set{\varepsilon}$*__ to FOLLOW(__*$Y_{i}$*__);
+                                if __*$\varepsilon \in$ FIRST($\List{Y}{i + 1}{k}$)*__ then
+                                    add FOLLOW(__*$X$*__) to FOLLOW(__*$Y_{i}$*__);
+                            }
+            \end{lstlisting}
+    \end{subfigure}
+    \caption{Pseudo codice procedura FOLLOW.}
+    \label{fig:4}
+\end{figure}
+\end{document}

@@ -1,0 +1,66 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}[%%TODO: sistema codice
+        state/.style = {circle, fill=black!10, minimum size = 1.5cm, draw = black, thin, scale = 0.75, distance = 2cm},
+        to/.style = {->, >={latex[round = 2pt]}, thin},
+        every label/.style = {scale = 0.85, color = SkyBlue4}]
+
+        \node [state] (q0) at (0, 0) [label=above left:{q0}]{$\begin{aligned}
+                 & \Grammar{S'}{.S}  \\
+                 & \Grammar{S}{.(L)} \\
+                 & \Grammar{S}{.x}
+            \end{aligned}$} ;
+
+        \node [state] (q1) [right = of q0] [label=above left:{q1}] {$\Grammar{S}{x.}$};
+        \node [state] (q2) [below = of q0] [label=above left:{q2}] {$\Grammar{S'}{S.}$};
+
+        \node [state] (q3) [below = of q1] [label=above left:{q3}] {$\begin{aligned}
+                 & \Grammar{S}{(.L)} \\
+                 & \Grammar{L}{.L,S} \\
+                 & \Grammar{L}{.S}   \\
+                 & \Grammar{S}{.(L)} \\
+                 & \Grammar{S}{.x}   \\
+            \end{aligned}$};
+
+        \node [state] (q4) [right = of q1] [label=above left:{q4}] {$\begin{aligned}
+                 & \Grammar{L}{L,.S} \\
+                 & \Grammar{S}{.(L)} \\
+                 & \Grammar{S}{.x}   \\
+            \end{aligned}$};
+
+        \node [state] (q5) [right = of q4] [label=above left:{q5}] {$\Grammar{L}{L,S.}$};
+
+        \node [state] (q6) [below = of q2] [label=above left:{q6}] {$\Grammar{L}{S.}$};
+        \node [state] (q7) [right = of q3] [label=above left:{q7}] {$\begin{aligned}
+                 & \Grammar{S}{(L.)} \\
+                 & \Grammar{L}{L.,S} \\
+            \end{aligned}$};
+
+        \node [state] (q8) [right = of q7] [label=above left:{q8}] {$\Grammar{S}{(L).}$};
+
+        \path (q0)
+        edge [to] node [label=left:{x}, auto] {} (q1)
+        edge [to] node [label=left:{S}, auto] {} (q2)
+        edge [to, out = -45, in = 120] node [label=above left:{(}, auto] {} (q3);
+
+        \path (q3)
+        edge [to] node [label=left:{x}, auto] {} (q1)
+        edge [to] node [label= below left:{L}] {} (q7)
+        edge [to] node [label=above left:{S}, auto] {} (q6)
+        edge [to, out = -20, in = -40, loop] node [label=below left:{(}, auto] {} (q3);
+
+        \path (q4)
+        edge [to] node [label=above left:{x}] {} (q1)
+        edge [to] node [label=above left:{S}] {} (q5)
+        edge [to] node [label=right:{(}] {} (q3);
+
+        \path (q7)
+        edge [to, bend right] node [label=right:{,}] {} (q4)
+        edge [to] node [label=above left:{)}] {} (q8);
+    \end{tikzpicture}
+    \caption{Esempio di automa per LR(0)}
+    \label{fig:8}
+\end{figure}
+\end{document}

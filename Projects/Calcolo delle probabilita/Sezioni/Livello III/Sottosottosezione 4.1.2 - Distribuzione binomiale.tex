@@ -1,0 +1,22 @@
+\documentclass{subfiles}
+\begin{document}
+Siano $\List{E}{1}{n}$ eventi indipendenti ed equiprobabili, con probabilità $p$.
+Sia $q = 1 - p$ e sia $X$ un numero aleatorio che rappresenta il numero di successi alle $n$ prove.
+Cioè
+$$
+    X = \Abs{E_{1}} + \cdots + \Abs{E_{n}}
+$$
+Banalmente $X$ assume valori in $\Set{0, \ldots, n}$.
+Per stabilire la distribuzione di $X$ è necessario calcolare $\Prob{X = h}, \forall h \in \Set{0, \ldots, n}$.
+Risulta dunque più conveniente considerare il numero di costituenti a favore ad esso.
+Segue che
+$$\begin{aligned}
+        \Prob{X = 0} & = \Prob{E_{1}^{C}E_{2}^{C}\cdots E_{n}^{C}} = \Prob{E^{C}_{1}} \Prob{E^{C}_{2}} \cdots  \Prob{E^{C}_{n}} = (1 - p)^{n} \\
+        \Prob{X = 1} & = \Prob{E_{1}E_{2}^{C}\cdots E_{n}^{C}} = \Prob{E_{1}} \Prob{E^{C}_{2}} \cdots + \Prob{E^{C}_{n}} = p(1 - p)^{n - 1}   \\
+    \end{aligned}$$
+Si dimostra banalmente, che in generale vale
+$$
+    \Prob{X = h} = \binom{n}{h}p^{h}q^{n - h}
+$$
+Dicasi che $X$ ha distribuzione binomiale. In simboli $X \sim B_{n,p}$
+\end{document}

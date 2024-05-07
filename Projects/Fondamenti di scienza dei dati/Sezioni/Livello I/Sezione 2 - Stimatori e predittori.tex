@@ -1,0 +1,51 @@
+\documentclass{subfiles}
+\begin{document}\label{sec:2}
+L'intero processo di machine learning è basato sulla \emph{teoria dell'apprendimento statistico}.
+Secondo tale teoria, i dati che rappresentano un qualunque fenomeno, possono essere visti come appartenenti ad una qualche distribuzione di probabilità ignota;
+e per tale motivo si può assumere che essi siano tra loro indipendenti ed equiprobabili,
+concludendo pertanto che il valore atteso dei dati di addestramento e quello dei dati di training coincida.
+A seconda del tipo di machine learning adoperato (si veda \emph{Sezione \ref{sec:3}}), l'intero processo fa uso di \emph{stimatori \emph{o di} predittori}.
+\begin{Definition*}
+    uno stimatore, dal punto di vista statistico, è una funzione che, in funzione dei dati, permette di stimare una quantità/funzione interessante dei dati.
+\end{Definition*}
+Di questi, supposto \(\Theta_{n} \text{uno stimatore,} \Theta\) il valore da stimare, si distinguono
+\begin{itemize}
+    \item \emph{gli stimatori polarizzati:} ossia stimatori tali che
+          \[
+              \Expected{\Theta_{n}} - \Theta \neq 0.
+          \]
+          Cioè, lo stimatore commette un certo errore nell'approssimare \(\Theta\);
+
+    \item \emph{gli stimatori non-polarizzati:} si tratta di stimatori tali che
+          \[
+              \Expected{\Theta_{n}} - \Theta = 0.
+          \]
+          Ossia, nell'approssimare\(\Theta\)non si commette alcun errore.
+\end{itemize}
+\begin{Remark*}
+    Se si verifica che
+    \[
+        \Lim{n}{\infty}{\Expected{\Theta_{n}}} = \Theta
+    \]
+    si dirà che \(\Theta_{n}\) è uno stimatore asintoticamente non-polarizzato.
+\end{Remark*}
+Ulteriori caratteristiche degli stimatori sono la correttezza e la coerenza, nello specifico
+\[\begin{aligned}
+        \Theta_{n} \text{corretto} & \iff \Expected{\Theta_{n}} = \Theta        \\
+        \Theta_{n} \text{coerente} & \iff \Lim{n}{\infty}{\Var{\Theta_{n}}} = 0
+    \end{aligned}\]
+Ovviamente un buon stimatore sarà sia corretto che coerente.
+\begin{Definition*}
+    un predittore è un algoritmo della forma
+    \[
+        y = f(x) + \varepsilon
+    \]
+    che permette di stimare la funzione \(f\) sulla base dei dati di addestramento \(x\).
+\end{Definition*}
+Segue dalla definizione che, affinché \(y\) sia buona, l'errore \(\varepsilon\) deve essere minimo.
+\clearpage
+
+\subsection{MSE e bias-variance decomposition}
+\subfile{../Livello II/Sottosezione 2.1 - MSE e BVD.tex}
+\clearpage
+\end{document}

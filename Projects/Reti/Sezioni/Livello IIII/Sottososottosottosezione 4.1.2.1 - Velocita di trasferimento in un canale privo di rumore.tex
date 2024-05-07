@@ -1,0 +1,30 @@
+\documentclass{subfiles}
+\begin{document}
+Esiste una ``legge'' che lega velocità di trasferimento e larghezza di banda: la cosiddetta \emph{condizione di Nyquist}.
+Questa stabilisce che
+\begin{equation}
+    C_{MAX} = 2H \Log{V}[2] \, \Frac*{bit}{s}
+\end{equation}
+ove $C_{MAX}$ rappresenta la velocità di trasferimento massima, $H$ la larghezza del canale e $V$ il numero di livelli del segnale. \\ \\
+Supposto che il canale presenti del rumore $N$, la \eqref{eq:2} diventa
+$$
+    C_{MAX} = H \Log{\Frac{1 + S}{N}}[2] \, \Frac*{bit}{s}
+$$
+detta \emph{condizione di Shannon}. Sempre per Shannon si ha che, poiché con la distanza il segnale tenda ad affievolirsi,
+anche il rapporto segnale-rumore tende a diminuire.
+Per quanto appena detto la condizione di Shannon può essere approssimata come
+$$
+    C_{MAX} = H \Log{\frac{S}{N}}[2] \, \Frac*{bit}{s}
+$$
+Ponendo pertanto $S = S_{0}e^{-kx}$, cioè scrivendo $S$ in funzione della distanza dalla sorgente, ove $k$ è l'attenuazione del mezzo, segue
+$$\begin{aligned}
+        C_{MAX} & = H \left[\Frac{\Log*{S_{0}e^{-kx}} - \Log*{N}}{\Log*{2}}\right]       \\
+                & = H \left[\Frac{kx  + \Log*{S_{0}e^{-kx}} - \Log*{N}}{\Log*{2}}\right] \\
+                & = (Hc_{1})(c_{2} + kx)
+    \end{aligned}$$
+da cui assunti $c_{1} = c_{2} = const$ si ha
+$$
+    kx = const - \Frac{C}{H} const
+$$
+concludendo che la distanza servibile è inversamente proporzionale alla velocità di trasmissione.
+\end{document}

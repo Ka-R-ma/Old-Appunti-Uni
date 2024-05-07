@@ -1,0 +1,30 @@
+\documentclass{subfiles}
+\begin{document}
+La PCA (\emph{principal component analysis}), è una tecnica con funzionalità duplice:
+essa permette di rilevare strutture (bi-, tri-dimensionali) all'interno dei dati; inoltre permette di stabilire eventuali colinearità tra i dati.
+Questa, assunta \(B\) la matrice rappresentante i dati, procede a considerare una nuova matrice \(C\) contenente le covarianze reciproche tra i dati.
+Più precisamente: sia \(B\) una matrice rappresentante un data-set, per la geometria esiste sempre \(B^{T}\).
+Sia \(\mu_{j}\) la media della colonna \(j \text{di} B\). Allora sottraendo alle colonne di \(B\) le rispettive medie,
+si può definire
+\[
+    C = \Frac{\CrossProd{B^{T}}{B}}{n - 1}
+\]
+contenente per ogni \(i, j\) la covarianza tra gli elementi delle colonne \(i \text{e} j\).
+Segue da ciò che la diagonale di \(C\) conterrà unicamente le varianze.
+
+Si dimostra che calcolando \(C\) in tal modo, i suoi autovettori sono ortogonali.
+Da ciò si può concludere che se alcuni autovalori descrivono bene la varianza del sistema,
+allora si possono utilizzare i relativi autovettori per descrivere l'interno sistema.
+Si conclude osservando che, per le sue caratteristiche, la SVD fornisce un approccio numerico robusto al calcolo delle componenti.
+\begin{MarginNote}
+    Gli autovettori di \(C\) sono detti componenti principali.
+\end{MarginNote}
+
+Ricordando che le osservazioni della matrice possono essere visti come vettori di uno spazio $n-dimensionale$, seguono le seguenti definizioni.
+\begin{Definition*}
+    le nuove coordinate dei vettori corrispondenti le osservazioni, sono definiti \emph{scores}.
+\end{Definition*}
+\begin{Definition*}
+    i pesi che definiscono le componenti principali sono detti \emph{loadings}.
+\end{Definition*}
+\end{document}

@@ -1,0 +1,40 @@
+\documentclass{subfiles}
+\begin{document}
+Come mostrato in \emph{Figura \ref{fig:1}}, l'analisi lessicale è la prima fase della compilazione.
+I suoi compiti sono sintetizzati a seguire.
+\begin{enumerate}
+    \item Il sorgente è scansionato e da questi si compongono i \emph{lessemi}: sequenze di caratteri con un determinato significato.
+          \begin{Example*}
+              un lessema per la gestione dei dati sarà del tipo: \lstinline{t_dataType}.
+          \end{Example*}
+
+    \item Per ciascuno dei lessemi, un analizzatore sintattico genera dei token della forma \lstinline{(token_name, address)},
+          successivamente gestiti dall'analisi sintattica.
+
+          Qui \lstinline{token_name} identifica un lessema, mentre \lstinline{address} è un puntatore alla cosiddetta \emph{symbol table}.
+          Quest'ultima, in breve, contiene le diverse proprietà di un istanza di un lessema.
+\end{enumerate}
+
+Per quel che riguarda lo scanner questi ha essenzialmente due compiti:
+\begin{itemize}
+    \item costruire la symbol table;
+    \item semplificare il sorgente.
+\end{itemize}
+Prima che ciò possa essere fatto però, è necessario, a meno che non sia stata eseguita una fase di precompilazione, che:
+\begin{itemize}
+    \item vengano rimossi i commenti: come ovvio sono utili al solo programmatore, dunque, per alleggeri l'eseguibile, si procede alla loro rimozione;
+    \item si effettui una case conversion: se il linguaggio non distingue tra maiuscole e minuscole, allora si converte il sorgente interamente in minuscolo;
+    \item si rimuovano gli spazi: per motivi analoghi ai commenti, si elimina gli spazi superflui;
+    \item si deve tenere traccia del numero di linea: ciò è utile per la segnalazione di eventuali errori.
+\end{itemize}
+
+\begin{MarginNote}
+    Sebbene in \emph{Figura \ref{fig:1}} sia mostrata come fase precedente l'analisi sintattica, più correttamente,
+    l'analisi lessicale è da intendere come una sua sub-routine.
+\end{MarginNote}
+L'implementazione della symbol table, sebbene realizzabile diversamente, in generale è realizzata tramite hash-table.
+
+\subsection{Gestione degli input}
+\subfile{../Livello II/Sottosezione 2.1 - Gestione degli input.tex}
+\clearpage
+\end{document}

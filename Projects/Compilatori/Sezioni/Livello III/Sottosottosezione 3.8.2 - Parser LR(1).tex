@@ -1,0 +1,20 @@
+\documentclass{subfiles}
+\begin{document}
+I parser LR(1) sono un'estensione dei parser LR(0); nello specifico permettono di risolvere conflitti reduce/reduce a costo di un numero molto maggiore di item.
+
+\begin{Remark*}
+    Proprio perché con LR(1) il numero di item tende a crescere rapidamente, nella pratica si utilizza una versione ``ottimizzata'' nota come LALR(1)
+\end{Remark*}
+
+Circa la costruzione della tabella di parsing, questa è analoga alla costruzione dell'LR(0) con le seguenti differenze:
+\begin{itemize}
+    \item gli item sono della forma \((\Grammar{A}{\alpha . \beta}, t)\),
+          con \(\Grammar{A}{\alpha . \beta}\) item LR(0) e \(t\) simbolo (o sequenza di simboli nel caso di LR(k)) di lookahead;
+
+    \item le operazioni di reduce \(\Grammar{X}{\gamma}\) si effettuano se e solo se \(\exists (\Grammar{X}{\gamma.}, t)\).
+\end{itemize}
+
+Parlando ora di LALR, questi è un'ottimizzazione di LR(1), ottimizzazione che segue da un'osservazione: se si ignorano i simboli di lookahead,
+molti stati presentano item equivalenti (il cosiddetto \emph{core}); se dunque tali stati presentano simboli di lookahead distinti (le cosiddette \emph{prospezioni}),
+si può pensare di aggregare questi stati in un unico stato equivalente, procedendo a opportune ridenominazioni delle transizioni.
+\end{document}

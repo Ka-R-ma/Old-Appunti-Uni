@@ -1,0 +1,29 @@
+\documentclass{subfiles}
+\begin{document}
+Poiché i concetti di Regex e grammatiche CF sono alla base della definizione di un compilatore,
+si riprende a seguito la definizione delle stesse.
+\begin{Definition*}
+    Si definisce \emph{espressione regolare}, (o RegEx), la descrizione algebrica delle stringhe di un dato linguaggio.
+\end{Definition*}
+\noindent In particolare, la costruzione di una RegEx \(e\) è di tipo ricorsivo. Si ha infatti che
+\begin{itemize}
+    \item se \(\varepsilon \text{e} \varnothing\) sono espressioni regolari, ove \(L(\varepsilon) = \Set{\varepsilon}, L(\varnothing) = \Set{}\);
+    \item se \(\alpha\) è un simbolo, allora questi è una RegEx, ove \(L(\alpha) = \Set{\alpha}\);
+\end{itemize}
+da queste
+\begin{itemize}
+    \item se \(e \text{ed} f\) sono due RegEx. Allora \(e + f\) è un'espressione regolare;
+    \item se \(e \text{ed} f\) sono due RegEx. Allora \(ef\) è un'espressione regolare;
+    \item se \(e\) è una RegEx. Allora \(e^{*}\) è un'espressione regolare;
+    \item se \(e\) è una RegEx. Allora \((e)\) è un'espressione regolare.
+\end{itemize}
+
+\begin{Definition*}
+    Dato \(T\) un certo alfabeto, si definisce la seguente quadrupla
+    \[
+        G = (T, N, S, P)
+    \]
+    grammatica. Nello specifico: \(T\) indica l'insieme dei simboli terminali della grammatica, \(N\) quell dei non terminali,
+    \(S\) è l'assioma e \(P\) l'insieme delle regole di produzione.
+\end{Definition*}
+\end{document}

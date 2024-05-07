@@ -1,0 +1,11 @@
+\documentclass{subfiles}
+\begin{document}
+Si considera come costruire la tabella a supporto di LL(1), sfruttando le due operazioni precedentemente descritte.
+Sia in tale contesto \(M\) la matrice da costruire, allora questa sarà realizzata come segue:
+\begin{itemize}
+    \item per ogni regola \(\Grammar{X}{\alpha}\), e per ogni \(a \in FIRST(\alpha)\),si aggiunge \(\Grammar{X}{\alpha} \text{in} M[X, \alpha]\);
+    \item per ogni regola \(\Grammar{X}{\alpha}, \text{se} \varepsilon \in FIRST(\alpha), \forall b \in FOLLOW(X)\),
+          si aggiunge \(\Grammar{X}{\alpha}\) in \(M[X, \alpha]\).
+          Se \(\varepsilon \in FIRST(\alpha) \text{e} \$ \in FOLLOW(X)\), si inserisce in \(M[X, \$]\) la regola.
+\end{itemize}
+\end{document}

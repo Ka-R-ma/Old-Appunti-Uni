@@ -1,0 +1,30 @@
+\documentclass{subfiles}
+\begin{document}
+Sia $X$ un numero aleatorio continuo, e si la sua densità di probabilità definita come
+$$
+    f(x) = \begin{cases}
+        \lambda e^{-\lambda x}, \lambda \in \Real^{+}, x > 0 \\
+        0, x \le 0
+    \end{cases}$$
+Segue dalla definizione, che
+$$
+    F(x) = \begin{cases}
+        \Int{\lambda e^{-\lambda x}}{x}[0][x], \text{se} x > 0 \\
+        0, \text{se} x \le 0
+    \end{cases}   \implies \begin{cases}
+        1 - e^{-\lambda x}, \text{se} x > 0 \\
+        0, \text{se} x \le 0
+    \end{cases}$$
+Dalla definizione generale di valore atteso e varianza, segue
+$$\begin{aligned}
+        \Expected{X} & = \Int{x \lambda e^{-\lambda x}}{x}[-\infty][\infty] = \cdots = \Frac{1}{\lambda}               \\
+        \Var{X}      & = \Int{(x - \mu)^2 \lambda e^{-\lambda x}}{x}[-\infty][\infty] = \cdots = \Frac{1}{\lambda^{2}}
+    \end{aligned}$$
+Vale in fine la seguente proprietà.
+\begin{Property*}
+    Sia $X$ un numero aleatorio con distribuzione esponenziale, allora
+    $$
+        \Expected{X^{n}} = \Frac{n!}{\lambda^{n}}
+    $$
+\end{Property*}
+\end{document}

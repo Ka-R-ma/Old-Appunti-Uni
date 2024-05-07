@@ -1,0 +1,26 @@
+\documentclass{subfiles}
+\begin{document}
+Prima di procedere con il discutere varianti di alberi più complesse, si procede a fare un richiamo al concetto di albero binario di ricerca.
+Questi si ricorda essere una tipologia di albero binario che, dato \(S\) un insieme di elementi ordinati,
+memorizza gli stessi in un nodo dell'albero in modo tale che, posto \(x \in S\), si abbia
+\begin{itemize}
+    \item per ogni altro \(y\) nel sotto-albero sinistro con radice \(x\), si abbia
+          \[
+              key[y] \le key[x]
+          \]
+          cioè, ogni elemento del sotto-albero sinistro deve avere un valore minore o uguale, a quello della radice del sotto-albero stesso;
+    \item per ogni ogni altro \(y\) nel sotto-albero destro radicato in \(x\), si abbia
+          \[
+              key[y] > key[x]
+          \]
+          cioè, ogni elemento del sotto-albero sinistro deve avere un valore maggiore, a quello della radice del sotto-albero stesso.
+\end{itemize}
+Si ricorda brevemente che, posto \(h\) l'altezza dell'albero, le operazioni di inserimento, ricerca e cancellazione sono tutto di costo \(\OrderOf{h}\).
+Si ha quindi che, poiché
+\[h = \begin{cases}
+        \Log{n}[2] \text{, se l'albero è perfettamente bilanciato;}                 \\
+        \Log{n}[2] \le k \le n \text{, se l'albero non è perfettamente bilanciato;} \\
+        n \text{, se completamente sbilanciato,}
+    \end{cases}\]
+nel caso pessimo si ha un costo di \(\OrderOf{n}\).
+\end{document}

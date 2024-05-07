@@ -1,0 +1,15 @@
+\documentclass{subfiles}
+\begin{document}
+Come anticipato se $dist\left(X_{i}, Y_{j}\right) = \Norm{X_{i} - Y_{j}}[2]^{2}$, si ha a che fare con il \emph{k-mean} clustering.
+Con tale algoritmo, l'utente deve solamente fornire i rappresentanti dei cluster, e da esse l'algoritmo procedera a comporli.
+Nello specifico l'algoritmo procede come segue.
+\begin{enumerate}
+    \item per ogni elemento $x$, si calcola la distanza con ogni rappresentate $\mu_{i}$ definito dall'utente,
+          e si assegna $x$ al cluster il cui rappresentante ha la distanza minore da $x$;
+    \item per ogni cluster così formato si calcola il centroide (la media);
+    \item si ripete il processo finché non vi è convergenza\footnotemark[2].
+\end{enumerate}
+
+Circa la complessità dell'algoritmo, questa è \(\OrderOf{nkdi}\), ove $n$ è il numero di elementi del dataset, $k$ il numero di cluster desiderati,
+$i$ il numero di iterazioni e $d$ il numero di attributi delle osservazioni.
+\end{document}

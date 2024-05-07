@@ -1,0 +1,37 @@
+\documentclass{subfiles}
+\begin{document}
+Si assuma di possedere un urna con $N$ palline, di cui $r$ bianche, con $r$ non noto. E da questa effettuare $n$ estrazioni con restituzione.
+Siano ora $\Set{\List{H}{1}{n}}$ una partizione dell'evento certo, con
+$$
+    H_{r} = \text{``Ci sono $r$ palline bianche''}
+$$
+Sia $E_{i} = $``l'i-esima pallina estratta è bianca', per $i \in \Set{1, \cdots, n}$.
+Si verifica che
+$$
+    \Prob{E_{i}}[H_{r}] = \Frac{r}{N}   ,\qquad \forall i \in \Set{1, \cdots, n}
+$$
+Da ciò
+$$\begin{aligned}
+        \Prob{E_{i}} & = \Sum{\Prob{E_{i}}[H_{r}] \Prob{H_{r}}}{r = 0}[N] \\
+                     & = \Sum{\Prob{H_{r} \Frac*{r}{N}}}{r = 0}[N]        \\
+    \end{aligned}$$
+Da cui risulta $\Prob{E_{i}}$ è equiprobabile, per ogni $i$.
+
+Sia ora posto $X$ il numero aleatorio di palline estratte alle $n$ prove. Si ha
+$$
+    \Prob{X = h}[H_{r}]  = \binom{n}{h} \left(\Frac{r}{N}\right)^{h} \left(\Frac{N - h}{N}\right)^{n - h}                              \\
+$$
+da cui
+\begin{equation}
+    \Prob{X = h} = \Sum{\binom{n}{h} \left(\Frac{r}{N}\right)^{h} \left(\Frac{N - h}{N}\right)^{n - h} \Prob{H_{r}}}{r = 0}[N]
+\end{equation}
+
+Dicasi che $X$ è una mistura di binomiali.
+\begin{MarginNote}
+    nel caso si effettuino estrazioni senza restituzione, la \eqref{Eq:1} diventa
+    $$
+        \Prob{X = h} = \Sum{\Frac{\binom{n}{h} \left(\Frac{r}{N}\right) \left(\Frac{N - h}{N}\right)}{\binom{N}{r}}\Prob{H_{r}}}{r = 0}[N]
+    $$
+    Si dirà in questo caso che $X$ è una mistura di iper-geometriche.
+\end{MarginNote}
+\end{document}

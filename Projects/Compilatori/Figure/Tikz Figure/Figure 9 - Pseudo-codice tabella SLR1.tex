@@ -1,0 +1,25 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[b]{0.625\textwidth}
+        \begin{lstlisting}[language = PSEUDO]
+                let __*$\List{I}{1}{n}$*__ sets of items of LR(0) for G'
+                for each __*$I_{i}$*__ AND each __*$A \in I_{i}$*__ do
+                    if __*$\Grammar{A}{\alpha .a\beta} \in I_{i}$*__ then 
+                        set __*$SHIFT(J)$*__ in __*$ACTION[i, a]$*__
+                        // j state of __*$CLOSURE(\Grammar{A}{\alpha .a\beta})$*__
+                    if __*$\Grammar{A}{\alpha .} \in I_{i}$*__ then 
+                        set __*$REDUCE(\Grammar{A}{\alpha .})$*__ in __*$ACTION[i, a]$*__ forall __*$a \in FOLLOW(A)$*__
+                    if __*$\Grammar{S'}{S} \in I_{i}$*__ then
+                        set __*$accept$*__ as __*$ACTION[i, \$]$*__
+                for each __*$ACTION$*__ of type __*$GOTO$*__ do
+                    if __*$GOTO[I_{i}, A] == I_{j}$*__ then
+                        __*$GOTO[i, A] = j$*__
+                for every other element that isn't set, set __*$error$*__
+            \end{lstlisting}
+    \end{subfigure}
+    \caption{Pseudo codice tabella SLR(1)}
+    \label{fig:9}
+\end{figure}
+\end{document}

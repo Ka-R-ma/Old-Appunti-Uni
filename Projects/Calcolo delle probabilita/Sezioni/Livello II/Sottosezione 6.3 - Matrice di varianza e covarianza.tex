@@ -1,0 +1,39 @@
+\documentclass{subfiles}
+\begin{document}
+Siano $\List{X}{1}{m}, m$ numeri aleatori e siano $\List{Y}{1}{n}$ altri $n$ numeri aleatori.
+Si considerino le seguenti combinazioni lineari
+$$
+    X = \Sum{\alpha_{i} X_{i}}{i = 1}[m] \qquad Y = \Sum{\beta_{j} Y_{j}}{j = 1}[n], \quad \alpha_{i}, \beta_{j} \in \Real
+$$
+calcolando la covarianza dei due si ha
+$$\begin{aligned}
+        \Cov{X}{Y} & = \Cov{\Sum{\alpha_{i} X_{i}}{i = 1}[m]}{\Sum{\beta_{j} Y_{j}}{j = 1}[n]}        \\
+                   & = \cdots = \Sum{\Sum{\alpha_{i}b_{j} \sigma_{x_{i}, y_{j}}}{j = 1}[n]}{i = 1}[m]
+    \end{aligned}$$
+Nel particolare, $\Cov{X}{X} = \Var{X}$.
+Posto allora $\alpha^{T} = \Tuple{\alpha}{1}{n}$ e
+$$
+    \Sigma = \begin{pmatrix}
+        \sigma_{1,1} & \sigma_{1,2}  & \cdots & \sigma_{1, m} \\
+        \sigma_{2,1} & \sigma_{2,2}  & \cdots & \sigma_{2, m} \\
+        \vdots       & \vdots        & \ddots & \vdots        \\
+        \sigma_{m,1} & \sigma_{m, 2} & \cdots & \sigma_{m,m}
+    \end{pmatrix}$$
+si ha che
+$$\begin{aligned}
+        \Cov{X}{X} = \Var{X} & = \alpha^{T} \Sigma \alpha                                                      \\
+                             & = \begin{pmatrix}
+                                     \alpha_{1} & \alpha_{2} & \cdots & \alpha_{m}
+                                 \end{pmatrix} \begin{pmatrix}
+                                                   \sigma_{1,1} & \sigma_{1,2}  & \cdots & \sigma_{1, m} \\
+                                                   \sigma_{2,1} & \sigma_{2,2}  & \cdots & \sigma_{2, m} \\
+                                                   \vdots       & \vdots        & \ddots & \vdots        \\
+                                                   \sigma_{m,1} & \sigma_{m, 2} & \cdots & \sigma_{m,m}
+                                               \end{pmatrix} \begin{pmatrix}
+                                                                 \alpha_{1} \\
+                                                                 \alpha_{2} \\
+                                                                 \vdots     \\
+                                                                 \alpha_{m}
+                                                             \end{pmatrix} \ge 0, \forall \alpha \in \Real^{m}
+    \end{aligned}$$
+\end{document}

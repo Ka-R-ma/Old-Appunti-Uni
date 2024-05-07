@@ -1,0 +1,43 @@
+\documentclass{subfiles}
+\begin{document}
+Grazie al fisico \emph{Jean Baptiste Joseph Fourier}, si scoprì che una qualsiasi funzione periodica di periodo $T$,
+può essere espressa come combinazione di un certo numero, eventualmente infinito, di funzioni sinusoidali.
+Se ne può cioè calcolare la \emph{trasformata di Fourier}. In simboli
+\begin{equation}
+    g(t) = \Frac{a_{0}}{2} \Sum{a_{n} \Sin{\Frac{2 t n \pi}{T}} + b_{n} \Cos{\Frac{2 t n \pi}{T}}}{n = 1}[\infty]
+\end{equation}
+ove, posto $\omega = 2\pi / T$, rispettivamente
+$$
+    a_{0} = \Frac{2}{T} \Int{g(t)}{t}[\Frac*{-T}{2}][\Frac*{T}{2}],                 \quad
+    a_{n} = \Frac{2}{T} \Int{g(t) \Sin{\omega nt}}{t}[\Frac*{-T}{2}][\Frac*{T}{2}], \quad
+    b_{n} = \Frac{2}{T} \Int{g(t) \Cos{\omega nt}}{t}[\Frac*{-T}{2}][\Frac*{T}{2}]
+$$
+
+\begin{Example*}
+    sia considerata un'onda quadra con $A = 1 V, T = 10 ms, f = 100 Hz$. Se ne calcoli $a_{0}, a_{k}, b_{k}$. \\
+    Per struttura delle onde quadre, posto $g(t)$ la rappresentazione della stessa, si ha:
+    $$
+        g(t) = \begin{cases}
+            -A \text{se} -\Frac*{T}{2} \le t \le 0 \\
+            A \text{se} 0 \le t \le -\Frac*{T}{2}
+        \end{cases}
+    $$
+    da cui
+    $$\begin{aligned}
+            a_{0} & = \Frac{2}{T} \Int{g(t)}{t}[\Frac*{-T}{2}][\Frac*{T}{2}]
+            = \cdots = \Frac{2}{T} \left(\Eval{-At}{\Frac*{-T}{2}}[0] + \Eval{At}{0}[\Frac*{T}{2}]\right) = 0                                \\
+            a_{k} & = \Frac{2}{T} \Int{g(t) \Sin{\omega nt}}{t}[\Frac*{-T}{2}][\Frac*{T}{2}]                                                 \\
+                  & = \Frac{2}{T} \left(\Int{-A \Sin{\omega k t}}{t} [\Frac*{-T}{2}][0]+ \Int{A \Sin{\omega k t}}{t}[0][\Frac*{T}{2}]\right) \\
+                  & = \begin{cases}
+                          0 \text{per k pari} \\
+                          4A/\pi k \text{per k dispari}
+                      \end{cases}                                                                                           \\
+            b_{k} & = \Frac{2}{T} \Int{g(t) \Cos{\omega nt}}{t}[\Frac*{-T}{2}][\Frac*{T}{2}]
+            = \cdots = 0
+        \end{aligned}$$
+\end{Example*}
+\clearpage
+
+\paragraph{Velocita di trasferimento in un canale privo di rumore}
+\subfile{../Livello IIII/Sottososottosottosezione 4.1.2.1 - Velocita di trasferimento in un canale privo di rumore.tex}
+\end{document}

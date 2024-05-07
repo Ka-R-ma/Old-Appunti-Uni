@@ -1,0 +1,40 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}[
+        pre/.style={<-, >={latex}, semithick},
+        post/.style={->, >={latex}, semithick},
+        box/.style={rectangle, draw=black!50, fill=black!15, thick, scale = 0.75, minimum width = 3cm, minimum height = 1cm},
+        every label/.style={scale = 0.6, color={SkyBlue4}}
+        ]
+
+        \coordinate (source) at (0, 0);
+
+        \node [box] (lexical) at ($(source) + (3, 0)$) {Analisi lessicale};
+        \node [box] (syntactic) at ($(lexical) - (0, 1)$) {Analisi sintattica};
+        \node [box] (semantic) at ($(syntactic) - (0, 1)$) {Analisi semantica};
+
+        \coordinate (end) at ($(semantic) + (3, 0)$);
+
+        \path (source)
+        edge [post] node [label=below:{Codice sorgente}] {} (lexical);
+
+        \path (lexical.east)
+        edge [post, bend left] node [label=right:{Sequenza di token}] {} (syntactic.east);
+
+        \path (semantic.west)
+        edge [pre, bend left] node [label= left:{Albero sintattico}] {} (syntactic.west);
+
+        \path (semantic.east)
+        edge [post] node [label=below:{Albero semantico}] {} (end);
+
+        \begin{scope}[]
+
+        \end{scope}
+
+    \end{tikzpicture}
+    \caption{Struttura di un compilatore.}
+    \label{fig:1}
+\end{figure}
+\end{document}

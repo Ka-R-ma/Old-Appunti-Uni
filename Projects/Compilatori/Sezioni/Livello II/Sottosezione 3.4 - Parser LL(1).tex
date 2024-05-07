@@ -1,0 +1,28 @@
+\documentclass{subfiles}
+\begin{document}
+Come anticipato, i parser LL(k) sono parser che analizzano l'input da sinistra verso destra,
+effettuando derivazioni sinistre sulla base dei k simboli successivi.
+
+Considerando il parser in se, questi deve la propria efficacia alla costruzione di una matrice/tabella, strutturata come segue:
+\begin{itemize}
+    \item ogni carattere non-terminale rappresenta una riga della tabella, i terminali le colonne;
+    \item a partire dall'assioma, ogni regola del tipo \(\Grammar{X}{\gamma}\) tale per cui \(\gamma \Derivation tB\),
+          è inserita in posizione \((X, t)\);
+
+    \item ogni regola del tipo \(\Grammar{X}{\gamma}\) tale che \(\gamma \Derivation \varepsilon\),
+          è inserita in \((X, t), \forall t \Such S \Derivation \beta X t a\).
+\end{itemize}
+
+\subsubsection{FIRST}
+\subfile{../Livello III/Sottosottosezione 3.4.1 - First.tex}
+
+\subsubsection{FOLLOW}
+\subfile{../Livello III/Sottosottosezione 3.4.2 - Follow.tex}
+\clearpage
+\subsubsection{Grmmatiche LL(1) e loro parsing}
+\subfile{../Livello III/Sottosottosezione 3.4.3 - Grammatiche LL(1) e loro parsing.tex}
+
+\subsubsection{Costruzione della tabella}
+\subfile{../Livello III/Sottosottosezione 3.4.4 - Costruzione della tabella.tex}
+\clearpage
+\end{document}

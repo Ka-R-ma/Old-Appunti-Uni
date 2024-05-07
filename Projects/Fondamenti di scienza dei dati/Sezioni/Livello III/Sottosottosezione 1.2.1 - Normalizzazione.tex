@@ -1,0 +1,26 @@
+\documentclass{subfiles}
+\begin{document}
+Sebbene esistano decine di normalizzazione diverse, di interesse risultano
+\begin{itemize}
+    \item \emph{la normalizzazione max-min:} si tratta di una normalizzazione dipendente dai valore di massimo e minimo dei dati.
+          Nello specifico, assunti \(v \text{i dati,} v' \) i dati normalizzati, \(MAX_{0} \text{e} min_{0}\) rispettivamente i valori di massimo e minimo iniziali,
+          e assunti inoltre \(MAX \text{e} min\) gli estremi del nuovo range, segue
+          \[
+              v' = \frac{v - min_{0}}{(MAX_{0} - min_{0})}(MAX - min) + min
+          \]
+          \begin{MarginNote}
+              In generale, poiché si preferisce operare con valori in \(\Range*{0}{1} \text{,} Max = 1, min = 0\).
+          \end{MarginNote}
+    \item \emph{la normalizzazione z-core:} è una normalizzazione dipendente dalla media e dalla deviazione standard dei dati.
+          Nello specifico, posti \(v \text{i dati,} v'\) i dati normalizzati, \(\mu \text{la media e} \sigma\) la deviazione standard, si ha
+          \[
+              v' = \Frac{v - \mu}{\sigma}
+          \]
+    \item \emph{la normalizzazione decimale:} si normalizza dividendo per una potenza di 10 tale che,
+          a seguito della normalizzazione, i valori cadano nel range \(\Range{0}{1}\).
+          Formalmente
+          \[
+              v' = \Frac{v}{10^{k}}, k = \Min*{\Norm{v'} \le 1}[k \in \Natural]
+          \]
+\end{itemize}
+\end{document}

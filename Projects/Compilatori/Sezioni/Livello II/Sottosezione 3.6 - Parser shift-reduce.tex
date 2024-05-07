@@ -1,0 +1,21 @@
+\documentclass{subfiles}
+\begin{document}
+Si tratta di un parser che fa uso di un automa a pila, pila che inizialmente contiene unicamente il simbolo $\$$
+ad indicare appunto la pila vuota. Ricevuto un input, anch'esso contenente $\$$ ad indicarne la fine,
+sulla base dello stesso effettua quattro operazioni.
+\begin{itemize}
+    \item \textbf{Shift:} un terminale della stringa in input, è spostato nella pila.
+    \item \textbf{Reduce:} una stringa $\alpha$ in cima alla pila è sostituita con un $A \in N$ secondo $\Grammar{A}{\alpha}$.
+    \item \textbf{Error:} comunica la presenza di un errore sintattico.
+    \item \textbf{Accept:} la pila è vuota (si ha solo il simbolo $\$$) e la lettura è terminata,
+          procede ad accettare la stringa.
+\end{itemize}
+
+Il parser shif-reduce descritto precedentemente, potrebbe non essere sufficiente a riconoscere alcune grammatiche.
+Per tale ragione, in generale, si preferisce utilizzare i parser LR(k), con ``k'' numero di caratteri successivi di cui tenere traccia ad ogni passo.
+Saranno trattati nel dettaglio i parser LR(0). ALtri parser SR (\textbf{eg:} SLR e/o LALR(1)) saranno solamente accennati.
+
+\begin{Remark*}
+    Se una grammatica è ambigua, non è LR(k) per nessun k.
+\end{Remark*}
+\end{document}

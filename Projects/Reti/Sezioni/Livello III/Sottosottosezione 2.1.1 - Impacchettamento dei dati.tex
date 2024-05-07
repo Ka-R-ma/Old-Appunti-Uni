@@ -1,0 +1,16 @@
+\documentclass{subfiles}
+\begin{document}
+Sia considerata la struttura protocollare mostrata in \emph{Figura \emph{fig:1}}.
+Un messaggio $m$ prodotto dal livello 5 è trasmesso al livello 4.
+Giunto al livello 4 ad $m$ si aggiunge un \emph{header}\footnotemark[1] e si trasferisce il messaggio al livello 3.
+
+Poiché spesso si impone un limite alle dimensioni del messaggio nei livelli più bassi, in genere il messaggio è diviso in pacchetti:
+si tratta di pezzi del messaggio originale ai quali, per permettere una corretta ricostruzione del messaggio, si aggiunge un ulteriore header.
+
+Giunto al destinatario, il messaggio si muove dall'alto in basso, rimuovendo di volta in volta gli header.
+I peer dello stesso livello, pertanto modellano concettualmente la loro comunicazione come se fosse “orizzontale”,
+anche se in realtà comunicano mediante livelli inferiori attraverso le interfacce.
+
+\subfile{../../Figure/Tikz Figure/Figure 1 - Esempio di impacchettamento dati.tex}
+\footnotetext[1]{Si tratta di informazioni che permettono al livello corrispettivo del destinatario di leggere il messaggio correttamente.}
+\end{document}

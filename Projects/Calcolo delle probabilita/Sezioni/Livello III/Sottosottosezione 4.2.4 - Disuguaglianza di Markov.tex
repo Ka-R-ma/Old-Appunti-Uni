@@ -1,0 +1,21 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{Theorem}
+    Dato un numero aleatorio discreto non-negativo $X$ con $\Expected{X} < \infty$ e un $\alpha > 0 \in \Real$, si ha
+    $$
+        \Prob{X \ge \alpha} \le \Frac{\Expected{X}}{\alpha}
+    $$
+    \begin{Proof*}
+        poiché $X \ge 0$, segue che $\Prob{X \ge 0} = 1$. Posto ora $\Prob{X \ge x_{n}} = p_{n}$, segue
+        $$\begin{aligned}
+                \alpha \Prob{X \ge \alpha} & = \alpha \Sum{p_{n}}{x_{n} \Such x_{n} \ge \alpha} \\
+                                           & \le \Sum{x_{n}p_{n}}{x_{n} \Such x_{n} \ge \alpha} \\
+                                           & \le \Sum{x_{n} P_{n}}{x_{n}} = \Expected{X}
+            \end{aligned}$$
+        da cui dunque
+        $$
+            \Prob{X \ge \alpha} \le \Frac{\Expected{X}}{\alpha}
+        $$
+    \end{Proof*}
+\end{Theorem}
+\end{document}

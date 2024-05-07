@@ -1,0 +1,27 @@
+\documentclass{subfiles}
+\begin{document}
+Sia $X$ un numero aleatorio continuo, e sia la sua densità di probabilità $f(x)$ definita come segue
+$$
+    f(x) = \begin{cases}
+        k > 0, \text{se} x \in \Range*{a}{b} \\
+        0, \text{altrimenti}
+    \end{cases}$$
+\begin{Remark*}
+    Osservando che
+    $$
+        \Int{f(t)}{t}[-\infty][\infty] = \Int{k}{x}[a][b] = bk - ak = 1  \implies k = \Frac{1}{b - a}
+    $$
+\end{Remark*}
+Per quanto osservato segue che
+$$
+    F(x) = \Int{f(t)}{t}[-\infty][x] = \begin{cases}
+        0, \text{se} x < a                                 \\
+        \Frac{x - a}{b - a}, \text{se} x \in \Range*{a}{b} \\
+        1, \text{se} x > b
+    \end{cases}$$
+Segue infine che valore atteso e varianza sono definiti come
+$$\begin{aligned}
+        \Expected{X} & = \Int{\Frac{x}{b - a}}{x}[a][b] = \cdots = \Frac{b + a}{2}                                      \\
+        \Var{X}      & = \Expected*{(X - \mu)^{2}} = \Int{(x - \mu)^{2} k}{x}[-\infty][\infty] = \Frac{(b - a)^{2}}{12}
+    \end{aligned}$$
+\end{document}

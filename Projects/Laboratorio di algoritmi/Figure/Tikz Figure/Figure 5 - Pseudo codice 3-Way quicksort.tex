@@ -1,0 +1,24 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[b]{.6\textwidth}
+        \begin{lstlisting}[language = PSEUDO]
+                function 3_way_quicksort(Array R, int currPos)
+                if __*$\Abs{R} \le 1$*__ then return R;
+                __*$R_{\perp} = \Set{s \in R}[\Abs{s} < currPos]$*__;
+                __*$R = R - R_{\perp}$*__;
+                choose pivot __*$x \in R$*__;
+                __*$R_{<} = \Set{s \in R}[s[currPos] < x[currPos]]$*__;
+                __*$R_{=} = \Set{s \in R}[s[currPos] = x[currPos]]$*__;
+                __*$R_{>} = \Set{s \in R}[s[currPos] > x[currPos]]$*__;
+                __*$R_{<}$*__ = 3_way_quicksort(__*$R_{>}$*__, currPos);
+                __*$R_{=}$*__ = 3_way_quicksort(__*$R_{=}$*__, currPos + 1);
+                __*$R_{>}$*__ = 3_way_quicksort(__*$R_{>}$*__, currPos);
+                return __*$R_{\perp} \cdot R_{<} \cdot R_{=} \cdot R_{>}$*__
+            \end{lstlisting}
+    \end{subfigure}
+    \caption{Pseudo codice 3\_way\_quicksort(stringSort).}
+    \label{Fig:5}
+\end{figure}
+\end{document}

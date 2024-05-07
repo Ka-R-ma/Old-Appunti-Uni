@@ -1,0 +1,21 @@
+\documentclass{subfiles}
+\begin{document}
+Alla base del processo di bilanciamento vi sono le operazioni di rotazione a sinistra e a destra.
+Per comprendere tali operazioni, si faccia riferimento a \emph{Figura \ref{sub@Fig:1.a}}.
+Si supponga di aggiungere ad \(T_{1}\) un nodo, portando così a uno sbilanciamento dell'albero (\emph{Figura \ref{sub@Fig:1.b}}).
+In questo caso si dimostra sufficiente una singola rotazione a destra, a seguito della quale l'albero risulta bilanciato (\emph{Figura \ref{sub@Fig:1.c}}).
+L'operazione appena descritta prende il nome di rotazione destra-destra,
+a questa si aggiungono la rotazione sinistra-sinistra (simmetrica alla rotazione destra-destra) e le rotazioni sinistra-destra, destra-sinistra tra loro simmetriche.
+
+\subfile{../../Figure/Tikz Figure/Figure 1 - Operazioni di rotazione degli AVL.tex}
+
+Sia ora considerata l'operazione di rotazione sinistra-destra: prendendo in riferimento l'albero di \emph{Figura \ref{sub@Fig:1.a}},
+si supponga di aggiungere al sotto-albero \(T_{2}\) un nodo; come evidente da \emph{Figura \ref{sub@Fig:2.a}} l'albero risulta ora sbilanciato.
+\subfile{../../Figure/Tikz Figure/Figure 2 - Operazione di rotazione sinistra-destra.tex}
+Poiché si osserva banalmente che una sola operazione di rotazione non è sufficiente; sia considerata la radice del sotto-albero, sia questa \(i\) (\emph{Figura \ref{sub@Fig:2.b}}),
+in tal modo eseguendo dapprima una rotazione a sinistra (\emph{Figura \ref{sub@Fig:2.c}}) e successivamente una a destra (\emph{Figura \ref{sub@Fig:2.d}}),
+l'albero risulta nuovamente bilanciato.
+
+
+
+\end{document}

@@ -1,0 +1,16 @@
+\documentclass{subfiles}
+\begin{document}
+Sia \(G\) la grammatica di cui costruire il parser.
+Primo passo è quella di definire una grammatica aumentata \(G'\) tale che \(\Grammar{G'}{G}\).
+Sia \(I\) un'insieme di item, si esegue su di esso l'operazione di CLOSURE a seguito della quale,
+se \(\Grammar{A}{\alpha . B\beta} \in CLOSURE(I)\) e \(\Grammar{B}{\gamma .} \notin CLOSURE(I)\), allora si aggiunge quest'ultima a CLOSURE(I).
+Si ripete l'operazione fintantoché non si possono aggiunge ulteriori item.
+
+Oltre l'operazione di CLOSURE è necessario definire l'operazione di GOTO, il cui pseudo-codice è riportato in \emph{Figura \ref{fig:6}}.
+\subfile{../../Figure/Tikz Figure/Figure 6 - Pseudo-codice GOTO.tex}
+
+\noindent Sostanzialmente, GOTO(I) definisce la chiusura dell'insieme di item \(\Grammar{A}{\alpha X.\beta}\) tali che \(\Grammar{A}{\alpha .X\beta} \in CLOSURE(I)\).
+
+\noindent Una volta costruito l'automa, si può effettuare il parsing, di cui a seguire è riportato lo pseudo codice.
+\subfile{../../Figure/Tikz Figure/Figure 7 - Pseudo-codice parser LR0.tex}
+\end{document}

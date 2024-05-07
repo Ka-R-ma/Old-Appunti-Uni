@@ -1,0 +1,12 @@
+\documentclass{subfiles}
+\begin{document}
+S tratta di una delle funzioni utilizzate per la costruzione della tabella di parsing LL(1).
+Nello specifico, assunto una stringa \(\alpha \in N \times T\), si ha che
+\[
+    FIRST(\alpha) = \Set{x \in T}[\alpha \Derivation x\beta]
+\]
+In altri termini, \(FIRST(\alpha)\) rappresenta l'insieme dei terminali tali che gli stessi compaiano come primo termine di una qualche derivazione di \(\alpha\).
+Inoltre se \(\alpha \Derivation \varepsilon\) allora \(\varepsilon \in FIRST(\alpha)\).
+Per quel che concerne l'algoritmo per l'implementazione di FIRST, questi è il seguente.
+\subfile{../../Figure/Tikz Figure/Figure 3 - Pseudo-codice procedura FIRST.tex}
+\end{document}

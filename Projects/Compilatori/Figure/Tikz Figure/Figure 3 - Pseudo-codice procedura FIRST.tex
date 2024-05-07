@@ -1,0 +1,25 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[b]{0.7\textwidth}
+        \begin{lstlisting}[language = PSEUDO]
+                for all terminal __*$x$*__ and __*$\varepsilon$*__ do __*FIRST(x) = $\Set{x}$*__;
+                for all non-terminal __*$X$*__ do __*FIRST(X) = $\varnothing$*__;
+                while there are changes in any FIRST do
+                    for each __*$ \Grammar{X}{\List{Y}{1}{k}}$*__ do {
+                        i = 1;
+                        continue = true;
+                        while continue == true AND i <= k do {
+                            add __*FIRST($Y_{i}$) $\setminus \Set{\varepsilon}$*__ to FIRST(X);
+                            if __*$\varepsilon \notin FIRST(Y_{i})$*__ then continue = false;
+                            i += 1;
+                        }
+                        if continue == true then add __*$\varepsilon$*__ to FIRST(X);
+                     }
+            \end{lstlisting}
+    \end{subfigure}
+    \caption{Pseudo codice procedura FIRST.}
+    \label{fig:3}
+\end{figure}
+\end{document}

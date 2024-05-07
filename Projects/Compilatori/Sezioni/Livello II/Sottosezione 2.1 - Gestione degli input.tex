@@ -1,0 +1,8 @@
+\documentclass{subfiles}
+\begin{document}
+Lo scanner analizza il sorgente carattere per carattere, ma poiché un token potrebbe essere composto da più caratteri,
+è necessario un metodo di ``backtracking'': cioè un modo per poter tenere traccia di dove un token inizi.
+Ciò è generalmente realizzato con un doppio buffering. Con l'ausilio di due puntatori, \lstinline{forward} e \lstinline{lexem_begin},
+si procede ad identificare i token. Nello specifico inizialmente i due puntatori coincidono,
+successivamente si fa avanzare \lstinline{forward} fintantoché si riscontra un lessema. Fatto ciò si aggiorna la posizione di \lstinline{lexem_begin}.
+\end{document}

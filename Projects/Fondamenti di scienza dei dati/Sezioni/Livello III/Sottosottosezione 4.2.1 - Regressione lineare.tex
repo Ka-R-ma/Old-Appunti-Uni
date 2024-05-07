@@ -1,0 +1,27 @@
+\documentclass{subfiles}
+\begin{document}
+Come suggerito dal nome, è una tipologia di regressione utile quando, considerando il grafo di dispersione, i dati sono grossomodo distribuiti lungo una linea retta.
+Si distinguono:
+\begin{itemize}
+    \item \emph{il caso semplice:} \(y\) dipende da un'unica variabile \(x\);
+    \item \emph{il caso multiplo:} \(y\) è dipendente da due o più variabili \(\List{x}{1}{k}\).
+\end{itemize}
+
+Considerando unicamente il caso semplice (il caso multiplo si riduce ad una banale estensione), la relazione tra le variabili si può esprimere come
+\[
+    y = a + bx + \varepsilon
+\]
+da ciò, calcolare gli \(y_{i}\) si riduce a calcolare
+\[
+    y_{i} = a_{0} + b_{1}x_{i} + \varepsilon_{i}
+\]
+Ciò, comporta dover calcolare \(a_{0}, b_{1}\), in generale realizzato con il metodo dei minimi quadrati.
+
+\paragraph*{Metriche di regressione lineare}
+Se ne distinguono essenzialmente tre:
+\begin{itemize}
+    \item \textbf{maximum error:} \(\Max*{\Abs{f(x_{k}) - y_{k}}}[k \in \Set{1, \ldots, n}]\);
+    \item \textbf{mean absolute error:} \(\Frac{1}{n} \Sum{\Abs{f(x_{k}) - y_{k}}}{k = 1}[n]\);
+    \item \textbf{mean absolute error:} \(\sqrt{\Frac{1}{n} \Sum{\Abs{f(x_{k}) - y_{k}}^{2}}{k = 1}[n]}\);
+\end{itemize}
+\end{document}

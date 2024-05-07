@@ -1,0 +1,45 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{Definition*}
+    siano $E \text{e} H, H \neq 0$ eventi.
+    Dicasi evento condizionato il seguente ente logico.
+    $$(E \Given H) = \begin{cases}
+            \text{vero, se} E \text{e} H \text{veri},      \\
+            \text{falso, se} E^{C} \text{e} H \text{veri}, \\
+            \text{indeterminato, se} H^{C} \text{vero.}
+        \end{cases}$$
+\end{Definition*}
+Banalmente se $H = \Omega$, si ha $(E \Given H) = (E \Given \Omega) = E$.
+Vale inoltre
+$$
+    (E \Given H) = ((E \land \Omega) \Given H) = \left[(E \land H) \lor (E \land H^{C})\right] \Given H = ((E \land H) \Given H)
+$$
+Applicando dunque il criterio di scommessa si ha che
+$$
+    \Prob{E}[H] = \begin{cases}
+        S, \text{se} EH \text{vero},    \\
+        0, \text{se} E^{C}H \text{vero} \\
+        pS, \text{se} H \text{falso.}
+    \end{cases}$$
+da cui, considerando il guadagno si ha
+$$
+    \mathcal{G} = S \Abs{EH} - pS\Abs{H} = S\Abs{H} (\Abs{E} - p)
+$$
+posto dunque $G = \Set{S(1 - p), -ps}$, si deve verificare
+$$\begin{aligned}
+         & \Min*{G}\Max*{G} \le 0, \forall S \neq 0                 \\
+         & \implies S^{2}(1 - p)(-p) \le 0 \iff p \in \Range*{0}{1}
+    \end{aligned}$$
+affinche la condizione di coerenza sia rispettata.
+
+\subsection{Teorema delle probabilità composte}
+\subfile{../Livello II/Sottosezione 3.1 - Teorema delle probabilita composte.tex}
+
+\subsection{Formula di disintegrazione}
+\subfile{../Livello II/Sottosezione 3.2 - Formula di disintegrazione.tex}
+\clearpage
+
+\subsection{Teorema di Bayes}
+\subfile{../Livello II/Sottosezione 3.3 - Teorema di Bayes.tex}
+\clearpage
+\end{document}

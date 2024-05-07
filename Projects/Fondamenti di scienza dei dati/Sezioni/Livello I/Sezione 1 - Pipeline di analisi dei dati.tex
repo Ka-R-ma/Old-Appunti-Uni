@@ -1,0 +1,30 @@
+\documentclass{subfiles}
+\begin{document}
+Il processo di analisi dei dati parte banalmente dall'ottenimento stesso dei dati,
+cosa che può essere effettuata da database, file di log, o altre fonti.
+In ogni caso quando si lavora con i dati si deve prestare attenzione a due problemi,
+uno legato alla struttura dei dati, l'altro alla numerosità degli stessi.
+
+In generale comunque, prima di operare con i dati si procede ad una fase di pulizia.
+Questa è atta a gestire
+\begin{itemize}
+    \item \emph{valori nulli o erronei:} è ovvio che la presenza di valori errati possa influire negativamente sul modello;
+    \item \emph{valori duplicati:} se non gestiti potrebbero portare ad un cattivo addestramento;
+    \item \emph{struttura dei dati:} è opportuno uniformare la struttura con cui i dati sono rappresentati.
+\end{itemize}
+
+Una volta effettuata la fase di pulizia, si può passare alla parte principale dell'analisi dei dati: l'estrazione delle feature.
+Dal un punto di vista strettamente formale, queste rappresentano caratteristiche valorizzabili dei dati,
+utili alla risoluzione di un qualche problema. Una volta estratte le feature, queste sono adattate per essere utilizzate da un modello di machine learning,
+ed eventualmente combinate per definire caratteristiche supplementari.
+
+\subsection{Integrazione dei dati}
+\subfile{../Livello II/Sottosezione 1.1 - Integrazione dei dati.tex}
+
+\subsection{Trasformazione dei dati}
+\subfile{../Livello II/Sottosezione 1.2 - Trasformazione dei dati.tex}
+
+\subsection{Riduzione della dimensionalità}
+\subfile{../Livello II/Sottosezione 1.3 - Riduzione della dimensionalita.tex}
+\clearpage
+\end{document}

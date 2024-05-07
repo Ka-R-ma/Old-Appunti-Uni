@@ -1,0 +1,22 @@
+\documentclass{subfiles}
+\begin{document}
+Si tratta di una tipologia di machine learning in cui i dati di addestramento sono ``etichettati'':
+cioè presentano un campo che descrive la classe di appartenenza degli stessi.
+Tra questi si distinguono
+\begin{MarginNote}
+    Entrambe le categorie saranno discusse nelle sezioni a seguire.
+\end{MarginNote}
+\begin{itemize}
+    \item gli algoritmi di regressione;
+    \item gli algoritmi di classificazione.
+\end{itemize}
+In generale, si utilizzano quando l'obbiettivo è quello di separare in classi i dati.
+Si osserva però che affinche l'addestramento possa definirsi ``buono'', l'algoritmo deve minimizzare l'errore relativo i dati di addestramento:
+il cosiddetto \emph{training error}, e l'errore relativo i dati di test: il cosiddetto \emph{test/generalization error}.
+In fine, per quanto detto e quanto discusso in \emph{Sezione \ref{sec:2}}, si deve fare attenzione
+\begin{itemize}
+    \item all'\emph{over-fitting:} ossia un fenomeno per cui il modello si è troppo adattato ai dati, non riuscendo dunque a generalizzare;
+    \item all'\emph{under-fitting:} fenomeno opposto all'over-fitting, è una condizione in cui il modello ha appreso poco dai dati,
+          pertanto non ha le capacità sufficienti a generalizzare.
+\end{itemize}
+\end{document}

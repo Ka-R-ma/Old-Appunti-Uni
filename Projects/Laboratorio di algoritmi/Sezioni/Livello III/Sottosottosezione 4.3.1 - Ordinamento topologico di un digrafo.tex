@@ -1,0 +1,13 @@
+\documentclass{subfiles}
+\begin{document}
+Sia \(G\) un grafo orientato. Si dirà che \(G\) ha un ordinamento topologico se esiste una permutazione dei suo nodi tale che,
+per ogni arco della forma \((u, v) \in E\), si ha che \(u\) precede \(v\).
+Si dimostra che se \(G\) è aciclico, allora esso ammette un ordinamento topologico. Valgono inoltre i seguenti teoremi.
+\begin{Theorem}
+    Sia \(G\) un grafo orientato e aciclico, allora la visita in \emph{reverse post-order} di \(G\) restituisce un ordinamento topologico.
+\end{Theorem}
+\begin{Theorem}
+    Sia \(G\) un grafo diretto e privo di cicli, allora questi ha uno ordinamento topologico se e solo se \(\exists v \in V\) tale che questi non abbia archi entranti
+    tale che \(G \setminus \Set{v}\) abbia un ordine topologico.
+\end{Theorem}
+\end{document}

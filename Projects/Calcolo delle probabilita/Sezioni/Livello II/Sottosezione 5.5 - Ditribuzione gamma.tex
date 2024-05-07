@@ -1,0 +1,29 @@
+\documentclass{subfiles}
+\begin{document}
+Sia $X$ un numero aleatorio continuo, sia la sua distribuzione di probabilità definita come
+$$
+    f(x) = \begin{cases}
+        \Frac{\lambda^{a}}{\Gamma(a)}x^{a - 1}e^{-\lambda x}, x > 0 \\
+        0, x \le 0
+    \end{cases}$$
+allora il suo valore atteso è definito come
+$$\begin{aligned}
+        \Expected{X} & = \Int{x \Frac{\lambda^{a}}{\Gamma(a)}x^{a - 1}e^{-\lambda x}}{x}[0][\infty] \\
+                     & = \cdots = \Frac{a}{\lambda}
+    \end{aligned}$$
+Poiché si dimostra che
+$$
+    \Expected{X^{k}} = \Frac{(a + k - 1)(a + k)\cdots a}{\lambda^{k}}
+$$
+segue che $\Var{X} = \Frac*{a}{\lambda^{2}}$
+
+\begin{MarginNote}
+    se $\lambda = \Frac*{1}{2}$ e la densità di probabilità di $X$ è definita come
+    $$
+        f(x) = \begin{cases}
+            \Frac{1}{2^{\Frac{n}{2}} \Gamma(\Frac{n}{2})} x^{\Frac{n}{2} - 1} e^{-\Frac{x}{2}}, x \ge 0 \\
+            0, x < 0
+        \end{cases}$$
+    si dirà che $X$ ha distribuzione \emph{Chi-Quadro con n gradi di libertà}.
+\end{MarginNote}
+\end{document}

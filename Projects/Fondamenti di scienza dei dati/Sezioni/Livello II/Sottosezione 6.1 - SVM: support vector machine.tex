@@ -1,0 +1,23 @@
+\documentclass{subfiles}
+\begin{document}
+Considerando la sua versione più elementare (il caso lineare) SVM costruisce un iper-piano della forma
+$$
+    \VectorBold{wx} + b = 0
+$$
+con $\VectorBold{w} \in \Real^{n} \text{e} b$ costante, parametrizzanti l'iper-piano,
+tale da separare le osservazioni.
+
+\begin{Remark*}
+    L'iper-piano, generalmente, non è unico.
+\end{Remark*}
+
+Poiché generalmente l'iper-piano non è unico, come si stabilisce quello da utilizzare?
+Di norma si tende ad utilizzare quello che massimizza il cosiddetto \emph{margine}:
+si tratta della distanza tra l'osservazione più vicina all'iper-piano e il limite decisionale dello stesso.
+
+\subsubsection{Hard margin SVM}
+\subfile{../Livello III/Sottosottosezione 6.1.1 - Hard margin SVM.tex}
+
+\subsubsection{Soft margin SVM}
+\subfile{../Livello III/Sottosottosezione 6.1.2 - Soft margin SVM.tex}
+\end{document}

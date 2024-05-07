@@ -1,0 +1,16 @@
+\documentclass{subfiles}
+\begin{document}
+Si osserva però che l'hard margin SVM è applicabile unicamente al caso lineare.
+Poiché nella realtà tale situazione è estremamente rara, è necessario poter estendere SVM al caso non lineare.
+Tale estensione è data proprio dal \emph{soft margin}.
+
+Considerando la \eqref{Eq:1}, e ricordando che massimizzare un funzione equivale a minimizzare l'inverso della stessa, si ha
+$$
+    \arg\Min*{\frac{\Norm{\VectorBold{w}}}{2}}[\VectorBold{w}, \VectorBold{x}].
+$$
+Si deve però tenere traccia dell'eventuale errore di classificazione, errore rappresentato dalla funzione $\zeta$.
+Da cui in conclusione, si deve minimizzare
+$$
+    \arg\Min*{\frac{\Norm{\VectorBold{w}}}{2}}[\VectorBold{w}, \VectorBold{x}] + c \Sum{\zeta_{i}}{i = 1}[n]
+$$
+\end{document}

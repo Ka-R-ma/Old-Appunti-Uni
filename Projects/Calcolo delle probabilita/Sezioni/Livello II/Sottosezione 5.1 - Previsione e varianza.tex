@@ -1,0 +1,16 @@
+\documentclass{subfiles}
+\begin{document}
+Sia $X$ un numero aleatorio continuo, in questo caso estendendo la definizioni data per il caso discreto al caso continuo,
+il valore atteso e la varianza di $X$ sono definiti come segue.
+$$
+    \Expected{X} = \Int{x f(x)}{x}[-\infty][\infty]
+$$
+e supposto che
+$$
+    \Int{\Abs{x} f(x)}{x}[-\infty][\infty] < \infty
+$$
+segue
+$$
+    \Var{X} = \Expected*{(X - \mu)^{2}} = \Int{(x - \mu)^{2} f(x)}{x}[-\infty][\infty]
+$$
+\end{document}

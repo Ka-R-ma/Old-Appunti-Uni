@@ -1,0 +1,22 @@
+\documentclass{subfiles}
+\begin{document}
+Ciascuno dei livelli di un protocollo fornisce diversi livelli di affidabilità e due tipologie di servizi:
+\begin{enumerate}
+    \item orientati alla connessione: i due utenti devono prima stabilire una connessione, utilizzarla e, una volta terminata, rilasciarla.
+
+    \item non orientati alla connessione: tra i due host non si stabilisce una connessione, e ciascun messaggio è trasmesso indipendentemente dall'altro.
+          Si verifica così la possibilità che i messaggi non giungano nell'ordine corretto.
+\end{enumerate}
+
+Relativamente l'affidabilità, ciascun servizio, sia questi orientato alla connessione che non, deve essere affidabile:
+ossia deve permettere di trasmettere e ricevere i dati per intero e nel giusto ordine.
+Per garantire l'affidabilità in generale si fa in modo che il ricevente confermi la corretta recezione del messaggio.
+Tale operazione però appesantisce la comunicazione, che ne risulta dunque rallentata.
+\\ \\
+Analizzando un servizio, questi è formalmente specificato da un insieme di primitive.
+\begin{MarginNote}
+    servizi orientati alla connessione utilizzano primitive diverse da quelli non orientati alla connessione.
+\end{MarginNote}
+
+
+\end{document}

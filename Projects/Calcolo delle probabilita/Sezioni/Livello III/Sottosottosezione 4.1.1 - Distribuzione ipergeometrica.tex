@@ -1,0 +1,28 @@
+\documentclass{subfiles}
+\begin{document}
+Si assuma di possedere un urna con $N$ palline, di cui $pN$ bianche e $qN$ nere sono note, con $qN + pN = N$.
+E da questa effettuare $n$ estrazioni con restituzione.
+Sia posto $E_{i}$ l'evento ``l'i-esima pallina estratta è bianca' e sia
+$$
+    X = \Sum{\Abs{E_{i}}}{i = 1}[n].
+$$
+Si ha che
+$$
+    \Prob{E_i} = \Frac{\binom{N - 1}{pN - 1}}{\binom{N}{pN}} = p
+$$
+Cioè gli eventi sono equiprobabili.
+
+Sia ora considerato il generico costituente di $X$, si ha
+$$
+    \Prob{E_{i_{1}}E_{i_{2}} \cdots E_{i_{h}}E^{C}_{i_{h + 1}} \cdots E^{C}_{i_{n}}} = \cdots = \Frac{\binom{N - n}{pN - h}}{\binom{N}{pN}}
+$$
+da cui dunque
+$$
+    (X = h) = \Bigvee{E_{i_{1}}E_{i_{2}} \cdots E_{i_{h}}E^{C}_{i_{h + 1}} \cdots E^{C}_{i_{n}}}{\Set{i_{1}, \cdots, i_{h}} \subseteq \Set{1, \cdots, n}}
+$$
+implicando che
+$$
+    \Prob{X = h} = \Frac{\binom{N - n}{pN - h} \binom{n}{h}}{\binom{N}{pN}}
+$$
+poiché esistono $\tbinom{n}{h}$ modi per ottenere $(X = h)$.
+\end{document}

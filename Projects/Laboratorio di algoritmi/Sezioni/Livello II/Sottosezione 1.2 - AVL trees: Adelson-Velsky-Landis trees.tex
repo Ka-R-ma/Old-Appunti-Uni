@@ -1,0 +1,23 @@
+\documentclass{subfiles}
+\begin{document}
+Gli AVL sono una tipologia di alberi binari di ricerca bilanciati in altezza.
+Nello specifico, si dice che un AVL è bilanciato se questi ha, per ogni sotto-albero, un \emph{fattore di bilanciamento} \(B_{f}\) minore o uguale ad uno.
+\begin{MarginNote}
+    Qui per fattore di bilanciamento si intende la differenza in modulo tra l'altezza dei due sotto-alberi.
+\end{MarginNote}
+
+Per quel che riguarda le operazioni: essendo, come detto, che gli AVL sono dei BST, e poiché essa non modifica la struttura dell'albero,
+la ricerca è analoga a quella dei BST; inserimento e cancellazione viceversa, proprio perché modificano la struttura dell'albero,
+e rischiano di sbilanciarlo, sono modificate in modo tale che a seguito di esse l'albero risulti ancora bilanciato.
+Tale modifica consiste nelle operazioni di rotazione descritte a seguito.
+
+\begin{Remark*}
+    Sebbene l'aggiunta delle operazioni di rotazione nel caso di inserimento e cancellazione,
+    ciascuna delle tre operazioni richiede al più tempo \(\OrderOf{\Log{n}[2]}\): questo perché proporzionali all'altezza dell'albero,
+    e poiché il costo di ogni rotazione è \(\OrderOf{1}\).
+\end{Remark*}
+
+\subsubsection{Ribilanciamento di un AVL}
+\subfile{../Livello III/Sottosottosezione 1.2.1 - Ribilanciamento di un AVL.tex}
+
+\end{document}

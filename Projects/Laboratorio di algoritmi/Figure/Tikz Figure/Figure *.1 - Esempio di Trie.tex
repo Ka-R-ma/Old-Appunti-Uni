@@ -1,0 +1,27 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure*}[h!]
+    \centering
+    \begin{tikzpicture}[
+            mark/.style={fill=black!12.5}, mark/.default=
+        ]
+        \graph [trie, simple,
+        nodes={draw, circle},
+        edges={nodes={inner sep =1pt, anchor=south, auto, swap}},
+        put node text on incoming edges
+        ]{
+        root[mark] -- {
+        p -- {
+        i -- p -- p -- o[mark],
+        l -- u -- {
+        t -- o[mark],
+        r -- a -- l -- e[mark]
+        }
+        },
+        t -- o -- p -- o -- l -- i -- n -- o[mark],
+        }
+        };
+
+    \end{tikzpicture}
+\end{figure*}
+\end{document}

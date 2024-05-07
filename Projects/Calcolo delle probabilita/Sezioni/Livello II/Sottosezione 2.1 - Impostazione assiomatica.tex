@@ -1,0 +1,17 @@
+\documentclass{subfiles}
+\begin{document}
+L'impostazione assiomatica da una definizione rigorosamente matematica di probabilità, a seguito riportata.
+\begin{Definition*}
+    dato $(\Omega, A)$ uno spazio di misura: ossia $\Omega$ è uno spazio con un'algebra (o una $\sigma-algebra$)  \text{e} $A$ una sua sottofamiglia di eventi;
+    una funzione $\Pr \Such A \to \Range*{0}{1}$, dicasi probabilità se:
+    \begin{enumerate}
+        \item $\forall E \in A, \Prob{E} \ge 0$;
+        \item $\Prob{\Omega} = 1$;
+        \item $\Prob{E_{1} \lor E_{2}} = \Prob{E_{1}} + \Prob{E_{2}}, \forall E_{1}, E_{2} \in A \Such E_{1}E_{2} = \varnothing$
+    \end{enumerate}
+    Nel caso in cui $A$ sia infinito, il punto 3 diventa
+    $$
+        \Prob{\Bigvee{E_{i}}{i = 1}[\infty]} = \Sum{\Prob{E_{i}}}{i = 1}[\infty]
+    $$
+\end{Definition*}
+\end{document}

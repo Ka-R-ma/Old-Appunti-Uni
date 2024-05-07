@@ -1,0 +1,14 @@
+\documentclass{subfiles}
+\begin{document}
+sia data la seguente grammatica, se ne costruisca il DFA e la tabella LR(0).
+$$\begin{aligned}
+         & \Grammar{S'}{S}      \\
+         & \Grammar{S}{(L)}[x]  \\
+         & \Grammar{L}{L, S}[S]
+    \end{aligned}$$
+Partendo con il costruire l'automa, questi risulta essere quello di \emph{Figura \ref{fig:8}}.
+\subfile{../../Figure/Tikz Figure/Figure 8 - Esempio automa LRO.tex}
+
+\noindent Considerando ora la tabella, questa è riportata in \emph{Tabella \ref{tab:1}}.
+\subfile{../../Figure/Tikz Figure/Table 1 - Tabella LR0.tex}
+\end{document}
